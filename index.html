@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Nomenclature — IB Chemistry Structure 3.2</title>
+<title>Nomenclature — IB Chemistry S3.2 · R2.1</title>
 <style>
 :root{
   --paper:#E7EBEC;
@@ -224,8 +224,71 @@ td.f2{font-family:var(--mono)}
 .good{color:var(--key)}
 .hidden{display:none!important}
 
+/* ---------- course level + units ---------- */
+.tag.hl{background:var(--nitrogen);color:#fff}
+.lvl{display:flex;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.lvl button{border:0;background:transparent;color:var(--ink-2);padding:7px 12px;font-size:12px;font-weight:600;letter-spacing:0.08em;min-height:34px}
+.lvl button[aria-pressed="true"]{background:var(--nitrogen);color:#fff}
+.topright{margin-left:auto;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.topright nav.tabs{margin-left:0}
+.units{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 0}
+.units button{text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:6px;transition:border-color .12s,transform .12s}
+.units button:hover{border-color:var(--ink);transform:translateY(-1px)}
+.units .gk{font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.units .ut{font-size:21px;font-weight:700;letter-spacing:-0.02em}
+.units .ud{font-family:var(--sans);font-size:14.5px;color:var(--ink-2);line-height:1.5}
+.units .um{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-3);margin-top:auto;padding-top:10px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.rail .grouphead{width:100%;display:flex;justify-content:space-between;align-items:center;background:none;border:0;padding:4px 4px;margin:14px 0 4px;font-family:var(--mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);font-weight:600;text-align:left}
+.rail .grouphead:hover{color:var(--ink)}
+.rail .grouphead .pm{font-size:13px;letter-spacing:0}
+.rail li button::before{content:attr(data-n)}
+.rail li button .hlmark{font-family:var(--mono);font-size:9.5px;font-weight:700;color:var(--nitrogen);margin-left:6px;letter-spacing:0.08em}
+.rail li button[aria-current="true"] .hlmark{color:#9DB4F0}
+#railList{display:block}
+.unittabs{display:flex;gap:6px;flex-wrap:wrap;margin:20px 0 0}
+.unittabs .chip{font-size:12.5px;padding:7px 14px}
+
+/* ---------- equations + calculations ---------- */
+.eqbox{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;background:var(--surface-2);border:1px solid var(--line-soft);border-radius:var(--r);padding:20px 12px;margin:16px 0;font-family:var(--mono);font-size:21px;line-height:1.9}
+.eqbox .op{color:var(--ink-3)}
+.eqbox .sp{white-space:nowrap}
+.eqbox .st{font-size:0.62em;color:var(--ink-3);margin-left:1px}
+.coef{width:46px;height:44px;text-align:center;font-family:var(--mono);font-size:19px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);color:var(--ink)}
+.coef:focus{border-color:var(--ink)}
+.subin{width:30px;height:30px;text-align:center;font-family:var(--mono);font-size:14px;border:1px dashed var(--nitrogen);border-radius:3px;background:var(--surface);color:var(--ink);margin:0 1px;vertical-align:-0.55em}
+.coef.ok,.subin.ok{border-color:var(--key);background:#E9F5F1;color:var(--key);font-weight:700}
+.coef.no,.subin.no{border-color:var(--oxygen);background:#FBEDEB;color:var(--oxygen)}
+.tally{font-size:14px;margin:6px 0 0}
+.tally td,.tally th{text-align:center;padding:5px 8px}
+.tally th{text-transform:none;letter-spacing:0;font-size:12.5px}
+.tally td:first-child,.tally th:first-child{text-align:left}
+.tally td.m{color:var(--key);font-weight:700}
+.tally td.x{color:var(--oxygen);font-weight:700}
+.tallybar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.qwrap{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
+.qwrap .qcard{flex:999 1 480px;min-width:0}
+.qshell.wide{max-width:1040px}
+.datapanel{flex:1 1 240px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:14px}
+.datapanel .dh{font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.elgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(74px,1fr));gap:6px}
+.el{background:var(--surface-2);border:1px solid var(--line-soft);border-radius:var(--r);padding:7px 9px;font-family:var(--mono)}
+.el b{display:block;font-size:17px}
+.el span{font-size:12.5px;color:var(--ink-2)}
+.fx{font-family:var(--mono);font-size:14.5px;border-left:3px solid var(--key);background:var(--surface-2);padding:6px 10px;margin-bottom:6px}
+.fx small{display:block;color:var(--ink-3);font-size:11.5px;margin-top:2px}
+.numrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:16px}
+.numrow input{flex:1;min-width:140px;font-family:var(--mono);font-size:17px;padding:11px 12px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface-2);color:var(--ink)}
+.numrow .unit{font-family:var(--mono);color:var(--ink-2);font-size:15px}
+.steps{font-family:var(--mono);font-size:13.5px;color:var(--ink-2);padding-left:22px;margin:10px 0 0}
+.steps li{margin:4px 0}
+.scen{background:var(--surface-2);border:1px solid var(--line-soft);border-radius:var(--r);padding:14px;margin:14px 0;text-align:center;font-family:var(--mono);font-size:19px}
+.svgpair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.svgpair .svgwrap{margin:6px 0}
+
 @media (max-width:860px){
   .layout{grid-template-columns:1fr}
+  .units{grid-template-columns:1fr}
+  .eqbox{font-size:17px}
   .rail{position:static;max-height:none;border-right:0;border-bottom:1px solid var(--line);padding:0 0 12px;margin-bottom:6px}
   .rail ol{display:grid;grid-template-columns:1fr 1fr;gap:2px}
   .gate{grid-template-columns:1fr}
@@ -242,22 +305,28 @@ td.f2{font-family:var(--mono)}
   <header class="top">
     <div>
       <div class="brand">Nomen<span class="dot">·</span>clature</div>
-      <div class="brand-sub">IB Chemistry — Structure 3.2</div>
+      <div class="brand-sub">IB Chemistry — Structure 3.2 · Reactivity 2.1</div>
     </div>
-    <nav class="tabs" id="tabs">
-      <button data-view="home" aria-current="true">Home</button>
-      <button data-view="notes">Notes</button>
-      <button data-view="test">Test</button>
-      <button data-view="ions">Ions</button>
-    </nav>
+    <div class="topright">
+      <div class="lvl" id="levelSwitch" role="group" aria-label="Course level">
+        <button data-level="SL" aria-pressed="false">SL</button>
+        <button data-level="HL" aria-pressed="true">HL</button>
+      </div>
+      <nav class="tabs" id="tabs">
+        <button data-view="home" aria-current="true">Home</button>
+        <button data-view="notes">Notes</button>
+        <button data-view="test">Test</button>
+        <button data-view="ions">Ions</button>
+      </nav>
+    </div>
   </header>
 
   <!-- HOME -->
   <section class="view on" id="view-home">
     <div class="hero">
-      <div class="eyebrow">Structure 3.2 · Functional groups &amp; organic nomenclature</div>
-      <h1>An organic name is a sentence with strict grammar.</h1>
-      <p class="lede">Learn the grammar in the notes, then let the test engine generate endless molecules and check whether you can read and write them. Everything below is built from the IB naming rules — up to six carbons in the parent chain, one functional group at a time.</p>
+      <div class="eyebrow">Structure 3.2 · Reactivity 2.1</div>
+      <h1>Name it, rearrange it, balance it, count it.</h1>
+      <p class="lede">Three units share one set of notes and one test engine. Questions are generated fresh from real structures and real equations, so the answer is always computed — never looked up. HL-only material is marked, and the SL / HL switch hides it completely.</p>
     </div>
 
     <div class="parser">
@@ -271,16 +340,18 @@ td.f2{font-family:var(--mono)}
       <div class="parser-foot" id="parseFoot"></div>
     </div>
 
+    <div class="units" id="unitCards"></div>
+
     <div class="gate">
       <button data-goto="notes">
         <div class="gk">Part one</div>
         <div class="gt">Notes / Learn</div>
-        <div class="gd">Every rule you need for organic nomenclature, in 25 short chapters with worked structures and check-yourself questions.</div>
+        <div class="gd">All three units in one chapter rail, grouped by unit, with worked structures, worked calculations and check-yourself questions.</div>
       </button>
       <button data-goto="test">
         <div class="gk">Part two</div>
         <div class="gt">Test / Practice</div>
-        <div class="gd">Naming, formulas, structures, functional groups and representations — 20+ question types, generated fresh every time.</div>
+        <div class="gd">Pick a unit, or mix all three. Naming, isomers, balancing and calculations — every question generated fresh.</div>
       </button>
     </div>
 
@@ -310,9 +381,10 @@ td.f2{font-family:var(--mono)}
     <div id="testMenu">
       <div class="eyebrow">Part two</div>
       <h1 style="font-size:30px;margin:6px 0 2px">Test / Practice</h1>
-      <p style="color:var(--ink-2);max-width:60ch;margin:8px 0 0">Pick a mode. Questions are generated from real structures, so the answer is always derivable — nothing is memorised from a fixed list.</p>
+      <p style="color:var(--ink-2);max-width:60ch;margin:8px 0 0">Pick a unit, then a mode. Questions are generated from real structures and equations, so the answer is always derivable — nothing is memorised from a fixed list.</p>
+      <div class="unittabs" id="unitTabs" role="tablist" aria-label="Unit"></div>
       <div class="modes" id="modeList"></div>
-      <div class="eyebrow" style="margin-top:26px">Topic practice</div>
+      <div class="eyebrow" style="margin-top:26px" id="topicHead">Topic practice</div>
       <div class="chips" id="topicChips"></div>
       <button class="btn" id="startTopic">Start topic practice</button>
       <div id="weakBox" style="margin-top:26px"></div>
@@ -559,8 +631,10 @@ function carbonToken(m, i, isLast){
 var ATOMCOL = {O:'var(--oxygen)', N:'var(--nitrogen)', F:'var(--halogen)', Cl:'var(--halogen)', Br:'var(--halogen)', I:'var(--halogen)'};
 function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
 
-function skeletalSVG(m, scale){
+// opts.num: print the chain locants under the drawing; opts.star: locants to mark with *
+function skeletalSVG(m, scale, opts){
   scale = scale || 1;
+  opts = opts || {};
   var DX = 26, DY = 15, PAD = 30;
   var n = m.n;
   var yTop = 34, yBot = yTop + DY;
@@ -568,7 +642,7 @@ function skeletalSVG(m, scale){
   for(var i=0;i<n;i++){
     pts.push({x: PAD + i*DX, y: (i%2===0) ? yBot : yTop, dir: (i%2===0) ? 1 : -1});
   }
-  var W = PAD*2 + (n-1)*DX, H = 92;
+  var W = PAD*2 + (n-1)*DX, H = (opts.num || opts.star) ? 108 : 92;
   var g = [];
   function line(x1,y1,x2,y2,cls){
     g.push('<line x1="'+r2(x1)+'" y1="'+r2(y1)+'" x2="'+r2(x2)+'" y2="'+r2(y2)+'" stroke="'+(cls||'var(--carbon)')+'" stroke-width="1.6" stroke-linecap="round"/>');
@@ -634,6 +708,12 @@ function skeletalSVG(m, scale){
       }
       slotUsed = true;
     });
+  }
+  if(opts.num || opts.star){
+    for(var j=0;j<n;j++){
+      var isStar = opts.star && opts.star.indexOf(j+1) >= 0;
+      g.push('<text x="'+r2(pts[j].x)+'" y="102" text-anchor="middle" font-family="var(--mono)" font-size="9.5" font-weight="'+(isStar?'700':'400')+'" fill="'+(isStar?'var(--nitrogen)':'var(--ink-3)')+'">'+(opts.num ? 'C'+(j+1) : '')+(isStar?'*':'')+'</text>');
+    }
   }
   var w = Math.max(W, 120) + 26;
   return '<svg viewBox="-13 0 '+r2(w)+' '+H+'" width="'+r2(Math.min(w*1.9*scale, 520))+'" role="img" aria-label="skeletal formula of '+esc(nameOf(m))+'"><g>'+g.join('')+'</g></svg>';
@@ -1236,25 +1316,25 @@ var CHAPTERS = [
  check:{q:'What is the molecular formula of the C5 member of the aldehyde series?', a:'C5H10O'}
 },
 {
- id:'isomers', title:'Structural isomers', tag:'core', topics:['isomer'],
+ id:'isomers', unit:'iso', title:'What makes an isomer', tag:'core', topics:['isomer'],
  body:function(){ return `
-  <p><strong>Structural isomers</strong> have the same molecular formula but different connectivity.</p>
-  <h3>C4H10 — two isomers</h3>
-  ${dia(M(4,null,null,[]),'butane')}
-  ${dia(M(3,null,null,[{t:'methyl',p:2}]),'2-methylpropane')}
-  <h3>C4H8 — chain and position isomers</h3>
-  ${dia(M(4,null,1,[]),'but-1-ene')}
-  ${dia(M(4,null,2,[]),'but-2-ene')}
-  <h3>Functional group isomers</h3>
-  <p>Same formula, different homologous series entirely:</p>
-  <ul>
-   <li><code>C3H6O</code> — propanal (aldehyde) and propanone (ketone)</li>
-   <li><code>C2H6O</code> — ethanol (alcohol) and methoxymethane (ether)</li>
-   <li><code>C3H6O2</code> — propanoic acid (acid) and methyl ethanoate (ester)</li>
-  </ul>
-  ${warn('<p style="margin:0">Two drawings that look different may be the same molecule drawn at a different angle. Name both — identical names mean identical molecules.</p>')}`;
+  <p><strong>Isomers</strong> are different compounds with the <strong>same molecular formula</strong>. The atoms are the same; what differs is how they are arranged. There are two families of isomerism.</p>
+  <table><tr><th>Family</th><th>What differs</th><th>Types</th><th>Level</th></tr>
+  <tr><td>structural</td><td>connectivity — which atom is bonded to which</td><td>chain (branched / straight), position, functional group</td><td><span class="tag core">SL + HL</span></td></tr>
+  <tr><td>stereo</td><td>arrangement in space only — the connectivity is identical</td><td>cis–trans, optical</td><td><span class="tag hl">HL</span></td></tr></table>
+  ${rule('<p style="margin:0"><strong>Structural isomers</strong> are molecules that have the same molecular formula but different connectivities. If you can draw both and they need different IUPAC names, they are structural isomers.</p>')}
+  <h3>C4H10 — two structural isomers</h3>
+  <div class="svgpair">${dia(M(4,null,null,[]),'butane')}${dia(M(3,null,null,[{t:'methyl',p:2}]),'2-methylpropane')}</div>
+  <h3>The isomer test, in three steps</h3>
+  <ol>
+   <li>Write the molecular formula of each structure. Different formulas → <strong>not isomers</strong>, stop.</li>
+   <li>Name both. Same name → it is the <strong>same molecule</strong> drawn differently.</li>
+   <li>Different names → <strong>isomers</strong>. Then decide which type (next chapters).</li>
+  </ol>
+  ${warn('<p style="margin:0">Two drawings that look different may be the same molecule flipped or rotated. Butan-2-ol drawn with the OH on the left is still butan-2-ol. Name both — identical names mean identical molecules.</p>')}
+  ${warn('<p style="margin:0">"Same general formula" is not "same molecular formula". Ethanol (C2H6O) and propan-1-ol (C3H8O) are in the same homologous series — they are <em>not</em> isomers.</p>')}`;
  },
- check:{q:'Are butane and 2-methylpropane isomers?', a:'Yes — both are C4H10 with different connectivity'}
+ check:{q:'Are butane and 2-methylpropane isomers?', a:'Yes — both are C4H10 with different connectivity (structural / chain isomers)'}
 },
 {
  id:'algorithm', title:'The complete naming algorithm', tag:'core', topics:['naming'],
@@ -1787,8 +1867,8 @@ var QTYPES = [
   {k:'aldehyde_or_ketone', w:2, topics:['series']},
   {k:'alcohol_class', w:2, topics:['group']},
   {k:'spot_the_error', w:3, topics:['error','naming']},
-  {k:'same_or_different', w:2, topics:['isomer']},
-  {k:'isomer_count', w:1, topics:['isomer']},
+  {k:'same_or_different', w:2, topics:['isomer'], unit:'iso'},
+  {k:'isomer_count', w:2, topics:['isocount'], unit:'iso'},
   {k:'formula_to_family', w:2, topics:['general']},
   {k:'locant_question', w:3, topics:['number']},
   {k:'parent_chain', w:2, topics:['number']},
@@ -1805,30 +1885,44 @@ function weightedPick(list){
   return list[list.length-1];
 }
 
+function unitOf(t){ return t.unit || 'nom'; }
+// question types available at the current course level (SL hides HL-only types)
+function levelPool(){
+  return QTYPES.filter(function(t){ return LEVEL === 'HL' || !t.hl; });
+}
 function makeQuestion(opts){
   opts = opts || {};
-  var pool = QTYPES;
+  var base = levelPool();
+  if(opts.units && opts.units.length){
+    base = base.filter(function(t){ return opts.units.indexOf(unitOf(t)) >= 0; });
+  }
+  var pool = base;
   if(opts.topics && opts.topics.length){
-    pool = QTYPES.filter(function(t){
+    pool = base.filter(function(t){
       return t.topics.some(function(x){ return opts.topics.indexOf(x) >= 0; });
     });
-    if(!pool.length) pool = QTYPES;
+    if(!pool.length) pool = base;
   }
-  if(opts.only) pool = QTYPES.filter(function(t){ return opts.only.indexOf(t.k) >= 0; });
+  if(opts.only){
+    pool = base.filter(function(t){ return opts.only.indexOf(t.k) >= 0; });
+    if(!pool.length) pool = base;
+  }
   var q = null, t = null, tries = 0;
-  while(tries++ < 6){
+  while(tries++ < 8){
     t = weightedPick(pool);
     try { q = GENS[t.k](opts.level || 2); } catch(e){ q = null; }
     if(q && wellFormed(q)) break;
     q = null;
   }
-  if(!q){ q = GENS.structure_to_name(opts.level || 2); t = {k:'structure_to_name'}; }
+  if(!q){ t = pool[0]; q = GENS[t.k](opts.level || 2); }
   q.key = t.k;
+  if(!q.topic) q.topic = t.topics[0];
   return q;
 }
 // a malformed multiple-choice question is worse than a repeated one
 function wellFormed(q){
-  if(!q || !q.stem || !q.answer) return false;
+  if(!q || !(q.stem || q.stemHTML) || q.answer === undefined || q.answer === null || q.answer === '') return false;
+  if(q.input === 'num') return isFinite(q.exact);
   if(q.input !== 'mc') return true;
   if(!q.opts || q.opts.length < 2) return false;
   var right = q.opts.filter(function(o){ return o.ok || o.v === q.answer; }).length;
@@ -1915,37 +2009,71 @@ $('#parseAgain').addEventListener('click', renderParser);
 
 /* ---------- notes ---------- */
 var currentCh = 0;
+var openUnits = {};          // which rail groups are expanded
+// chapters visible at the current level, in rail order
+function visibleChapters(){
+  return CHAPTERS.filter(function(c){ return LEVEL === 'HL' || !c.hl; });
+}
+function chapterNumber(c){ return String(visibleChapters().indexOf(c) + 1).padStart(2, '0'); }
 function renderRail(){
-  $('#railList').innerHTML = CHAPTERS.map(function(c, i){
-    return '<li><button data-ch="' + i + '"' + (i === currentCh ? ' aria-current="true"' : '') + '>' + esc(c.title) + '</button></li>';
+  var vis = visibleChapters();
+  $('#railList').innerHTML = UNITS.map(function(u){
+    var list = vis.filter(function(c){ return c.unit === u.k; });
+    if(!list.length) return '';
+    var open = !!openUnits[u.k];
+    var first = chapterNumber(list[0]), last = chapterNumber(list[list.length - 1]);
+    return '<li style="counter-increment:none"><button class="grouphead" data-unit="' + u.k + '" aria-expanded="' + open + '">' +
+      '<span>' + esc(u.code + ' · ' + u.t) + '</span><span class="pm">' + (open ? '&minus;' : '+') + '</span></button>' +
+      (open ? '<ol>' + list.map(function(c){
+        var i = CHAPTERS.indexOf(c);
+        return '<li><button data-ch="' + i + '" data-n="' + chapterNumber(c) + '"' + (i === currentCh ? ' aria-current="true"' : '') + '>' +
+          esc(c.title) + (c.hl ? '<span class="hlmark">HL</span>' : '') + '</button></li>';
+      }).join('') + '</ol>' : '<div class="mini" style="padding:0 8px 4px 8px">' + first + '–' + last + ' · ' + list.length + ' chapters</div>') +
+      '</li>';
   }).join('');
+}
+function chapterTag(c){
+  if(c.hl) return '<span class="tag hl">HL only' + (c.ref ? ' · ' + esc(c.ref) : '') + '</span>';
+  if(c.tag === 'ext') return '<span class="tag ext">recognition / extension</span>';
+  return '<span class="tag core">' + esc(c.label || (c.unit === 'nom' ? 'IB naming requirement' : 'IB requirement')) + (c.ref ? ' · ' + esc(c.ref) : '') + '</span>';
 }
 function renderChapter(i){
   currentCh = Math.max(0, Math.min(CHAPTERS.length - 1, i));
   var c = CHAPTERS[currentCh];
+  if(c.hl && LEVEL !== 'HL'){ currentCh = CHAPTERS.indexOf(visibleChapters()[0]); c = CHAPTERS[currentCh]; }
+  var vis = visibleChapters(), pos = vis.indexOf(c);
   $('#chapterBody').innerHTML =
-    '<div class="chnum">Chapter ' + String(currentCh + 1).padStart(2, '0') + ' &nbsp;<span class="tag ' + c.tag + '">' +
-      (c.tag === 'core' ? 'IB naming requirement' : 'recognition / extension') + '</span></div>' +
+    '<div class="chnum">Chapter ' + chapterNumber(c) + ' &nbsp;' + chapterTag(c) + '</div>' +
     '<h2 style="margin:8px 0 4px">' + esc(c.title) + '</h2>' +
     c.body() +
     (c.check ? '<div class="check" id="checkBox"><div class="eyebrow">Check yourself</div><div class="q">' +
        esc(c.check.q) + '</div><button id="revealBtn">Show answer</button><div class="a">' + esc(c.check.a) + '</div></div>' : '');
   var rb = $('#revealBtn');
   if(rb) rb.addEventListener('click', function(){ $('#checkBox').classList.add('open'); rb.style.display = 'none'; });
-  $('#prevCh').disabled = currentCh === 0;
-  $('#nextCh').disabled = currentCh === CHAPTERS.length - 1;
+  $('#prevCh').disabled = pos <= 0;
+  $('#nextCh').disabled = pos >= vis.length - 1;
+  if(!openUnits[c.unit]){ openUnits = {}; openUnits[c.unit] = true; }   // moving to another unit folds the rest
   renderRail();
-  var active = document.querySelector('#railList button[aria-current="true"]');
-  if(active && active.scrollIntoView && window.innerWidth > 860) active.scrollIntoView({block:'nearest'});
+  var active = document.querySelector('#railList button[aria-current="true"]'), rail = document.querySelector('.rail');
+  if(active && rail && window.innerWidth > 860){
+    var top = active.getBoundingClientRect().top - rail.getBoundingClientRect().top + rail.scrollTop;
+    if(top < rail.scrollTop || top > rail.scrollTop + rail.clientHeight - 40) rail.scrollTop = top - rail.clientHeight/3;
+  }
+}
+function stepChapter(d){
+  var vis = visibleChapters(), pos = vis.indexOf(CHAPTERS[currentCh]);
+  var next = vis[Math.max(0, Math.min(vis.length - 1, pos + d))];
+  renderChapter(CHAPTERS.indexOf(next));
 }
 $('#railList').addEventListener('click', function(e){
   var b = e.target.closest('button'); if(!b) return;
+  if(b.dataset.unit){ openUnits[b.dataset.unit] = !openUnits[b.dataset.unit]; renderRail(); return; }
   renderChapter(parseInt(b.dataset.ch, 10));
   var cb = $('#chapterBody');
   if(window.innerWidth <= 860 && cb.scrollIntoView) cb.scrollIntoView({behavior:'smooth', block:'start'});
 });
-$('#prevCh').addEventListener('click', function(){ renderChapter(currentCh - 1); window.scrollTo({top:0}); });
-$('#nextCh').addEventListener('click', function(){ renderChapter(currentCh + 1); window.scrollTo({top:0}); });
+$('#prevCh').addEventListener('click', function(){ stepChapter(-1); window.scrollTo({top:0}); });
+$('#nextCh').addEventListener('click', function(){ stepChapter(1); window.scrollTo({top:0}); });
 function openChapterById(id){
   var i = CHAPTERS.findIndex(function(c){ return c.id === id; });
   if(i < 0) i = 0;
@@ -1953,23 +2081,48 @@ function openChapterById(id){
 }
 
 /* ---------- test: menu ---------- */
+// unit: 'all' | 'nom' | 'iso' | 'eq'. Modes with hl:true are hidden at SL.
 var MODES = [
-  {k:'quick',  t:'Quick test',        d:'Ten mixed questions across every topic. Good for a five-minute check.', n:10, level:2, meta:'10 questions'},
-  {k:'full',   t:'Full test',         d:'Forty questions, rising in difficulty, covering the whole of Structure 3.2.', n:40, level:0, meta:'40 questions · adaptive'},
-  {k:'naming', t:'Naming only',       d:'Structure to name and name to structure, nothing else.', n:15, level:2, only:['structure_to_name','condensed_to_name','skeletal_to_name_typed','build_the_name','name_to_structure','spot_the_error'], meta:'15 questions'},
-  {k:'conv',   t:'Formula conversion',d:'Move between names, molecular formulas, condensed and displayed structures.', n:15, level:2, only:['name_to_formula','name_to_condensed','formula_typed','match_representation','count_carbons','formula_to_family'], meta:'15 questions'},
-  {k:'groups', t:'Functional group drill', d:'Fast recognition of groups, families and general formulas.', n:20, level:1, only:['identify_group','identify_series','group_vs_series','general_formula','saturation','aldehyde_or_ketone','alcohol_class','prefix_drill'], meta:'20 questions · fast'},
-  {k:'speed',  t:'Speed round',       d:'Twenty short recognition questions, no long naming.', n:20, level:1, only:['prefix_drill','count_carbons','identify_group','identify_series','saturation','general_formula'], meta:'20 questions'}
+  {k:'quick',  unit:'all', t:'Quick test',        d:'Ten mixed questions across every unit you can see. Good for a five-minute check.', n:10, level:2, meta:'10 questions'},
+  {k:'full',   unit:'all', t:'Full test',         d:'Forty questions from all three units, rising in difficulty.', n:40, level:0, meta:'40 questions · adaptive'},
+  {k:'nomq',   unit:'nom', t:'Nomenclature quick test', d:'Ten mixed questions across Structure 3.2 naming and formulas.', n:10, level:2, units:['nom'], meta:'10 questions'},
+  {k:'naming', unit:'nom', t:'Naming only',       d:'Structure to name and name to structure, nothing else.', n:15, level:2, only:['structure_to_name','condensed_to_name','skeletal_to_name_typed','build_the_name','name_to_structure','spot_the_error'], meta:'15 questions'},
+  {k:'conv',   unit:'nom', t:'Formula conversion',d:'Move between names, molecular formulas, condensed and displayed structures.', n:15, level:2, only:['name_to_formula','name_to_condensed','formula_typed','match_representation','count_carbons','formula_to_family'], meta:'15 questions'},
+  {k:'groups', unit:'nom', t:'Functional group drill', d:'Fast recognition of groups, families and general formulas.', n:20, level:1, only:['identify_group','identify_series','group_vs_series','general_formula','saturation','aldehyde_or_ketone','alcohol_class','prefix_drill'], meta:'20 questions · fast'},
+  {k:'speed',  unit:'nom', t:'Speed round',       d:'Twenty short recognition questions, no long naming.', n:20, level:1, only:['prefix_drill','count_carbons','identify_group','identify_series','saturation','general_formula'], meta:'20 questions'}
 ];
+var testUnit = 'all';
+function modesForUnit(){
+  return MODES.filter(function(m){
+    if(m.hl && LEVEL !== 'HL') return false;
+    return testUnit === 'all' ? m.unit === 'all' || m.featured : m.unit === testUnit;
+  });
+}
 function renderModes(){
-  $('#modeList').innerHTML = MODES.map(function(m, i){
-    return '<button class="mode" data-mode="' + i + '"><div class="mt">' + esc(m.t) + '</div><div class="md">' + esc(m.d) + '</div><div class="mm">' + esc(m.meta) + '</div></button>';
+  $('#unitTabs').innerHTML = [{k:'all', code:'', t:'All units'}].concat(UNITS).map(function(u){
+    return '<button class="chip" role="tab" data-unit="' + u.k + '" aria-pressed="' + (u.k === testUnit) + '" aria-selected="' + (u.k === testUnit) + '">' + esc(u.code ? u.code + ' ' + u.t : u.t) + '</button>';
   }).join('');
-  $('#topicChips').innerHTML = Object.keys(TOPICS).map(function(k){
-    return '<button class="chip" data-topic="' + k + '" aria-pressed="false">' + esc(TOPICS[k]) + '</button>';
+  $('#modeList').innerHTML = modesForUnit().map(function(m){
+    var i = MODES.indexOf(m);
+    return '<button class="mode" data-mode="' + i + '"><div class="mt" style="display:flex;justify-content:space-between;gap:8px"><span>' + esc(m.t) + '</span>' +
+      (m.hl ? '<span class="tag hl" style="align-self:flex-start">HL</span>' : '') + '</div><div class="md">' + esc(m.d) + '</div><div class="mm">' + esc(m.meta) + '</div></button>';
+  }).join('');
+  var topicKeys = Object.keys(TOPICS).filter(function(k){
+    var u = TOPIC_UNIT[k] || 'nom';
+    if(testUnit !== 'all' && u !== testUnit) return false;
+    if(LEVEL !== 'HL' && HL_TOPICS.indexOf(k) >= 0) return false;
+    return true;
+  });
+  $('#topicHead').textContent = 'Topic practice' + (testUnit === 'all' ? '' : ' · ' + UNITS.filter(function(u){ return u.k === testUnit; })[0].t);
+  $('#topicChips').innerHTML = topicKeys.map(function(k){
+    return '<button class="chip" data-topic="' + k + '" aria-pressed="false">' + esc(TOPICS[k]) + (HL_TOPICS.indexOf(k) >= 0 ? ' · HL' : '') + '</button>';
   }).join('');
   renderWeak();
 }
+$('#unitTabs').addEventListener('click', function(e){
+  var b = e.target.closest('.chip'); if(!b) return;
+  testUnit = b.dataset.unit; renderModes();
+});
 function renderWeak(){
   var w = weakTopics(3);
   if(!w.length){
@@ -1988,7 +2141,7 @@ function renderWeak(){
 $('#modeList').addEventListener('click', function(e){
   var b = e.target.closest('.mode'); if(!b) return;
   var m = MODES[parseInt(b.dataset.mode, 10)];
-  startTest({n:m.n, level:m.level, only:m.only, title:m.t, adaptive:m.level === 0});
+  startTest({n:m.n, level:m.level, only:m.only, units:m.units, topics:m.topics, title:m.t, adaptive:m.level === 0});
 });
 $('#topicChips').addEventListener('click', function(e){
   var b = e.target.closest('.chip'); if(!b) return;
@@ -1997,7 +2150,9 @@ $('#topicChips').addEventListener('click', function(e){
 $('#startTopic').addEventListener('click', function(){
   var t = $$('#topicChips .chip[aria-pressed="true"]').map(function(b){ return b.dataset.topic; });
   if(!t.length){ $('#startTopic').textContent = 'Pick at least one topic first'; setTimeout(function(){ $('#startTopic').textContent = 'Start topic practice'; }, 1600); return; }
-  startTest({n:15, level:2, topics:t, title:'Topic practice'});
+  // restrict the pool to types that actually carry one of the chosen topics
+  var only = levelPool().filter(function(q){ return q.topics.some(function(x){ return t.indexOf(x) >= 0; }); }).map(function(q){ return q.k; });
+  startTest({n:15, level:2, topics:t, only:only, title:'Topic practice'});
 });
 
 /* ---------- test: runtime ---------- */
@@ -2015,7 +2170,7 @@ function startTest(cfg){
 }
 function questionOpts(){
   var lvl = session.cfg.adaptive ? adaptiveLevel() : session.level;
-  return {level:lvl, topics:session.cfg.topics, only:session.cfg.only};
+  return {level:lvl, topics:session.cfg.topics, only:session.cfg.only, units:session.cfg.units};
 }
 function adaptiveLevel(){
   // climbs on a run of correct answers, drops back after a miss
@@ -2035,35 +2190,61 @@ function renderQuestion(q){
   var pct = Math.round(session.i / session.cfg.n * 100);
   var optsHTML;
   if(q.input === 'mc'){
-    optsHTML = '<div class="opts' + (q.svgOpts ? ' grid2' : '') + '" id="opts">' + q.opts.map(function(o, i){
+    optsHTML = '<div class="opts' + (q.svgOpts || q.grid2 ? ' grid2' : '') + '" id="opts">' + q.opts.map(function(o, i){
       return '<button class="opt' + (q.svgOpts ? ' svgopt' : '') + '" data-i="' + i + '">' + (o.html || optHTML(o.v)) + '</button>';
     }).join('') + '</div>';
+  } else if(q.input === 'num'){
+    optsHTML = '<div class="numrow"><input id="answerInput" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="your answer' + (q.unit ? ' in ' + esc(q.unit) : '') + '" placeholder="number">' +
+      (q.unit ? '<span class="unit">' + q.unit + '</span>' : '') + '<button class="btn" id="submitBtn">Check</button></div>' +
+      '<div class="mini" style="margin-top:6px">' + esc(q.hint || 'Give 3 significant figures. Answers within the rounding of 3 s.f. are accepted.') + '</div>';
+  } else if(q.input === 'eqn'){
+    optsHTML = eqnInputHTML(q) + '<div style="margin-top:14px"><button class="btn" id="submitBtn">Check</button></div>';
   } else {
     optsHTML = '<div class="typed"><input id="answerInput" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="type your answer"><button class="btn" id="submitBtn">Check</button></div>';
   }
+  var card = '<div class="qcard">' +
+      '<div class="qtype">' + esc(q.type) + (q.hl ? ' · HL' : '') + (session.cfg.adaptive ? ' · level ' + (q.level || 2) : '') + '</div>' +
+      '<div class="qstem">' + (q.stemHTML || esc(q.stem)) + '</div>' +
+      (q.sub ? '<div class="qsub">' + (q.subHTML || esc(q.sub)) + '</div>' : '') +
+      (q.html || '') + optsHTML +
+      '<div id="fbSlot"></div>' +
+    '</div>';
+  $('#testRun').classList.toggle('wide', !!q.data);
   $('#testRun').innerHTML =
     '<div class="qbar"><span class="cnt">' + (session.i + 1) + ' / ' + session.cfg.n + '</span>' +
     '<span class="prog"><i style="width:' + pct + '%"></i></span>' +
     '<button class="btn ghost" id="quitBtn" style="padding:6px 12px">End</button></div>' +
-    '<div class="qcard">' +
-      '<div class="qtype">' + esc(q.type) + (session.cfg.adaptive ? ' · level ' + (q.level || 2) : '') + '</div>' +
-      '<div class="qstem">' + esc(q.stem) + '</div>' +
-      (q.sub ? '<div class="qsub">' + esc(q.sub) + '</div>' : '') +
-      (q.html || '') + optsHTML +
-      '<div id="fbSlot"></div>' +
-    '</div>';
+    (q.data ? '<div class="qwrap">' + card + dataPanelHTML(q.data) + '</div>' : card);
   $('#quitBtn').addEventListener('click', finishTest);
   if(q.input === 'mc'){
     $('#opts').addEventListener('click', function(e){
       var b = e.target.closest('.opt'); if(!b || b.disabled) return;
       answerMC(parseInt(b.dataset.i, 10));
     });
+  } else if(q.input === 'eqn'){
+    wireEqnInputs(q);
+    $('#submitBtn').addEventListener('click', answerEqn);
   } else {
     var inp = $('#answerInput');
     inp.focus();
     inp.addEventListener('keydown', function(e){ if(e.key === 'Enter') answerTyped(); });
     $('#submitBtn').addEventListener('click', answerTyped);
   }
+}
+function answerEqn(){
+  var q = session.current;
+  if($('#submitBtn').disabled) return;
+  var res = readEqnInputs(q);
+  if(res.empty || res.bad){
+    var hint = $('#eqbox').parentNode.querySelector('.mini');
+    if(hint){ hint.textContent = res.bad ? 'Whole numbers of 1 or more only — leave a box empty for 1.' : 'Fill in at least one box first.'; hint.style.color = 'var(--warn)'; }
+    return;
+  }
+  q._res = res;
+  var ok = q.check(res);
+  markEqnInputs(q, res);
+  $('#submitBtn').disabled = true;
+  settle(ok, res.text, ok ? '' : res.why);
 }
 function answerMC(idx){
   var q = session.current;
@@ -2082,6 +2263,11 @@ function answerTyped(){
   var v = $('#answerInput').value.trim();
   if(!v) return;
   var ok = q.check ? q.check(v) : sameName(v, q.answer);
+  if(q.input === 'num' && !isFinite(parseNum(v))){
+    $('#answerInput').style.borderColor = 'var(--warn)';
+    $('#answerInput').value = ''; $('#answerInput').placeholder = 'enter a number, e.g. 5.01';
+    return;
+  }
   $('#answerInput').disabled = true;
   $('#submitBtn').disabled = true;
   $('#answerInput').style.borderColor = ok ? 'var(--key)' : 'var(--oxygen)';
@@ -2096,9 +2282,11 @@ function settle(ok, given, why){
   var last = session.i >= session.cfg.n;
   $('#fbSlot').innerHTML =
     '<div class="fb ' + (ok ? 'ok' : 'no') + '">' +
-      '<div class="verdict">' + (ok ? 'Correct' : 'Not quite') + '</div>' +
-      (ok ? '' : '<p><strong>Answer:</strong> <span class="mono">' + esc(q.answer) + '</span>' + (why ? ' — your choice was ' + esc(why) + '.' : '') + '</p>') +
-      '<p>' + esc(q.explain || '') + '</p>' +
+      '<div class="verdict">' + (ok ? (q.okNote && q.okNote(given) ? 'Correct — ' + esc(q.okNote(given)) : 'Correct') : 'Not quite') + '</div>' +
+      (ok ? '' : '<p><strong>Answer:</strong> <span class="mono">' + (q.answerHTML || esc(q.answer)) + '</span>' + (why ? (q.input === 'mc' ? ' — your choice was ' : ' — ') + esc(why) + '.' : '') + '</p>') +
+      (q.explain ? '<p>' + esc(q.explain) + '</p>' : '') +
+      (q.steps ? '<ol class="steps">' + q.steps.map(function(s){ return '<li>' + s + '</li>'; }).join('') + '</ol>' : '') +
+      (q.fbHTML || '') +
       (q.chapter ? '<button class="link" id="toChapter">Read the notes on this &rarr;</button>' : '') +
       '<div style="margin-top:14px"><button class="btn" id="nextBtn">' + (last ? 'See results' : 'Next question') + '</button></div>' +
     '</div>';
@@ -2156,12 +2344,2273 @@ function finishTest(){
   window.scrollTo({top:0, behavior:'instant'});
 }
 
+/* ============================================================
+   UNITS, COURSE LEVEL, SHARED HELPERS FOR UNITS 02 AND 03
+   Units 02 (isomers) and 03 (equations & amounts) plug into the
+   same CHAPTERS / GENS / QTYPES / TOPICS registries as unit 01.
+   ============================================================ */
+var LEVEL = 'HL';                 // 'SL' hides every chapter, mode and question marked hl
+var LEVEL_KEY = 'ib-level-v1';
+var UNITS = [
+  {k:'nom', code:'01', t:'Nomenclature', ref:'S3.2', d:'Stems, functional groups, numbering and the full IUPAC naming algorithm.'},
+  {k:'iso', code:'02', t:'Isomers', ref:'S3.2.6–3.2.7', d:'Chain, position and functional group isomers; primary, secondary, tertiary; cis–trans and optical isomers at HL.'},
+  {k:'eq',  code:'03', t:'Equations & amounts', ref:'R2.1 · R3.1', d:'Reactions you must know, balancing, predicting products, limiting reactant, % yield and % error.'}
+];
+var UNIT_ORDER = ['nom','iso','eq'];
+
+TOPICS.isomer   = 'Structural isomers';
+TOPICS.isofg    = 'Functional group isomers';
+TOPICS.isocls   = 'Primary / secondary / tertiary';
+TOPICS.isocount = 'Counting isomers';
+TOPICS.cistrans = 'Cis–trans';
+TOPICS.optical  = 'Optical isomers';
+TOPICS.eqbal    = 'Balancing';
+TOPICS.eqpred   = 'Predicting products';
+TOPICS.eqknow   = 'Reactions to know';
+TOPICS.mole     = 'Moles & molar mass';
+TOPICS.conc     = 'Concentration & gas volume';
+TOPICS.limit    = 'Limiting reactant';
+TOPICS.yield    = 'Percentage yield';
+TOPICS.perr     = 'Percentage error';
+TOPICS.aecon    = 'Atom economy';
+var TOPIC_UNIT = {isomer:'iso', isofg:'iso', isocls:'iso', isocount:'iso', cistrans:'iso', optical:'iso',
+  eqbal:'eq', eqpred:'eq', eqknow:'eq', mole:'eq', conc:'eq', limit:'eq', yield:'eq', perr:'eq', aecon:'eq'};
+var HL_TOPICS = ['cistrans','optical'];
+
+/* ---------- formatting ---------- */
+// subscript digit runs that follow a symbol or a bracket: Ca(OH)2 -> Ca(OH)<sub>2</sub>.
+// A leading coefficient (2HCl) is left alone, so this works on whole equations too.
+function fF(f){ return esc(f).replace(/([A-Za-z)])(\d+)/g, '$1<sub>$2</sub>'); }
+// the same idea in plain text, for explanations: SO4 -> SO₄
+var SUBS = '₀₁₂₃₄₅₆₇₈₉', SUPS = '⁰¹²³⁴⁵⁶⁷⁸⁹';
+function uniF(f){ return String(f).replace(/([A-Za-z)])(\d+)/g, function(_, a, d){ return a + d.split('').map(function(x){ return SUBS[x]; }).join(''); }); }
+function chargeTxt(ion, c){ var m = Math.abs(c); return uniF(ion) + (m > 1 ? SUPS[m] : '') + (c > 0 ? '⁺' : '⁻'); }
+// n significant figures, as a plain string (no exponent for everyday sizes)
+function sf(x, n){
+  n = n || 3;
+  if(x === 0) return '0';
+  var a = Math.abs(x);
+  if(a >= 1e-4 && a < 1e6){
+    var d = Math.max(0, n - 1 - Math.floor(Math.log10(a)));
+    return (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d);
+  }
+  var e = Math.floor(Math.log10(a));
+  return (x / Math.pow(10, e)).toFixed(n - 1) + ' × 10^' + e;
+}
+// accepts 5.01, 5,01, 6.02e23, 6.02x10^23, 6.02 × 10^23, with or without a unit after it
+function parseNum(v){
+  var s = String(v).trim().replace(/−/g, '-').replace(/,/g, '.').replace(/\s+/g, '');
+  var m = s.match(/^([-+]?\d*\.?\d+)(?:(?:[x×*]10\^?|e)([-+]?\d+))?/i);
+  if(!m) return NaN;
+  var x = parseFloat(m[1]);
+  if(m[2] !== undefined) x *= Math.pow(10, parseInt(m[2], 10));
+  return x;
+}
+// right if it rounds to the same 3 s.f. value, or is within 0.6 % (allows carried rounding)
+function numClose(given, exact){
+  var g = parseNum(given);
+  if(!isFinite(g)) return false;
+  if(exact === 0) return Math.abs(g) < 1e-9;
+  if(Math.abs(g - exact) <= Math.abs(exact) * 0.006) return true;
+  return sf(g, 3) === sf(exact, 3);
+}
+
+/* ---------- the data panel: only what a question needs ---------- */
+var FORMULA_CARDS = {
+  nm:     {f:'n = m ÷ M', s:'n mol · m g · M g mol⁻¹', src:'data booklet'},
+  nc:     {f:'n = c × V', s:'c mol dm⁻³ · V dm³ (cm³ ÷ 1000)', src:'data booklet'},
+  vm:     {f:'V = n × 22.7', s:'gas at STP · V dm³ · Vm = 22.7 dm³ mol⁻¹', src:'Vm from the data booklet'},
+  pyield: {f:'% yield = experimental ÷ theoretical × 100', s:'both in the same unit (g or mol)', src:'not in the data booklet'},
+  perr:   {f:'% error = |experimental − accepted| ÷ accepted × 100', s:'accepted = literature value', src:'not in the data booklet'},
+  aecon:  {f:'% atom economy = M(desired product) ÷ M(all reactants) × 100', s:'use the balanced equation’s coefficients', src:'data booklet'},
+  gcon:   {f:'mass conc. = c × M', s:'g dm⁻³ = mol dm⁻³ × g mol⁻¹', src:'from n = m ÷ M'},
+  na:     {f:'N = n × 6.02 × 10²³', s:'N particles · NA = 6.02 × 10²³ mol⁻¹', src:'NA from the data booklet'}
+};
+function dataPanelHTML(d){
+  var els = (d.els || []).filter(function(e, i, a){ return a.indexOf(e) === i; });
+  return '<aside class="datapanel" aria-label="Data for this question"><div class="eyebrow">Data for this question</div>' +
+    (els.length ? '<div><div class="dh">Relative atomic masses</div><div class="elgrid">' + els.map(function(e){
+      return '<div class="el"><b' + (ATOMCOL[e] ? ' style="color:' + ATOMCOL[e] + '"' : '') + '>' + esc(e) + '</b><span>' + AR[e].toFixed(2) + '</span></div>';
+    }).join('') + '</div></div>' : '') +
+    ((d.eqs || []).length ? '<div><div class="dh">Formulas</div>' + d.eqs.map(function(k){
+      var c = FORMULA_CARDS[k];
+      return '<div class="fx">' + esc(c.f) + '<small>' + esc(c.s) + ' · ' + esc(c.src) + '</small></div>';
+    }).join('') + '</div>' : '') +
+    (d.note ? '<div class="mini">' + esc(d.note) + '</div>' : '') +
+    '</aside>';
+}
+
+/* ============================================================
+   UNIT 03 — EQUATIONS & AMOUNTS
+   R2.1 (equations, mole ratios, limiting reactant, yield, atom
+   economy) · R3.1.7 / R3.2.4 acid reactions · R1.3 combustion ·
+   S3.1.5 oxides + water · S1.4 moles and concentration · Tool 3
+   percentage error.
+   Every equation is balanced by an exact solver, and every number
+   is computed from the IB data booklet (v1.1) atomic masses.
+   ============================================================ */
+
+// relative atomic masses exactly as printed in the IB Chemistry data booklet, section 7
+var AR = {H:1.01, He:4.00, Li:6.94, Be:9.01, B:10.81, C:12.01, N:14.01, O:16.00, F:19.00, Ne:20.18,
+  Na:22.99, Mg:24.31, Al:26.98, Si:28.09, P:30.97, S:32.07, Cl:35.45, Ar:39.95, K:39.10, Ca:40.08,
+  Cr:52.00, Mn:54.94, Fe:55.85, Co:58.93, Ni:58.69, Cu:63.55, Zn:65.38, Br:79.90, Ag:107.87,
+  Sn:118.71, I:126.90, Ba:137.33, Pb:207.20};
+
+/* ---------- formulas ---------- */
+function parseFormula(f){
+  var i = 0;
+  function num(){ var s = ''; while(i < f.length && /\d/.test(f[i])){ s += f[i]; i++; } return s ? parseInt(s, 10) : 1; }
+  function group(){
+    var out = {};
+    while(i < f.length){
+      var ch = f[i];
+      if(ch === '('){
+        i++; var inner = group();
+        if(f[i] !== ')') throw new Error('unclosed bracket in ' + f);
+        i++; var k = num();
+        Object.keys(inner).forEach(function(e){ out[e] = (out[e] || 0) + inner[e]*k; });
+      } else if(ch === ')'){ return out; }
+      else if(/[A-Z]/.test(ch)){
+        var el = ch; i++;
+        if(i < f.length && /[a-z]/.test(f[i])){ el += f[i]; i++; }
+        if(!AR[el]) throw new Error('unknown element ' + el);
+        var k2 = num(); out[el] = (out[el] || 0) + k2;
+      } else throw new Error('bad character in ' + f);
+    }
+    return out;
+  }
+  var r = group();
+  if(i !== f.length) throw new Error('bad formula ' + f);
+  return r;
+}
+function molarMass(f){
+  var c = parseFormula(f), m = 0;
+  Object.keys(c).forEach(function(e){ m += AR[e]*c[e]; });
+  return Math.round(m*100)/100;
+}
+function elementsOf(list){
+  var out = [];
+  list.forEach(function(f){ Object.keys(parseFormula(f)).forEach(function(e){ if(out.indexOf(e) < 0) out.push(e); }); });
+  return out;
+}
+function mmWorking(f){
+  var c = parseFormula(f);
+  return Object.keys(c).map(function(e){ return (c[e] > 1 ? c[e] + ' × ' : '') + AR[e].toFixed(2); }).join(' + ') + ' = ' + molarMass(f).toFixed(2) + ' g mol⁻¹';
+}
+
+/* ---------- exact balancing (rational null space) ---------- */
+function frac(n, d){ if(d < 0){ n = -n; d = -d; } var g = gcd(Math.abs(n), d) || 1; return [n/g, d/g]; }
+function fAdd(a, b){ return frac(a[0]*b[1] + b[0]*a[1], a[1]*b[1]); }
+function fMul(a, b){ return frac(a[0]*b[0], a[1]*b[1]); }
+function fDiv(a, b){ return frac(a[0]*b[1], a[1]*b[0]); }
+function balanceSpecies(re, pr){
+  var sp = re.concat(pr), comp = sp.map(parseFormula), els = [];
+  comp.forEach(function(c){ Object.keys(c).forEach(function(e){ if(els.indexOf(e) < 0) els.push(e); }); });
+  var N = sp.length;
+  var A = els.map(function(e){ return sp.map(function(s, j){ return frac((comp[j][e] || 0) * (j < re.length ? 1 : -1), 1); }); });
+  var row = 0, piv = [];
+  for(var col=0; col<N && row<A.length; col++){
+    var r = row; while(r < A.length && A[r][col][0] === 0) r++;
+    if(r === A.length) continue;
+    var t = A[r]; A[r] = A[row]; A[row] = t;
+    var p = A[row][col];
+    A[row] = A[row].map(function(x){ return fDiv(x, p); });
+    for(var i=0;i<A.length;i++){
+      if(i !== row && A[i][col][0] !== 0){
+        var f = A[i][col];
+        A[i] = A[i].map(function(x, k){ return fAdd(x, fMul([-f[0], f[1]], A[row][k])); });
+      }
+    }
+    piv.push(col); row++;
+  }
+  var free = []; for(var c=0;c<N;c++) if(piv.indexOf(c) < 0) free.push(c);
+  if(free.length !== 1) return null;
+  var fc = free[0], x = new Array(N);
+  x[fc] = [1, 1];
+  piv.forEach(function(pc, i){ x[pc] = frac(-A[i][fc][0], A[i][fc][1]); });
+  var L = x.reduce(function(l, v){ return l*v[1]/gcd(l, v[1]); }, 1);
+  var ints = x.map(function(v){ return v[0]*L/v[1]; });
+  if(ints.every(function(v){ return v < 0; })) ints = ints.map(function(v){ return -v; });
+  if(ints.some(function(v){ return v <= 0; })) return null;
+  var g = ints.reduce(function(a, b){ return gcd(a, b); });
+  return ints.map(function(v){ return v/g; });
+}
+// a reaction: {re:[{f,st,n}], pr:[{f,st,n}], co:[...], cat, words}
+function rxn(re, pr, cat, extra){
+  var co = balanceSpecies(re.map(function(s){ return s.f; }), pr.map(function(s){ return s.f; }));
+  if(!co) throw new Error('cannot balance ' + re.map(function(s){ return s.f; }).join('+') + ' -> ' + pr.map(function(s){ return s.f; }).join('+'));
+  var r = {re:re, pr:pr, co:co, cat:cat};
+  if(extra) Object.keys(extra).forEach(function(k){ r[k] = extra[k]; });
+  return r;
+}
+function S(f, st, n){ return {f:f, st:st, n:n || ''}; }
+function coefStr(c){ return c === 1 ? '' : String(c); }
+function eqText(r, co, states){
+  co = co || r.co;
+  function side(list, off){ return list.map(function(s, i){ return coefStr(co[off + i]) + s.f + (states ? '(' + s.st + ')' : ''); }).join(' + '); }
+  return side(r.re, 0) + ' → ' + side(r.pr, r.re.length);
+}
+function eqHTML(r, co, states){
+  co = co || r.co;
+  function side(list, off){
+    return list.map(function(s, i){ return '<span class="sp">' + coefStr(co[off + i]) + fF(s.f) + (states !== false ? '<span class="st">(' + s.st + ')</span>' : '') + '</span>'; }).join(' <span class="op">+</span> ');
+  }
+  return side(r.re, 0) + ' <span class="op">→</span> ' + side(r.pr, r.re.length);
+}
+function wordEq(r){ return r.re.map(function(s){ return s.n; }).join(' + ') + ' → ' + r.pr.map(function(s){ return s.n; }).join(' + '); }
+
+/* ---------- ions and salts ---------- */
+var CAT = {
+  Li:{s:'Li', c:1, n:'lithium'}, Na:{s:'Na', c:1, n:'sodium'}, K:{s:'K', c:1, n:'potassium'},
+  Mg:{s:'Mg', c:2, n:'magnesium'}, Ca:{s:'Ca', c:2, n:'calcium'}, Ba:{s:'Ba', c:2, n:'barium'},
+  Zn:{s:'Zn', c:2, n:'zinc'}, Cu:{s:'Cu', c:2, n:'copper(II)'}, Fe2:{s:'Fe', c:2, n:'iron(II)'},
+  Fe3:{s:'Fe', c:3, n:'iron(III)'}, Al:{s:'Al', c:3, n:'aluminium'}, NH4:{s:'NH4', c:1, n:'ammonium', poly:true}
+};
+var ACIDS = [
+  {f:'HCl',     an:'Cl',     c:1, name:'hydrochloric acid', salt:'chloride'},
+  {f:'HNO3',    an:'NO3',    c:1, name:'nitric acid',       salt:'nitrate',   poly:true},
+  {f:'H2SO4',   an:'SO4',    c:2, name:'sulfuric acid',     salt:'sulfate',   poly:true},
+  {f:'CH3COOH', an:'CH3COO', c:1, name:'ethanoic acid',     salt:'ethanoate', poly:true, organic:true},
+  {f:'H3PO4',   an:'PO4',    c:3, name:'phosphoric acid',   salt:'phosphate', poly:true}
+];
+function acidBy(f){ return ACIDS.filter(function(a){ return a.f === f; })[0]; }
+// the salt's formula pieces: [{t:'ion', s}, {t:'n', v}] so the UI can turn the counts into inputs
+function saltParts(cat, acid){
+  var g = gcd(cat.c, acid.c), nCat = acid.c/g, nAn = cat.c/g;
+  var catP = {ion:cat.s, poly:!!cat.poly, n:nCat}, anP = {ion:acid.an, poly:!!acid.poly, n:nAn};
+  return acid.organic ? [anP, catP] : [catP, anP];
+}
+function partsFormula(parts, counts){
+  return parts.map(function(p, i){
+    var n = counts ? counts[i] : p.n;
+    return p.poly && n > 1 ? '(' + p.ion + ')' + n : p.ion + (n > 1 ? n : '');
+  }).join('');
+}
+function saltFormula(cat, acid){ return partsFormula(saltParts(cat, acid)); }
+function saltName(cat, acid){ return cat.n + ' ' + acid.salt; }
+function insoluble(cat, acid){
+  if(acid.an === 'SO4' && (cat.s === 'Ca' || cat.s === 'Ba')) return true;
+  if(acid.an === 'PO4' && ['Na','K','NH4'].indexOf(cat.s) < 0) return true;
+  return false;
+}
+function hydroxideF(cat){ return cat.s + (cat.c > 1 ? '(OH)' + cat.c : 'OH'); }
+function oxideF(cat){ var g = gcd(cat.c, 2), nC = 2/g, nO = cat.c/g; return cat.s + (nC > 1 ? nC : '') + 'O' + (nO > 1 ? nO : ''); }
+function carbonateF(cat){ var g = gcd(cat.c, 2), nC = 2/g, nO = cat.c/g; return cat.s + (nC > 1 ? nC : '') + (nO > 1 ? '(CO3)' + nO : 'CO3'); }
+
+// which compounds dissolve (for state symbols)
+var HYDROXIDE_ST = {Li:'aq', Na:'aq', K:'aq', Ba:'aq', Ca:'aq', Mg:'s', Zn:'s', Cu:'s', Al:'s', Fe2:'s', Fe3:'s'};
+var CARBONATE_ST = {Na:'aq', K:'aq', Ca:'s', Mg:'s', Zn:'s', Cu:'s'};
+
+/* ---------- reaction builders ---------- */
+function acidReaction(acidF, baseKind, catKey){
+  var acid = acidBy(acidF), cat = CAT[catKey];
+  var A = S(acid.f, 'aq', acid.name);
+  var salt = S(saltFormula(cat, acid), 'aq', saltName(cat, acid));
+  var W = S('H2O', 'l', 'water'), CO2 = S('CO2', 'g', 'carbon dioxide'), H2 = S('H2', 'g', 'hydrogen');
+  var r;
+  if(baseKind === 'hydroxide') r = rxn([A, S(hydroxideF(cat), HYDROXIDE_ST[catKey], cat.n + ' hydroxide')], [salt, W], 'acid + hydroxide');
+  else if(baseKind === 'oxide') r = rxn([A, S(oxideF(cat), 's', cat.n + ' oxide')], [salt, W], 'acid + metal oxide');
+  else if(baseKind === 'carbonate') r = rxn([A, S(carbonateF(cat), CARBONATE_ST[catKey], cat.n + ' carbonate')], [salt, W, CO2], 'acid + carbonate');
+  else if(baseKind === 'hydrogencarbonate') r = rxn([A, S(cat.s + 'HCO3', 'aq', cat.n + ' hydrogencarbonate')], [salt, W, CO2], 'acid + hydrogencarbonate');
+  else if(baseKind === 'ammonia') r = rxn([A, S('NH3', 'aq', 'ammonia')], [salt], 'acid + ammonia');
+  else if(baseKind === 'metal') r = rxn([A, S(cat.s, 's', cat.n.replace(/\(.*\)/, ''))], [salt, H2], 'acid + reactive metal');
+  r.acid = acid; r.catKey = catKey; r.base = baseKind;
+  r.saltParts = saltParts(cat, acid);
+  return r;
+}
+var ACID_COMBOS = [];
+(function(){
+  var bases = {
+    hydroxide:['Na','K','Li','Ca','Ba','Mg','Cu','Zn','Al'],
+    oxide:['Na','K','Mg','Ca','Cu','Zn','Al','Fe3'],
+    carbonate:['Na','K','Ca','Mg','Cu','Zn'],
+    hydrogencarbonate:['Na','K'],
+    ammonia:['NH4'],
+    metal:['Mg','Zn','Fe2','Al','Ca']
+  };
+  ACIDS.forEach(function(a){
+    Object.keys(bases).forEach(function(k){
+      bases[k].forEach(function(c){
+        if(k === 'metal' && ['HCl','H2SO4'].indexOf(a.f) < 0) return;   // R3.2.4: dilute HCl and H2SO4
+        if(a.f === 'H3PO4' && ['hydroxide','ammonia'].indexOf(k) < 0) return;
+        if(insoluble(CAT[c], a)) return;
+        if(k === 'metal' && c === 'Ca' && a.f === 'H2SO4') return;
+        ACID_COMBOS.push([a.f, k, c]);
+      });
+    });
+  });
+})();
+function randomAcidReaction(kinds){
+  var pool = ACID_COMBOS.filter(function(x){ return !kinds || kinds.indexOf(x[1]) >= 0; });
+  var c = pick(pool);
+  return acidReaction(c[0], c[1], c[2]);
+}
+
+var FUELS = [
+  {f:'CH4', n:'methane', st:'g'}, {f:'C2H6', n:'ethane', st:'g'}, {f:'C3H8', n:'propane', st:'g'}, {f:'C4H10', n:'butane', st:'g'},
+  {f:'C5H12', n:'pentane', st:'l'}, {f:'C6H14', n:'hexane', st:'l'}, {f:'C8H18', n:'octane', st:'l'},
+  {f:'C2H4', n:'ethene', st:'g'}, {f:'C3H6', n:'propene', st:'g'}, {f:'C2H2', n:'ethyne', st:'g'},
+  {f:'CH3OH', n:'methanol', st:'l'}, {f:'C2H5OH', n:'ethanol', st:'l'}, {f:'C3H7OH', n:'propan-1-ol', st:'l'}, {f:'C4H9OH', n:'butan-1-ol', st:'l'}
+];
+function combustion(fuel, mode){
+  var O2 = S('O2', 'g', 'oxygen'), W = S('H2O', 'l', 'water');
+  var F = S(fuel.f, fuel.st, fuel.n);
+  if(mode === 'CO') return rxn([F, O2], [S('CO', 'g', 'carbon monoxide'), W], 'incomplete combustion', {fuel:fuel, mode:mode});
+  if(mode === 'C')  return rxn([F, O2], [S('C', 's', 'carbon'), W], 'incomplete combustion', {fuel:fuel, mode:mode});
+  return rxn([F, O2], [S('CO2', 'g', 'carbon dioxide'), W], 'complete combustion', {fuel:fuel, mode:'complete'});
+}
+
+// fixed reactions, balanced by the solver at load time
+var OTHER_RXNS = [
+  // S3.1.5 — oxides with water
+  [[S('Na2O','s','sodium oxide'), S('H2O','l','water')], [S('NaOH','aq','sodium hydroxide')], 'metal oxide + water'],
+  [[S('K2O','s','potassium oxide'), S('H2O','l','water')], [S('KOH','aq','potassium hydroxide')], 'metal oxide + water'],
+  [[S('Li2O','s','lithium oxide'), S('H2O','l','water')], [S('LiOH','aq','lithium hydroxide')], 'metal oxide + water'],
+  [[S('CaO','s','calcium oxide'), S('H2O','l','water')], [S('Ca(OH)2','aq','calcium hydroxide')], 'metal oxide + water'],
+  [[S('MgO','s','magnesium oxide'), S('H2O','l','water')], [S('Mg(OH)2','s','magnesium hydroxide')], 'metal oxide + water'],
+  [[S('BaO','s','barium oxide'), S('H2O','l','water')], [S('Ba(OH)2','aq','barium hydroxide')], 'metal oxide + water'],
+  [[S('CO2','g','carbon dioxide'), S('H2O','l','water')], [S('H2CO3','aq','carbonic acid')], 'non-metal oxide + water'],
+  [[S('SO2','g','sulfur dioxide'), S('H2O','l','water')], [S('H2SO3','aq','sulfurous acid')], 'non-metal oxide + water'],
+  [[S('SO3','g','sulfur trioxide'), S('H2O','l','water')], [S('H2SO4','aq','sulfuric acid')], 'non-metal oxide + water'],
+  [[S('P4O10','s','phosphorus(V) oxide'), S('H2O','l','water')], [S('H3PO4','aq','phosphoric acid')], 'non-metal oxide + water'],
+  // R1.3.1 — metals and non-metals burning
+  [[S('Li','s','lithium'), S('O2','g','oxygen')], [S('Li2O','s','lithium oxide')], 'metal + oxygen'],
+  [[S('Na','s','sodium'), S('O2','g','oxygen')], [S('Na2O','s','sodium oxide')], 'metal + oxygen'],
+  [[S('Mg','s','magnesium'), S('O2','g','oxygen')], [S('MgO','s','magnesium oxide')], 'metal + oxygen'],
+  [[S('Ca','s','calcium'), S('O2','g','oxygen')], [S('CaO','s','calcium oxide')], 'metal + oxygen'],
+  [[S('Al','s','aluminium'), S('O2','g','oxygen')], [S('Al2O3','s','aluminium oxide')], 'metal + oxygen'],
+  [[S('Fe','s','iron'), S('O2','g','oxygen')], [S('Fe2O3','s','iron(III) oxide')], 'metal + oxygen'],
+  [[S('Cu','s','copper'), S('O2','g','oxygen')], [S('CuO','s','copper(II) oxide')], 'metal + oxygen'],
+  [[S('Zn','s','zinc'), S('O2','g','oxygen')], [S('ZnO','s','zinc oxide')], 'metal + oxygen'],
+  [[S('S','s','sulfur'), S('O2','g','oxygen')], [S('SO2','g','sulfur dioxide')], 'non-metal + oxygen'],
+  [[S('C','s','carbon'), S('O2','g','oxygen')], [S('CO','g','carbon monoxide')], 'non-metal + oxygen'],
+  [[S('P4','s','phosphorus'), S('O2','g','oxygen')], [S('P4O10','s','phosphorus(V) oxide')], 'non-metal + oxygen'],
+  [[S('H2','g','hydrogen'), S('O2','g','oxygen')], [S('H2O','l','water')], 'non-metal + oxygen'],
+  [[S('SO2','g','sulfur dioxide'), S('O2','g','oxygen')], [S('SO3','g','sulfur trioxide')], 'non-metal + oxygen'],
+  [[S('N2','g','nitrogen'), S('O2','g','oxygen')], [S('NO','g','nitrogen monoxide')], 'non-metal + oxygen'],
+  [[S('NO','g','nitrogen monoxide'), S('O2','g','oxygen')], [S('NO2','g','nitrogen dioxide')], 'non-metal + oxygen'],
+  // other classic equations (balancing practice; you are not expected to predict these)
+  [[S('N2','g','nitrogen'), S('H2','g','hydrogen')], [S('NH3','g','ammonia')], 'synthesis'],
+  [[S('H2O2','aq','hydrogen peroxide')], [S('H2O','l','water'), S('O2','g','oxygen')], 'decomposition'],
+  [[S('KClO3','s','potassium chlorate')], [S('KCl','s','potassium chloride'), S('O2','g','oxygen')], 'decomposition'],
+  [[S('NaHCO3','s','sodium hydrogencarbonate')], [S('Na2CO3','s','sodium carbonate'), S('H2O','g','water'), S('CO2','g','carbon dioxide')], 'decomposition'],
+  [[S('Pb(NO3)2','s','lead(II) nitrate')], [S('PbO','s','lead(II) oxide'), S('NO2','g','nitrogen dioxide'), S('O2','g','oxygen')], 'decomposition'],
+  [[S('Fe2O3','s','iron(III) oxide'), S('CO','g','carbon monoxide')], [S('Fe','l','iron'), S('CO2','g','carbon dioxide')], 'redox'],
+  [[S('Al','s','aluminium'), S('Fe2O3','s','iron(III) oxide')], [S('Al2O3','s','aluminium oxide'), S('Fe','l','iron')], 'redox'],
+  [[S('NH3','g','ammonia'), S('O2','g','oxygen')], [S('NO','g','nitrogen monoxide'), S('H2O','g','water')], 'redox'],
+  [[S('Cu','s','copper'), S('AgNO3','aq','silver nitrate')], [S('Cu(NO3)2','aq','copper(II) nitrate'), S('Ag','s','silver')], 'displacement'],
+  [[S('Cl2','aq','chlorine'), S('KBr','aq','potassium bromide')], [S('KCl','aq','potassium chloride'), S('Br2','aq','bromine')], 'displacement'],
+  [[S('Cl2','aq','chlorine'), S('NaI','aq','sodium iodide')], [S('NaCl','aq','sodium chloride'), S('I2','aq','iodine')], 'displacement'],
+  [[S('Pb(NO3)2','aq','lead(II) nitrate'), S('KI','aq','potassium iodide')], [S('PbI2','s','lead(II) iodide'), S('KNO3','aq','potassium nitrate')], 'precipitation'],
+  [[S('BaCl2','aq','barium chloride'), S('Na2SO4','aq','sodium sulfate')], [S('BaSO4','s','barium sulfate'), S('NaCl','aq','sodium chloride')], 'precipitation'],
+  [[S('AgNO3','aq','silver nitrate'), S('MgCl2','aq','magnesium chloride')], [S('AgCl','s','silver chloride'), S('Mg(NO3)2','aq','magnesium nitrate')], 'precipitation'],
+  [[S('Na','s','sodium'), S('H2O','l','water')], [S('NaOH','aq','sodium hydroxide'), S('H2','g','hydrogen')], 'metal + water'],
+  [[S('Ca','s','calcium'), S('H2O','l','water')], [S('Ca(OH)2','aq','calcium hydroxide'), S('H2','g','hydrogen')], 'metal + water'],
+  [[S('Fe','s','iron'), S('Cl2','g','chlorine')], [S('FeCl3','s','iron(III) chloride')], 'synthesis'],
+  [[S('Al','s','aluminium'), S('Cl2','g','chlorine')], [S('AlCl3','s','aluminium chloride')], 'synthesis'],
+  [[S('Mg','s','magnesium'), S('N2','g','nitrogen')], [S('Mg3N2','s','magnesium nitride')], 'synthesis'],
+  [[S('C6H12O6','aq','glucose')], [S('C2H5OH','aq','ethanol'), S('CO2','g','carbon dioxide')], 'fermentation'],
+  [[S('CO2','g','carbon dioxide'), S('H2O','l','water')], [S('C6H12O6','aq','glucose'), S('O2','g','oxygen')], 'photosynthesis'],
+  [[S('MnO2','s','manganese(IV) oxide'), S('HCl','aq','hydrochloric acid')], [S('MnCl2','aq','manganese(II) chloride'), S('Cl2','g','chlorine'), S('H2O','l','water')], 'redox'],
+  [[S('NO2','g','nitrogen dioxide'), S('H2O','l','water')], [S('HNO3','aq','nitric acid'), S('NO','g','nitrogen monoxide')], 'acid rain'],
+  [[S('CaCO3','s','calcium carbonate')], [S('CaO','s','calcium oxide'), S('CO2','g','carbon dioxide')], 'decomposition'],
+  [[S('C2H4','g','ethene'), S('H2O','g','steam')], [S('C2H5OH','g','ethanol')], 'addition']
+].map(function(x){ return rxn(x[0], x[1], x[2]); });
+
+function anyReaction(){
+  var r = Math.random();
+  if(r < 0.3) return randomAcidReaction();
+  if(r < 0.55) return combustion(pick(FUELS), Math.random() < 0.75 ? 'complete' : pick(['CO','C']));
+  return pick(OTHER_RXNS);
+}
+function nonTrivial(r){ return r.co.some(function(c){ return c > 1; }); }
+
+/* ---------- equation entry UI (coefficients and, optionally, subscripts) ---------- */
+// q.eq = {r, build:index of the species whose formula is built | -1}
+function eqnSpeciesHTML(q, i){
+  var r = q.eq.r, all = r.re.concat(r.pr), s = all[i];
+  var body;
+  if(q.eq.build === i){
+    var k = 0;
+    body = r.saltParts.map(function(p){
+      var idx = k++;
+      return (p.poly ? '(' + fF(p.ion) + ')' : fF(p.ion)) +
+        '<input class="subin" data-sub="' + idx + '" inputmode="numeric" autocomplete="off" aria-label="number of ' + esc(p.ion) + ' in the formula">';
+    }).join('');
+  } else body = fF(s.f);
+  return '<span class="sp"><input class="coef" data-coef="' + i + '" inputmode="numeric" autocomplete="off" aria-label="coefficient for ' + esc(s.f) + '">' +
+    ' ' + body + '<span class="st">(' + s.st + ')</span></span>';
+}
+function eqnInputHTML(q){
+  var r = q.eq.r, nre = r.re.length, all = r.re.concat(r.pr);
+  var parts = all.map(function(s, i){
+    return eqnSpeciesHTML(q, i) + (i === nre - 1 ? ' <span class="op">→</span> ' : (i < all.length - 1 ? ' <span class="op">+</span> ' : ''));
+  });
+  return '<div class="eqbox" id="eqbox">' + parts.join('') + '</div>' +
+    '<div class="tallybar"><span class="eyebrow">Atom tally</span><button class="link" id="tallyToggle" style="background:none;border:0;color:var(--key);font-family:var(--mono);font-size:12px;text-decoration:underline;padding:0">' + (window.__hideTally ? 'show' : 'hide') + '</button></div>' +
+    '<div id="tally"' + (window.__hideTally ? ' class="hidden"' : '') + '></div>' +
+    '<div class="mini" style="margin-top:6px">' + esc(q.eqHint || 'Leave a box empty for 1. Whole numbers only.') + '</div>';
+}
+function intOrBlank(v){
+  v = String(v).trim();
+  if(v === '') return {n:1, blank:true};
+  if(!/^\d+$/.test(v)) return {bad:true};
+  var n = parseInt(v, 10);
+  return n >= 1 ? {n:n} : {bad:true};
+}
+function readEqnInputs(q){
+  var r = q.eq.r, all = r.re.concat(r.pr), res = {co:[], subs:[], bad:false, empty:true};
+  $$('#eqbox .coef').forEach(function(inp){
+    var x = intOrBlank(inp.value); if(x.bad) res.bad = true; if(!x.blank) res.empty = false;
+    res.co[parseInt(inp.dataset.coef, 10)] = x.n || 1;
+  });
+  $$('#eqbox .subin').forEach(function(inp){
+    var x = intOrBlank(inp.value); if(x.bad) res.bad = true; if(!x.blank) res.empty = false;
+    res.subs[parseInt(inp.dataset.sub, 10)] = x.n || 1;
+  });
+  res.formulas = all.map(function(s, i){ return q.eq.build === i ? partsFormula(r.saltParts, res.subs) : s.f; });
+  var nre = r.re.length;
+  res.text = res.formulas.slice(0, nre).map(function(f, i){ return coefStr(res.co[i]) + f; }).join(' + ') + ' → ' +
+             res.formulas.slice(nre).map(function(f, i){ return coefStr(res.co[nre + i]) + f; }).join(' + ');
+  return res;
+}
+function tallyOf(formulas, co, nre){
+  var L = {}, R = {};
+  formulas.forEach(function(f, i){
+    var c; try{ c = parseFormula(f); }catch(e){ c = {}; }
+    var side = i < nre ? L : R;
+    Object.keys(c).forEach(function(e){ side[e] = (side[e] || 0) + c[e]*co[i]; });
+  });
+  return {L:L, R:R};
+}
+function renderTally(q){
+  var res = readEqnInputs(q), nre = q.eq.r.re.length;
+  var t = tallyOf(res.formulas, res.co, nre);
+  var els = elementsOf(q.eq.r.re.concat(q.eq.r.pr).map(function(s){ return s.f; }));
+  var row = function(lab, side){
+    return '<tr><td>' + lab + '</td>' + els.map(function(e){ var a = t.L[e] || 0, b = t.R[e] || 0; return '<td class="' + (a === b ? 'm' : 'x') + '">' + (side === 'L' ? a : b) + '</td>'; }).join('') + '</tr>';
+  };
+  $('#tally').innerHTML = '<table class="tally"><tr><th></th>' + els.map(function(e){ return '<th>' + esc(e) + '</th>'; }).join('') + '</tr>' + row('Reactants', 'L') + row('Products', 'R') + '</table>';
+}
+function wireEqnInputs(q){
+  var box = $('#eqbox');
+  renderTally(q);
+  box.addEventListener('input', function(){ renderTally(q); });
+  box.addEventListener('keydown', function(e){ if(e.key === 'Enter') answerEqn(); });
+  var first = box.querySelector('input'); if(first) first.focus();
+  $('#tallyToggle').addEventListener('click', function(){
+    window.__hideTally = !window.__hideTally;
+    $('#tally').classList.toggle('hidden', !!window.__hideTally);
+    this.textContent = window.__hideTally ? 'show' : 'hide';
+  });
+}
+function proportional(a, b){
+  if(a.length !== b.length) return false;
+  var k = a[0] / b[0];
+  return a.every(function(x, i){ return Math.abs(x - k*b[i]) < 1e-9; }) && k >= 1 && Math.abs(k - Math.round(k)) < 1e-9;
+}
+function markEqnInputs(q, res){
+  var r = q.eq.r, ok = q.check(res);
+  $$('#eqbox .coef').forEach(function(inp){
+    var i = parseInt(inp.dataset.coef, 10);
+    inp.disabled = true;
+    inp.classList.add(ok || res.co[i] === r.co[i] ? 'ok' : 'no');
+  });
+  $$('#eqbox .subin').forEach(function(inp){
+    var i = parseInt(inp.dataset.sub, 10);
+    inp.disabled = true;
+    inp.classList.add(res.subs[i] === r.saltParts[i].n ? 'ok' : 'no');
+  });
+}
+function eqnCheck(q){
+  return function(res){
+    var r = q.eq.r;
+    if(q.eq.build >= 0 && !r.saltParts.every(function(p, i){ return res.subs[i] === p.n; })) return false;
+    return proportional(res.co, r.co);
+  };
+}
+
+/* ============================================================
+   UNIT 02 — ISOMERS
+   S3.2.6 structural isomers (SL + HL) · S3.2.7 stereoisomers (HL)
+   Isomer relationships, chiral carbons and cis–trans possibility
+   are all computed from the same molecule objects used in unit 01,
+   so a question can never disagree with its own answer.
+   ============================================================ */
+
+/* ---------- molecule graph ----------
+   atoms: {el, nb:[{i, o}], h}  — every heavy atom, implicit H count */
+function molGraph(m){
+  var at = [];
+  function add(el){ at.push({el:el, nb:[]}); return at.length - 1; }
+  function bond(a, b, o){ at[a].nb.push({i:b, o:o}); at[b].nb.push({i:a, o:o}); }
+  var chain = [];
+  for(var i=1;i<=m.n;i++) chain[i] = add('C');
+  for(i=1;i<m.n;i++) bond(chain[i], chain[i+1], m.ene === i ? 2 : 1);
+  m.subs.forEach(function(s){
+    if(isHal(s.t)) bond(chain[s.p], add(HALATOM[s.t]), 1);
+    else { var c1 = add('C'); bond(chain[s.p], c1, 1); if(s.t === 'ethyl') bond(c1, add('C'), 1); }
+  });
+  if(m.fg){
+    var c = chain[m.fg.p];
+    if(m.fg.t === 'ol') bond(c, add('O'), 1);
+    else if(m.fg.t === 'al' || m.fg.t === 'one') bond(c, add('O'), 2);
+    else if(m.fg.t === 'oic'){ bond(c, add('O'), 2); bond(c, add('O'), 1); }
+  }
+  var VAL = {C:4, O:2, F:1, Cl:1, Br:1, I:1};
+  at.forEach(function(a){ a.h = VAL[a.el] - a.nb.reduce(function(s, x){ return s + x.o; }, 0); });
+  return {at:at, chain:chain};
+}
+// canonical description of the branch reached by walking from atom `from` into atom `to`
+function branchKey(g, from, to, ord){
+  var a = g.at[to];
+  var kids = a.nb.filter(function(x){ return x.i !== from; }).map(function(x){ return branchKey(g, to, x.i, x.o); }).sort();
+  return ord + a.el + 'H' + a.h + '(' + kids.join(',') + ')';
+}
+// keys of every group on an atom (implicit H included), optionally ignoring one neighbour
+function groupsOn(g, idx, ignore){
+  var a = g.at[idx], keys = [];
+  a.nb.forEach(function(x){ if(x.i !== ignore) keys.push(branchKey(g, idx, x.i, x.o)); });
+  for(var k=0;k<a.h;k++) keys.push('H');
+  return keys;
+}
+function distinct(a){ return a.filter(function(x, i){ return a.indexOf(x) === i; }); }
+// chain locants of carbons bonded to four different groups
+function chiralCentres(m){
+  var g = molGraph(m), out = [];
+  for(var p=1;p<=m.n;p++){
+    var idx = g.chain[p];
+    if(g.at[idx].nb.some(function(x){ return x.o > 1; })) continue;
+    var k = groupsOn(g, idx, -1);
+    if(k.length === 4 && distinct(k).length === 4) out.push(p);
+  }
+  return out;
+}
+// a C=C shows cis–trans only if EACH carbon carries two different groups
+function cisTransPossible(m){
+  if(m.ene === null || m.ene === undefined) return false;
+  var g = molGraph(m), a = g.chain[m.ene], b = g.chain[m.ene + 1];
+  var ka = groupsOn(g, a, b), kb = groupsOn(g, b, a);
+  return ka.length === 2 && kb.length === 2 && ka[0] !== ka[1] && kb[0] !== kb[1];
+}
+function whyNoCisTrans(m){
+  var g = molGraph(m), a = g.chain[m.ene], b = g.chain[m.ene + 1];
+  var ka = groupsOn(g, a, b), kb = groupsOn(g, b, a);
+  var bad = ka[0] === ka[1] ? m.ene : m.ene + 1;
+  var same = (ka[0] === ka[1] ? ka[0] : kb[0]);
+  return 'C' + bad + ' of the double bond carries two identical groups (' + (same === 'H' ? 'two H atoms' : 'two identical alkyl groups') + '), so swapping them changes nothing.';
+}
+// carbon-skeleton fingerprint: chain isomers differ here, position isomers do not
+function skelKey(m){
+  var g = molGraph(m);
+  var cs = []; g.at.forEach(function(a, i){ if(a.el === 'C') cs.push(i); });
+  function rooted(i, parent){
+    return '(' + g.at[i].nb.filter(function(x){ return x.i !== parent && g.at[x.i].el === 'C'; })
+      .map(function(x){ return rooted(x.i, i); }).sort().join('') + ')';
+  }
+  return cs.map(function(i){ return rooted(i, -1); }).sort()[0];
+}
+// carbons attached to the carbon carrying a group: 1 → primary, 2 → secondary, 3 → tertiary
+function degreeAt(m, p){
+  var g = molGraph(m), idx = g.chain[p];
+  return g.at[idx].nb.filter(function(x){ return g.at[x.i].el === 'C'; }).length;
+}
+function degreeWord(d){ return d <= 1 ? 'primary' : (d === 2 ? 'secondary' : 'tertiary'); }
+function principalLocant(m){
+  if(m.fg) return m.fg.p;
+  if(m.ene !== null && m.ene !== undefined) return m.ene;
+  var h = m.subs.filter(function(s){ return isHal(s.t); })[0];
+  return h ? h.p : 0;
+}
+
+/* ---------- the isomer library ----------
+   Every acyclic structure the naming engine can name with ≤ 6 carbons:
+   alkanes, alkenes, alcohols, aldehydes, ketones, acids, chloro/bromoalkanes,
+   with up to two methyl/ethyl branches. Deduplicated by name. */
+var ISO_LIB = null;
+function isoLibrary(){
+  if(ISO_LIB) return ISO_LIB;
+  var seen = {}, out = [];
+  function add(m){
+    if(!structureOK(m)) return;
+    if(m.subs.some(function(s){ return ALKYL[s.t] && !branchOK(m.n, s.p, ALKYL[s.t]); })) return;
+    m = canonical(m);
+    if(!valid(m) || carbonCount(m) > 6) return;
+    var nm = nameOf(m);
+    if(seen[nm]) return;
+    seen[nm] = 1;
+    out.push({m:m, name:nm, f:molecularFormula(m), fam:familyOf(m), C:carbonCount(m)});
+  }
+  for(var n=1;n<=6;n++){
+    var cores = [{fg:null, ene:null, hal:null}];
+    var p;
+    for(p=1;p<n;p++) cores.push({fg:null, ene:p, hal:null});
+    for(p=1;p<=n;p++) cores.push({fg:{t:'ol', p:p}, ene:null, hal:null});
+    cores.push({fg:{t:'al', p:1}, ene:null, hal:null});
+    cores.push({fg:{t:'oic', p:1}, ene:null, hal:null});
+    for(p=2;p<=n-1;p++) cores.push({fg:{t:'one', p:p}, ene:null, hal:null});
+    for(p=1;p<=n;p++){ cores.push({fg:null, ene:null, hal:{t:'chloro', p:p}}); cores.push({fg:null, ene:null, hal:{t:'bromo', p:p}}); }
+    var slots = [];
+    for(p=2;p<=n-1;p++){ slots.push({t:'methyl', p:p}); slots.push({t:'ethyl', p:p}); }
+    cores.forEach(function(c){
+      function mk(extra){
+        return {n:n, fg:c.fg ? {t:c.fg.t, p:c.fg.p} : null, ene:c.ene,
+          subs:(c.hal ? [{t:c.hal.t, p:c.hal.p}] : []).concat(extra.map(function(s){ return {t:s.t, p:s.p}; }))};
+      }
+      add(mk([]));
+      slots.forEach(function(s1, i1){
+        add(mk([s1]));
+        slots.forEach(function(s2, i2){ if(i2 >= i1) add(mk([s1, s2])); });
+      });
+    });
+  }
+  ISO_LIB = out;
+  return out;
+}
+function libBy(f, fams){
+  return isoLibrary().filter(function(e){ return e.f === f && (!fams || fams.indexOf(e.fam) >= 0); });
+}
+function isoRelation(a, b){
+  if(a.f !== b.f) return 'not';
+  if(a.name === b.name) return 'same';
+  if(a.fam !== b.fam) return 'fg';
+  if(a.m && b.m && skelKey(a.m) !== skelKey(b.m)) return 'chain';
+  return 'position';
+}
+var REL_WORD = {chain:'chain isomers', position:'position isomers', fg:'functional group isomers', same:'the same compound', not:'not isomers'};
+
+/* ---------- curated structures the chain model cannot draw ---------- */
+var CUR_ISO = [
+  {name:'methoxymethane',   cond:'CH3OCH3',        f:'C2H6O',  fam:'ether'},
+  {name:'methoxyethane',    cond:'CH3OCH2CH3',     f:'C3H8O',  fam:'ether'},
+  {name:'ethoxyethane',     cond:'CH3CH2OCH2CH3',  f:'C4H10O', fam:'ether'},
+  {name:'1-methoxypropane', cond:'CH3OCH2CH2CH3',  f:'C4H10O', fam:'ether'},
+  {name:'2-methoxypropane', cond:'CH3OCH(CH3)2',   f:'C4H10O', fam:'ether'},
+  {name:'methyl methanoate',cond:'HCOOCH3',        f:'C2H4O2', fam:'ester'},
+  {name:'methyl ethanoate', cond:'CH3COOCH3',      f:'C3H6O2', fam:'ester'},
+  {name:'ethyl methanoate', cond:'HCOOCH2CH3',     f:'C3H6O2', fam:'ester'},
+  {name:'ethyl ethanoate',  cond:'CH3COOCH2CH3',   f:'C4H8O2', fam:'ester'},
+  {name:'methyl propanoate',cond:'CH3CH2COOCH3',   f:'C4H8O2', fam:'ester'},
+  {name:'propyl methanoate',cond:'HCOOCH2CH2CH3',  f:'C4H8O2', fam:'ester'},
+  {name:'cyclopropane',     cond:'three-carbon ring, (CH2)3', f:'C3H6',  fam:'cycloalkane', ring:3},
+  {name:'cyclobutane',      cond:'four-carbon ring, (CH2)4',  f:'C4H8',  fam:'cycloalkane', ring:4},
+  {name:'methylcyclopropane', cond:'CH3 on a three-carbon ring', f:'C4H8', fam:'cycloalkane', ring:3},
+  {name:'cyclopentane',     cond:'five-carbon ring, (CH2)5',  f:'C5H10', fam:'cycloalkane', ring:5},
+  {name:'cyclohexane',      cond:'six-carbon ring, (CH2)6',   f:'C6H12', fam:'cycloalkane', ring:6}
+];
+// families that share a general formula — the functional group isomer pairs
+var FG_PAIRS = [
+  {gen:'CnH2n+2O', a:'alcohol', b:'ether', ex:'ethanol and methoxymethane, C2H6O', from:2},
+  {gen:'CnH2nO',   a:'aldehyde', b:'ketone', ex:'propanal and propanone, C3H6O', from:3},
+  {gen:'CnH2nO2',  a:'carboxylic acid', b:'ester', ex:'propanoic acid and methyl ethanoate, C3H6O2', from:2},
+  {gen:'CnH2n',    a:'alkene', b:'cycloalkane', ex:'but-1-ene and cyclobutane, C4H8', from:3, ext:true}
+];
+var AMINES = [
+  {cond:'CH3NH2',          cls:'primary',   note:'N is bonded to one carbon'},
+  {cond:'CH3CH2NH2',       cls:'primary',   note:'N is bonded to one carbon'},
+  {cond:'CH3CH2CH2NH2',    cls:'primary',   note:'N is bonded to one carbon'},
+  {cond:'(CH3)2CHNH2',     cls:'primary',   note:'N is still bonded to only one carbon — the branch is on the carbon, not on N', trap:true},
+  {cond:'(CH3)3CNH2',      cls:'primary',   note:'N is bonded to one carbon; that carbon being tertiary is irrelevant for amines', trap:true},
+  {cond:'(CH3)2NH',        cls:'secondary', note:'N is bonded to two carbons'},
+  {cond:'CH3NHCH2CH3',     cls:'secondary', note:'N is bonded to two carbons'},
+  {cond:'(CH3CH2)2NH',     cls:'secondary', note:'N is bonded to two carbons'},
+  {cond:'(CH3)3N',         cls:'tertiary',  note:'N is bonded to three carbons'},
+  {cond:'(CH3)2NCH2CH3',   cls:'tertiary',  note:'N is bonded to three carbons'}
+];
+
+/* ---------- stereo data (HL) ---------- */
+// R–CH=CH–R' drawn as cis or trans; the name is the parent without a prefix
+var CT_ALKENES = [
+  {a:'CH3',  b:'CH3',  name:'but-2-ene'},
+  {a:'CH3',  b:'C2H5', name:'pent-2-ene'},
+  {a:'C2H5', b:'C2H5', name:'hex-3-ene'},
+  {a:'Cl',   b:'Cl',   name:'1,2-dichloroethene'},
+  {a:'Br',   b:'Br',   name:'1,2-dibromoethene'},
+  {a:'CH3',  b:'Cl',   name:'1-chloropropene'},
+  {a:'COOH', b:'COOH', name:'butenedioic acid'},
+  {a:'CH3',  b:'COOH', name:'but-2-enoic acid'}
+];
+var CT_EXTRA = [
+  {name:'1,2-dichloroethene', cond:'ClCH=CHCl',     yes:true},
+  {name:'1,1-dichloroethene', cond:'CH2=CCl2',      yes:false, why:'each carbon of the C=C carries two identical atoms (two H on one, two Cl on the other).'},
+  {name:'chloroethene',       cond:'CH2=CHCl',      yes:false, why:'C1 carries two H atoms.'},
+  {name:'1-chloropropene',    cond:'CH3CH=CHCl',    yes:true},
+  {name:'2-chloropropene',    cond:'CH2=CClCH3',    yes:false, why:'C1 carries two H atoms.'},
+  {name:'butenedioic acid',   cond:'HOOCCH=CHCOOH', yes:true},
+  {name:'but-2-enoic acid',   cond:'CH3CH=CHCOOH',  yes:true},
+  {name:'propenoic acid',     cond:'CH2=CHCOOH',    yes:false, why:'C3 (the CH2 end) carries two H atoms.'}
+];
+var CT_RINGS = [
+  {name:'1,2-dimethylcyclopropane',      ring:3, subs:[[0,'CH3'],[1,'CH3']], yes:true},
+  {name:'1-chloro-2-methylcyclopropane', ring:3, subs:[[0,'Cl'],[1,'CH3']],  yes:true},
+  {name:'1,2-dichlorocyclobutane',       ring:4, subs:[[0,'Cl'],[1,'Cl']],   yes:true},
+  {name:'1,3-dichlorocyclobutane',       ring:4, subs:[[0,'Cl'],[2,'Cl']],   yes:true},
+  {name:'1,3-dimethylcyclobutane',       ring:4, subs:[[0,'CH3'],[2,'CH3']], yes:true},
+  {name:'1,1-dimethylcyclopropane',      ring:3, subs:[[0,'CH3'],[0,'CH3']], yes:false, why:'both methyl groups are on the same ring carbon, and every other ring carbon carries two H atoms.'},
+  {name:'chlorocyclopropane',            ring:3, subs:[[0,'Cl']],            yes:false, why:'only one ring carbon carries a substituent; every other ring carbon has two H atoms.'},
+  {name:'methylcyclobutane',             ring:4, subs:[[0,'CH3']],           yes:false, why:'only one ring carbon carries a substituent; every other ring carbon has two H atoms.'},
+  {name:'1,1-dichlorocyclobutane',       ring:4, subs:[[0,'Cl'],[0,'Cl']],   yes:false, why:'both Cl atoms are on the same ring carbon, and every other ring carbon carries two H atoms.'}
+];
+// four groups on one carbon; chiral sets have four different groups
+var WEDGE_SETS = [
+  {name:'butan-2-ol',             g:['OH','CH3','C2H5','H'], chiral:true},
+  {name:'2-chlorobutane',         g:['Cl','CH3','C2H5','H'], chiral:true},
+  {name:'2-bromobutane',          g:['Br','CH3','C2H5','H'], chiral:true},
+  {name:'butan-2-amine',          g:['NH2','CH3','C2H5','H'], chiral:true},
+  {name:'2-hydroxypropanoic acid (lactic acid)', g:['OH','CH3','COOH','H'], chiral:true},
+  {name:'2-aminopropanoic acid (alanine)',       g:['NH2','CH3','COOH','H'], chiral:true},
+  {name:'propan-2-ol',            g:['OH','CH3','CH3','H'], chiral:false},
+  {name:'2-chloropropane',        g:['Cl','CH3','CH3','H'], chiral:false},
+  {name:'ethanol',                g:['OH','CH3','H','H'], chiral:false},
+  {name:'dichloromethane',        g:['Cl','Cl','H','H'], chiral:false},
+  {name:'2-methylpropan-2-ol',    g:['OH','CH3','CH3','CH3'], chiral:false},
+  {name:'aminoethanoic acid (glycine)', g:['NH2','COOH','H','H'], chiral:false}
+];
+
+/* ---------- drawings ---------- */
+function svgLabel(x, y, t, col, size){
+  var body = esc(t).replace(/(\d+)/g, '<tspan font-size="72%" dy="3">$1</tspan><tspan dy="-3"></tspan>');
+  return '<text x="' + r2(x) + '" y="' + r2(y) + '" text-anchor="middle" dominant-baseline="middle" font-family="var(--mono)" font-size="' + (size || 14) + '" font-weight="600" fill="' + (col || 'var(--carbon)') + '">' + body + '</text>';
+}
+function groupCol(t){
+  if(/^(OH|COOH|O)$/.test(t)) return ATOMCOL.O;
+  if(/^NH/.test(t)) return ATOMCOL.N;
+  if(/^(F|Cl|Br|I)$/.test(t)) return ATOMCOL.Cl;
+  return null;
+}
+function ln(x1, y1, x2, y2, w){ return '<line x1="' + r2(x1) + '" y1="' + r2(y1) + '" x2="' + r2(x2) + '" y2="' + r2(y2) + '" stroke="var(--carbon)" stroke-width="' + (w || 1.6) + '" stroke-linecap="round"/>'; }
+// displayed C=C with two groups on each carbon: [top-left, bottom-left, top-right, bottom-right]
+function alkeneSVG(tl, bl, tr, br, cap){
+  var g = [];
+  g.push(ln(84, 57, 116, 57), ln(84, 64, 116, 64));
+  g.push(svgLabel(76, 61, 'C'), svgLabel(124, 61, 'C'));
+  g.push(ln(70, 52, 52, 30), ln(70, 70, 52, 92), ln(130, 52, 148, 30), ln(130, 70, 148, 92));
+  g.push(svgLabel(40, 22, tl, groupCol(tl)), svgLabel(40, 101, bl, groupCol(bl)), svgLabel(160, 22, tr, groupCol(tr)), svgLabel(160, 101, br, groupCol(br)));
+  return '<div class="svgwrap"><svg viewBox="0 0 200 120" width="230" role="img" aria-label="displayed formula around a C=C double bond">' + g.join('') + '</svg>' + (cap ? '<div class="svgcap">' + esc(cap) + '</div>' : '') + '</div>';
+}
+// one tetrahedral carbon: groups = [top (in plane), left (in plane), wedge (towards you), dash (away)]
+function wedgeGroup(groups, mirror, ox){
+  ox = ox || 0;
+  var cx = 100, cy = 70;
+  var P = [[100, 18], [44, 106], [138, 118], [162, 52]];
+  function X(x){ return ox + (mirror ? 200 - x : x); }
+  var g = [svgLabel(X(cx), cy, 'C')];
+  function seg(i){
+    var tx = X(P[i][0]), ty = P[i][1], sx = X(cx), sy = cy;
+    var dx = tx - sx, dy = ty - sy, L = Math.sqrt(dx*dx + dy*dy), ux = dx / L, uy = dy / L;
+    return {x1:sx + ux*11, y1:sy + uy*11, x2:tx - ux*15, y2:ty - uy*15, px:-uy, py:ux};
+  }
+  var s0 = seg(0), s1 = seg(1), s2 = seg(2), s3 = seg(3);
+  g.push(ln(s0.x1, s0.y1, s0.x2, s0.y2), ln(s1.x1, s1.y1, s1.x2, s1.y2));
+  g.push('<polygon points="' + [s2.x1, s2.y1, s2.x2 + s2.px*5, s2.y2 + s2.py*5, s2.x2 - s2.px*5, s2.y2 - s2.py*5].map(r2).join(',') + '" fill="var(--carbon)"/>');
+  for(var k=0;k<7;k++){
+    var t = k / 6, mx = s3.x1 + (s3.x2 - s3.x1)*t, my = s3.y1 + (s3.y2 - s3.y1)*t, h = 0.8 + 4.4*t;
+    g.push(ln(mx - s3.px*h, my - s3.py*h, mx + s3.px*h, my + s3.py*h, 1.3));
+  }
+  for(var j=0;j<4;j++) g.push(svgLabel(X(P[j][0]), P[j][1], groups[j], groupCol(groups[j])));
+  return g.join('');
+}
+// a molecule and its mirror image, with the mirror plane between them
+function wedgePairSVG(groups, capL, capR){
+  return '<div class="svgwrap"><svg viewBox="0 0 420 140" width="440" role="img" aria-label="a molecule and its mirror image drawn with wedge and dash bonds">' +
+    wedgeGroup(groups, false, 0) +
+    '<line x1="210" y1="6" x2="210" y2="134" stroke="var(--ink-3)" stroke-dasharray="4 4" stroke-width="1"/>' +
+    wedgeGroup(groups, true, 220) + '</svg>' +
+    '<div class="svgcap">' + esc(capL || 'A') + ' &nbsp; | mirror | &nbsp; ' + esc(capR || 'B') + '</div></div>';
+}
+function wedgeSVG(groups, cap){
+  return '<div class="svgwrap"><svg viewBox="0 0 200 140" width="220" role="img" aria-label="tetrahedral carbon drawn with wedge and dash bonds">' + wedgeGroup(groups, false, 0) + '</svg>' + (cap ? '<div class="svgcap">' + esc(cap) + '</div>' : '') + '</div>';
+}
+// small ring with substituents drawn outward from the given vertices
+function ringSVG(size, subs, cap){
+  var cx = 100, cy = 66, R = size === 3 ? 30 : 28, g = [], pts = [];
+  for(var i=0;i<size;i++){
+    var ang = -Math.PI/2 + i * 2*Math.PI/size + (size === 4 ? Math.PI/4 : 0);
+    pts.push([cx + R*Math.cos(ang), cy + R*Math.sin(ang), ang]);
+  }
+  for(i=0;i<size;i++){ var a = pts[i], b = pts[(i+1) % size]; g.push(ln(a[0], a[1], b[0], b[1])); }
+  var perVertex = {};
+  subs.forEach(function(s){ (perVertex[s[0]] = perVertex[s[0]] || []).push(s[1]); });
+  Object.keys(perVertex).forEach(function(v){
+    var p = pts[v], list = perVertex[v];
+    list.forEach(function(lab, k){
+      var ang = p[2] + (list.length > 1 ? (k === 0 ? -0.45 : 0.45) : 0);
+      var ex = p[0] + Math.cos(ang)*20, ey = p[1] + Math.sin(ang)*20;
+      g.push(ln(p[0], p[1], ex, ey));
+      g.push(svgLabel(p[0] + Math.cos(ang)*33, p[1] + Math.sin(ang)*31, lab, groupCol(lab), 13));
+    });
+  });
+  return '<div class="svgwrap"><svg viewBox="0 0 200 135" width="200" role="img" aria-label="ring structure">' + g.join('') + '</svg>' + (cap ? '<div class="svgcap">' + esc(cap) + '</div>' : '') + '</div>';
+}
+function condBox(t, cap){
+  return '<div class="svgwrap" style="padding:16px"><span class="mono" style="font-size:19px">' + fF(t) + '</span>' + (cap ? '<div class="svgcap">' + esc(cap) + '</div>' : '') + '</div>';
+}
+function skelBox(m, cap, opts){
+  return '<div class="svgwrap">' + skeletalSVG(m, 1, opts) + (cap ? '<div class="svgcap">' + esc(cap) + '</div>' : '') + '</div>';
+}
+function drawEntry(e, cap){ return e.m ? skelBox(e.m, cap) : (e.ring ? condBox(e.cond, cap) : condBox(e.cond, cap)); }
+function article(w){ return /^[aeiou]/i.test(w) ? 'an ' + w : 'a ' + w; }
+
+/* ---------- unit 02 chapters ---------- */
+CHAPTERS.push(
+{
+ id:'iso_chain', unit:'iso', ref:'S3.2.6', title:'Chain isomers', tag:'core', topics:['isomer'],
+ body:function(){ return `
+  <p><strong>Chain isomers</strong> (branched / straight-chain isomers) have the same functional group but a different <strong>carbon skeleton</strong>. One is a straight chain; the others are branched.</p>
+  <h3>C5H12 — three chain isomers</h3>
+  <div class="svgpair">${dia(M(5,null,null,[]),'pentane')}${dia(M(4,null,null,[{t:'methyl',p:2}]),'2-methylbutane')}</div>
+  ${dia(M(3,null,null,[{t:'methyl',p:2},{t:'methyl',p:2}]),'2,2-dimethylpropane')}
+  <h3>Chain isomers with a functional group</h3>
+  <p>Keep the group in the same kind of place and change only the skeleton:</p>
+  <div class="svgpair">${dia(M(4,{t:'ol',p:1}),'butan-1-ol')}${dia(M(3,{t:'ol',p:1},null,[{t:'methyl',p:2}]),'2-methylpropan-1-ol')}</div>
+  <h3>Why branching matters</h3>
+  <p>Branched isomers are more compact, so they have less surface contact and weaker London (dispersion) forces. Boiling point falls as branching increases: pentane 36 °C, 2-methylbutane 28 °C, 2,2-dimethylpropane 10 °C.</p>
+  ${rule('<p style="margin:0">Isomers of C6H14: hexane, 2-methylpentane, 3-methylpentane, 2,2-dimethylbutane, 2,3-dimethylbutane — <strong>five</strong>. "3-methylbutane" or "2-ethylbutane" are not extra isomers; they are wrongly named versions of these.</p>')}
+  ${warn('<p style="margin:0">A zig-zag drawn with a kink is not a branch. Trace the longest continuous chain: if it uses every carbon, the molecule is unbranched however it is drawn.</p>')}`;
+ },
+ check:{q:'Name the three chain isomers of C5H12.', a:'pentane, 2-methylbutane, 2,2-dimethylpropane'}
+},
+{
+ id:'iso_position', unit:'iso', ref:'S3.2.6', title:'Position isomers', tag:'core', topics:['isomer'],
+ body:function(){ return `
+  <p><strong>Position isomers</strong> have the same carbon skeleton and the same functional group, but the group sits on a <strong>different carbon</strong>.</p>
+  <div class="svgpair">${dia(M(4,{t:'ol',p:1}),'butan-1-ol')}${dia(M(4,{t:'ol',p:2}),'butan-2-ol')}</div>
+  <div class="svgpair">${dia(M(3,null,null,[{t:'chloro',p:1}]),'1-chloropropane')}${dia(M(3,null,null,[{t:'chloro',p:2}]),'2-chloropropane')}</div>
+  <div class="svgpair">${dia(M(4,null,1),'but-1-ene')}${dia(M(4,null,2),'but-2-ene')}</div>
+  <div class="svgpair">${dia(M(5,{t:'one',p:2}),'pentan-2-one')}${dia(M(5,{t:'one',p:3}),'pentan-3-one')}</div>
+  ${rule('<p style="margin:0">Same skeleton + same group + different locant = position isomers. The locant in the name changes; nothing else does.</p>')}
+  ${warn('<p style="margin:0">Aldehydes and carboxylic acids have no position isomers on an unbranched chain — the CHO or COOH carbon is always C1. "Butan-2-al" does not exist: a C=O inside the chain is a ketone, which is a <em>functional group</em> isomer.</p>')}
+  ${warn('<p style="margin:0">Numbering from the other end does not make a new isomer. Butan-3-ol is just butan-2-ol named badly.</p>')}`;
+ },
+ check:{q:'Are pentan-2-one and pentan-3-one chain, position or functional group isomers?', a:'Position isomers — same skeleton, same group, different carbon'}
+},
+{
+ id:'iso_fg', unit:'iso', ref:'S3.2.6', title:'Functional group isomers', tag:'core', topics:['isofg'],
+ body:function(){ return `
+  <p><strong>Functional group isomers</strong> have the same molecular formula but belong to <strong>different homologous series</strong>. They have different functional groups, so their chemical properties are completely different.</p>
+  <p>They arise when two series share a general formula:</p>
+  <table><tr><th>General formula</th><th>Series pair</th><th>Smallest example</th></tr>
+  <tr><td class="f2">CnH2n+2O</td><td>alcohol ↔ ether</td><td class="f2">ethanol CH3CH2OH ↔ methoxymethane CH3OCH3</td></tr>
+  <tr><td class="f2">CnH2nO</td><td>aldehyde ↔ ketone</td><td class="f2">propanal CH3CH2CHO ↔ propanone CH3COCH3</td></tr>
+  <tr><td class="f2">CnH2nO2</td><td>carboxylic acid ↔ ester</td><td class="f2">propanoic acid CH3CH2COOH ↔ methyl ethanoate CH3COOCH3</td></tr>
+  <tr><td class="f2">CnH2n</td><td>alkene ↔ cycloalkane <span class="tag ext">extension</span></td><td class="f2">but-1-ene ↔ cyclobutane</td></tr></table>
+  <div class="svgpair">${dia(M(3,{t:'al',p:1}),'propanal — aldehyde')}${dia(M(3,{t:'one',p:2}),'propanone — ketone')}</div>
+  ${rule('<p style="margin:0">To spot them: equal molecular formulas, <em>different suffix families</em> (-ol vs -oxy-, -al vs -one, -oic acid vs -oate).</p>')}
+  ${warn('<p style="margin:0">The pairing needs enough carbons. Methanol has no ether isomer (an ether needs two carbons on the O), ethanal has no ketone isomer (a ketone needs three carbons), and methanoic acid has no ester isomer.</p>')}
+  ${warn('<p style="margin:0">Amines and amides are <em>not</em> functional group isomers of each other — an amide has an extra O, so the formulas differ.</p>')}`;
+ },
+ check:{q:'Give a functional group isomer of propanoic acid.', a:'methyl ethanoate (or ethyl methanoate) — both C3H6O2 esters'}
+},
+{
+ id:'iso_class', unit:'iso', ref:'S3.2.6', title:'Primary, secondary, tertiary', tag:'core', topics:['isocls'],
+ body:function(){ return `
+  <p>The IB expects you to classify <strong>alcohols, halogenoalkanes and amines</strong> as primary (1°), secondary (2°) or tertiary (3°). Isomers of one formula often fall into different classes, and the class controls how they react.</p>
+  <h3>Alcohols and halogenoalkanes — count carbons on the C–X carbon</h3>
+  <table><tr><th>Class</th><th>Carbon bearing OH / X is bonded to</th><th>Example</th></tr>
+  <tr><td>primary</td><td>1 other carbon (or none)</td><td class="f2">butan-1-ol, 1-chlorobutane</td></tr>
+  <tr><td>secondary</td><td>2 other carbons</td><td class="f2">butan-2-ol, 2-chlorobutane</td></tr>
+  <tr><td>tertiary</td><td>3 other carbons</td><td class="f2">2-methylpropan-2-ol, 2-chloro-2-methylpropane</td></tr></table>
+  <div class="svgpair">${dia(M(4,null,null,[{t:'chloro',p:2}]),'2-chlorobutane — secondary')}${dia(M(3,null,null,[{t:'chloro',p:2},{t:'methyl',p:2}]),'2-chloro-2-methylpropane — tertiary')}</div>
+  <h3>Amines — count carbons on the nitrogen</h3>
+  <table><tr><th>Class</th><th>Nitrogen is bonded to</th><th>Example</th></tr>
+  <tr><td>primary</td><td>1 carbon</td><td class="f2">CH3CH2NH2</td></tr>
+  <tr><td>secondary</td><td>2 carbons</td><td class="f2">(CH3)2NH</td></tr>
+  <tr><td>tertiary</td><td>3 carbons</td><td class="f2">(CH3)3N</td></tr></table>
+  ${warn('<p style="margin:0">The two rules are different. For amines you look at the <strong>nitrogen</strong>, not the carbon. (CH3)2CHNH2 is a <em>primary</em> amine even though its N sits on a secondary carbon; (CH3)3CNH2 is also primary.</p>')}
+  ${rule('<p style="margin:0">The isomers of C4H9Cl cover all three classes: 1-chlorobutane (1°), 1-chloro-2-methylpropane (1°), 2-chlorobutane (2°), 2-chloro-2-methylpropane (3°).</p>')}`;
+ },
+ check:{q:'Classify (CH3)2NH.', a:'Secondary amine — the N is bonded to two carbons'}
+},
+{
+ id:'iso_count', unit:'iso', ref:'S3.2.6', title:'Finding every isomer', tag:'core', topics:['isocount'],
+ body:function(){ return `
+  <p>Questions ask you to draw or count "all the structural isomers" of a formula. Work systematically so you neither miss one nor draw one twice.</p>
+  <ol>
+   <li><strong>Longest chain first.</strong> Draw the unbranched chain and put the group on every distinct position.</li>
+   <li><strong>Shorten by one carbon.</strong> Use it as a methyl branch on every possible carbon, then place the group on every distinct position again.</li>
+   <li><strong>Shorten by two.</strong> Two methyls, or one ethyl — but only where the branch does not create a longer chain.</li>
+   <li><strong>Other series.</strong> Check the general formula: could a functional group isomer exist (ether, ketone, ester)?</li>
+   <li><strong>Name every structure.</strong> Two identical names = one isomer drawn twice. Delete it.</li>
+  </ol>
+  <h3>Worked: C4H9Cl has four</h3>
+  <div class="svgpair">${dia(M(4,null,null,[{t:'chloro',p:1}]),'1-chlorobutane')}${dia(M(4,null,null,[{t:'chloro',p:2}]),'2-chlorobutane')}</div>
+  <div class="svgpair">${dia(M(3,null,null,[{t:'chloro',p:1},{t:'methyl',p:2}]),'1-chloro-2-methylpropane')}${dia(M(3,null,null,[{t:'chloro',p:2},{t:'methyl',p:2}]),'2-chloro-2-methylpropane')}</div>
+  <h3>Counts worth knowing</h3>
+  <table><tr><th>Formula</th><th>Scope</th><th>Isomers</th></tr>
+  <tr><td class="f2">C4H10 / C5H12 / C6H14</td><td>alkanes</td><td class="f2">2 / 3 / 5</td></tr>
+  <tr><td class="f2">C3H7Cl / C4H9Cl</td><td>halogenoalkanes</td><td class="f2">2 / 4</td></tr>
+  <tr><td class="f2">C3H8O</td><td>2 alcohols + 1 ether</td><td class="f2">3</td></tr>
+  <tr><td class="f2">C4H10O</td><td>4 alcohols + 3 ethers</td><td class="f2">7</td></tr>
+  <tr><td class="f2">C4H8O</td><td>aldehydes + ketones</td><td class="f2">3</td></tr>
+  <tr><td class="f2">C4H8</td><td>alkenes, ignoring cis–trans</td><td class="f2">3</td></tr></table>
+  ${warn('<p style="margin:0">Read the scope of the question. "Isomers of C4H8" strictly includes two cycloalkanes and, at HL, cis- and trans-but-2-ene. "Alkenes with formula C4H8, ignoring stereoisomers" is three.</p>')}`;
+ },
+ check:{q:'How many alcohols have the formula C4H10O?', a:'Four: butan-1-ol, butan-2-ol, 2-methylpropan-1-ol, 2-methylpropan-2-ol'}
+},
+{
+ id:'stereo', unit:'iso', hl:true, ref:'S3.2.7', title:'Stereoisomers', tag:'core', topics:['cistrans','optical'],
+ body:function(){ return `
+  <p><strong>Stereoisomers</strong> have the same constitution — the same atoms, the same connectivity and the same bond multiplicities — but a <strong>different arrangement of atoms in space</strong>.</p>
+  <p>Their structural formulas are identical, so the names differ only by a stereo prefix. There are two kinds:</p>
+  <table><tr><th>Type</th><th>Cause</th><th>Example</th></tr>
+  <tr><td>cis–trans</td><td>restricted rotation (C=C, or a small ring) with two different groups on each carbon</td><td class="f2">cis- / trans-but-2-ene</td></tr>
+  <tr><td>optical</td><td>a chiral carbon — four different groups on one carbon</td><td class="f2">the two enantiomers of butan-2-ol</td></tr></table>
+  ${rule('<p style="margin:0">Structural isomers: different connectivity. Stereoisomers: same connectivity, different 3D arrangement. Check connectivity first.</p>')}
+  ${warn('<p style="margin:0">Rotating a molecule about a C–C <em>single</em> bond does not make a stereoisomer — that is the same molecule in a different conformation.</p>')}`;
+ },
+ check:{q:'Do stereoisomers have the same structural formula?', a:'Yes — same connectivity; only the arrangement in space differs'}
+},
+{
+ id:'cistrans', unit:'iso', hl:true, ref:'S3.2.7', title:'Cis–trans isomers', tag:'core', topics:['cistrans'],
+ body:function(){ return `
+  <p>A C=C double bond cannot rotate without breaking its π bond, so groups locked on the same side stay there.</p>
+  <div class="svgpair">${alkeneSVG('CH3','H','CH3','H','cis-but-2-ene — CH3 groups on the same side')}${alkeneSVG('CH3','H','H','CH3','trans-but-2-ene — CH3 groups on opposite sides')}</div>
+  ${rule('<p style="margin:0"><strong>Both conditions are needed.</strong> 1 — restricted rotation: a C=C bond, or a C3 or C4 ring. 2 — <em>each</em> of the two carbons carries two different groups.</p>')}
+  <h3>No cis–trans isomers</h3>
+  <p>But-1-ene, CH2=CHCH2CH3: C1 carries two H atoms, so "swapping" them changes nothing. Likewise 2-methylpropene, (CH3)2C=CH2, and 2-methylbut-2-ene, where one carbon has two CH3 groups.</p>
+  <h3>Rings: C3 and C4</h3>
+  <p>A small ring also stops rotation. When two ring carbons each carry a substituent and an H, the substituents can be on the same face (cis) or opposite faces (trans).</p>
+  <div class="svgpair">${ringSVG(3,[[0,'CH3'],[1,'CH3']],'1,2-dimethylcyclopropane — cis and trans exist')}${ringSVG(4,[[0,'Cl'],[0,'Cl']],'1,1-dichlorocyclobutane — no cis–trans')}</div>
+  <h3>Properties</h3>
+  <p>Cis and trans isomers are different compounds with different physical properties. cis-1,2-dichloroethene is polar (b.p. 60 °C); in the trans isomer the C–Cl dipoles cancel (b.p. 48 °C). cis-butenedioic acid forms a cyclic anhydride on heating because its two COOH groups are close; the trans isomer cannot.</p>
+  ${warn('<p style="margin:0">The IB does not assess E/Z naming. Use cis- and trans-, and keep to molecules where each double-bond carbon carries one H.</p>')}`;
+ },
+ check:{q:'Does pent-2-ene show cis–trans isomerism?', a:'Yes — C2 carries H and CH3, C3 carries H and C2H5'}
+},
+{
+ id:'chiral', unit:'iso', hl:true, ref:'S3.2.7', title:'Chiral carbons and enantiomers', tag:'core', topics:['optical'],
+ body:function(){ var m = M(4,{t:'ol',p:2}); return `
+  <p>A <strong>chiral carbon</strong> (asymmetric carbon) is bonded to <strong>four different atoms or groups</strong>. It is usually marked with an asterisk, *.</p>
+  <div class="svgwrap">${skeletalSVG(m, 1, {num:true, star:[2]})}<div class="svgcap">butan-2-ol — C2* carries H, OH, CH3 and C2H5</div></div>
+  <p>A molecule with one chiral carbon exists as two <strong>enantiomers</strong>: mirror images that cannot be superimposed, like a left and a right hand.</p>
+  ${wedgePairSVG(['OH','CH3','C2H5','H'],'one enantiomer','its mirror image')}
+  <h3>Drawing enantiomers (IB convention)</h3>
+  <ul>
+   <li>Two bonds in the plane of the paper: plain lines.</li>
+   <li>One bond towards you: a tapered, solid <strong>wedge</strong>.</li>
+   <li>One bond away from you: a <strong>hashed (dashed) wedge</strong>.</li>
+   <li>Draw a dashed mirror line, then draw the reflection. Swapping any two groups also gives the enantiomer.</li>
+  </ul>
+  ${rule('<p style="margin:0">Finding chiral carbons: ignore every CH3, CH2 and any C with a double bond. For each remaining carbon, list its four groups — look all the way along each branch, not just at the first atom.</p>')}
+  ${warn('<p style="margin:0">Propan-2-ol is not chiral: C2 carries two identical CH3 groups. Its mirror image is superimposable — it is the same molecule.</p>')}`;
+ },
+ check:{q:'Is 2-chlorobutane chiral?', a:'Yes — C2 carries H, Cl, CH3 and C2H5'}
+},
+{
+ id:'optical', unit:'iso', hl:true, ref:'S3.2.7', title:'Optical activity', tag:'core', topics:['optical'],
+ body:function(){ return `
+  <p>Enantiomers are called <strong>optical isomers</strong> because of how they interact with <strong>plane-polarised light</strong>.</p>
+  <ul>
+   <li>Each enantiomer is <strong>optically active</strong>: it rotates the plane of plane-polarised light.</li>
+   <li>The two enantiomers rotate it by the <strong>same angle in opposite directions</strong>.</li>
+   <li>The rotation is measured with a <strong>polarimeter</strong>.</li>
+  </ul>
+  <h3>Racemic mixtures</h3>
+  <p>A <strong>racemic mixture</strong> (racemate) contains equal amounts of the two enantiomers. Their rotations cancel, so it is <strong>optically inactive</strong>.</p>
+  <h3>What is the same, and what is not</h3>
+  <table><tr><th>Property</th><th>Enantiomers</th></tr>
+  <tr><td>melting / boiling point, density, solubility</td><td>identical</td></tr>
+  <tr><td>reactions with non-chiral reagents</td><td>identical</td></tr>
+  <tr><td>effect on plane-polarised light</td><td>equal and opposite rotation</td></tr>
+  <tr><td>behaviour in a chiral environment (enzymes, receptors, chiral reagents)</td><td>different</td></tr></table>
+  ${rule('<p style="margin:0">Key terms the IB expects: <strong>chiral</strong>, <strong>optical activity</strong>, <strong>enantiomer</strong>, <strong>racemic mixture</strong>.</p>')}
+  ${warn('<p style="margin:0">"Optically inactive" does not prove a substance is achiral — a racemic mixture of a chiral compound is also inactive.</p>')}`;
+ },
+ check:{q:'Why does a racemic mixture not rotate plane-polarised light?', a:'It has equal amounts of both enantiomers, whose equal and opposite rotations cancel'}
+}
+);
+
+/* ---------- unit 02 question generators ---------- */
+var ISO_ALL = null;      // library + curated, indexed by molecular formula
+function isoByFormula(){
+  if(ISO_ALL) return ISO_ALL;
+  ISO_ALL = {};
+  isoLibrary().concat(CUR_ISO).forEach(function(e){ (ISO_ALL[e.f] = ISO_ALL[e.f] || []).push(e); });
+  return ISO_ALL;
+}
+function isPairFam(a, b){ return FG_PAIRS.some(function(p){ return (p.a === a && p.b === b) || (p.a === b && p.b === a); }); }
+function isoPairOf(rel){
+  var lib = isoLibrary().filter(function(e){ return e.C >= 3; });
+  for(var t=0;t<80;t++){
+    var a = pick(lib);
+    var c = lib.filter(function(b){ return b !== a && isoRelation(a, b) === rel; });
+    // chain pairs keep the group at the same locant so the answer is not also "position"
+    if(rel === 'chain') c = c.filter(function(b){ return principalLocant(a.m) === principalLocant(b.m); });
+    if(c.length) return [a, pick(c)];
+  }
+  return null;
+}
+function fgPair(){
+  var byF = isoByFormula(), keys = shuffle(Object.keys(byF));
+  for(var i=0;i<keys.length;i++){
+    var list = byF[keys[i]], pairs = [];
+    list.forEach(function(a){ list.forEach(function(b){ if(a !== b && isPairFam(a.fam, b.fam)) pairs.push([a, b]); }); });
+    if(pairs.length) return pick(pairs);
+  }
+  return null;
+}
+var PLURAL = {alkane:'alkanes', alkene:'alkenes', alcohol:'alcohols', aldehyde:'aldehydes', ketone:'ketones',
+  'carboxylic acid':'carboxylic acids', halogenoalkane:'halogenoalkanes', ether:'ethers', ester:'esters', cycloalkane:'cycloalkanes'};
+
+GENS.iso_relation = function(){
+  var lib = isoLibrary().filter(function(e){ return e.C >= 3; });
+  var kind = pick(['same','iso','iso','not']), a, b, A, B, ans;
+  if(kind === 'same'){
+    a = pick(lib); b = a;
+    A = skelBox(a.m, 'structure A');
+    B = '<div class="svgwrap">' + skeletalSVG(flip(clone(a.m))) + '<div class="svgcap">structure B</div></div>';
+    ans = 'The same compound';
+  } else if(kind === 'iso'){
+    var pr = Math.random() < 0.7 ? isoPairOf(pick(['chain','position'])) : fgPair();
+    if(!pr) return null;
+    a = pr[0]; b = pr[1]; A = drawEntry(a, 'structure A'); B = drawEntry(b, 'structure B');
+    ans = 'Structural isomers';
+  } else {
+    a = pick(lib);
+    var near = lib.filter(function(e){ return e.fam === a.fam && e.f !== a.f && Math.abs(e.C - a.C) <= 1; });
+    if(!near.length) return null;
+    b = pick(near); A = skelBox(a.m, 'structure A'); B = skelBox(b.m, 'structure B');
+    ans = 'Not isomers';
+  }
+  return {
+    type:'Same, isomers or neither?', topic:'isomer', chapter:'isomers',
+    stem:'How are structures A and B related?',
+    html:'<div class="svgpair">' + A + B + '</div>',
+    input:'mc', opts:mcOpts(ans, ['The same compound','Structural isomers','Not isomers'].filter(function(x){ return x !== ans; })), answer:ans,
+    explain: kind === 'same' ? 'Both are ' + a.name + ' (' + a.f + ') — B is the same molecule drawn from the other end.'
+      : 'A is ' + a.name + ' (' + a.f + ') and B is ' + b.name + ' (' + b.f + '). ' +
+        (kind === 'iso' ? 'Same molecular formula, different connectivity → structural isomers.' : 'The molecular formulas differ, so they cannot be isomers — they are in the same series, not the same formula.')
+  };
+};
+
+GENS.iso_type = function(){
+  var rel = pick(['chain','position','fg']);
+  var pr = rel === 'fg' ? fgPair() : isoPairOf(rel);
+  if(!pr) return null;
+  var a = pr[0], b = pr[1], ans = REL_WORD[rel];
+  var why = {
+    chain:'Both are ' + PLURAL[a.fam] + ' with the group in the same kind of position, but the carbon skeletons differ (' + a.name + ' vs ' + b.name + ').',
+    position:'Same carbon skeleton and same functional group; only its position moves (' + a.name + ' vs ' + b.name + ').',
+    fg:'Same formula ' + a.f + ', but ' + a.name + ' is ' + article(a.fam) + ' and ' + b.name + ' is ' + article(b.fam) + ' — different homologous series.'
+  }[rel];
+  return {
+    type:'Type of structural isomerism', topic: rel === 'fg' ? 'isofg' : 'isomer', chapter: rel === 'fg' ? 'iso_fg' : (rel === 'chain' ? 'iso_chain' : 'iso_position'),
+    stem:'A and B are isomers of ' + a.f + '. What type of isomerism do they show?',
+    html:'<div class="svgpair">' + drawEntry(a, 'A') + drawEntry(b, 'B') + '</div>',
+    input:'mc', opts:mcOpts(ans, ['chain isomers','position isomers','functional group isomers'].filter(function(x){ return x !== ans; })), answer:ans,
+    explain:why
+  };
+};
+
+GENS.iso_which = function(){
+  var lib = isoLibrary(), byF = isoByFormula();
+  for(var t=0;t<40;t++){
+    var x = pick(lib.filter(function(e){ return e.C >= 3; }));
+    var iso = byF[x.f].filter(function(e){ return e.name !== x.name; });
+    if(!iso.length) continue;
+    var right = pick(iso);
+    var wrong = shuffle(lib.filter(function(e){ return e.f !== x.f && Math.abs(e.C - x.C) <= 1 && (e.fam === x.fam || e.fam === right.fam || e.C === x.C); }));
+    var names = [], picked = [];
+    wrong.forEach(function(e){ if(picked.length < 3 && names.indexOf(e.name) < 0){ names.push(e.name); picked.push(e); } });
+    if(picked.length < 3) continue;
+    return {
+      type:'Spot the isomer', topic:'isomer', chapter:'isomers',
+      stem:'Which compound is an isomer of ' + x.name + '?',
+      input:'mc', opts:mcOpts(right.name, picked.map(function(e){ return {name:e.name, why:e.f + ', not ' + x.f}; })), answer:right.name,
+      explain:x.name + ' is ' + x.f + '. ' + right.name + ' is also ' + x.f + '. The others: ' + picked.map(function(e){ return e.name + ' ' + e.f; }).join(', ') + '.'
+    };
+  }
+  return null;
+};
+
+GENS.iso_typed = function(){
+  var lib = isoLibrary(), rel = pick(['position','chain']);
+  for(var t=0;t<40;t++){
+    var x = pick(lib.filter(function(e){ return e.C >= 4 && e.C <= 5 && e.fam !== 'alkane'; }));
+    var ok = lib.filter(function(e){ return isoRelation(x, e) === rel; });
+    if(!ok.length) continue;
+    var names = ok.map(function(e){ return e.name; });
+    return {
+      type:'Name an isomer', topic:'isomer', chapter: rel === 'chain' ? 'iso_chain' : 'iso_position',
+      stem:'Type the name of a ' + rel + ' isomer of ' + x.name + '.',
+      sub:'Any correct ' + rel + ' isomer is accepted. Punctuation is ignored, spelling is not.',
+      html:skelBox(x.m, x.name + ' · ' + x.f),
+      input:'text', answer:names.slice(0, 3).join(' / ') + (names.length > 3 ? ' …' : ''),
+      check:function(v){ return names.some(function(n){ return sameName(v, n); }); },
+      explain:(rel === 'position' ? 'Keep the skeleton and the group; move the group to another carbon.' : 'Keep the functional group; change the carbon skeleton (branch it or unbranch it).') +
+        ' All valid answers: ' + names.join(', ') + '.'
+    };
+  }
+  return null;
+};
+
+GENS.fg_series = function(){
+  var p = pick(FG_PAIRS), fwd = Math.random() < 0.5, from = fwd ? p.a : p.b, to = fwd ? p.b : p.a;
+  var all = ['alcohol','ether','aldehyde','ketone','carboxylic acid','ester','alkene','cycloalkane','alkane','halogenoalkane','amine','amide'];
+  var wrongs = shuffle(all.filter(function(x){ return x !== from && x !== to; })).slice(0, 3);
+  return {
+    type:'Functional group isomer pairs', topic:'isofg', chapter:'iso_fg',
+    stem:'Members of the ' + from + ' series have functional group isomers in which series?',
+    input:'mc', opts:mcOpts(to, wrongs), answer:to,
+    explain:'Both series fit ' + p.gen + ' — for example ' + p.ex + '.' + (p.ext ? ' (Cycloalkanes are not named at IB level, but this pairing is standard.)' : '')
+  };
+};
+
+GENS.fg_general = function(){
+  var p = pick(FG_PAIRS.filter(function(x){ return !x.ext; }));
+  var pairName = function(x){ return PLURAL[x.a] + ' and ' + PLURAL[x.b]; };
+  var wrongs = FG_PAIRS.filter(function(x){ return x !== p; }).map(pairName);
+  if(Math.random() < 0.5) wrongs = wrongs.slice(0, 2).concat([pick(['alcohols and aldehydes','alkanes and alkenes','aldehydes and carboxylic acids','alcohols and carboxylic acids'])]);
+  return {
+    type:'Shared general formula', topic:'isofg', chapter:'iso_fg',
+    stem:'Which two homologous series share the general formula ' + p.gen + ', and so can be functional group isomers?',
+    input:'mc', opts:mcOpts(pairName(p), wrongs.slice(0, 3)), answer:pairName(p),
+    explain:p.gen + ' fits both ' + pairName(p) + ' — e.g. ' + p.ex + '.'
+  };
+};
+
+GENS.fg_compound = function(){
+  var byF = isoByFormula(), keys = shuffle(Object.keys(byF));
+  for(var i=0;i<keys.length;i++){
+    var list = byF[keys[i]];
+    var xs = list.filter(function(a){ return list.some(function(b){ return isPairFam(a.fam, b.fam); }); });
+    if(!xs.length) continue;
+    var x = pick(xs);
+    var right = pick(list.filter(function(b){ return isPairFam(x.fam, b.fam); }));
+    var wrong = list.filter(function(b){ return b.fam === x.fam && b.name !== x.name; }).map(function(b){ return {name:b.name, why:'the same series as ' + x.name + ' — a chain or position isomer'}; });
+    var allE = isoLibrary().concat(CUR_ISO);
+    shuffle(allE).forEach(function(b){
+      if(wrong.length < 6 && b.fam === right.fam && b.f !== x.f && Math.abs(parseInt(b.f.slice(1), 10) - parseInt(x.f.slice(1), 10)) <= 1)
+        wrong.push({name:b.name, why:b.f + ' — a different molecular formula'});
+    });
+    wrong = shuffle(wrong).filter(function(w, k, arr){ return arr.findIndex(function(z){ return z.name === w.name; }) === k; }).slice(0, 3);
+    if(wrong.length < 3) continue;
+    return {
+      type:'Functional group isomer', topic:'isofg', chapter:'iso_fg',
+      stem:'Which compound is a functional group isomer of ' + x.name + '?',
+      input:'mc', opts:mcOpts(right.name, wrong), answer:right.name,
+      explain:x.name + ' (' + x.fam + ') and ' + right.name + ' (' + right.fam + ') are both ' + x.f + '. A functional group isomer must be in a different series with the same formula.'
+    };
+  }
+  return null;
+};
+
+GENS.cls_halo = function(){
+  var x = pick(isoLibrary().filter(function(e){ return e.fam === 'halogenoalkane' && e.C >= 2; }));
+  var h = x.m.subs.filter(function(s){ return isHal(s.t); })[0];
+  var d = degreeAt(x.m, h.p), cls = degreeWord(d);
+  return {
+    type:'Primary / secondary / tertiary', topic:'isocls', chapter:'iso_class',
+    stem:'Is this halogenoalkane primary, secondary or tertiary?',
+    html:skelBox(x.m),
+    input:'mc', opts:mcOpts(cls, ['primary','secondary','tertiary'].filter(function(c){ return c !== cls; })), answer:cls,
+    explain:'The carbon carrying the ' + HALATOM[h.t] + ' is bonded to ' + d + ' other carbon' + (d === 1 ? '' : 's') + ' → ' + cls + ' (' + x.name + ').'
+  };
+};
+
+GENS.cls_amine = function(){
+  var a = pick(Math.random() < 0.35 ? AMINES.filter(function(x){ return x.trap; }) : AMINES);
+  return {
+    type:'Classify the amine', topic:'isocls', chapter:'iso_class',
+    stem:'Is this amine primary, secondary or tertiary?',
+    html:condBox(a.cond),
+    input:'mc', opts:mcOpts(a.cls, ['primary','secondary','tertiary'].filter(function(c){ return c !== a.cls; })), answer:a.cls,
+    explain:'For amines, count the carbons bonded to the nitrogen: ' + a.note + ' → ' + a.cls + '.'
+  };
+};
+
+GENS.cls_pick = function(){
+  var fam = pick(['alcohol','halogenoalkane']), cls = pick(['primary','secondary','tertiary']);
+  var lib = isoLibrary().filter(function(e){ return e.fam === fam && e.C >= 3; });
+  function clsOf(e){ var p = fam === 'alcohol' ? e.m.fg.p : e.m.subs.filter(function(s){ return isHal(s.t); })[0].p; return degreeWord(degreeAt(e.m, p)); }
+  var yes = lib.filter(function(e){ return clsOf(e) === cls; }), no = lib.filter(function(e){ return clsOf(e) !== cls; });
+  if(!yes.length || no.length < 3) return null;
+  var right = pick(yes), wrongs = shuffle(no).slice(0, 3);
+  return {
+    type:'Find the ' + cls + ' ' + fam, topic:'isocls', chapter:'iso_class',
+    stem:'Which of these is a ' + cls + ' ' + fam + '?',
+    input:'mc', opts:mcOpts(right.name, wrongs.map(function(e){ return {name:e.name, why:clsOf(e)}; })), answer:right.name,
+    explain:right.name + ' is ' + cls + ': the carbon carrying the ' + (fam === 'alcohol' ? 'OH' : 'halogen') + ' is bonded to ' +
+      {primary:'one other carbon', secondary:'two other carbons', tertiary:'three other carbons'}[cls] + '.'
+  };
+};
+
+// replaces the original fixed-list version: counts come from the library, with an explicit scope
+var COUNT_SETS = [
+  {f:'C4H10', fams:['alkane'], whole:true}, {f:'C5H12', fams:['alkane'], whole:true}, {f:'C6H14', fams:['alkane'], whole:true},
+  {f:'C3H7Cl', fams:['halogenoalkane'], whole:true}, {f:'C4H9Cl', fams:['halogenoalkane'], whole:true}, {f:'C4H9Br', fams:['halogenoalkane'], whole:true},
+  {f:'C3H8O', fams:['alcohol']}, {f:'C4H10O', fams:['alcohol']}, {f:'C5H12O', fams:['alcohol']},
+  {f:'C3H8O', fams:['alcohol','ether'], whole:true}, {f:'C4H10O', fams:['alcohol','ether'], whole:true},
+  {f:'C4H8O', fams:['aldehyde','ketone']}, {f:'C5H10O', fams:['aldehyde','ketone']},
+  {f:'C4H8O2', fams:['carboxylic acid']}, {f:'C5H10O2', fams:['carboxylic acid']},
+  {f:'C4H8', fams:['alkene']}, {f:'C5H10', fams:['alkene']}
+];
+GENS.isomer_count = function(){
+  var s = pick(COUNT_SETS);
+  var list = isoByFormula()[s.f].filter(function(e){ return s.fams.indexOf(e.fam) >= 0; });
+  var n = list.length;
+  var scope = s.whole ? '' : ' are ' + s.fams.map(function(f){ return PLURAL[f]; }).join(' or ') + (s.fams[0] === 'alkene' ? ' (ignore cis–trans isomers)' : '');
+  var wrongs = shuffle([n-2, n-1, n+1, n+2].filter(function(x){ return x > 0; })).slice(0, 3).map(String);
+  return {
+    type:'Count the isomers', topic:'isocount', chapter:'iso_count',
+    stem: s.whole ? 'How many structural isomers have the molecular formula ' + s.f + '?' : 'How many structural isomers of ' + s.f + scope + '?',
+    input:'mc', opts:mcOpts(String(n), wrongs), answer:String(n),
+    explain:'There are ' + n + ': ' + list.map(function(e){ return e.name; }).join(', ') + '.'
+  };
+};
+
+/* ---- HL: cis–trans ---- */
+function ctCandidates(){
+  var lib = isoLibrary().filter(function(e){ return e.fam === 'alkene' && e.C >= 3; }).map(function(e){
+    return {name:e.name, yes:cisTransPossible(e.m), why:cisTransPossible(e.m) ? '' : whyNoCisTrans(e.m), draw:skelBox(e.m)};
+  });
+  var extra = CT_EXTRA.map(function(e){ return {name:e.name, yes:e.yes, why:e.why || '', draw:condBox(e.cond)}; });
+  var rings = CT_RINGS.map(function(e){ return {name:e.name, yes:e.yes, why:e.why || '', draw:ringSVG(e.ring, e.subs), ring:true}; });
+  return {lib:lib, extra:extra, rings:rings};
+}
+GENS.ct_yesno = function(){
+  var c = ctCandidates(), r = Math.random();
+  var pool = r < 0.5 ? c.lib : (r < 0.75 ? c.extra : c.rings);
+  var want = Math.random() < 0.5;
+  var cand = pool.filter(function(x){ return x.yes === want; });
+  var x = pick(cand.length ? cand : pool);
+  var ans = x.yes ? 'Yes' : 'No';
+  return {
+    type:'Cis–trans possible?', topic:'cistrans', chapter:'cistrans', hl:true,
+    stem:'Can ' + x.name + ' exist as cis and trans isomers?',
+    html:x.draw,
+    input:'mc', opts:mcOpts(ans, [ans === 'Yes' ? 'No' : 'Yes']), answer:ans,
+    explain: x.yes
+      ? (x.ring ? 'Two ring carbons each carry a substituent and an H, and the ring prevents rotation — the groups can be on the same face (cis) or opposite faces (trans).'
+                : 'Rotation about C=C is restricted and each carbon of the double bond carries two different groups.')
+      : 'No — ' + x.why
+  };
+};
+GENS.ct_which = function(){
+  var c = ctCandidates(), all = c.lib.concat(c.extra, c.rings);
+  var right = pick(all.filter(function(x){ return x.yes; }));
+  var wrong = shuffle(all.filter(function(x){ return !x.yes; })).slice(0, 3);
+  return {
+    type:'Which shows cis–trans?', topic:'cistrans', chapter:'cistrans', hl:true,
+    stem:'Which compound can exist as cis–trans isomers?',
+    input:'mc', opts:mcOpts(right.name, wrong.map(function(w){ return {name:w.name, why:'no — ' + w.why}; })), answer:right.name,
+    explain:right.name + ' has restricted rotation and two different groups on each of the two carbons involved. ' + wrong.map(function(w){ return w.name + ': ' + w.why; }).join(' ')
+  };
+};
+GENS.ct_label = function(){
+  var a = pick(CT_ALKENES), cis = Math.random() < 0.5, low = Math.random() < 0.5, swap = Math.random() < 0.5;
+  // left carbon carries a, right carbon carries b; positions chosen to show cis or trans
+  var L = low ? ['H', a.a] : [a.a, 'H'];
+  var R = cis ? (low ? ['H', a.b] : [a.b, 'H']) : (low ? [a.b, 'H'] : ['H', a.b]);
+  if(swap){ var t = L; L = R; R = t; }
+  var ans = (cis ? 'cis-' : 'trans-') + a.name;
+  return {
+    type:'Cis or trans?', topic:'cistrans', chapter:'cistrans', hl:true,
+    stem:'Name this stereoisomer.',
+    html:alkeneSVG(L[0], L[1], R[0], R[1]),
+    input:'mc', opts:mcOpts(ans, [(cis ? 'trans-' : 'cis-') + a.name]), answer:ans,
+    explain:'The two non-hydrogen groups (' + a.a + ' and ' + a.b + ') are on ' + (cis ? 'the same side' : 'opposite sides') + ' of the C=C → ' + (cis ? 'cis' : 'trans') + '.'
+  };
+};
+var STEREO_FACTS = [
+  {t:'cistrans', q:'Why can cis- and trans-but-2-ene not interconvert at room temperature?', a:'Rotation about the C=C bond is restricted — the π bond would have to break', w:['The C–C single bonds cannot rotate','The molecules are too heavy to rotate','The two isomers have different molecular formulas']},
+  {t:'cistrans', q:'Why does but-1-ene not show cis–trans isomerism?', a:'One carbon of the C=C carries two identical groups (two H atoms)', w:['It has no C=C double bond','Its C=C bond can rotate freely','It has too few carbon atoms']},
+  {t:'cistrans', q:'Which conditions together give cis–trans isomerism?', a:'Restricted rotation, and two different groups on each of the two carbons involved', w:['A chiral carbon and a C=C bond','Free rotation and four different groups on one carbon','A C=C bond anywhere in the molecule']},
+  {t:'cistrans', q:'cis-1,2-dichloroethene boils at a higher temperature than trans-1,2-dichloroethene. Why?', a:'The cis isomer is polar; in the trans isomer the C–Cl bond dipoles cancel', w:['The cis isomer has a greater molar mass','The trans isomer forms hydrogen bonds','The cis isomer has stronger covalent bonds']},
+  {t:'cistrans', q:'Which notation does the IB assess for naming these isomers?', a:'cis- and trans- (E/Z naming is not assessed)', w:['E/Z only','R/S','(+) and (−)']},
+  {t:'cistrans', q:'In which ring sizes does the IB expect you to recognise cis–trans isomerism?', a:'Three- and four-carbon rings (C3 and C4)', w:['Six-carbon rings only','Any ring, but only if it contains a double bond','None — only alkenes show it']},
+  {t:'cistrans', q:'Stereoisomers have…', a:'the same connectivity but a different arrangement of atoms in space', w:['the same molecular formula but a different connectivity','different molecular formulas','the same 3D arrangement but different bonds']},
+  {t:'optical', q:'What is a racemic mixture?', a:'An equimolar (50 : 50) mixture of two enantiomers', w:['A mixture of cis and trans isomers','A pure sample of one enantiomer','Any mixture of structural isomers']},
+  {t:'optical', q:'How do a pair of enantiomers affect plane-polarised light?', a:'They rotate it by equal angles in opposite directions', w:['Both rotate it in the same direction','Neither rotates it','One rotates it, the other absorbs it']},
+  {t:'optical', q:'Why is a racemic mixture optically inactive?', a:'The equal and opposite rotations of the two enantiomers cancel', w:['It contains no chiral molecules','Racemic mixtures absorb polarised light','The enantiomers react with each other']},
+  {t:'optical', q:'Which property is different for two enantiomers?', a:'The direction in which they rotate plane-polarised light', w:['Boiling point','Density','Molar mass']},
+  {t:'optical', q:'Which instrument measures the rotation of plane-polarised light?', a:'A polarimeter', w:['A mass spectrometer','A colorimeter','A pH meter']},
+  {t:'optical', q:'Enantiomers are best described as…', a:'non-superimposable mirror images', w:['superimposable mirror images','isomers with different connectivity','molecules with restricted rotation about a double bond']},
+  {t:'optical', q:'A chiral carbon atom is a carbon bonded to…', a:'four different atoms or groups', w:['four identical groups','a double bond','three different groups and a lone pair']},
+  {t:'optical', q:'How do two enantiomers compare chemically?', a:'They react identically, except with other chiral molecules (such as enzymes)', w:['They have completely different reactions','One enantiomer never reacts','They react differently with every reagent']},
+  {t:'optical', q:'In a wedge–dash drawing, a hashed (dashed) wedge shows a bond that…', a:'points away from the viewer, behind the page', w:['points towards the viewer','lies in the plane of the page','is a double bond']}
+];
+function factQ(topic){
+  var f = pick(STEREO_FACTS.filter(function(x){ return x.t === topic; }));
+  return {
+    type: topic === 'optical' ? 'Optical isomerism — concepts' : 'Cis–trans — concepts', topic:topic, chapter: topic === 'optical' ? 'optical' : 'cistrans', hl:true,
+    stem:f.q, input:'mc', opts:mcOpts(f.a, f.w), answer:f.a, explain:f.a + '.'
+  };
+}
+GENS.ct_concept = function(){ return factQ('cistrans'); };
+GENS.opt_concept = function(){ return factQ('optical'); };
+
+/* ---- HL: optical ---- */
+// short formula for the group reached from one atom into another (e.g. CH3, C2H5, OH, COOH)
+function branchFormula(g, from, to){
+  // C = carbons, HC = hydrogens on carbon, OH = hydroxyl oxygens, Od = carbonyl oxygens
+  var cnt = {C:0, HC:0, OH:0, Od:0, Cl:0, Br:0, F:0, I:0}, a0 = g.at[to];
+  (function walk(f, t){
+    var a = g.at[t];
+    if(a.el === 'C'){ cnt.C++; cnt.HC += a.h; }
+    else if(a.el === 'O'){ if(a.h) cnt.OH++; else cnt.Od++; }
+    else cnt[a.el]++;
+    a.nb.forEach(function(x){ if(x.i !== f) walk(t, x.i); });
+  })(from, to);
+  if(a0.el !== 'C') return a0.el + (a0.h ? 'H' + (a0.h > 1 ? a0.h : '') : '');
+  if(cnt.C === 1 && cnt.Od === 1 && cnt.OH === 1) return 'COOH';
+  if(cnt.C === 1 && cnt.Od === 1 && cnt.HC === 1) return 'CHO';
+  var hal = ['Cl','Br','F','I'].filter(function(h){ return cnt[h]; }).join('');
+  var hasC_O = a0.nb.some(function(x){ return x.o === 2 && g.at[x.i].el === 'O'; });
+  if(hasC_O){   // the branch starts at a C=O carbon: write it as CO + the rest
+    var rc = cnt.C - 1;
+    return 'CO' + (rc === 1 ? 'CH' + cnt.HC : 'C' + rc + 'H' + cnt.HC) + hal;
+  }
+  return 'C' + (cnt.C > 1 ? cnt.C : '') + 'H' + (cnt.HC > 1 ? cnt.HC : '') + (cnt.OH ? 'OH' : '') + hal;
+}
+function groupsText(m, p){
+  var g = molGraph(m), idx = g.chain[p], out = [];
+  g.at[idx].nb.forEach(function(x){ out.push(branchFormula(g, idx, x.i)); });
+  for(var k=0;k<g.at[idx].h;k++) out.push('H');
+  return out.join(', ');
+}
+GENS.ch_which_carbon = function(){
+  var lib = isoLibrary().filter(function(e){ return e.C >= 4 && chiralCentres(e.m).length === 1; });
+  var x = pick(lib), p = chiralCentres(x.m)[0];
+  var wrongs = shuffle(Array.from({length:x.m.n}, function(_, i){ return i + 1; }).filter(function(i){ return i !== p; })).slice(0, 3);
+  return {
+    type:'Find the chiral carbon', topic:'optical', chapter:'chiral', hl:true,
+    stem:'Which carbon atom in this molecule is chiral?',
+    sub:'Carbons on the main chain are labelled.',
+    html:skelBox(x.m, x.name, {num:true}),
+    input:'mc', opts:mcOpts('C' + p, wrongs.map(function(i){ return {name:'C' + i, why:'C' + i + ' carries ' + groupsText(x.m, i)}; })), answer:'C' + p,
+    explain:'C' + p + ' is bonded to four different groups: ' + groupsText(x.m, p) + '.',
+    fbHTML:skelBox(x.m, 'chiral carbon marked *', {num:true, star:[p]})
+  };
+};
+GENS.ch_count = function(){
+  var want = pick([0, 1, 1, 2]);
+  var lib = isoLibrary().filter(function(e){ return e.C >= 4 && chiralCentres(e.m).length === want; });
+  if(!lib.length) return null;
+  var x = pick(lib), cs = chiralCentres(x.m);
+  return {
+    type:'Count the chiral carbons', topic:'optical', chapter:'chiral', hl:true,
+    stem:'How many chiral carbon atoms does ' + x.name + ' contain?',
+    html:skelBox(x.m, null, {num:true}),
+    input:'mc', opts:mcOpts(String(want), ['0','1','2','3'].filter(function(s){ return s !== String(want); })), answer:String(want),
+    explain: cs.length ? cs.map(function(p){ return 'C' + p + ' (' + groupsText(x.m, p) + ')'; }).join('; ') + ' — four different groups each.'
+      : 'No carbon carries four different groups, so the molecule is not chiral.',
+    fbHTML: cs.length ? skelBox(x.m, 'chiral carbons marked *', {num:true, star:cs}) : ''
+  };
+};
+GENS.ch_which_mol = function(){
+  var lib = isoLibrary().filter(function(e){ return e.C >= 3 && e.C <= 6; });
+  var yes = lib.filter(function(e){ return chiralCentres(e.m).length >= 1; }), no = lib.filter(function(e){ return chiralCentres(e.m).length === 0; });
+  var right = pick(yes), wrong = shuffle(no.filter(function(e){ return e.fam === right.fam || Math.random() < 0.3; })).slice(0, 3);
+  if(wrong.length < 3) return null;
+  var p = chiralCentres(right.m)[0];
+  return {
+    type:'Which molecule is chiral?', topic:'optical', chapter:'chiral', hl:true,
+    stem:'Which compound exists as a pair of enantiomers?',
+    input:'mc', opts:mcOpts(right.name, wrong.map(function(e){ return {name:e.name, why:'it has no carbon with four different groups'}; })), answer:right.name,
+    explain:right.name + ' has a chiral carbon: C' + p + ' carries ' + groupsText(right.m, p) + '. The others have no carbon with four different groups.'
+  };
+};
+GENS.ch_mirror = function(){
+  var s = pick(WEDGE_SETS), g = shuffle(s.g.slice());
+  var ans = s.chiral ? 'Enantiomers' : 'Identical — the same molecule';
+  return {
+    type:'Mirror images', topic:'optical', chapter:'chiral', hl:true,
+    stem:'Structure B is the mirror image of structure A. How are they related?',
+    html:wedgePairSVG(g, 'A', 'B'),
+    input:'mc', opts:mcOpts(ans, ['Enantiomers','Identical — the same molecule','Cis–trans isomers','Structural isomers'].filter(function(x){ return x !== ans; })), answer:ans,
+    explain: s.chiral
+      ? 'The central carbon carries four different groups (' + s.g.join(', ') + '), so the mirror images cannot be superimposed: they are enantiomers of ' + s.name + '.'
+      : 'The central carbon carries two identical groups, so the mirror image can be rotated onto the original — ' + s.name + ' is not chiral.'
+  };
+};
+GENS.stereo_kind = function(){
+  var kind = pick(['ct','opt','struct','same']), html, ans, why;
+  if(kind === 'ct'){
+    var a = pick(CT_ALKENES);
+    html = '<div class="svgpair">' + alkeneSVG(a.a, 'H', a.b, 'H', 'A') + alkeneSVG(a.a, 'H', 'H', a.b, 'B') + '</div>';
+    ans = 'Cis–trans isomers'; why = 'A is cis- and B is trans-' + a.name + ': same connectivity, different arrangement about a C=C that cannot rotate.';
+  } else if(kind === 'opt' || kind === 'same'){
+    var s = pick(WEDGE_SETS.filter(function(x){ return x.chiral === (kind === 'opt'); }));
+    html = wedgePairSVG(shuffle(s.g.slice()), 'A', 'B');
+    ans = kind === 'opt' ? 'Optical isomers (enantiomers)' : 'The same molecule';
+    why = kind === 'opt' ? 'Non-superimposable mirror images of ' + s.name + ' — the carbon has four different groups.' : s.name + ' has two identical groups on the carbon, so its mirror image is superimposable.';
+  } else {
+    var pr = isoPairOf('position');
+    if(!pr) return null;
+    html = '<div class="svgpair">' + skelBox(pr[0].m, 'A') + skelBox(pr[1].m, 'B') + '</div>';
+    ans = 'Structural isomers'; why = pr[0].name + ' and ' + pr[1].name + ' have different connectivity — that is structural, not stereo, isomerism.';
+  }
+  return {
+    type:'What kind of isomers?', topic: kind === 'ct' ? 'cistrans' : 'optical', chapter:'stereo', hl:true,
+    stem:'What is the relationship between A and B?',
+    html:html, input:'mc',
+    opts:mcOpts(ans, ['Cis–trans isomers','Optical isomers (enantiomers)','Structural isomers','The same molecule'].filter(function(x){ return x !== ans; })), answer:ans,
+    explain:why
+  };
+};
+
+QTYPES.push(
+  {k:'iso_relation',  w:3, topics:['isomer'],   unit:'iso'},
+  {k:'iso_type',      w:4, topics:['isomer','isofg'], unit:'iso'},
+  {k:'iso_which',     w:3, topics:['isomer'],   unit:'iso'},
+  {k:'iso_typed',     w:2, topics:['isomer'],   unit:'iso'},
+  {k:'fg_series',     w:2, topics:['isofg'],    unit:'iso'},
+  {k:'fg_general',    w:2, topics:['isofg'],    unit:'iso'},
+  {k:'fg_compound',   w:3, topics:['isofg'],    unit:'iso'},
+  {k:'cls_halo',      w:2, topics:['isocls'],   unit:'iso'},
+  {k:'cls_amine',     w:2, topics:['isocls'],   unit:'iso'},
+  {k:'cls_pick',      w:2, topics:['isocls'],   unit:'iso'},
+  {k:'ct_yesno',      w:3, topics:['cistrans'], unit:'iso', hl:true},
+  {k:'ct_which',      w:2, topics:['cistrans'], unit:'iso', hl:true},
+  {k:'ct_label',      w:3, topics:['cistrans'], unit:'iso', hl:true},
+  {k:'ct_concept',    w:2, topics:['cistrans'], unit:'iso', hl:true},
+  {k:'ch_which_carbon', w:3, topics:['optical'], unit:'iso', hl:true},
+  {k:'ch_count',      w:2, topics:['optical'],  unit:'iso', hl:true},
+  {k:'ch_which_mol',  w:2, topics:['optical'],  unit:'iso', hl:true},
+  {k:'ch_mirror',     w:3, topics:['optical'],  unit:'iso', hl:true},
+  {k:'opt_concept',   w:3, topics:['optical'],  unit:'iso', hl:true},
+  {k:'stereo_kind',   w:2, topics:['cistrans','optical'], unit:'iso', hl:true}
+);
+QTYPES.forEach(function(t){ if(t.k === 'alcohol_class') t.topics.push('isocls'); });
+
+MODES.push(
+  {k:'isoq',   unit:'iso', t:'Isomer quick test', d:'Ten mixed questions across structural isomers — and stereoisomers at HL.', n:10, level:2, units:['iso'], meta:'10 questions'},
+  {k:'isost',  unit:'iso', t:'Structural isomers', d:'Same or isomer, chain / position / functional group, name an isomer, count the isomers.', n:15, level:2,
+   only:['iso_relation','iso_type','iso_which','iso_typed','isomer_count','same_or_different'], meta:'15 questions · SL + HL'},
+  {k:'isofg',  unit:'iso', t:'Functional group pairs', d:'Which series share a general formula — alcohol / ether, aldehyde / ketone, acid / ester.', n:12, level:2,
+   only:['fg_series','fg_general','fg_compound'], meta:'12 questions · SL + HL'},
+  {k:'isocl',  unit:'iso', t:'Primary, secondary, tertiary', d:'Classify alcohols, halogenoalkanes and amines — including the amine trap.', n:12, level:2,
+   only:['cls_halo','cls_amine','cls_pick','alcohol_class'], meta:'12 questions · SL + HL'},
+  {k:'isoct',  unit:'iso', hl:true, t:'Cis–trans', d:'Can it show cis–trans? Name cis or trans. Alkenes and C3 / C4 rings.', n:12, level:2,
+   only:['ct_yesno','ct_which','ct_label','ct_concept','stereo_kind'], meta:'12 questions'},
+  {k:'isoopt', unit:'iso', hl:true, t:'Chirality & optical', d:'Find the chiral carbon, mirror-image pairs, racemic mixtures, plane-polarised light.', n:12, level:2,
+   only:['ch_which_carbon','ch_count','ch_which_mol','ch_mirror','opt_concept','stereo_kind'], meta:'12 questions'}
+);
+
+/* ---------- unit 03 chapters ---------- */
+function eqDisplay(r){ return '<div class="eqbox" style="font-size:18px">' + eqHTML(r) + '</div>'; }
+function rxnBy(cat, firstF){ return OTHER_RXNS.filter(function(r){ return r.cat === cat && r.re[0].f === firstF; })[0]; }
+function fx(t, s){ return '<div class="fx">' + esc(t) + (s ? '<small>' + esc(s) + '</small>' : '') + '</div>'; }
+
+CHAPTERS.push(
+{
+ id:'eq_lang', unit:'eq', ref:'R2.1.1', title:'Writing chemical equations', tag:'core', topics:['eqbal','eqknow'],
+ body:function(){ return `
+  <p>A chemical equation shows the <strong>ratio</strong> in which reactants react and products form. Atoms are neither created nor destroyed, so every atom on the left must appear on the right.</p>
+  ${eqDisplay(acidReaction('HCl','carbonate','Ca'))}
+  <h3>Three kinds of number</h3>
+  <table><tr><th>Number</th><th>Where</th><th>Meaning</th><th>Can you change it?</th></tr>
+  <tr><td>coefficient</td><td>in front: <code>2HCl</code></td><td>how many formula units / moles</td><td><strong>yes</strong> — this is balancing</td></tr>
+  <tr><td>subscript</td><td>after a symbol: <code>CaCl2</code></td><td>atoms in one formula unit</td><td><strong>never</strong> — it is fixed by bonding / charges</td></tr>
+  <tr><td>bracket subscript</td><td><code>Ca(OH)2</code></td><td>multiplies everything inside</td><td><strong>never</strong></td></tr></table>
+  <h3>State symbols</h3>
+  <p>The IB expects state symbols in equations: <code>(s)</code> solid, <code>(l)</code> liquid, <code>(g)</code> gas, <code>(aq)</code> dissolved in water. Water itself is <code>(l)</code>; acids and soluble salts in solution are <code>(aq)</code>; metals, oxides, carbonates and precipitates are usually <code>(s)</code>.</p>
+  ${rule('<p style="margin:0">Word equation → formulas → balance → states. Unless told otherwise, "write an equation" means a <strong>balanced formula equation</strong>.</p>')}
+  ${warn('<p style="margin:0">Changing a subscript changes the substance. Turning H2O into H2O2 to "fix" the oxygen count makes hydrogen peroxide, not water.</p>')}`;
+ },
+ check:{q:'In 3Ca(OH)2, how many O atoms are there?', a:'6 — the coefficient 3 multiplies the bracket subscript 2'}
+},
+{
+ id:'eq_balance', unit:'eq', ref:'R2.1.1', title:'Balancing equations', tag:'core', topics:['eqbal'],
+ body:function(){ var r = combustion(FUELS[3], 'complete'); return `
+  <p>Balance by inspection, in a fixed order, and check with an atom tally.</p>
+  <ol>
+   <li>Write every formula correctly first — get the salt formulas from ion charges.</li>
+   <li>Balance <strong>metals</strong>, then <strong>non-metals other than H and O</strong>.</li>
+   <li>Keep <strong>polyatomic ions</strong> that survive unchanged (SO4, NO3, CO3) together as one block.</li>
+   <li>Balance <strong>H</strong>, then <strong>O</strong> last — and free elements (O2, H2, Cl2) very last.</li>
+   <li>If you need a half (e.g. 13/2 O2), double <strong>every</strong> coefficient.</li>
+   <li>Tally every element on both sides.</li>
+  </ol>
+  <h3>Worked: butane burning</h3>
+  <p>C4H10 + O2 → CO2 + H2O. Carbon: 4CO2. Hydrogen: 10 H → 5H2O. Oxygen on the right: 8 + 5 = 13 atoms → 13/2 O2. Double everything:</p>
+  ${eqDisplay(r)}
+  ${rule('<p style="margin:0">Combustion shortcut for CxHyOz: O2 needed = x + y/4 − z/2. If that is not whole, double the equation.</p>')}
+  ${warn('<p style="margin:0">Give the lowest whole-number ratio. 4H2 + 2O2 → 4H2O is balanced but not simplified — write 2H2 + O2 → 2H2O.</p>')}`;
+ },
+ check:{q:'Balance: Al + O2 → Al2O3', a:'4Al + 3O2 → 2Al2O3'}
+},
+{
+ id:'eq_formulas', unit:'eq', ref:'R2.1.1', title:'Salt formulas from ion charges', tag:'core', topics:['eqpred'],
+ body:function(){ return `
+  <p>Subscripts in an ionic formula are whatever makes the charges add up to <strong>zero</strong>. Work them out before balancing — never adjust them while balancing.</p>
+  <table><tr><th>Cation</th><th>Anion</th><th>Charges</th><th>Formula</th></tr>
+  <tr><td>Na⁺</td><td>Cl⁻</td><td>+1, −1</td><td class="f2">NaCl</td></tr>
+  <tr><td>Ca²⁺</td><td>Cl⁻</td><td>+2, 2 × (−1)</td><td class="f2">CaCl2</td></tr>
+  <tr><td>Al³⁺</td><td>SO4²⁻</td><td>2 × (+3), 3 × (−2)</td><td class="f2">Al2(SO4)3</td></tr>
+  <tr><td>NH4⁺</td><td>SO4²⁻</td><td>2 × (+1), −2</td><td class="f2">(NH4)2SO4</td></tr>
+  <tr><td>Mg²⁺</td><td>NO3⁻</td><td>+2, 2 × (−1)</td><td class="f2">Mg(NO3)2</td></tr></table>
+  ${rule('<p style="margin:0">Use the lowest common multiple of the two charges. Brackets go round a polyatomic ion <strong>only</strong> when you need more than one of it: Mg(NO3)2, but NaNO3.</p>')}
+  <h3>Salts named after their acid</h3>
+  <table><tr><th>Acid</th><th>Anion</th><th>Salt</th></tr>
+  <tr><td>hydrochloric acid, HCl</td><td class="f2">Cl⁻</td><td>chloride</td></tr>
+  <tr><td>nitric acid, HNO3</td><td class="f2">NO3⁻</td><td>nitrate</td></tr>
+  <tr><td>sulfuric acid, H2SO4</td><td class="f2">SO4²⁻</td><td>sulfate</td></tr>
+  <tr><td>ethanoic acid, CH3COOH</td><td class="f2">CH3COO⁻</td><td>ethanoate</td></tr>
+  <tr><td>phosphoric acid, H3PO4</td><td class="f2">PO4³⁻</td><td>phosphate</td></tr></table>
+  ${warn('<p style="margin:0">"CaNO32" is not Ca(NO3)2 — without brackets it means one NO and 32 oxygens. The full polyatomic ion list is in the Ions tab.</p>')}`;
+ },
+ check:{q:'Write the formula of iron(III) sulfate.', a:'Fe2(SO4)3 — 2 × (+3) = +6 balances 3 × (−2) = −6'}
+},
+{
+ id:'eq_acids', unit:'eq', ref:'R3.1.7 · R3.2.4', title:'Acid reactions you must know', tag:'core', topics:['eqknow','eqpred'],
+ body:function(){ return `
+  <p>The IB expects you to write equations for acids reacting with metal oxides, metal hydroxides, carbonates and hydrogencarbonates (R3.1.7), with ammonia, and with reactive metals in dilute HCl and H2SO4 (R3.2.4).</p>
+  <table><tr><th>Acid +</th><th>Products</th><th>Example</th></tr>
+  <tr><td>metal hydroxide</td><td>salt + water</td><td class="f2">${fF(eqText(acidReaction('H2SO4','hydroxide','Na')))}</td></tr>
+  <tr><td>metal oxide</td><td>salt + water</td><td class="f2">${fF(eqText(acidReaction('HCl','oxide','Cu')))}</td></tr>
+  <tr><td>carbonate</td><td>salt + water + carbon dioxide</td><td class="f2">${fF(eqText(acidReaction('HCl','carbonate','Ca')))}</td></tr>
+  <tr><td>hydrogencarbonate</td><td>salt + water + carbon dioxide</td><td class="f2">${fF(eqText(acidReaction('HNO3','hydrogencarbonate','Na')))}</td></tr>
+  <tr><td>ammonia</td><td>ammonium salt only</td><td class="f2">${fF(eqText(acidReaction('H2SO4','ammonia','NH4')))}</td></tr>
+  <tr><td>reactive metal</td><td>salt + hydrogen</td><td class="f2">${fF(eqText(acidReaction('HCl','metal','Mg')))}</td></tr></table>
+  ${rule('<p style="margin:0">Neutralisation of any strong acid by a strong base is, at ion level, <code>H⁺(aq) + OH⁻(aq) → H2O(l)</code>. The other ions are spectators.</p>')}
+  <h3>Parent acid and base</h3>
+  <p>Every salt comes from an acid and a base: potassium nitrate from nitric acid + potassium hydroxide; ammonium chloride from hydrochloric acid + ammonia; sodium ethanoate from ethanoic acid + sodium hydroxide.</p>
+  ${warn('<p style="margin:0">Only metals above hydrogen in the reactivity series release H2 from dilute acids. Copper and silver do not react with dilute HCl or H2SO4.</p>')}
+  ${warn('<p style="margin:0">Carbonates and hydrogencarbonates give <strong>three</strong> products. Forgetting the CO2 or the water is the most common error.</p>')}`;
+ },
+ check:{q:'Products of zinc + dilute sulfuric acid?', a:'Zinc sulfate and hydrogen: Zn + H2SO4 → ZnSO4 + H2'}
+},
+{
+ id:'eq_combustion', unit:'eq', ref:'R1.3.1–1.3.2', title:'Combustion', tag:'core', topics:['eqknow','eqbal'],
+ body:function(){ var f = FUELS.filter(function(x){ return x.f === 'C2H5OH'; })[0]; return `
+  <p>Hydrocarbons and alcohols burn in oxygen. What forms depends on how much oxygen is available.</p>
+  <h3>Complete combustion — plenty of oxygen</h3>
+  ${eqDisplay(combustion(f, 'complete'))}
+  <h3>Incomplete combustion — limited oxygen</h3>
+  <p>Carbon monoxide (toxic) or carbon (soot) forms instead of carbon dioxide:</p>
+  ${eqDisplay(combustion(FUELS[0], 'CO'))}
+  ${eqDisplay(combustion(FUELS[0], 'C'))}
+  <h3>Metals and non-metals</h3>
+  ${eqDisplay(rxnBy('metal + oxygen','Mg'))}
+  ${eqDisplay(rxnBy('non-metal + oxygen','S'))}
+  ${rule('<p style="margin:0">Complete: CO2 + H2O. Incomplete: CO and/or C + H2O. Water forms either way — the hydrogen always burns.</p>')}`;
+ },
+ check:{q:'Balance the complete combustion of propane.', a:'C3H8 + 5O2 → 3CO2 + 4H2O'}
+},
+{
+ id:'eq_oxides', unit:'eq', ref:'S3.1.5', title:'Oxides and water', tag:'core', topics:['eqknow'],
+ body:function(){ return `
+  <p>Oxides of group 1 and 2 metals are <strong>basic</strong>: with water they form hydroxides. Oxides of carbon and sulfur are <strong>acidic</strong>: with water they form acids.</p>
+  ${eqDisplay(rxnBy('metal oxide + water','Na2O'))}
+  ${eqDisplay(rxnBy('metal oxide + water','CaO'))}
+  ${eqDisplay(rxnBy('non-metal oxide + water','CO2'))}
+  ${eqDisplay(rxnBy('non-metal oxide + water','SO2'))}
+  ${eqDisplay(rxnBy('non-metal oxide + water','SO3'))}
+  ${rule('<p style="margin:0">Across period 3 the oxides change from basic (Na2O, MgO) through amphoteric (Al2O3) to acidic (P4O10, SO3).</p>')}
+  <p>Gaseous non-metal oxides cause <strong>acid rain</strong> (SO2, nitrogen oxides), and rising CO2 dissolving in the sea causes <strong>ocean acidification</strong>.</p>
+  ${warn('<p style="margin:0">CO is a neutral oxide — it does not form an acid with water.</p>')}`;
+ },
+ check:{q:'What forms when sulfur trioxide reacts with water?', a:'Sulfuric acid: SO3 + H2O → H2SO4'}
+},
+{
+ id:'eq_other', unit:'eq', ref:'balancing practice', title:'Other equations you will meet', tag:'ext', topics:['eqbal'],
+ body:function(){ return `
+  <p>These appear as balancing practice and in data questions. You should be able to balance them when the formulas are given; you are not expected to predict the products.</p>
+  <h3>Thermal decomposition</h3>${eqDisplay(rxnBy('decomposition','CaCO3'))}
+  <h3>Displacement</h3>${eqDisplay(rxnBy('displacement','Cl2'))}
+  <h3>Precipitation</h3>${eqDisplay(rxnBy('precipitation','Pb(NO3)2'))}
+  <h3>Synthesis</h3>${eqDisplay(rxnBy('synthesis','N2'))}
+  <h3>Redox — extracting iron</h3>${eqDisplay(rxnBy('redox','Fe2O3'))}`;
+ },
+ check:{q:'Balance: KClO3 → KCl + O2', a:'2KClO3 → 2KCl + 3O2'}
+},
+{
+ id:'eq_mole', unit:'eq', ref:'S1.4', title:'Moles and molar mass', tag:'core', topics:['mole'],
+ body:function(){ return `
+  <p>The <strong>mole</strong> is the chemist's counting unit: one mole contains 6.02 × 10²³ particles (the Avogadro constant, N<sub>A</sub>).</p>
+  ${fx('n = m ÷ M', 'n in mol · m in g · M in g mol⁻¹ — in the data booklet')}
+  ${fx('N = n × 6.02 × 10²³', 'number of particles')}
+  <h3>Molar mass</h3>
+  <p>Add up the relative atomic masses from the data booklet, using every atom in the formula.</p>
+  <p class="mono">M(CaCO3) = ${esc(mmWorking('CaCO3'))}</p>
+  <p class="mono">M(Ca(OH)2) = ${esc(mmWorking('Ca(OH)2'))}</p>
+  ${rule('<p style="margin:0">This app always shows the atomic masses you need beside a calculation, using the exact data-booklet values.</p>')}
+  ${warn('<p style="margin:0">Brackets multiply: Ca(OH)2 has two O and two H. Missing this is the most common molar mass error.</p>')}`;
+ },
+ check:{q:'How many moles are in 9.01 g of water (M = 18.02)?', a:'0.500 mol'}
+},
+{
+ id:'eq_conc', unit:'eq', ref:'S1.4.5 · S1.5', title:'Concentration and gas volumes', tag:'core', topics:['conc'],
+ body:function(){ return `
+  <h3>Solutions</h3>
+  ${fx('n = c × V', 'c in mol dm⁻³ · V in dm³ — in the data booklet as n = CV')}
+  <p>Volumes are often given in cm³: divide by 1000 to get dm³. 25.0 cm³ = 0.0250 dm³.</p>
+  <p>Square brackets mean concentration in mol dm⁻³: [NaOH] = 0.100 mol dm⁻³.</p>
+  <p>Mass concentration (g dm⁻³) = concentration (mol dm⁻³) × M.</p>
+  <h3>Gases at STP</h3>
+  ${fx('V = n × 22.7', 'V in dm³ at STP (273.15 K, 100 kPa) · Vm = 22.7 dm³ mol⁻¹ is in the data booklet')}
+  <p>Equal volumes of gases at the same temperature and pressure contain equal numbers of particles (Avogadro's law), so for gases the mole ratio is also the volume ratio.</p>
+  ${warn('<p style="margin:0">Forgetting to convert cm³ to dm³ makes an answer 1000 times too big — always check the units before you substitute.</p>')}`;
+ },
+ check:{q:'Moles of NaOH in 25.0 cm³ of 0.200 mol dm⁻³ solution?', a:'0.00500 mol'}
+},
+{
+ id:'eq_ratio', unit:'eq', ref:'R2.1.2', title:'Reacting masses', tag:'core', topics:['mole'],
+ body:function(){ return `
+  <p>The coefficients give the <strong>mole ratio</strong>. Every reacting-mass problem is the same three steps.</p>
+  <ol>
+   <li>Convert what you know to moles: n = m ÷ M (or n = cV, or V ÷ 22.7).</li>
+   <li>Use the mole ratio from the balanced equation.</li>
+   <li>Convert moles to what is asked: m = n × M (or c = n ÷ V, or V = n × 22.7).</li>
+  </ol>
+  <h3>Worked: CO2 from 5.00 g of CaCO3</h3>
+  ${eqDisplay(rxnBy('decomposition','CaCO3'))}
+  <ol class="steps">
+   <li>n(CaCO3) = 5.00 ÷ 100.09 = 0.04996 mol</li>
+   <li>Ratio CaCO3 : CO2 = 1 : 1 → n(CO2) = 0.04996 mol</li>
+   <li>m(CO2) = 0.04996 × 44.01 = <strong>2.20 g</strong> (or V = 0.04996 × 22.7 = 1.13 dm³ at STP)</li>
+  </ol>
+  ${rule('<p style="margin:0">Never use the mass ratio directly — only moles go through the equation.</p>')}`;
+ },
+ check:{q:'2Mg + O2 → 2MgO. Moles of MgO from 0.30 mol Mg?', a:'0.30 mol — the ratio is 2 : 2'}
+},
+{
+ id:'eq_limit', unit:'eq', ref:'R2.1.3', title:'Limiting and excess reactants', tag:'core', topics:['limit'],
+ body:function(){ return `
+  <p>Reactants are rarely mixed in exactly the ratio of the equation. The <strong>limiting reactant</strong> is used up first and decides how much product forms — the <strong>theoretical yield</strong>. The other reactant is in <strong>excess</strong>; some is left over.</p>
+  <h3>Method</h3>
+  <ol>
+   <li>Convert every reactant to moles.</li>
+   <li>Divide each by its coefficient. The <strong>smallest</strong> result is the limiting reactant.</li>
+   <li>Calculate product (and excess used) from the limiting reactant only.</li>
+  </ol>
+  <h3>Worked: 2.70 g Al with 4.00 g Cl2</h3>
+  ${eqDisplay(rxnBy('synthesis','Al'))}
+  <ol class="steps">
+   <li>n(Al) = 2.70 ÷ 26.98 = 0.1001 mol → ÷ 2 = 0.0500</li>
+   <li>n(Cl2) = 4.00 ÷ 70.90 = 0.05642 mol → ÷ 3 = 0.0188 → <strong>Cl2 is limiting</strong></li>
+   <li>n(AlCl3) = 0.05642 × 2/3 = 0.03761 mol → m = 0.03761 × 133.33 = <strong>5.01 g</strong></li>
+   <li>Al used = 0.03761 mol → excess Al left = (0.1001 − 0.03761) × 26.98 = <strong>1.69 g</strong></li>
+  </ol>
+  ${warn('<p style="margin:0">The reactant with the smaller mass, or the smaller number of moles, is not automatically limiting — you must account for the coefficients.</p>')}`;
+ },
+ check:{q:'N2 + 3H2 → 2NH3 with 1.0 mol N2 and 2.4 mol H2. Which is limiting?', a:'H2 — 1.0 mol N2 would need 3.0 mol H2'}
+},
+{
+ id:'eq_yield', unit:'eq', ref:'R2.1.4', title:'Percentage yield', tag:'core', topics:['yield'],
+ body:function(){ return `
+  ${fx('% yield = experimental yield ÷ theoretical yield × 100', 'not in the data booklet — learn it (this app shows it when needed)')}
+  <ul>
+   <li><strong>Theoretical yield</strong>: the maximum amount of product, calculated from the limiting reactant, assuming complete reaction.</li>
+   <li><strong>Experimental yield</strong>: the amount actually obtained.</li>
+  </ul>
+  <p>Use the same unit for both (both in g, or both in mol).</p>
+  <h3>Why yields fall short of 100 %</h3>
+  <ul>
+   <li>The reaction is incomplete or reversible (equilibrium).</li>
+   <li>Side reactions make other products.</li>
+   <li>Product is lost during transfer, filtration, recrystallisation or purification.</li>
+  </ul>
+  ${warn('<p style="margin:0">A yield above 100 % usually means the product is impure or still wet — not that extra product was made.</p>')}`;
+ },
+ check:{q:'Theoretical yield 8.40 g, obtained 6.72 g. % yield?', a:'80.0 %'}
+},
+{
+ id:'eq_error', unit:'eq', ref:'Tool 3', title:'Percentage error', tag:'core', topics:['perr'],
+ body:function(){ return `
+  ${fx('% error = |experimental − accepted| ÷ accepted × 100', 'not in the data booklet — "accepted" means the literature or true value')}
+  <p>Percentage error measures <strong>accuracy</strong>: how far your result is from the accepted value. Percentage uncertainty measures <strong>precision</strong>: the size of the measurement uncertainty relative to the value.</p>
+  <h3>Worked</h3>
+  <p>A student measures ΔHc of ethanol as −1090 kJ mol⁻¹. The data booklet value is −1367 kJ mol⁻¹.</p>
+  <ol class="steps"><li>|−1090 − (−1367)| = 277</li><li>277 ÷ 1367 × 100 = <strong>20.3 %</strong></li></ol>
+  ${rule('<p style="margin:0">If the % error is larger than the total % uncertainty, random error alone cannot explain the difference: a systematic error (such as heat loss) is present.</p>')}
+  ${warn('<p style="margin:0">Divide by the accepted value, not the experimental one, and use the size of the difference — % error is never negative.</p>')}`;
+ },
+ check:{q:'Accepted 4.18, measured 3.97. % error?', a:'5.02 %'}
+},
+{
+ id:'eq_aecon', unit:'eq', ref:'R2.1.5', title:'Atom economy', tag:'core', topics:['aecon'],
+ body:function(){ return `
+  ${fx('% atom economy = M(desired product) ÷ M(all reactants) × 100', 'in the data booklet · use the balanced equation’s coefficients')}
+  <p>Atom economy measures how much of the reactants’ mass ends up in the product you want. It is a green-chemistry measure, calculated from the equation alone.</p>
+  <h3>Worked: lime from limestone</h3>
+  ${eqDisplay(rxnBy('decomposition','CaCO3'))}
+  <p class="mono">56.08 ÷ 100.09 × 100 = 56.0 %</p>
+  ${rule('<p style="margin:0">Addition reactions with one product (ethene + steam → ethanol) have 100 % atom economy. Atom economy ≠ percentage yield: one is theoretical, the other experimental.</p>')}`;
+ },
+ check:{q:'Atom economy of N2 + 3H2 → 2NH3?', a:'100 % — there is only one product'}
+}
+);
+
+/* ---------- unit 03 question generators ---------- */
+function r3(lo, hi){ return parseFloat(sf(lo + Math.random()*(hi - lo), 3)); }
+function mm(f){ return molarMass(f); }
+function balanceSteps(r){
+  var all = r.re.concat(r.pr), t = tallyOf(all.map(function(s){ return s.f; }), r.co, r.re.length);
+  var tip = /combustion/.test(r.cat) ? 'Balance C first, then H, then O last; if O2 needs a half, double everything.'
+    : (/^acid/.test(r.cat) ? 'Fix the salt formula from the ion charges, balance the metal (or NH4) and the acid’s anion, then H, then O.'
+    : 'Balance elements that appear in only one formula on each side first; leave H, O and free elements (O2, H2, Cl2) until last.');
+  return [esc(tip), 'Check: ' + Object.keys(t.L).map(function(e){ return e + ' ' + t.L[e] + ' = ' + t.R[e]; }).join(' · ')];
+}
+function eqnQ(r, extra){
+  var q = {
+    type:'Balance the equation · ' + r.cat, topic:'eqbal', chapter: /combustion/.test(r.cat) ? 'eq_combustion' : 'eq_balance',
+    stem:'Balance this equation with the lowest whole-number coefficients.',
+    input:'eqn', eq:{r:r, build:-1}, answer:eqText(r), answerHTML:eqHTML(r, null, false), steps:balanceSteps(r)
+  };
+  Object.keys(extra || {}).forEach(function(k){ q[k] = extra[k]; });
+  q.check = eqnCheck(q);
+  q.okNote = function(){
+    var res = q._res; if(!res) return '';
+    return res.co[0] !== r.co[0] ? 'balanced, though the lowest whole numbers are ' + eqText(r) : '';
+  };
+  return q;
+}
+GENS.bal_coeff = function(){
+  var r; for(var t=0;t<30;t++){ r = anyReaction(); if(nonTrivial(r)) break; }
+  return eqnQ(r);
+};
+GENS.bal_combust = function(){
+  var r = combustion(pick(FUELS), Math.random() < 0.7 ? 'complete' : pick(['CO','C']));
+  return eqnQ(r, {topic:'eqbal', chapter:'eq_combustion'});
+};
+function saltExplain(r){
+  var cat = CAT[r.catKey], acid = r.acid, p = r.saltParts;
+  var catP = acid.organic ? p[1] : p[0], anP = acid.organic ? p[0] : p[1];
+  return 'Salt: ' + chargeTxt(cat.s, cat.c) + ' with ' + chargeTxt(acid.an, -acid.c) + ' → ' + catP.n + ' × (+' + cat.c + ') + ' + anP.n + ' × (−' + acid.c + ') = 0 → ' + saltFormula(cat, acid) + '.';
+}
+// the reactant a student would actually weigh: not O2, not water, not a solution
+function weighedReactant(r){
+  for(var i=0;i<r.re.length;i++){ var s = r.re[i]; if(s.f !== 'O2' && s.f !== 'H2O' && s.st !== 'aq') return i; }
+  return 0;
+}
+GENS.bal_build = function(){
+  var r; for(var t=0;t<30;t++){ r = randomAcidReaction(['hydroxide','oxide','carbonate','hydrogencarbonate','metal','ammonia']); if(nonTrivial(r) || r.saltParts.some(function(p){ return p.n > 1; })) break; }
+  var q = eqnQ(r, {
+    type:'Complete and balance · ' + r.cat, topic:'eqpred', chapter:'eq_formulas',
+    stem:r.re[1].n.charAt(0).toUpperCase() + r.re[1].n.slice(1) + ' reacts with ' + r.acid.name + '. Complete the formula of the salt, then balance the equation.',
+    eqHint:'Subscript boxes (dashed): leave empty for 1. Polyatomic ions are shown in brackets — brackets are only kept when the subscript is above 1.'
+  });
+  q.eq.build = r.re.length;
+  q.check = eqnCheck(q);
+  q.steps = [esc(saltExplain(r))].concat(balanceSteps(r));
+  return q;
+};
+// product words for each kind of acid reaction
+function productWords(r){ return r.pr.map(function(s){ return s.n; }).join(' + '); }
+GENS.bal_products_mc = function(){
+  if(Math.random() < 0.12){
+    var m = pick([{n:'copper', s:'Cu'}, {n:'silver', s:'Ag'}]), a = pick(['hydrochloric acid','sulfuric acid']);
+    var ans0 = 'No reaction';
+    return {
+      type:'Predict the products', topic:'eqpred', chapter:'eq_acids',
+      stem:'What forms when ' + m.n + ' is added to dilute ' + a + '?',
+      input:'mc', opts:mcOpts(ans0, [m.n + ' ' + (a === 'hydrochloric acid' ? 'chloride' : 'sulfate') + ' + hydrogen', m.n + ' ' + (a === 'hydrochloric acid' ? 'chloride' : 'sulfate') + ' + water', m.n + ' oxide + hydrogen']),
+      answer:ans0, explain:m.n.charAt(0).toUpperCase() + m.n.slice(1) + ' is below hydrogen in the reactivity series, so it cannot displace hydrogen from a dilute acid.'
+    };
+  }
+  var r = randomAcidReaction();
+  var cat = CAT[r.catKey], salt = saltName(cat, r.acid), ans = productWords(r);
+  var cands = [salt + ' + water', salt + ' + water + carbon dioxide', salt + ' + hydrogen', salt + ' + water + hydrogen',
+    cat.n.replace(/\(.*\)/, '') + ' oxide + water', cat.n.replace(/\(.*\)/, '') + ' hydroxide + hydrogen'];
+  if(r.base === 'ammonia') cands = ['ammonium ' + r.acid.salt + ' + water', 'ammonium ' + r.acid.salt + ' + hydrogen', 'ammonia ' + r.acid.salt + ' + water', 'nitrogen + hydrogen + water'];
+  var wrongs = shuffle(cands.filter(function(x){ return x !== ans; })).slice(0, 3);
+  return {
+    type:'Predict the products', topic:'eqpred', chapter:'eq_acids',
+    stem:'What are the products when ' + r.re[1].n + ' reacts with ' + r.acid.name + '?',
+    input:'mc', opts:mcOpts(ans, wrongs), answer:ans,
+    explain:'Acid + ' + r.base + ' → ' + {hydroxide:'salt + water', oxide:'salt + water', carbonate:'salt + water + carbon dioxide', hydrogencarbonate:'salt + water + carbon dioxide', ammonia:'an ammonium salt only', metal:'salt + hydrogen'}[r.base] + '. ' + eqText(r, null, true) + '.'
+  };
+};
+function saltWrongs(r){
+  var p = r.saltParts, cor = partsFormula(p), out = [];
+  [[p[1].n, p[0].n], [1, 1], [p[0].n, p[1].n + 1], [p[0].n + 1, p[1].n], [1, 2], [2, 1], [3, 2], [2, 3]].forEach(function(c){
+    var f = partsFormula(p, c); if(f !== cor && out.indexOf(f) < 0) out.push(f);
+  });
+  // brackets dropped on a multiplied polyatomic ion — a classic slip
+  p.forEach(function(x, i){ if(x.poly && x.n > 1){ var bad = p.map(function(y, j){ return j === i ? y.ion + y.n : (y.poly && y.n > 1 ? '(' + y.ion + ')' + y.n : y.ion + (y.n > 1 ? y.n : '')); }).join(''); out.unshift(bad); } });
+  return out;
+}
+GENS.bal_salt = function(){
+  var r; for(var t=0;t<20;t++){ r = randomAcidReaction(); if(r.saltParts.some(function(p){ return p.n > 1; }) || Math.random() < 0.3) break; }
+  var cat = CAT[r.catKey], cor = saltFormula(cat, r.acid);
+  var wrongs = saltWrongs(r).slice(0, 6);
+  wrongs = shuffle(wrongs).slice(0, 3);
+  var o = mcOpts(cor, wrongs).map(function(x){ x.html = '<span>' + fF(x.v) + '</span>'; return x; });
+  return {
+    type:'Formula of the salt', topic:'eqpred', chapter:'eq_formulas',
+    stem:'What is the formula of the salt formed when ' + r.re[1].n + ' reacts with ' + r.acid.name + '?',
+    input:'mc', opts:o, answer:cor, answerHTML:fF(cor),
+    explain:saltExplain(r) + ' The salt is ' + saltName(cat, r.acid) + '.'
+  };
+};
+GENS.bal_salt_typed = function(){
+  var r = randomAcidReaction(['hydroxide','oxide','carbonate','metal','ammonia']);
+  var cat = CAT[r.catKey], cor = saltFormula(cat, r.acid);
+  var alt = partsFormula(r.saltParts.slice().reverse());   // ethanoates may be written either way round
+  return {
+    type:'Write the salt formula', topic:'eqpred', chapter:'eq_formulas',
+    stem:'Type the formula of the salt formed when ' + r.re[1].n + ' reacts with ' + r.acid.name + '.',
+    sub:'Type it like Ca(NO3)2 — capital letters matter, brackets where needed.',
+    input:'text', answer:cor, answerHTML:fF(cor),
+    check:function(v){ var t = String(v).replace(/\s+/g, ''); return t === cor || (r.acid.organic && t === alt); },
+    explain:saltExplain(r)
+  };
+};
+GENS.bal_word = function(){
+  var r = Math.random() < 0.6 ? randomAcidReaction() : (Math.random() < 0.5 ? combustion(pick(FUELS), 'complete') : pick(OTHER_RXNS.filter(function(x){ return /oxide \+ water|oxygen/.test(x.cat); })));
+  if(!nonTrivial(r)) return null;
+  var cor = eqText(r), seen = {}, wrongs = [];
+  seen[cor] = 1;
+  function add(t, why){ if(!seen[t]){ seen[t] = 1; wrongs.push({name:t, why:why}); } }
+  add(eqText(r, r.co.map(function(){ return 1; })), 'it is not balanced');
+  var off = r.co.slice(); var k = rnd(0, off.length - 1); off[k] = off[k] + 1; add(eqText(r, off), 'it is not balanced');
+  if(r.saltParts){
+    var sw = saltWrongs(r).filter(function(f){ try{ parseFormula(f); return true; }catch(e){ return false; } })[0];
+    if(sw){
+      var re2 = r.re, pr2 = r.pr.map(function(s, i){ return i === 0 ? S(sw, s.st, s.n) : s; });
+      var co2 = balanceSpecies(re2.map(function(s){ return s.f; }), pr2.map(function(s){ return s.f; }));
+      if(co2) add(eqText({re:re2, pr:pr2, co:co2}), 'the salt formula is wrong');
+    }
+  }
+  var off2 = r.co.slice(); off2[0] = off2[0]*2; add(eqText(r, off2), 'it is not balanced');
+  wrongs = shuffle(wrongs).slice(0, 3);
+  var o = mcOpts(cor, wrongs).map(function(x){ x.html = '<span>' + fF(x.v) + '</span>'; return x; });
+  return {
+    type:'Word equation → formula equation', topic:'eqknow', chapter: r.saltParts ? 'eq_acids' : 'eq_balance',
+    stem:'Which is the correct balanced equation for: ' + wordEq(r) + '?',
+    input:'mc', opts:o, answer:cor, answerHTML:fF(cor),
+    explain:cor + '. ' + (r.saltParts ? saltExplain(r) : 'Count every element on both sides.')
+  };
+};
+GENS.bal_gas = function(){
+  var r = randomAcidReaction();
+  var ans = {carbonate:'Carbon dioxide', hydrogencarbonate:'Carbon dioxide', metal:'Hydrogen', hydroxide:'No gas is produced', oxide:'No gas is produced', ammonia:'No gas is produced'}[r.base];
+  return {
+    type:'Which gas?', topic:'eqknow', chapter:'eq_acids',
+    stem:'Which gas, if any, is produced when ' + r.re[1].n + ' reacts with ' + r.acid.name + '?',
+    input:'mc', opts:mcOpts(ans, ['Carbon dioxide','Hydrogen','Oxygen','No gas is produced'].filter(function(x){ return x !== ans; })), answer:ans,
+    explain:eqText(r, null, true) + '.'
+  };
+};
+GENS.bal_parent = function(){
+  var kind = Math.random() < 0.2 ? 'ammonia' : 'hydroxide';
+  var pool = ACID_COMBOS.filter(function(c){ return c[1] === kind && ['Na','K','Li','Ca','Mg','NH4','Ba'].indexOf(c[2]) >= 0; });
+  var c = pick(pool), r = acidReaction(c[0], c[1], c[2]), cat = CAT[c[2]];
+  var baseName = kind === 'ammonia' ? 'ammonia' : cat.n + ' hydroxide';
+  var ans = r.acid.name + ' and ' + baseName;
+  var otherAcid = pick(ACIDS.filter(function(a){ return a.f !== r.acid.f; })).name;
+  var otherBase = kind === 'ammonia' ? 'sodium hydroxide' : (cat.n === 'sodium' ? 'potassium hydroxide' : 'sodium hydroxide');
+  var wrongs = [otherAcid + ' and ' + baseName, r.acid.name + ' and ' + otherBase, otherAcid + ' and ' + otherBase];
+  return {
+    type:'Parent acid and base', topic:'eqknow', chapter:'eq_acids',
+    stem:'Which acid and base react to form ' + saltName(cat, r.acid) + '?',
+    input:'mc', opts:mcOpts(ans, wrongs), answer:ans,
+    explain:'The anion (' + r.acid.salt + ') comes from ' + r.acid.name + '; the cation (' + cat.n + ') from ' + baseName + '. ' + eqText(r, null, true) + '.'
+  };
+};
+GENS.bal_states = function(){
+  var r = Math.random() < 0.7 ? randomAcidReaction() : combustion(pick(FUELS), 'complete');
+  var all = r.re.concat(r.pr), i = rnd(0, all.length - 1), s = all[i];
+  var shown = {re:r.re.map(function(x){ return x; }), pr:r.pr.map(function(x){ return x; }), co:r.co};
+  var hid = S(s.f, '?', s.n);
+  if(i < r.re.length) shown.re[i] = hid; else shown.pr[i - r.re.length] = hid;
+  var ans = '(' + s.st + ')';
+  var why = {aq:'it is dissolved in water', l:'it is a pure liquid', g:'it is a gas', s:'it is a solid'}[s.st];
+  return {
+    type:'State symbols', topic:'eqknow', chapter:'eq_lang',
+    stem:'Which state symbol belongs in the box for ' + s.f + '?',
+    html:'<div class="eqbox" style="font-size:18px">' + eqHTML(shown) + '</div>',
+    input:'mc', opts:mcOpts(ans, ['(s)','(l)','(g)','(aq)'].filter(function(x){ return x !== ans; })), answer:ans,
+    explain:s.n.charAt(0).toUpperCase() + s.n.slice(1) + ' is ' + ans + ' because ' + why + '. ' + eqText(r, null, true) + '.'
+  };
+};
+var EQ_FACTS = [
+  {q:'When balancing an equation, what are you allowed to change?', a:'Only the coefficients in front of formulas', w:['Only the subscripts','Both coefficients and subscripts','The state symbols']},
+  {q:'Why must a chemical equation be balanced?', a:'Atoms are conserved — none are created or destroyed', w:['To make the charges add up to zero','So that the number of molecules is the same on both sides','Because reactions always go to completion']},
+  {q:'What does the 2 in 2H2O represent?', a:'Two molecules (or two moles) of water', w:['Two hydrogen atoms in each water molecule','Two oxygen atoms','The water is a liquid']},
+  {q:'Which ionic equation represents the neutralisation of any strong acid by any strong base?', a:'H+(aq) + OH−(aq) → H2O(l)', w:['Na+(aq) + Cl−(aq) → NaCl(s)','2H+(aq) + O2−(aq) → H2O(l)','H2(g) + O2(g) → H2O(l)']},
+  {q:'What does the state symbol (aq) mean?', a:'Dissolved in water', w:['A liquid','Containing water of crystallisation','An acid']},
+  {q:'Where do the subscripts in an ionic formula such as CaCl2 come from?', a:'The charges of the ions, which must add up to zero', w:['Balancing the equation','The mass of each ion','The number of moles that react']},
+  {q:'Which products form when a hydrocarbon burns in a limited supply of oxygen?', a:'Carbon monoxide and/or carbon, plus water', w:['Carbon dioxide and hydrogen','Carbon dioxide only','Hydrogen and carbon']},
+  {q:'Sulfur dioxide dissolves in water. What kind of solution forms?', a:'Acidic — sulfurous acid, H2SO3, forms', w:['Alkaline — a hydroxide forms','Neutral — no reaction occurs','Basic — sulfur hydroxide forms']},
+  {q:'Sodium oxide dissolves in water. What forms?', a:'Sodium hydroxide — an alkaline solution', w:['Sodium and hydrogen','Sodium hydride','An acidic solution']},
+  {q:'Which reaction type always gives exactly one product, an ammonium salt?', a:'An acid with ammonia', w:['An acid with a carbonate','An acid with a metal','An acid with a metal hydroxide']}
+];
+GENS.eq_concept = function(){
+  var f = pick(EQ_FACTS);
+  return {type:'Equations — concepts', topic:'eqknow', chapter:'eq_lang', stem:f.q, input:'mc', opts:mcOpts(f.a, f.w), answer:f.a, explain:f.a + '.'};
+};
+
+/* ---- calculations ---- */
+var MM_COMPOUNDS = ['H2O','CO2','NH3','CH4','C2H5OH','C6H12O6','NaCl','CaCO3','H2SO4','HNO3','NaOH','Ca(OH)2','MgCl2','Al2(SO4)3','(NH4)2SO4','CuSO4','Na2CO3','Mg(NO3)2','Fe2O3','CH3COOH','NaHCO3','AgNO3','BaCl2','Pb(NO3)2','C3H8','C8H18','KMnO4','K2Cr2O7','(NH4)3PO4','Zn(NO3)2'];
+function numQ(o){
+  o.input = 'num';
+  var exact = o.exact;
+  o.answer = o.answer || sf(exact, 3) + (o.unitText ? ' ' + o.unitText : '');
+  if(!o.check) o.check = function(v){ return numClose(v, exact); };
+  return o;
+}
+GENS.mole_mm = function(){
+  var f = pick(MM_COMPOUNDS), M = mm(f);
+  return numQ({
+    type:'Molar mass', topic:'mole', chapter:'eq_mole',
+    stem:'Calculate the molar mass of ' + f + '.', stemHTML:'Calculate the molar mass of ' + fF(f) + '.',
+    unit:'g mol⁻¹', unitText:'g mol⁻¹', exact:M, answer:M.toFixed(2) + ' g mol⁻¹',
+    hint:'Give two decimal places, using the atomic masses shown.',
+    check:function(v){ return Math.abs(parseNum(v) - M) <= 0.02; },
+    steps:[esc(mmWorking(f))],
+    data:{els:elementsOf([f])}
+  });
+};
+GENS.mole_n = function(){
+  var f = pick(MM_COMPOUNDS), M = mm(f), kind = pick(['n','n','m','N']);
+  if(kind === 'n'){
+    var m = r3(0.5, 60), n = m/M;
+    return numQ({type:'Mass → moles', topic:'mole', chapter:'eq_mole', stem:'How many moles are in ' + sf(m) + ' g of ' + f + '?', stemHTML:'How many moles are in ' + sf(m) + ' g of ' + fF(f) + '?',
+      unit:'mol', unitText:'mol', exact:n, steps:['M = ' + esc(mmWorking(f)), 'n = m ÷ M = ' + sf(m) + ' ÷ ' + M.toFixed(2) + ' = <strong>' + sf(n) + ' mol</strong>'],
+      data:{els:elementsOf([f]), eqs:['nm']}});
+  }
+  if(kind === 'm'){
+    var n2 = r3(0.01, 2.5), m2 = n2*M;
+    return numQ({type:'Moles → mass', topic:'mole', chapter:'eq_mole', stem:'What is the mass of ' + sf(n2) + ' mol of ' + f + '?', stemHTML:'What is the mass of ' + sf(n2) + ' mol of ' + fF(f) + '?',
+      unit:'g', unitText:'g', exact:m2, steps:['M = ' + esc(mmWorking(f)), 'm = n × M = ' + sf(n2) + ' × ' + M.toFixed(2) + ' = <strong>' + sf(m2) + ' g</strong>'],
+      data:{els:elementsOf([f]), eqs:['nm']}});
+  }
+  var f3 = pick(['H2O','CO2','NH3','CH4','O2','N2']), M3 = mm(f3), m3 = r3(1, 50), N = m3/M3*6.02e23;
+  return numQ({type:'Mass → number of molecules', topic:'mole', chapter:'eq_mole', stem:'How many molecules are in ' + sf(m3) + ' g of ' + f3 + '?', stemHTML:'How many molecules are in ' + sf(m3) + ' g of ' + fF(f3) + '?',
+    unit:'molecules', unitText:'', exact:N, hint:'Type it like 6.02e23 or 6.02x10^23 — 3 significant figures.',
+    steps:['n = ' + sf(m3) + ' ÷ ' + M3.toFixed(2) + ' = ' + sf(m3/M3, 4) + ' mol', 'N = n × 6.02 × 10²³ = <strong>' + sf(N) + '</strong>'],
+    data:{els:elementsOf([f3]), eqs:['nm','na']}});
+};
+var SOLUTES = ['NaOH','NaCl','KOH','CuSO4','Na2CO3','HCl','H2SO4','C6H12O6','NH4Cl','AgNO3','KMnO4','HNO3'];
+GENS.conc_c = function(){
+  var f = pick(SOLUTES), M = mm(f), kind = pick(['c','n','m','g']);
+  var V = pick([25.0, 50.0, 100, 150, 200, 250, 500]), Vd = V/1000;
+  var Vtxt = sf(V, 3) + ' cm³';
+  if(kind === 'c'){
+    var m = r3(0.5, 20), c = m/M/Vd;
+    return numQ({type:'Concentration', topic:'conc', chapter:'eq_conc', stem:sf(m) + ' g of ' + f + ' is dissolved to make ' + Vtxt + ' of solution. Calculate the concentration.',
+      stemHTML:sf(m) + ' g of ' + fF(f) + ' is dissolved to make ' + Vtxt + ' of solution. Calculate the concentration.',
+      unit:'mol dm⁻³', unitText:'mol dm⁻³', exact:c,
+      steps:['n = ' + sf(m) + ' ÷ ' + M.toFixed(2) + ' = ' + sf(m/M, 4) + ' mol', 'V = ' + Vtxt + ' = ' + Vd + ' dm³', 'c = n ÷ V = <strong>' + sf(c) + ' mol dm⁻³</strong>'],
+      data:{els:elementsOf([f]), eqs:['nm','nc']}});
+  }
+  var cc = pick([0.0500, 0.100, 0.150, 0.200, 0.250, 0.500, 1.00, 2.00]);
+  if(kind === 'n'){
+    var n = cc*Vd;
+    return numQ({type:'Moles in solution', topic:'conc', chapter:'eq_conc', stem:'How many moles of solute are in ' + Vtxt + ' of ' + sf(cc) + ' mol dm⁻³ ' + f + '?',
+      stemHTML:'How many moles of solute are in ' + Vtxt + ' of ' + sf(cc) + ' mol dm⁻³ ' + fF(f) + '?',
+      unit:'mol', unitText:'mol', exact:n, steps:['V = ' + Vd + ' dm³', 'n = c × V = ' + sf(cc) + ' × ' + Vd + ' = <strong>' + sf(n) + ' mol</strong>'],
+      data:{eqs:['nc']}});
+  }
+  if(kind === 'm'){
+    var m4 = cc*Vd*M;
+    return numQ({type:'Making a solution', topic:'conc', chapter:'eq_conc', stem:'What mass of ' + f + ' is needed to make ' + Vtxt + ' of a ' + sf(cc) + ' mol dm⁻³ solution?',
+      stemHTML:'What mass of ' + fF(f) + ' is needed to make ' + Vtxt + ' of a ' + sf(cc) + ' mol dm⁻³ solution?',
+      unit:'g', unitText:'g', exact:m4, steps:['n = c × V = ' + sf(cc) + ' × ' + Vd + ' = ' + sf(cc*Vd, 4) + ' mol', 'm = n × M = ' + sf(cc*Vd, 4) + ' × ' + M.toFixed(2) + ' = <strong>' + sf(m4) + ' g</strong>'],
+      data:{els:elementsOf([f]), eqs:['nc','nm']}});
+  }
+  var g = cc*M;
+  return numQ({type:'mol dm⁻³ → g dm⁻³', topic:'conc', chapter:'eq_conc', stem:'Convert ' + sf(cc) + ' mol dm⁻³ ' + f + ' into g dm⁻³.',
+    stemHTML:'Convert ' + sf(cc) + ' mol dm⁻³ ' + fF(f) + ' into g dm⁻³.',
+    unit:'g dm⁻³', unitText:'g dm⁻³', exact:g, steps:['M = ' + esc(mmWorking(f)), sf(cc) + ' × ' + M.toFixed(2) + ' = <strong>' + sf(g) + ' g dm⁻³</strong>'],
+    data:{els:elementsOf([f]), eqs:['gcon']}});
+};
+GENS.gas_v = function(){
+  var f = pick(['CO2','O2','H2','CH4','NH3','N2','SO2','Cl2']), M = mm(f), kind = pick(['nV','Vn','mV']);
+  if(kind === 'nV'){
+    var n = r3(0.02, 3), V = n*22.7;
+    return numQ({type:'Gas volume at STP', topic:'conc', chapter:'eq_conc', stem:'What volume does ' + sf(n) + ' mol of ' + f + ' occupy at STP?', stemHTML:'What volume does ' + sf(n) + ' mol of ' + fF(f) + ' occupy at STP?',
+      unit:'dm³', unitText:'dm³', exact:V, steps:['V = n × 22.7 = ' + sf(n) + ' × 22.7 = <strong>' + sf(V) + ' dm³</strong>'], data:{eqs:['vm']}});
+  }
+  if(kind === 'Vn'){
+    var V2 = r3(0.1, 50), n2 = V2/22.7, cm = Math.random() < 0.4;
+    var Vtxt = cm ? sf(V2*1000) + ' cm³' : sf(V2) + ' dm³';
+    return numQ({type:'Moles from gas volume', topic:'conc', chapter:'eq_conc', stem:'How many moles of ' + f + ' are in ' + Vtxt + ' of the gas at STP?', stemHTML:'How many moles of ' + fF(f) + ' are in ' + Vtxt + ' of the gas at STP?',
+      unit:'mol', unitText:'mol', exact:n2, steps:(cm ? [Vtxt + ' = ' + sf(V2) + ' dm³'] : []).concat(['n = V ÷ 22.7 = ' + sf(V2) + ' ÷ 22.7 = <strong>' + sf(n2) + ' mol</strong>']), data:{eqs:['vm']}});
+  }
+  var m = r3(0.5, 40), V3 = m/M*22.7;
+  return numQ({type:'Mass → gas volume', topic:'conc', chapter:'eq_conc', stem:'What volume does ' + sf(m) + ' g of ' + f + ' occupy at STP?', stemHTML:'What volume does ' + sf(m) + ' g of ' + fF(f) + ' occupy at STP?',
+    unit:'dm³', unitText:'dm³', exact:V3, steps:['n = ' + sf(m) + ' ÷ ' + M.toFixed(2) + ' = ' + sf(m/M, 4) + ' mol', 'V = n × 22.7 = <strong>' + sf(V3) + ' dm³</strong>'],
+    data:{els:elementsOf([f]), eqs:['nm','vm']}});
+};
+
+// reactions used for amount calculations: [index of a given reactant, index of a product] pairs are chosen at run time
+function calcReactions(){
+  return [
+    rxnBy('decomposition','CaCO3'), rxnBy('metal + oxygen','Mg'), rxnBy('redox','Fe2O3'), rxnBy('synthesis','N2'),
+    rxnBy('redox','Al'), rxnBy('fermentation','C6H12O6'), rxnBy('metal + oxygen','Al'), rxnBy('decomposition','H2O2'),
+    rxnBy('decomposition','KClO3'), rxnBy('synthesis','Al'), rxnBy('synthesis','Fe'),
+    combustion(FUELS[0], 'complete'), combustion(FUELS[2], 'complete'), combustion(FUELS[11], 'complete'),
+    acidReaction('HCl','metal','Mg'), acidReaction('H2SO4','metal','Zn'), acidReaction('HCl','carbonate','Ca'), acidReaction('H2SO4','oxide','Cu')
+  ].filter(Boolean);
+}
+GENS.ratio_mass = function(){
+  var r = pick(calcReactions());
+  var gi = weighedReactant(r), g = r.re[gi];
+  var prods = r.pr.filter(function(s){ return s.f !== 'H2O'; }); var t = pick(prods.length ? prods : r.pr);
+  var ti = r.re.length + r.pr.indexOf(t);
+  var cg = r.co[gi], ct = r.co[ti], Mg_ = mm(g.f), Mt = mm(t.f);
+  var m = r3(1, 50), ng = m/Mg_, nt = ng*ct/cg;
+  var asVol = t.st === 'g' && Math.random() < 0.5;
+  var ans = asVol ? nt*22.7 : nt*Mt;
+  return numQ({
+    type:'Reacting masses', topic:'mole', chapter:'eq_ratio',
+    stem:'Calculate the ' + (asVol ? 'volume at STP' : 'mass') + ' of ' + t.f + ' formed from ' + sf(m) + ' g of ' + g.f + '. Assume ' + (r.re.length > 1 ? 'the other reactant is in excess' : 'complete reaction') + '.',
+    stemHTML:'Calculate the ' + (asVol ? 'volume at STP' : 'mass') + ' of ' + fF(t.f) + ' formed from ' + sf(m) + ' g of ' + fF(g.f) + '. Assume ' + (r.re.length > 1 ? 'the other reactant is in excess' : 'complete reaction') + '.',
+    html:'<div class="scen">' + eqHTML(r) + '</div>',
+    unit:asVol ? 'dm³' : 'g', unitText:asVol ? 'dm³' : 'g', exact:ans,
+    steps:['n(' + esc(g.f) + ') = ' + sf(m) + ' ÷ ' + Mg_.toFixed(2) + ' = ' + sf(ng, 4) + ' mol',
+      'ratio ' + esc(g.f) + ' : ' + esc(t.f) + ' = ' + cg + ' : ' + ct + ' → n(' + esc(t.f) + ') = ' + sf(nt, 4) + ' mol',
+      asVol ? 'V = ' + sf(nt, 4) + ' × 22.7 = <strong>' + sf(ans) + ' dm³</strong>' : 'm = ' + sf(nt, 4) + ' × ' + Mt.toFixed(2) + ' = <strong>' + sf(ans) + ' g</strong>'],
+    data:{els:elementsOf([g.f, t.f]), eqs:asVol ? ['nm','vm'] : ['nm']}
+  });
+};
+
+/* ---- limiting reactant scenarios ---- */
+var LIMIT_RXNS = function(){
+  return [
+    {r:rxnBy('synthesis','Al')}, {r:rxnBy('metal + oxygen','Mg')}, {r:rxnBy('redox','Al')}, {r:rxnBy('redox','Fe2O3')},
+    {r:rxnBy('synthesis','N2')}, {r:rxnBy('non-metal + oxygen','H2')}, {r:combustion(FUELS[0], 'complete')},
+    {r:rxnBy('synthesis','Fe')}, {r:acidReaction('HCl','metal','Mg'), sol:0}, {r:acidReaction('H2SO4','metal','Zn'), sol:0},
+    {r:acidReaction('HCl','carbonate','Ca'), sol:0}, {r:acidReaction('H2SO4','oxide','Cu'), sol:0}
+  ].filter(function(x){ return x.r; });
+};
+// builds a scenario where reactant amounts are deliberately NOT in the equation ratio.
+// sol:0 means the first reactant (the acid) is given as a solution of realistic concentration.
+function limitScenario(){
+  var L = pick(LIMIT_RXNS()), r = L.r;
+  var A = r.re[0], B = r.re[1], ca = r.co[0], cb = r.co[1];
+  var solA = L.sol === 0 ? {V:pick([25.0, 50.0, 100]), c:pick([0.500, 1.00, 2.00])} : null;
+  var nA = solA ? solA.c*solA.V/1000 : r3(0.02, 0.6);
+  var factor = Math.random() < 0.5 ? 0.45 + Math.random()*0.35 : 1.25 + Math.random()*0.8;
+  var nBwant = nA*cb/ca*factor;
+  var amt = [A, B].map(function(s, i){
+    var want = i === 0 ? nA : nBwant;
+    if(i === 0 && solA){
+      var V = solA.V, c = solA.c;
+      return {s:s, sol:true, V:V, c:c, n:c*V/1000, txt:sf(V, 3) + ' cm³ of ' + sf(c, 3) + ' mol dm⁻³ ' + s.f,
+        html:sf(V, 3) + ' cm³ of ' + sf(c, 3) + ' mol dm⁻³ ' + fF(s.f), work:'n(' + esc(s.f) + ') = ' + sf(c, 3) + ' × ' + (V/1000) + ' = '};
+    }
+    var M = mm(s.f), m = parseFloat(sf(want*M, 3));
+    return {s:s, m:m, M:M, n:m/M, txt:sf(m, 3) + ' g of ' + s.f, html:sf(m, 3) + ' g of ' + fF(s.f), work:'n(' + esc(s.f) + ') = ' + sf(m, 3) + ' ÷ ' + M.toFixed(2) + ' = '};
+  });
+  var ra = amt[0].n/ca, rb = amt[1].n/cb;
+  if(Math.abs(ra - rb)/Math.max(ra, rb) < 0.08) return null;     // too close to call — regenerate
+  var lim = ra < rb ? 0 : 1, exc = 1 - lim;
+  var steps = [amt[0].work + sf(amt[0].n, 4) + ' mol → ÷ ' + ca + ' = ' + sf(ra, 4),
+               amt[1].work + sf(amt[1].n, 4) + ' mol → ÷ ' + cb + ' = ' + sf(rb, 4),
+               'smaller value → <strong>' + esc(amt[lim].s.f) + ' is limiting</strong>; ' + esc(amt[exc].s.f) + ' is in excess'];
+  return {r:r, amt:amt, lim:lim, exc:exc, steps:steps, cof:[ca, cb]};
+}
+function limitStem(sc, tail){
+  var a = sc.amt;
+  return {stem:a[0].txt + ' reacts with ' + a[1].txt + '. ' + tail, stemHTML:a[0].html + ' reacts with ' + a[1].html + '. ' + tail};
+}
+GENS.lim_identify = function(){
+  var sc = limitScenario(); if(!sc) return null;
+  var s = limitStem(sc, 'Which reactant is limiting?'), ans = sc.amt[sc.lim].s.f;
+  var o = mcOpts(ans, [sc.amt[sc.exc].s.f]).map(function(x){ x.html = '<span>' + fF(x.v) + '</span>'; return x; });
+  return {type:'Limiting reactant', topic:'limit', chapter:'eq_limit', stem:s.stem, stemHTML:s.stemHTML,
+    html:'<div class="scen">' + eqHTML(sc.r) + '</div>', input:'mc', opts:o, answer:ans, answerHTML:fF(ans), steps:sc.steps,
+    data:{els:elementsOf(sc.amt.filter(function(a){ return !a.sol; }).map(function(a){ return a.s.f; })), eqs:sc.amt.some(function(a){ return a.sol; }) ? ['nm','nc'] : ['nm']}};
+};
+GENS.lim_yield = function(){
+  var sc = limitScenario(); if(!sc) return null;
+  var r = sc.r, prods = r.pr.filter(function(p){ return p.f !== 'H2O'; }), P = pick(prods.length ? prods : r.pr);
+  var cp = r.co[r.re.length + r.pr.indexOf(P)], nL = sc.amt[sc.lim].n, cl = sc.cof[sc.lim];
+  var nP = nL*cp/cl, MP = mm(P.f), mP = nP*MP;
+  var s = limitStem(sc, 'Calculate the theoretical yield of ' + P.f + ', in g.');
+  s.stemHTML = s.stemHTML.replace(P.f + ', in g.', fF(P.f) + ', in g.');
+  return numQ({type:'Theoretical yield', topic:'limit', chapter:'eq_limit', stem:s.stem, stemHTML:s.stemHTML,
+    html:'<div class="scen">' + eqHTML(r) + '</div>', unit:'g', unitText:'g', exact:mP,
+    steps:sc.steps.concat(['n(' + esc(P.f) + ') = ' + sf(nL, 4) + ' × ' + cp + '/' + cl + ' = ' + sf(nP, 4) + ' mol', 'm = ' + sf(nP, 4) + ' × ' + MP.toFixed(2) + ' = <strong>' + sf(mP) + ' g</strong>']),
+    data:{els:elementsOf(sc.amt.filter(function(a){ return !a.sol; }).map(function(a){ return a.s.f; }).concat([P.f])), eqs:sc.amt.some(function(a){ return a.sol; }) ? ['nm','nc'] : ['nm']}});
+};
+GENS.lim_excess = function(){
+  var sc = limitScenario(); if(!sc) return null;
+  var E = sc.amt[sc.exc], nL = sc.amt[sc.lim].n;
+  var used = nL*sc.cof[sc.exc]/sc.cof[sc.lim], left = E.n - used;
+  var asMol = !!E.sol, ans = asMol ? left : left*E.M;
+  var s = limitStem(sc, 'What ' + (asMol ? 'amount (in mol)' : 'mass') + ' of the excess reactant remains after the reaction?');
+  return numQ({type:'Excess remaining', topic:'limit', chapter:'eq_limit', stem:s.stem, stemHTML:s.stemHTML,
+    html:'<div class="scen">' + eqHTML(sc.r) + '</div>', unit:asMol ? 'mol' : 'g', unitText:asMol ? 'mol' : 'g', exact:ans,
+    steps:sc.steps.concat(['n(' + esc(E.s.f) + ') used = ' + sf(nL, 4) + ' × ' + sc.cof[sc.exc] + '/' + sc.cof[sc.lim] + ' = ' + sf(used, 4) + ' mol',
+      'left = ' + sf(E.n, 4) + ' − ' + sf(used, 4) + ' = ' + sf(left, 4) + ' mol' + (asMol ? '' : ' → × ' + E.M.toFixed(2) + ' = <strong>' + sf(ans) + ' g</strong>')]),
+    data:{els:elementsOf(sc.amt.filter(function(a){ return !a.sol; }).map(function(a){ return a.s.f; })), eqs:sc.amt.some(function(a){ return a.sol; }) ? ['nm','nc'] : ['nm']}});
+};
+
+/* ---- percentage yield ---- */
+GENS.py_calc = function(){
+  var kind = pick(['direct','full','full','reverse']);
+  if(kind === 'direct'){
+    var th = r3(2, 80), pct = 45 + Math.random()*50, ex = parseFloat(sf(th*pct/100, 3)), ans = ex/th*100;
+    var prod = pick(['aspirin','ethyl ethanoate','copper(II) sulfate crystals','magnesium oxide','ammonium sulfate']);
+    return numQ({type:'Percentage yield', topic:'yield', chapter:'eq_yield',
+      stem:'The theoretical yield of ' + prod + ' was ' + sf(th) + ' g. The student obtained ' + sf(ex) + ' g. Calculate the percentage yield.',
+      unit:'%', unitText:'%', exact:ans, steps:[sf(ex) + ' ÷ ' + sf(th) + ' × 100 = <strong>' + sf(ans) + ' %</strong>'], data:{eqs:['pyield']}});
+  }
+  var r = pick(calcReactions());
+  var gi = weighedReactant(r), g = r.re[gi], prods = r.pr.filter(function(s){ return s.f !== 'H2O' && s.st !== 'g'; });
+  if(!prods.length) prods = r.pr.filter(function(s){ return s.f !== 'H2O'; });
+  var P = pick(prods), cg = r.co[gi], cp = r.co[r.re.length + r.pr.indexOf(P)];
+  var m = r3(2, 40), Mg_ = mm(g.f), MP = mm(P.f), nP = m/Mg_*cp/cg, thm = nP*MP;
+  if(kind === 'full'){
+    var pct2 = 50 + Math.random()*45, ex2 = parseFloat(sf(thm*pct2/100, 3)), ans2 = ex2/thm*100;
+    return numQ({type:'Percentage yield (from reactant mass)', topic:'yield', chapter:'eq_yield',
+      stem:sf(m) + ' g of ' + g.f + ' reacted completely' + (r.re.length > 1 ? ' with an excess of the other reactant' : '') + ', giving ' + sf(ex2) + ' g of ' + P.f + '. Calculate the percentage yield.',
+      stemHTML:sf(m) + ' g of ' + fF(g.f) + ' reacted completely' + (r.re.length > 1 ? ' with an excess of the other reactant' : '') + ', giving ' + sf(ex2) + ' g of ' + fF(P.f) + '. Calculate the percentage yield.',
+      html:'<div class="scen">' + eqHTML(r) + '</div>', unit:'%', unitText:'%', exact:ans2,
+      steps:['n(' + esc(g.f) + ') = ' + sf(m) + ' ÷ ' + Mg_.toFixed(2) + ' = ' + sf(m/Mg_, 4) + ' mol', 'n(' + esc(P.f) + ') = × ' + cp + '/' + cg + ' = ' + sf(nP, 4) + ' mol',
+        'theoretical = ' + sf(nP, 4) + ' × ' + MP.toFixed(2) + ' = ' + sf(thm, 4) + ' g', '% yield = ' + sf(ex2) + ' ÷ ' + sf(thm, 4) + ' × 100 = <strong>' + sf(ans2) + ' %</strong>'],
+      data:{els:elementsOf([g.f, P.f]), eqs:['nm','pyield']}});
+  }
+  var pct3 = Math.round(55 + Math.random()*40), act = thm*pct3/100;
+  return numQ({type:'Expected mass from % yield', topic:'yield', chapter:'eq_yield',
+    stem:'The reaction has a ' + pct3 + ' % yield. What mass of ' + P.f + ' is obtained from ' + sf(m) + ' g of ' + g.f + '?',
+    stemHTML:'The reaction has a ' + pct3 + ' % yield. What mass of ' + fF(P.f) + ' is obtained from ' + sf(m) + ' g of ' + fF(g.f) + '?',
+    html:'<div class="scen">' + eqHTML(r) + '</div>', unit:'g', unitText:'g', exact:act,
+    steps:['theoretical: ' + sf(m) + ' ÷ ' + Mg_.toFixed(2) + ' × ' + cp + '/' + cg + ' × ' + MP.toFixed(2) + ' = ' + sf(thm, 4) + ' g', 'actual = ' + sf(thm, 4) + ' × ' + pct3 + '/100 = <strong>' + sf(act) + ' g</strong>'],
+    data:{els:elementsOf([g.f, P.f]), eqs:['nm','pyield']}});
+};
+var YIELD_FACTS = [
+  {q:'The theoretical yield is…', a:'the maximum amount of product, calculated from the limiting reactant assuming complete reaction', w:['the amount of product actually collected','the mass of all the reactants added together','the amount of excess reactant left over']},
+  {q:'Which is NOT a reason for a percentage yield below 100 %?', a:'The excess reactant was weighed with a balance', w:['The reaction reached equilibrium and did not go to completion','Some product stuck to the filter paper','A side reaction produced a different product']},
+  {q:'A student reports a percentage yield of 112 %. What is the most likely reason?', a:'The product was impure or still wet when weighed', w:['More product formed than the equation allows','The limiting reactant was used up','The reaction was very fast']},
+  {q:'Which quantity is calculated from the balanced equation alone, without any experimental data?', a:'Atom economy', w:['Percentage yield','Experimental yield','Percentage error']},
+  {q:'The experimental yield is…', a:'the amount of product actually obtained', w:['the amount predicted by the equation','always equal to the theoretical yield','the amount of limiting reactant used']}
+];
+GENS.py_concept = function(){ var f = pick(YIELD_FACTS); return {type:'Yield — concepts', topic:'yield', chapter:'eq_yield', stem:f.q, input:'mc', opts:mcOpts(f.a, f.w), answer:f.a, explain:f.a + '.'}; };
+
+/* ---- percentage error ---- */
+var HC_ALCOHOLS = [{n:'methanol', f:'CH3OH', h:-726}, {n:'ethanol', f:'C2H5OH', h:-1367}, {n:'propan-1-ol', f:'C3H7OH', h:-2021}, {n:'butan-1-ol', f:'C4H9OH', h:-2676}];
+GENS.pe_calc = function(){
+  var kind = pick(['hc','hc','mr','titr','shc']);
+  var exp, acc, stem, steps, data = {eqs:['perr']}, unitTxt = '';
+  if(kind === 'hc'){
+    var a = pick(HC_ALCOHOLS); acc = a.h; exp = -Math.round(Math.abs(acc)*(0.55 + Math.random()*0.35));
+    stem = 'A student measured the enthalpy of combustion of ' + a.n + ' as ' + exp + ' kJ mol⁻¹. The data booklet value is ' + acc + ' kJ mol⁻¹. Calculate the percentage error.';
+  } else if(kind === 'mr'){
+    var gsp = pick([{n:'butane', f:'C4H10'}, {n:'propane', f:'C3H8'}, {n:'carbon dioxide', f:'CO2'}, {n:'methane', f:'CH4'}]);
+    acc = mm(gsp.f); exp = parseFloat(sf(acc*(Math.random() < 0.5 ? 0.86 + Math.random()*0.11 : 1.03 + Math.random()*0.1), 3));
+    stem = 'An experiment gave the molar mass of ' + gsp.n + ' (' + gsp.f + ') as ' + sf(exp) + ' g mol⁻¹. Calculate the percentage error, using the true molar mass.';
+    data.els = elementsOf([gsp.f]); unitTxt = 'M(' + gsp.f + ') = ' + mmWorking(gsp.f);
+  } else if(kind === 'titr'){
+    acc = pick([0.100, 0.0500, 0.200]); exp = parseFloat(sf(acc*(0.92 + Math.random()*0.15), 3));
+    if(exp === acc) exp = parseFloat(sf(acc*1.04, 3));
+    stem = 'A titration gave the concentration of a standard solution as ' + sf(exp) + ' mol dm⁻³. Its true concentration is ' + sf(acc) + ' mol dm⁻³. Calculate the percentage error.';
+  } else {
+    acc = 4.18; exp = parseFloat(sf(acc*(0.85 + Math.random()*0.12), 3));
+    stem = 'A student found the specific heat capacity of water to be ' + sf(exp) + ' J g⁻¹ K⁻¹. The data booklet value is 4.18 J g⁻¹ K⁻¹. Calculate the percentage error.';
+  }
+  var diff = Math.abs(exp - acc), ans = diff/Math.abs(acc)*100;
+  steps = (unitTxt ? [esc(unitTxt)] : []).concat(['|' + sf(exp, 4) + ' − (' + sf(acc, 4) + ')| = ' + sf(diff, 3), sf(diff, 3) + ' ÷ ' + sf(Math.abs(acc), 4) + ' × 100 = <strong>' + sf(ans) + ' %</strong>']);
+  return numQ({type:'Percentage error', topic:'perr', chapter:'eq_error', stem:stem, unit:'%', unitText:'%', exact:ans, steps:steps, data:data});
+};
+var ERROR_FACTS = [
+  {q:'Percentage error measures…', a:'how far an experimental result is from the accepted value (accuracy)', w:['the precision of a single measurement','the uncertainty of the measuring instrument','the number of significant figures']},
+  {q:'The % error of a calorimetry result is much larger than its total % uncertainty. What does this suggest?', a:'A systematic error, such as heat loss, is present', w:['Random errors explain the difference','The result is very precise and accurate','More significant figures should have been recorded']},
+  {q:'Heat lost to the surroundings in a calorimetry experiment is an example of…', a:'a systematic error', w:['a random error','a percentage uncertainty','a parallax error']},
+  {q:'How can the effect of random errors be reduced?', a:'Repeat the measurement and calculate a mean', w:['Use the same faulty instrument again','Round the final answer','Calculate the percentage error']},
+  {q:'In the percentage error formula, the difference is divided by…', a:'the accepted (literature) value', w:['the experimental value','the uncertainty','the mean of the two values']}
+];
+GENS.pe_concept = function(){ var f = pick(ERROR_FACTS); return {type:'Error — concepts', topic:'perr', chapter:'eq_error', stem:f.q, input:'mc', opts:mcOpts(f.a, f.w), answer:f.a, explain:f.a + '.'}; };
+
+/* ---- atom economy ---- */
+GENS.ae_calc = function(){
+  var opts = [
+    [rxnBy('decomposition','CaCO3'), 'CaO'], [rxnBy('fermentation','C6H12O6'), 'C2H5OH'], [rxnBy('addition','C2H4'), 'C2H5OH'],
+    [rxnBy('synthesis','N2'), 'NH3'], [rxnBy('redox','Fe2O3'), 'Fe'], [rxnBy('redox','Al'), 'Fe'],
+    [rxnBy('decomposition','NaHCO3'), 'Na2CO3'], [acidReaction('H2SO4','metal','Zn'), 'H2'], [rxnBy('decomposition','KClO3'), 'O2'],
+    [acidReaction('HCl','carbonate','Ca'), 'CaCl2']
+  ].filter(function(x){ return x[0]; });
+  var c = pick(opts), r = c[0], d = c[1];
+  var di = r.pr.map(function(s){ return s.f; }).indexOf(d), cd = r.co[r.re.length + di];
+  var top = cd*mm(d), bottom = r.re.reduce(function(s, x, i){ return s + r.co[i]*mm(x.f); }, 0), ans = top/bottom*100;
+  return numQ({type:'Atom economy', topic:'aecon', chapter:'eq_aecon',
+    stem:'Calculate the atom economy for making ' + d + ' by this reaction.', stemHTML:'Calculate the atom economy for making ' + fF(d) + ' by this reaction.',
+    html:'<div class="scen">' + eqHTML(r) + '</div>', unit:'%', unitText:'%', exact:ans,
+    steps:['desired product: ' + (cd > 1 ? cd + ' × ' + mm(d).toFixed(2) + ' = ' : '') + top.toFixed(2),
+      'all reactants: ' + (r.re.length > 1 || r.co[0] > 1 ? r.re.map(function(x, i){ return (r.co[i] > 1 ? r.co[i] + ' × ' : '') + mm(x.f).toFixed(2); }).join(' + ') + ' = ' : '') + bottom.toFixed(2),
+      top.toFixed(2) + ' ÷ ' + bottom.toFixed(2) + ' × 100 = <strong>' + sf(ans) + ' %</strong>'],
+    data:{els:elementsOf(r.re.map(function(x){ return x.f; }).concat([d])), eqs:['aecon']}});
+};
+
+QTYPES.push(
+  {k:'bal_coeff',       w:5, topics:['eqbal'],  unit:'eq'},
+  {k:'bal_combust',     w:2, topics:['eqbal'],  unit:'eq'},
+  {k:'bal_build',       w:4, topics:['eqpred','eqbal'], unit:'eq'},
+  {k:'bal_products_mc', w:3, topics:['eqpred'], unit:'eq'},
+  {k:'bal_salt',        w:3, topics:['eqpred'], unit:'eq'},
+  {k:'bal_salt_typed',  w:2, topics:['eqpred'], unit:'eq'},
+  {k:'bal_word',        w:3, topics:['eqknow'], unit:'eq'},
+  {k:'bal_gas',         w:2, topics:['eqknow'], unit:'eq'},
+  {k:'bal_parent',      w:2, topics:['eqknow'], unit:'eq'},
+  {k:'bal_states',      w:2, topics:['eqknow'], unit:'eq'},
+  {k:'eq_concept',      w:2, topics:['eqknow'], unit:'eq'},
+  {k:'mole_mm',         w:2, topics:['mole'],   unit:'eq'},
+  {k:'mole_n',          w:3, topics:['mole'],   unit:'eq'},
+  {k:'conc_c',          w:3, topics:['conc'],   unit:'eq'},
+  {k:'gas_v',           w:2, topics:['conc'],   unit:'eq'},
+  {k:'ratio_mass',      w:3, topics:['mole'],   unit:'eq'},
+  {k:'lim_identify',    w:3, topics:['limit'],  unit:'eq'},
+  {k:'lim_yield',       w:3, topics:['limit'],  unit:'eq'},
+  {k:'lim_excess',      w:2, topics:['limit'],  unit:'eq'},
+  {k:'py_calc',         w:3, topics:['yield'],  unit:'eq'},
+  {k:'py_concept',      w:2, topics:['yield'],  unit:'eq'},
+  {k:'pe_calc',         w:3, topics:['perr'],   unit:'eq'},
+  {k:'pe_concept',      w:2, topics:['perr'],   unit:'eq'},
+  {k:'ae_calc',         w:2, topics:['aecon'],  unit:'eq'}
+);
+MODES.push(
+  {k:'eqq',   unit:'eq', t:'Equations quick test', d:'Ten mixed questions: balancing, predicting products and calculations.', n:10, level:2, units:['eq'], meta:'10 questions'},
+  {k:'bal',   unit:'eq', t:'Balancing', d:'Enter coefficients with a live atom tally — combustion, acid reactions, oxides and more.', n:12, level:2,
+   only:['bal_coeff','bal_combust','bal_build'], meta:'12 equations'},
+  {k:'pred',  unit:'eq', t:'Reactions you must know', d:'Predict products, write salt formulas, word to symbol equations, parent acid and base, state symbols.', n:15, level:2,
+   only:['bal_build','bal_products_mc','bal_salt','bal_salt_typed','bal_word','bal_gas','bal_parent','bal_states','eq_concept'], meta:'15 questions'},
+  {k:'moles', unit:'eq', t:'Moles, concentration, gases', d:'n = m/M, n = cV, molar mass, gas volumes at STP, reacting masses.', n:12, level:2,
+   only:['mole_mm','mole_n','conc_c','gas_v','ratio_mass'], meta:'12 calculations'},
+  {k:'limy',  unit:'eq', t:'Limiting reactant & yield', d:'Identify the limiting reactant, theoretical yield, excess remaining, percentage yield.', n:12, level:2,
+   only:['lim_identify','lim_yield','lim_excess','py_calc','py_concept'], meta:'12 questions'},
+  {k:'errae', unit:'eq', t:'% error & atom economy', d:'Percentage error against literature values, and atom economy from equations.', n:10, level:2,
+   only:['pe_calc','pe_concept','ae_calc'], meta:'10 questions'}
+);
+
+/* ---------- course level (SL / HL) ---------- */
+function setLevel(l){
+  LEVEL = l === 'SL' ? 'SL' : 'HL';
+  try{ window.localStorage.setItem(LEVEL_KEY, LEVEL); }catch(e){}
+  $$('#levelSwitch button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.level === LEVEL ? 'true' : 'false'); });
+  renderUnitCards();
+  renderChapter(currentCh);
+  renderModes();
+}
+$('#levelSwitch').addEventListener('click', function(e){
+  var b = e.target.closest('button'); if(!b) return;
+  setLevel(b.dataset.level);
+});
+function renderUnitCards(){
+  $('#unitCards').innerHTML = UNITS.map(function(u){
+    var ch = visibleChapters().filter(function(c){ return c.unit === u.k; }).length;
+    var qt = levelPool().filter(function(t){ return unitOf(t) === u.k; }).length;
+    return '<button data-unitgo="' + u.k + '"><div class="gk">Unit ' + esc(u.code) + ' · ' + esc(u.ref) + '</div>' +
+      '<div class="ut">' + esc(u.t) + '</div><div class="ud">' + esc(u.d) + '</div>' +
+      '<div class="um">' + ch + ' chapters · ' + qt + ' question types' +
+      (u.k === 'iso' ? (LEVEL === 'HL' ? ' <span class="tag hl">stereo · HL</span>' : ' <span class="tag ext">stereo hidden at SL</span>') : '') + '</div></button>';
+  }).join('');
+}
+$('#unitCards').addEventListener('click', function(e){
+  var b = e.target.closest('[data-unitgo]'); if(!b) return;
+  var first = visibleChapters().filter(function(c){ return c.unit === b.dataset.unitgo; })[0];
+  if(first) openChapterById(first.id);
+});
+
 /* ---------- boot ---------- */
+try{ var savedLevel = window.localStorage.getItem(LEVEL_KEY); if(savedLevel) LEVEL = savedLevel === 'SL' ? 'SL' : 'HL'; }catch(e){}
+// keep the rail in unit order: nomenclature, isomers, equations
+CHAPTERS.forEach(function(c, i){ c.unit = c.unit || 'nom'; c._i = i; });
+CHAPTERS.sort(function(a, b){
+  var ua = UNIT_ORDER.indexOf(a.unit), ub = UNIT_ORDER.indexOf(b.unit);
+  return ua !== ub ? ua - ub : a._i - b._i;
+});
 loadProgress();
 renderStats();
 renderParser();
+setLevel(LEVEL);
 renderChapter(0);
-renderModes();
 /* ============================================================
    POLYATOMIC IONS — reference table + its own drill.
    Kept entirely separate from the nomenclature test engine.
