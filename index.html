@@ -1,0 +1,2455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nomenclature — IB Chemistry Structure 3.2</title>
+<style>
+:root{
+  --paper:#E7EBEC;
+  --surface:#FFFFFF;
+  --surface-2:#F2F5F6;
+  --ink:#0F171C;
+  --ink-2:#4C5C65;
+  --ink-3:#7C8B93;
+  --line:#C7D1D5;
+  --line-soft:#DDE4E6;
+  --carbon:#0F171C;
+  --oxygen:#B33A2B;
+  --nitrogen:#2A4FB8;
+  --halogen:#2F7D32;
+  --key:#0E7C66;
+  --warn:#9A6A12;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --r:4px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.mono,button,.tag,.eyebrow{font-family:var(--mono)}
+h1,h2,h3,h4{line-height:1.2;letter-spacing:-0.02em;margin:0}
+a{color:var(--key)}
+button{font-size:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--nitrogen);outline-offset:2px}
+
+/* ---------- shell ---------- */
+.app{max-width:1180px;margin:0 auto;padding:0 20px 120px}
+header.top{
+  display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+  padding:26px 0 18px;border-bottom:1px solid var(--line);margin-bottom:26px;
+}
+.brand{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase}
+.brand .dot{color:var(--oxygen)}
+.brand-sub{font-size:12.5px;color:var(--ink-3);font-family:var(--mono);letter-spacing:0.02em}
+nav.tabs{margin-left:auto;display:flex;gap:6px}
+nav.tabs button{
+  font-size:12.5px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;
+  background:transparent;border:1px solid transparent;color:var(--ink-2);
+  padding:7px 12px;border-radius:var(--r);
+}
+nav.tabs button:hover{background:var(--surface-2);color:var(--ink)}
+nav.tabs button[aria-current="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+.eyebrow{font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.view{display:none}
+.view.on{display:block}
+
+/* ---------- home ---------- */
+.hero{padding:8px 0 4px}
+.hero h1{font-size:clamp(30px,6.2vw,54px);font-weight:700;letter-spacing:-0.04em;max-width:16ch}
+.hero p.lede{max-width:56ch;color:var(--ink-2);margin:16px 0 0;font-size:17px}
+
+/* signature: the name parser strip */
+.parser{
+  margin:30px 0 8px;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r);overflow:hidden;
+}
+.parser-head{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:10px 14px;border-bottom:1px solid var(--line-soft);background:var(--surface-2);
+}
+.parser-body{padding:26px 14px 20px;text-align:center}
+.pname{font-family:var(--mono);font-size:clamp(22px,5.4vw,38px);font-weight:700;letter-spacing:-0.02em;word-break:break-word}
+.pname .seg{position:relative;display:inline-block;padding-bottom:42px}
+.pname .seg::after{
+  content:attr(data-label);position:absolute;left:50%;transform:translateX(-50%);bottom:22px;
+  font-size:9px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;white-space:nowrap;
+  opacity:.85;line-height:1;
+}
+.pname .seg::before{
+  content:"";position:absolute;left:50%;bottom:34px;width:1px;height:8px;background:currentColor;opacity:.4;
+}
+.pname .seg.row2::after{bottom:4px}
+.pname .seg.row2::before{bottom:16px;height:26px}
+@media (max-width:520px){
+  .pname .seg::after{font-size:8px;letter-spacing:0.04em}
+}
+.seg-locant{color:var(--nitrogen)}
+.seg-sub{color:var(--halogen)}
+.seg-stem{color:var(--ink)}
+.seg-unsat{color:var(--warn)}
+.seg-suffix{color:var(--oxygen)}
+.seg-punct{color:var(--ink-3)}
+.parser-foot{padding:0 14px 16px;text-align:center;color:var(--ink-2);font-size:14px}
+.mini{font-size:12.5px;color:var(--ink-3);font-family:var(--mono)}
+
+.gate{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:26px 0}
+.gate button{
+  text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:22px;display:block;transition:border-color .12s,transform .12s;
+}
+.gate button:hover{border-color:var(--ink);transform:translateY(-1px)}
+.gate .gk{font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.gate .gt{font-size:22px;font-weight:700;margin:8px 0 6px;letter-spacing:-0.02em}
+.gate .gd{font-family:var(--sans);font-size:14.5px;color:var(--ink-2);line-height:1.5}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:26px}
+.stat{background:var(--surface);padding:14px}
+.stat .v{font-family:var(--mono);font-size:24px;font-weight:700}
+.stat .l{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-3);font-weight:600;font-family:var(--mono)}
+
+/* ---------- notes ---------- */
+.layout{display:grid;grid-template-columns:250px 1fr;gap:28px;align-items:start}
+.rail{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto;border-right:1px solid var(--line);padding-right:14px}
+.rail ol{list-style:none;margin:0;padding:0;counter-reset:ch}
+.rail li{counter-increment:ch}
+.rail li button{
+  width:100%;text-align:left;background:none;border:0;padding:6px 8px 6px 30px;position:relative;
+  font-family:var(--sans);font-size:13.5px;color:var(--ink-2);border-radius:var(--r);line-height:1.35;
+}
+.rail li button::before{
+  content:counter(ch,decimal-leading-zero);position:absolute;left:4px;top:6px;
+  font-family:var(--mono);font-size:10.5px;color:var(--ink-3);letter-spacing:0.04em;
+}
+.rail li button:hover{background:var(--surface-2);color:var(--ink)}
+.rail li button[aria-current="true"]{background:var(--ink);color:var(--paper)}
+.rail li button[aria-current="true"]::before{color:var(--paper);opacity:.6}
+.rail .railhead{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);font-weight:600;font-family:var(--mono);margin:14px 0 6px}
+
+.chapter{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px 28px;max-width:70ch}
+.chapter h2{font-size:26px;letter-spacing:-0.03em}
+.chapter .chnum{font-family:var(--mono);font-size:12px;color:var(--ink-3);letter-spacing:0.14em;font-weight:600}
+.chapter p{margin:14px 0;color:var(--ink-2)}
+.chapter strong{color:var(--ink)}
+.chapter ul,.chapter ol{color:var(--ink-2);padding-left:20px}
+.chapter li{margin:5px 0}
+.chapter h3{font-size:14px;letter-spacing:0.06em;text-transform:uppercase;margin:24px 0 6px;color:var(--ink)}
+.tag{
+  display:inline-block;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;
+  padding:3px 8px;border-radius:2px;vertical-align:middle;
+}
+.tag.core{background:var(--ink);color:var(--paper)}
+.tag.ext{background:transparent;color:var(--ink-2);border:1px dashed var(--line)}
+code,.f{font-family:var(--mono);font-size:0.92em;background:var(--surface-2);padding:1px 5px;border-radius:2px;border:1px solid var(--line-soft)}
+.rule{border-left:3px solid var(--key);background:var(--surface-2);padding:12px 16px;margin:16px 0;border-radius:0 var(--r) var(--r) 0}
+.rule .eyebrow{color:var(--key)}
+.warnbox{border-left:3px solid var(--warn);background:#FBF6EC;padding:12px 16px;margin:16px 0;border-radius:0 var(--r) var(--r) 0}
+.warnbox .eyebrow{color:var(--warn)}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px}
+th,td{border:1px solid var(--line-soft);padding:7px 10px;text-align:left}
+th{background:var(--surface-2);font-family:var(--mono);font-size:11.5px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600}
+td.f2{font-family:var(--mono)}
+.svgwrap{background:var(--surface-2);border:1px solid var(--line-soft);border-radius:var(--r);padding:10px;margin:14px 0;text-align:center}
+.svgwrap svg{max-width:100%;height:auto}
+.svgcap{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-top:4px}
+.check{border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin:22px 0 0}
+.check .q{font-weight:600;color:var(--ink);margin:6px 0 10px}
+.check button{background:var(--ink);color:var(--paper);border:0;padding:6px 12px;border-radius:var(--r);font-size:12px;letter-spacing:0.08em;text-transform:uppercase}
+.check .a{display:none;margin-top:10px;font-family:var(--mono);color:var(--key);font-weight:600}
+.check.open .a{display:block}
+.chapnav{display:flex;justify-content:space-between;gap:10px;margin-top:22px;max-width:70ch}
+.chapnav button{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:9px 14px;font-size:12.5px;color:var(--ink)}
+.chapnav button:disabled{opacity:.35;cursor:default}
+
+/* ---------- test ---------- */
+.modes{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin:20px 0}
+.mode{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;text-align:left}
+.mode:hover{border-color:var(--ink)}
+.mode .mt{font-family:var(--mono);font-weight:700;font-size:15px;margin-bottom:4px}
+.mode .md{font-size:13.5px;color:var(--ink-2);line-height:1.45}
+.mode .mm{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:0.08em;text-transform:uppercase;margin-top:8px}
+
+.qshell{max-width:760px;margin:0 auto}
+.qbar{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.qbar .prog{flex:1;height:3px;background:var(--line);border-radius:2px;overflow:hidden;min-width:120px}
+.qbar .prog i{display:block;height:100%;background:var(--ink);transition:width .25s}
+.qbar .cnt{font-family:var(--mono);font-size:12px;color:var(--ink-3);letter-spacing:0.06em}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.qtype{font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.qstem{font-size:19px;font-weight:600;margin:8px 0 4px;letter-spacing:-0.01em}
+.qsub{color:var(--ink-2);font-size:14.5px;margin-bottom:6px}
+.opts{display:grid;gap:8px;margin-top:16px}
+.opts.grid2{grid-template-columns:1fr 1fr}
+.opt{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;
+  text-align:left;font-family:var(--mono);font-size:15px;color:var(--ink);transition:border-color .1s,background .1s;
+}
+.opt:hover:not(:disabled){border-color:var(--ink);background:var(--surface-2)}
+.opt:disabled{cursor:default}
+.opt.correct{border-color:var(--key);background:#E9F5F1;color:var(--key);font-weight:700}
+.opt.wrong{border-color:var(--oxygen);background:#FBEDEB;color:var(--oxygen)}
+.opt.svgopt{text-align:center;padding:6px}
+.typed{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.typed input{
+  flex:1;min-width:180px;font-family:var(--mono);font-size:17px;padding:11px 12px;
+  border:1px solid var(--line);border-radius:var(--r);background:var(--surface-2);color:var(--ink);
+}
+.typed input:focus{background:var(--surface)}
+.btn{background:var(--ink);color:var(--paper);border:1px solid var(--ink);border-radius:var(--r);padding:11px 18px;font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn:hover{opacity:.88}
+.fb{margin-top:18px;border-top:1px solid var(--line-soft);padding-top:16px}
+.fb .verdict{font-family:var(--mono);font-weight:700;letter-spacing:0.06em;text-transform:uppercase;font-size:13px}
+.fb.ok .verdict{color:var(--key)}
+.fb.no .verdict{color:var(--oxygen)}
+.fb p{color:var(--ink-2);font-size:14.5px;margin:8px 0}
+.fb .link{background:none;border:0;color:var(--key);font-family:var(--mono);font-size:12.5px;padding:0;text-decoration:underline}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0}
+.chip{font-family:var(--mono);font-size:11.5px;border:1px solid var(--line);border-radius:20px;padding:4px 11px;background:var(--surface);color:var(--ink-2)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.results{max-width:760px;margin:0 auto}
+.ring{font-family:var(--mono);font-size:56px;font-weight:700;letter-spacing:-0.03em}
+.rev{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);margin-top:10px;padding:14px 16px}
+.rev .rq{font-size:14.5px;color:var(--ink-2)}
+.rev .ra{font-family:var(--mono);font-size:14px;margin-top:6px}
+.bad{color:var(--oxygen)}
+.good{color:var(--key)}
+.hidden{display:none!important}
+
+@media (max-width:860px){
+  .layout{grid-template-columns:1fr}
+  .rail{position:static;max-height:none;border-right:0;border-bottom:1px solid var(--line);padding:0 0 12px;margin-bottom:6px}
+  .rail ol{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+  .gate{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .chapter{padding:20px 18px}
+  .app{padding:0 14px 100px}
+  .opts.grid2{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div>
+      <div class="brand">Nomen<span class="dot">·</span>clature</div>
+      <div class="brand-sub">IB Chemistry — Structure 3.2</div>
+    </div>
+    <nav class="tabs" id="tabs">
+      <button data-view="home" aria-current="true">Home</button>
+      <button data-view="notes">Notes</button>
+      <button data-view="test">Test</button>
+      <button data-view="ions">Ions</button>
+    </nav>
+  </header>
+
+  <!-- HOME -->
+  <section class="view on" id="view-home">
+    <div class="hero">
+      <div class="eyebrow">Structure 3.2 · Functional groups &amp; organic nomenclature</div>
+      <h1>An organic name is a sentence with strict grammar.</h1>
+      <p class="lede">Learn the grammar in the notes, then let the test engine generate endless molecules and check whether you can read and write them. Everything below is built from the IB naming rules — up to six carbons in the parent chain, one functional group at a time.</p>
+    </div>
+
+    <div class="parser">
+      <div class="parser-head">
+        <span class="eyebrow">Anatomy of a name</span>
+        <button class="btn ghost" id="parseAgain" style="padding:6px 12px">New molecule</button>
+      </div>
+      <div class="parser-body">
+        <div class="pname" id="parseName"></div>
+      </div>
+      <div class="parser-foot" id="parseFoot"></div>
+    </div>
+
+    <div class="gate">
+      <button data-goto="notes">
+        <div class="gk">Part one</div>
+        <div class="gt">Notes / Learn</div>
+        <div class="gd">Every rule you need for organic nomenclature, in 25 short chapters with worked structures and check-yourself questions.</div>
+      </button>
+      <button data-goto="test">
+        <div class="gk">Part two</div>
+        <div class="gt">Test / Practice</div>
+        <div class="gd">Naming, formulas, structures, functional groups and representations — 20+ question types, generated fresh every time.</div>
+      </button>
+    </div>
+
+    <div class="stats" id="homeStats"></div>
+    <p class="mini" style="margin-top:12px">Progress is stored on this device only. No account, no upload.</p>
+  </section>
+
+  <!-- NOTES -->
+  <section class="view" id="view-notes">
+    <div class="layout">
+      <aside class="rail">
+        <div class="railhead">Chapters</div>
+        <ol id="railList"></ol>
+      </aside>
+      <div>
+        <article class="chapter" id="chapterBody"></article>
+        <div class="chapnav">
+          <button id="prevCh">&larr; Previous</button>
+          <button id="nextCh">Next &rarr;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEST -->
+  <section class="view" id="view-test">
+    <div id="testMenu">
+      <div class="eyebrow">Part two</div>
+      <h1 style="font-size:30px;margin:6px 0 2px">Test / Practice</h1>
+      <p style="color:var(--ink-2);max-width:60ch;margin:8px 0 0">Pick a mode. Questions are generated from real structures, so the answer is always derivable — nothing is memorised from a fixed list.</p>
+      <div class="modes" id="modeList"></div>
+      <div class="eyebrow" style="margin-top:26px">Topic practice</div>
+      <div class="chips" id="topicChips"></div>
+      <button class="btn" id="startTopic">Start topic practice</button>
+      <div id="weakBox" style="margin-top:26px"></div>
+    </div>
+    <div id="testRun" class="qshell hidden"></div>
+    <div id="testDone" class="results hidden"></div>
+  </section>
+
+  <!-- IONS -->
+  <section class="view" id="view-ions">
+    <div class="eyebrow">Reference · polyatomic ions</div>
+    <h1 style="font-size:30px;margin:6px 0 2px">Ions you are expected to know</h1>
+    <p style="color:var(--ink-2);max-width:62ch;margin:8px 0 0">Learn these as a set: name, formula and charge together. The drill below is separate from the nomenclature test — it never appears inside those question sets.</p>
+    <div id="ionMenu">
+    <div class="layout" style="grid-template-columns:1.1fr 1fr;margin-top:22px">
+      <div class="chapter" id="ionTable" style="max-width:none"></div>
+      <div>
+        <div class="eyebrow">Drill</div>
+        <div class="modes" id="ionModes" style="grid-template-columns:1fr;margin-top:10px"></div>
+        <div id="ionStats"></div>
+        <div class="warnbox" style="margin-top:18px"><div class="eyebrow">Watch these pairs</div>
+          <p style="margin:6px 0 0;color:var(--ink-2)">-ide is almost always a single atom (chloride Cl<sup>&minus;</sup>, nitride N<sup>3&minus;</sup>). -ate and -ite are oxyanions, and -ite always has one oxygen fewer than -ate: sulfate SO<sub>4</sub><sup>2&minus;</sup> vs sulfite SO<sub>3</sub><sup>2&minus;</sup>. Hydroxide and cyanide are the exceptions — they end in -ide but contain two atoms.</p></div>
+      </div>
+    </div>
+    </div>
+    <div id="ionRun" class="qshell hidden"></div>
+    <div id="ionDone" class="results hidden"></div>
+  </section>
+</div>
+<script>
+/* ============================================================
+   CHEMISTRY CORE
+   A molecule is stored as a numbered parent chain plus attachments.
+   Every name, formula and diagram is derived from this object, so
+   questions and answers can never disagree with each other.
+   mol = {
+     n:    parent chain length (1-6)
+     fg:   null | {t:'ol'|'al'|'one'|'oic', p:locant}
+     ene:  null | k   (double bond between C-k and C-k+1)
+     subs: [{t:'methyl'|'ethyl'|'chloro'|'bromo'|'fluoro'|'iodo', p:locant}]
+   }
+   ============================================================ */
+var STEM = ['meth','eth','prop','but','pent','hex'];
+var HALATOM = {fluoro:'F', chloro:'Cl', bromo:'Br', iodo:'I'};
+var ALKYL = {methyl:1, ethyl:2};
+var MULT = ['', '', 'di', 'tri', 'tetra'];
+
+function isHal(t){ return HALATOM.hasOwnProperty(t); }
+function stemOf(n){ return STEM[n-1]; }
+function rnd(a,b){ return a + Math.floor(Math.random()*(b-a+1)); }
+function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+function clone(m){
+  return {n:m.n, fg:m.fg?{t:m.fg.t,p:m.fg.p}:null, ene:m.ene, subs:m.subs.map(function(s){return {t:s.t,p:s.p};})};
+}
+
+/* ---------- numbering ---------- */
+function flip(m){
+  var n = m.n;
+  return {
+    n:n,
+    fg: m.fg ? {t:m.fg.t, p:n+1-m.fg.p} : null,
+    ene: (m.ene===null||m.ene===undefined) ? null : n - m.ene,
+    subs: m.subs.map(function(s){ return {t:s.t, p:n+1-s.p}; })
+  };
+}
+function subLocants(m){ return m.subs.map(function(s){return s.p;}).sort(function(a,b){return a-b;}); }
+function cmpList(a,b){
+  for(var i=0;i<Math.max(a.length,b.length);i++){
+    var x = a[i]===undefined?99:a[i], y = b[i]===undefined?99:b[i];
+    if(x!==y) return x-y;
+  }
+  return 0;
+}
+function firstAlpha(m){
+  var names = m.subs.slice().sort(function(a,b){
+    return a.t===b.t ? a.p-b.p : (a.t<b.t?-1:1);
+  });
+  return names.length ? names[0].p : 99;
+}
+// Returns the correctly numbered version of the molecule.
+function canonical(m){
+  var a = clone(m), b = flip(m);
+  // 1. principal functional group gets the lowest locant
+  if(a.fg){
+    if(a.fg.p !== b.fg.p) return a.fg.p < b.fg.p ? a : b;
+  }
+  // 2. then the double bond
+  if(a.ene!==null && a.ene!==undefined){
+    if(a.ene !== b.ene) return a.ene < b.ene ? a : b;
+  }
+  // 3. then the lowest set of substituent locants
+  var c = cmpList(subLocants(a), subLocants(b));
+  if(c !== 0) return c < 0 ? a : b;
+  // 4. then the substituent first in alphabetical order
+  return firstAlpha(a) <= firstAlpha(b) ? a : b;
+}
+
+/* ---------- naming ---------- */
+function prefixString(m){
+  if(!m.subs.length) return '';
+  var groups = {};
+  m.subs.forEach(function(s){ (groups[s.t] = groups[s.t] || []).push(s.p); });
+  var keys = Object.keys(groups).sort();           // alphabetical, ignoring multiplier
+  return keys.map(function(k){
+    var ls = groups[k].sort(function(a,b){return a-b;});
+    return ls.join(',') + '-' + MULT[ls.length] + k;
+  }).join('-');
+}
+function coreString(m){
+  var s = stemOf(m.n);
+  if(m.fg){
+    var t = m.fg.t;
+    if(t==='al')  return s + 'anal';
+    if(t==='oic') return s + 'anoic acid';
+    if(t==='ol')  return m.n >= 3 ? s + 'an-' + m.fg.p + '-ol' : s + 'anol';
+    if(t==='one') return m.n >= 4 ? s + 'an-' + m.fg.p + '-one' : s + 'anone';
+  }
+  if(m.ene!==null && m.ene!==undefined){
+    return m.n >= 4 ? s + '-' + m.ene + '-ene' : s + 'ene';
+  }
+  return s + 'ane';
+}
+function nameOf(m){
+  var p = prefixString(m);
+  return p ? p + coreString(m) : coreString(m);
+}
+
+/* ---------- family / functional group ---------- */
+function familyOf(m){
+  if(m.fg){
+    return {ol:'alcohol', al:'aldehyde', one:'ketone', oic:'carboxylic acid'}[m.fg.t];
+  }
+  if(m.subs.some(function(s){return isHal(s.t);})) return 'halogenoalkane';
+  if(m.ene!==null && m.ene!==undefined) return 'alkene';
+  return 'alkane';
+}
+function groupOf(m){
+  if(m.fg) return {ol:'hydroxyl', al:'carbonyl', one:'carbonyl', oic:'carboxyl'}[m.fg.t];
+  if(m.subs.some(function(s){return isHal(s.t);})) return 'halogeno';
+  return 'none';
+}
+function isSaturated(m){
+  return !(m.ene!==null && m.ene!==undefined) && !(m.fg && (m.fg.t==='al'||m.fg.t==='one'||m.fg.t==='oic'));
+}
+
+/* ---------- formulas ---------- */
+function carbonCount(m){
+  var c = m.n;
+  m.subs.forEach(function(s){ if(ALKYL[s.t]) c += ALKYL[s.t]; });
+  return c;
+}
+function formulaParts(m){
+  var C = carbonCount(m), H = 2*C + 2, O = 0, hal = {};
+  if(m.ene!==null && m.ene!==undefined) H -= 2;
+  m.subs.forEach(function(s){
+    if(isHal(s.t)){ H -= 1; var a = HALATOM[s.t]; hal[a] = (hal[a]||0)+1; }
+  });
+  if(m.fg){
+    if(m.fg.t==='ol'){ O = 1; }
+    else if(m.fg.t==='al' || m.fg.t==='one'){ O = 1; H -= 2; }
+    else if(m.fg.t==='oic'){ O = 2; H -= 2; }
+  }
+  return {C:C, H:H, O:O, hal:hal};
+}
+function sub(n){ return n>1 ? String(n) : ''; }
+function molecularFormula(m){
+  var p = formulaParts(m);
+  var out = 'C' + sub(p.C) + 'H' + sub(p.H);
+  var rest = Object.keys(p.hal).map(function(a){ return {a:a,n:p.hal[a]}; });
+  if(p.O) rest.push({a:'O', n:p.O});
+  rest.sort(function(x,y){ return x.a < y.a ? -1 : 1; });
+  rest.forEach(function(r){ out += r.a + sub(r.n); });
+  return out;
+}
+function gcd(a,b){ return b===0?a:gcd(b,a%b); }
+function empiricalFormula(m){
+  var p = formulaParts(m);
+  var counts = [p.C, p.H];
+  var syms = ['C','H'];
+  Object.keys(p.hal).sort().forEach(function(a){ syms.push(a); counts.push(p.hal[a]); });
+  if(p.O){ syms.push('O'); counts.push(p.O); }
+  var g = counts.reduce(function(a,b){ return gcd(a,b); });
+  return syms.map(function(s,i){ return s + sub(counts[i]/g); }).join('');
+}
+function generalFormula(m){
+  var f = familyOf(m);
+  return {
+    'alkane':'CnH2n+2', 'alkene':'CnH2n', 'alcohol':'CnH2n+1OH',
+    'aldehyde':'CnH2nO', 'ketone':'CnH2nO', 'carboxylic acid':'CnH2nO2',
+    'halogenoalkane':'CnH2n+1X'
+  }[f];
+}
+
+/* ---------- condensed structural formula ---------- */
+// Written so that a terminal functional group ends up at the right-hand end,
+// which is how condensed formulas are conventionally set out.
+function writeReversed(m){
+  if(m.fg && (m.fg.t==='al' || m.fg.t==='oic')) return true;
+  if(m.fg && m.fg.t==='ol' && m.fg.p===1 && m.n>1) return true;
+  if(!m.fg && m.subs.length===1 && isHal(m.subs[0].t) && m.subs[0].p===1 && m.n>1) return true;
+  return false;
+}
+function condensedNice(m){
+  var order = [], i;
+  if(writeReversed(m)){ for(i=m.n;i>=1;i--) order.push(i); }
+  else { for(i=1;i<=m.n;i++) order.push(i); }
+  var out = '';
+  for(var k=0;k<order.length;k++){
+    var idx = order[k];
+    out += carbonToken(m, idx, k===order.length-1);
+    if(k < order.length-1){
+      var lo = Math.min(idx, order[k+1]);
+      if(m.ene!==null && m.ene!==undefined && m.ene===lo) out += '=';
+    }
+  }
+  return out;
+}
+function condensedOf(m){ return condensedNice(m); }
+function carbonToken(m, i, isLast){
+  var n = m.n;
+  var neighbours = (i>1?1:0) + (i<n?1:0);
+  var extra = (m.ene!==null && m.ene!==undefined && (m.ene===i || m.ene===i-1)) ? 1 : 0;
+  var mySubs = m.subs.filter(function(s){ return s.p===i; });
+  var fgHere = m.fg && m.fg.p===i ? m.fg.t : null;
+  if(fgHere==='oic') return 'COOH';
+  if(fgHere==='al')  return 'CHO';
+  if(fgHere==='one') return 'CO';
+  var bonds = neighbours + extra + mySubs.length + (fgHere==='ol'?1:0);
+  var h = 4 - bonds;
+  var t = 'C' + (h>0 ? 'H' + sub(h) : '');
+  var terminal = (i===1 || i===n);
+  var single = mySubs.length + (fgHere==='ol'?1:0) === 1;
+  if(fgHere==='ol'){
+    t += (isLast && terminal && single) ? 'OH' : '(OH)';
+  }
+  mySubs.forEach(function(s){
+    var g = isHal(s.t) ? HALATOM[s.t] : (s.t==='methyl' ? 'CH3' : 'C2H5');
+    t += (isLast && terminal && single && !fgHere) ? g : '(' + g + ')';
+  });
+  return t;
+}
+
+/* ---------- skeletal SVG ---------- */
+var ATOMCOL = {O:'var(--oxygen)', N:'var(--nitrogen)', F:'var(--halogen)', Cl:'var(--halogen)', Br:'var(--halogen)', I:'var(--halogen)'};
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+
+function skeletalSVG(m, scale){
+  scale = scale || 1;
+  var DX = 26, DY = 15, PAD = 30;
+  var n = m.n;
+  var yTop = 34, yBot = yTop + DY;
+  var pts = [];
+  for(var i=0;i<n;i++){
+    pts.push({x: PAD + i*DX, y: (i%2===0) ? yBot : yTop, dir: (i%2===0) ? 1 : -1});
+  }
+  var W = PAD*2 + (n-1)*DX, H = 92;
+  var g = [];
+  function line(x1,y1,x2,y2,cls){
+    g.push('<line x1="'+r2(x1)+'" y1="'+r2(y1)+'" x2="'+r2(x2)+'" y2="'+r2(y2)+'" stroke="'+(cls||'var(--carbon)')+'" stroke-width="1.6" stroke-linecap="round"/>');
+  }
+  function label(x,y,txt,col){
+    g.push('<text x="'+r2(x)+'" y="'+r2(y)+'" text-anchor="middle" dominant-baseline="middle" font-family="var(--mono)" font-size="12.5" font-weight="600" fill="'+(col||'var(--carbon)')+'">'+esc(txt)+'</text>');
+  }
+  // chain bonds
+  for(var i=0;i<n-1;i++){
+    var a = pts[i], b = pts[i+1];
+    if(m.ene!==null && m.ene!==undefined && m.ene === i+1){
+      var dx = b.x-a.x, dy = b.y-a.y, len = Math.sqrt(dx*dx+dy*dy);
+      var ox = -dy/len*2.6, oy = dx/len*2.6;
+      line(a.x+ox,a.y+oy,b.x+ox,b.y+oy);
+      line(a.x-ox,a.y-oy,b.x-ox,b.y-oy);
+    } else {
+      line(a.x,a.y,b.x,b.y);
+    }
+  }
+  // attachments
+  for(var i=0;i<n;i++){
+    var p = pts[i], loc = i+1, d = p.dir;
+    var here = m.subs.filter(function(s){ return s.p===loc; });
+    var fgHere = (m.fg && m.fg.p===loc) ? m.fg.t : null;
+    var slotUsed = false;
+
+    if(fgHere==='ol'){
+      line(p.x, p.y, p.x, p.y + d*16);
+      label(p.x, p.y + d*23, 'OH', ATOMCOL.O); slotUsed = true;
+    }
+    if(fgHere==='one'){
+      line(p.x-2.2, p.y, p.x-2.2, p.y + d*15);
+      line(p.x+2.2, p.y, p.x+2.2, p.y + d*15);
+      label(p.x, p.y + d*23, 'O', ATOMCOL.O); slotUsed = true;
+    }
+    if(fgHere==='al'){
+      var side = (loc===1) ? -1 : 1;          // point the =O away from the chain
+      var ax = p.x + side*16, ay = p.y + d*10;
+      line(p.x-1.2, p.y-2.2, ax-1.2, ay-2.2);
+      line(p.x+1.2, p.y+2.2, ax+1.2, ay+2.2);
+      label(ax + side*7, ay + d*5, 'O', ATOMCOL.O); slotUsed = true;
+    }
+    if(fgHere==='oic'){
+      var side2 = (loc===1) ? -1 : 1;
+      var bx = p.x + side2*17, by = p.y + d*11;
+      line(p.x-1.2, p.y-2.2, bx-1.2, by-2.2);
+      line(p.x+1.2, p.y+2.2, bx+1.2, by+2.2);
+      label(bx + side2*7, by + d*5, 'O', ATOMCOL.O);
+      line(p.x, p.y, p.x, p.y - d*15);
+      label(p.x, p.y - d*22, 'OH', ATOMCOL.O); slotUsed = true;
+    }
+    var baseDir = slotUsed ? -d : d;           // put alkyl/halogen opposite an occupied slot
+    here.forEach(function(s, k){
+      var dir = (k % 2 === 0) ? baseDir : -baseDir;
+      if(isHal(s.t)){
+        line(p.x, p.y, p.x, p.y + dir*16);
+        label(p.x, p.y + dir*23, HALATOM[s.t], ATOMCOL[HALATOM[s.t]]);
+      } else if(s.t==='methyl'){
+        line(p.x, p.y, p.x, p.y + dir*16);
+      } else { // ethyl: one bond out, then a zig
+        line(p.x, p.y, p.x, p.y + dir*16);
+        line(p.x, p.y + dir*16, p.x - 14, p.y + dir*24);
+      }
+      slotUsed = true;
+    });
+  }
+  var w = Math.max(W, 120) + 26;
+  return '<svg viewBox="-13 0 '+r2(w)+' '+H+'" width="'+r2(Math.min(w*1.9*scale, 520))+'" role="img" aria-label="skeletal formula of '+esc(nameOf(m))+'"><g>'+g.join('')+'</g></svg>';
+}
+function r2(v){ return Math.round(v*10)/10; }
+
+/* ---------- displayed (full) structural SVG — straight chains only ---------- */
+function canDisplay(m){ return m.subs.every(function(s){ return isHal(s.t); }) && m.n <= 5; }
+function displayedSVG(m){
+  var DX = 46, n = m.n, PAD = 34, y = 60;
+  var g = [], W = PAD*2 + (n-1)*DX + 40;
+  function ln(x1,y1,x2,y2){ g.push('<line x1="'+r2(x1)+'" y1="'+r2(y1)+'" x2="'+r2(x2)+'" y2="'+r2(y2)+'" stroke="var(--carbon)" stroke-width="1.4"/>'); }
+  function tx(x,yy,t,col){ g.push('<text x="'+r2(x)+'" y="'+r2(yy)+'" text-anchor="middle" dominant-baseline="middle" font-family="var(--mono)" font-size="14" fill="'+(col||'var(--carbon)')+'">'+esc(t)+'</text>'); }
+  for(var i=1;i<=n;i++){
+    var x = PAD + (i-1)*DX;
+    tx(x, y, 'C');
+    var mySubs = m.subs.filter(function(s){ return s.p===i; });
+    var fgHere = (m.fg && m.fg.p===i) ? m.fg.t : null;
+    var used = 0;
+    // chain bonds
+    if(i<n){
+      if(m.ene===i){ ln(x+9,y-2.5,x+DX-9,y-2.5); ln(x+9,y+2.5,x+DX-9,y+2.5); }
+      else ln(x+9,y,x+DX-9,y);
+    }
+    var neighbours = (i>1?1:0)+(i<n?1:0);
+    var extra = (m.ene===i || m.ene===i-1) ? 1 : 0;
+    var groupBonds = mySubs.length + (fgHere==='ol'?1:0) + ((fgHere==='al'||fgHere==='one')?2:0) + (fgHere==='oic'?3:0);
+    var h = 4 - neighbours - extra - groupBonds;
+    // above / below slots: H's first, then groups
+    var slots = [];
+    for(var k=0;k<h;k++) slots.push({t:'H'});
+    if(fgHere==='ol') slots.push({t:'OH'});
+    mySubs.forEach(function(s){ slots.push({t: isHal(s.t)?HALATOM[s.t]:'CH3'}); });
+    var up = slots.slice(0, Math.ceil(slots.length/2)), down = slots.slice(Math.ceil(slots.length/2));
+    up.forEach(function(s,j){
+      var xx = x + (j - (up.length-1)/2)*20;
+      if(xx===x) ln(x, y-9, x, y-20); else ln(x, y-8, xx, y-20);
+      tx(xx, y-28, s.t, s.t==='OH'?ATOMCOL.O:(ATOMCOL[s.t]||null));
+    });
+    down.forEach(function(s,j){
+      var xx = x + (j - (down.length-1)/2)*20;
+      if(xx===x) ln(x, y+9, x, y+20); else ln(x, y+8, xx, y+20);
+      tx(xx, y+28, s.t, s.t==='OH'?ATOMCOL.O:(ATOMCOL[s.t]||null));
+    });
+    if(fgHere==='al' || fgHere==='one' || fgHere==='oic'){
+      ln(x-2.5, y-9, x-2.5, y-20); ln(x+2.5, y-9, x+2.5, y-20);
+      tx(x, y-28, 'O', ATOMCOL.O);
+      if(fgHere==='oic'){ ln(x, y+9, x, y+20); tx(x, y+28, 'OH', ATOMCOL.O); }
+    }
+  }
+  return '<svg viewBox="0 0 '+r2(W)+' 120" width="'+r2(Math.min(W*1.5,540))+'" role="img" aria-label="displayed formula of '+esc(nameOf(m))+'"><g>'+g.join('')+'</g></svg>';
+}
+
+/* ---------- generation ---------- */
+// A branch at position p on a chain of n carbons is only legal if it does not
+// create a longer chain than the parent: b + max(p-1, n-p) < n
+function branchOK(n, p, b){ return b + Math.max(p-1, n-p) < n; }
+
+function genMol(family, level){
+  level = level || 2;
+  var n, m, tries = 0;
+  do{
+    tries++;
+    n = (level<=1) ? rnd(3,4) : (level>=3 ? rnd(4,6) : rnd(3,5));
+    m = {n:n, fg:null, ene:null, subs:[]};
+    switch(family){
+      case 'alkane': break;
+      case 'alkene': m.ene = rnd(1, n-1); break;
+      case 'halogenoalkane': m.subs.push({t: pick(['chloro','bromo','iodo','fluoro']), p: rnd(1,n)}); break;
+      case 'alcohol': m.fg = {t:'ol', p: rnd(1,n)}; break;
+      case 'aldehyde': m.fg = {t:'al', p:1}; break;
+      case 'ketone': if(n<3) n=4, m.n=4; m.fg = {t:'one', p: rnd(2, m.n-1)}; break;
+      case 'carboxylic acid': m.fg = {t:'oic', p:1}; break;
+    }
+    // alkyl branches
+    var wantBranches = (level<=1) ? 0 : (level===2 ? (Math.random()<0.55?1:0) : rnd(1,2));
+    var attempts = 0;
+    while(wantBranches>0 && attempts<14){
+      attempts++;
+      var t = (level>=3 && Math.random()<0.3) ? 'ethyl' : 'methyl';
+      var p = rnd(2, m.n-1);
+      if(!branchOK(m.n, p, ALKYL[t])) continue;
+      if(m.fg && m.fg.p===p && (m.fg.t==='al'||m.fg.t==='oic'||m.fg.t==='one')) continue;
+      if(m.ene!==null && (m.ene===p || m.ene===p-1) === false){ /* fine */ }
+      var full = m.subs.filter(function(s){ return s.p===p; }).length;
+      if(full >= 2) continue;
+      m.subs.push({t:t, p:p});
+      wantBranches--;
+    }
+    m = canonical(m);
+  } while(!valid(m) && tries < 30);
+  return m;
+}
+function valid(m){
+  // every carbon must have a legal number of bonds
+  for(var i=1;i<=m.n;i++){
+    var neighbours = (i>1?1:0)+(i<m.n?1:0);
+    var extra = (m.ene===i || m.ene===i-1) ? 1 : 0;
+    var mySubs = m.subs.filter(function(s){ return s.p===i; }).length;
+    var fgHere = (m.fg && m.fg.p===i) ? m.fg.t : null;
+    var fgB = fgHere==='ol'?1:((fgHere==='al'||fgHere==='one')?2:(fgHere==='oic'?3:0));
+    if(neighbours + extra + mySubs + fgB > 4) return false;
+  }
+  if(m.fg && m.fg.t==='one' && (m.fg.p===1 || m.fg.p===m.n)) return false;
+  if(m.fg && (m.fg.t==='al'||m.fg.t==='oic') && m.fg.p!==1) return false;
+  return true;
+}
+var FAMILIES = ['alkane','alkene','halogenoalkane','alcohol','aldehyde','ketone','carboxylic acid'];
+
+/* ---------- perturbations, for distractors and "spot the error" ---------- */
+function variantMol(m){
+  var v = clone(m), t = rnd(1,4);
+  if(t===1 && v.n<6) v.n += 1;
+  else if(t===2 && v.n>3) { v.n -= 1; v = fixPositions(v); }
+  else if(t===3 && v.fg && v.fg.t!=='al' && v.fg.t!=='oic'){
+    var np = v.fg.p; for(var i=0;i<8 && np===v.fg.p;i++) np = rnd(1, v.n);
+    v.fg.p = np;
+  } else if(v.subs.length){
+    v.subs[0].p = rnd(1, v.n);
+  } else if(v.ene!==null){
+    v.ene = rnd(1, v.n-1);
+  } else { v.n = Math.min(6, v.n+1); }
+  v = fixPositions(v);
+  if(!valid(v)) return null;
+  v = canonical(v);
+  return nameOf(v)===nameOf(m) ? null : v;
+}
+function fixPositions(v){
+  if(v.fg){
+    if(v.fg.t==='al'||v.fg.t==='oic') v.fg.p = 1;
+    if(v.fg.p > v.n) v.fg.p = v.n;
+    if(v.fg.t==='one'){ if(v.fg.p<2) v.fg.p=2; if(v.fg.p>v.n-1) v.fg.p=v.n-1; }
+  }
+  if(v.ene!==null && v.ene!==undefined && v.ene > v.n-1) v.ene = v.n-1;
+  v.subs = v.subs.filter(function(s){ return s.p<=v.n; });
+  return v;
+}
+// wrong names that are wrong for a *reason* — the classic IB errors
+function structureOK(v){
+  if(!valid(v)) return false;
+  for(var i=0;i<v.subs.length;i++){
+    var s = v.subs[i];
+    if(ALKYL[s.t] && !branchOK(v.n, s.p, ALKYL[s.t])) return false;
+    if(s.p < 1 || s.p > v.n) return false;
+  }
+  if(v.n < 1 || v.n > 6) return false;
+  return true;
+}
+function wrongNames(m, count){
+  var out = [], correct = nameOf(m), seen = {};
+  seen[correct] = 1;
+  var makers = [];
+  if(m.fg && (m.fg.t==='ol'||m.fg.t==='one') && m.n>=3 && m.fg.p !== m.n+1-m.fg.p){
+    makers.push([function(){ var v = clone(m); v.fg.p = m.n+1-m.fg.p; return v; }, 'numbered from the wrong end']);
+  }
+  if(m.ene!==null && m.ene!==undefined && m.n>=4 && m.ene !== m.n-m.ene){
+    makers.push([function(){ var v = clone(m); v.ene = m.n-m.ene; return v; }, 'the double bond numbered from the wrong end']);
+  }
+  if(m.subs.length){
+    makers.push([function(){ var v = clone(m); v.subs = v.subs.map(function(s){return {t:s.t,p:m.n+1-s.p};}); return v; }, 'the substituents numbered from the wrong end']);
+  }
+  makers.push([function(){ var v = clone(m); v.n = m.n+1; return fixPositions(v); }, 'the parent chain counted one carbon too long']);
+  makers.push([function(){ var v = clone(m); v.n = m.n-1; return fixPositions(v); }, 'the parent chain counted one carbon too short']);
+  if(m.fg && m.fg.t==='al') makers.push([function(){ var v = clone(m); v.fg = {t:'one', p:2}; return fixPositions(v); }, 'an aldehyde read as a ketone']);
+  if(m.fg && m.fg.t==='one') makers.push([function(){ var v = clone(m); v.fg = {t:'al', p:1}; return v; }, 'a ketone read as an aldehyde']);
+  if(m.fg && m.fg.t==='oic') makers.push([function(){ var v = clone(m); v.fg = {t:'ol', p:1}; return v; }, 'a carboxyl group read as an alcohol']);
+  if(m.fg && m.fg.t==='ol' && m.fg.p===1) makers.push([function(){ var v = clone(m); v.fg = {t:'oic', p:1}; return v; }, 'an alcohol read as a carboxylic acid']);
+  shuffle(makers);
+  function tryPush(v, why){
+    if(!v) return;
+    v = fixPositions(v);
+    if(!structureOK(v)) return;
+    var nm = nameOf(canonicalKeep(v));
+    if(!nm || seen[nm]) return;
+    seen[nm] = 1;
+    out.push({name:nm, why:why, mol:v});
+  }
+  for(var i=0;i<makers.length && out.length<count;i++) tryPush(makers[i][0](), makers[i][1]);
+  var guard = 0;
+  while(out.length<count && guard++<50){
+    var v = variantMol(m);
+    if(v) tryPush(v, 'a different molecule');
+  }
+  return out;
+}
+// deliberately NOT re-numbered: a wrong name should keep its wrong locants
+function canonicalKeep(v){ return v; }
+function shuffle(a){
+  for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; }
+  return a;
+}
+
+/* ---------- answer normalisation ---------- */
+function normalise(s){
+  return String(s).toLowerCase()
+    .replace(/[\u2010-\u2015\u2212]/g,'-')
+    .replace(/\s+/g,'')
+    .replace(/[-,]/g,'')
+    .replace(/acid$/,'acid')
+    .trim();
+}
+function sameName(a,b){ return normalise(a)===normalise(b); }
+function sameFormula(a,b){
+  return String(a).replace(/\s+/g,'').toUpperCase() === String(b).replace(/\s+/g,'').toUpperCase();
+}
+
+/* ---------- name segmentation (the home-screen parser) ---------- */
+function segmentName(name){
+  var segs = [], i = 0;
+  var subNames = ['chloro','bromo','fluoro','iodo','methyl','ethyl','propyl'];
+  var mults = ['tetra','tri','di'];
+  while(i < name.length){
+    var rest = name.slice(i), mt;
+    if((mt = rest.match(/^\d+(,\d+)*/))){ segs.push({t:'locant', s:mt[0], label:'locant'}); i += mt[0].length; continue; }
+    if(rest[0]==='-' || rest[0]===','){ segs.push({t:'punct', s:rest[0], label:''}); i += 1; continue; }
+    if(rest[0]===' '){ segs.push({t:'punct', s:' ', label:''}); i += 1; continue; }
+    var hit = null;
+    mults.concat(subNames).forEach(function(w){
+      if(!hit && rest.indexOf(w)===0) hit = w;
+    });
+    if(hit && subNames.indexOf(hit)>=0){ segs.push({t:'sub', s:hit, label:'substituent'}); i += hit.length; continue; }
+    if(hit){ segs.push({t:'sub', s:hit, label:'how many'}); i += hit.length; continue; }
+    var stem = null;
+    ['meth','eth','prop','but','pent','hex'].forEach(function(w){ if(!stem && rest.indexOf(w)===0) stem = w; });
+    if(stem){ segs.push({t:'stem', s:stem, label:'chain length'}); i += stem.length; continue; }
+    var uns = null;
+    ['an','en','yn'].forEach(function(w){ if(!uns && rest.indexOf(w)===0) uns = w; });
+    if(uns && rest.length > uns.length){ segs.push({t:'unsat', s:uns, label: uns==='an'?'saturated':'double bond'}); i += uns.length; continue; }
+    var suf = null;
+    ['oic acid','one','ol','al','ane','ene','yne','e'].forEach(function(w){ if(!suf && rest.indexOf(w)===0) suf = w; });
+    if(suf){ segs.push({t:'suffix', s:suf, label: suf==='e'?'ending':'functional group'}); i += suf.length; continue; }
+    segs.push({t:'punct', s:rest[0], label:''}); i += 1;
+  }
+  return segs;
+}
+/* ============================================================
+   NOTES / LEARN — 25 chapters
+   tag: 'core' = IB explicit naming requirement
+        'ext'  = recognition / useful extension knowledge
+   ============================================================ */
+function M(n, fg, ene, subs){ return canonical({n:n, fg:fg, ene:(ene===undefined?null:ene), subs:subs||[]}); }
+function dia(m, cap){
+  return '<div class="svgwrap">' + skeletalSVG(m) + '<div class="svgcap">' + esc(cap || nameOf(m)) + '</div></div>';
+}
+function diaFull(m, cap){
+  return '<div class="svgwrap">' + displayedSVG(m) + '<div class="svgcap">' + esc(cap || (nameOf(m) + ' — displayed formula')) + '</div></div>';
+}
+function rule(t){ return '<div class="rule"><div class="eyebrow">Rule</div>' + t + '</div>'; }
+function warn(t){ return '<div class="warnbox"><div class="eyebrow">Common mistake</div>' + t + '</div>'; }
+
+var CHAPTERS = [
+{
+ id:'stems', title:'Carbon chain prefixes', tag:'core', topics:['prefix'],
+ body:function(){ return `
+  <p>Every organic name contains a <strong>stem</strong> that tells you how many carbon atoms are in the parent chain. The IB requires you to name compounds with up to six carbons in the parent chain, so six stems cover everything you will be asked to name.</p>
+  <table><tr><th>Carbons</th><th>Stem</th><th>Alkane</th></tr>
+  <tr><td>1</td><td class="f2">meth-</td><td class="f2">methane</td></tr>
+  <tr><td>2</td><td class="f2">eth-</td><td class="f2">ethane</td></tr>
+  <tr><td>3</td><td class="f2">prop-</td><td class="f2">propane</td></tr>
+  <tr><td>4</td><td class="f2">but-</td><td class="f2">butane</td></tr>
+  <tr><td>5</td><td class="f2">pent-</td><td class="f2">pentane</td></tr>
+  <tr><td>6</td><td class="f2">hex-</td><td class="f2">hexane</td></tr></table>
+  ${rule('<p style="margin:0"><strong>meth → eth → prop → but → pent → hex</strong>. From pentane onwards the stems are just the Greek numbers, which is why pent- and hex- feel easier than the first four. Drill the first four until they are automatic.</p>')}
+  <p>The stem is only ever the <em>parent chain</em>. Carbon atoms in branches are counted separately and named as substituents.</p>`;
+ },
+ check:{q:'A molecule has a five-carbon parent chain and no functional group. What is it called?', a:'pentane'}
+},
+{
+ id:'repr', title:'Representing organic molecules', tag:'core', topics:['repr'],
+ body:function(){ var m = M(4,{t:'ol',p:2}); return `
+  <p>The same molecule can be written in several ways. Each representation throws away different information, and the IB expects you to interconvert between them. Here is one compound shown five ways.</p>
+  <h3>1 — Name</h3><p><code>butan-2-ol</code></p>
+  <h3>2 — Molecular formula</h3><p><code>C4H10O</code> — the total number of each atom. It says nothing about how they are joined.</p>
+  <h3>3 — Empirical formula</h3><p>The simplest whole-number ratio. For <code>C4H10O</code> there is no common factor, so the empirical formula is also <code>C4H10O</code>. Empirical and molecular formulas are often identical; that is not a mistake.</p>
+  <h3>4 — Condensed structural formula</h3><p><code>CH3CH(OH)CH2CH3</code> — shows connectivity, with hydrogens grouped onto their carbon. Brackets show a group hanging off the carbon written before it.</p>
+  <h3>5 — Full (displayed) structural formula</h3>${diaFull(m)}
+  <h3>6 — Skeletal formula</h3>${dia(m)}
+  ${warn('<p style="margin:0">A molecular formula alone cannot be named. <code>C4H10O</code> is butan-1-ol, butan-2-ol, 2-methylpropan-1-ol, methoxypropane and more. You always need connectivity before you can write a name.</p>')}`;
+ },
+ check:{q:'Which representation shows every atom and every bond?', a:'The full / displayed structural formula'}
+},
+{
+ id:'skeletal', title:'Reading skeletal formulas', tag:'core', topics:['repr','count'],
+ body:function(){ return `
+  <p>Skeletal formulas are the fastest way to draw organic molecules and the most common way exam questions present them.</p>
+  <h3>Conventions</h3>
+  <ul>
+   <li>Carbon atoms are <strong>not labelled</strong>.</li>
+   <li>Hydrogens attached to carbon are <strong>not drawn</strong>.</li>
+   <li>Every line end is a carbon. Every corner (vertex) is a carbon.</li>
+   <li>Heteroatoms — O, N, Cl, Br, F, I — <strong>are</strong> written.</li>
+   <li>Hydrogens on heteroatoms are shown, e.g. <code>OH</code>.</li>
+   <li>Double and triple bonds are drawn as two or three lines.</li>
+  </ul>
+  ${dia(M(6,null,null,[]), 'hexane — count the ends and the corners: 6 carbons')}
+  ${rule('<p style="margin:0">To count carbons: count every corner, then add the two line ends. Do not count the <code>OH</code> or the <code>Cl</code> — those are not carbon.</p>')}
+  ${dia(M(5,{t:'ol',p:2}), 'pentan-2-ol — 5 carbons, and the OH is not one of them')}
+  ${warn('<p style="margin:0">Miscounting a skeletal chain is the single most common source of lost marks. Mark each carbon with a dot in pencil before you name anything.</p>')}`;
+ },
+ check:{q:'A skeletal chain drawn as a zig-zag has four corners and two line ends. How many carbons?', a:'6 carbons'}
+},
+{
+ id:'families', title:'Hydrocarbon families', tag:'core', topics:['series'],
+ body:function(){ return `
+  <p>Hydrocarbons contain carbon and hydrogen only. There are three families you must recognise.</p>
+  <h3>Alkanes</h3>
+  <p>Only C–C single bonds. General formula <code>CnH2n+2</code>. Saturated. Suffix <strong>-ane</strong>.</p>
+  ${dia(M(4,null,null,[]),'butane, C4H10')}
+  <h3>Alkenes</h3>
+  <p>Contain at least one C=C. General formula <code>CnH2n</code> for one double bond. Unsaturated. Suffix <strong>-ene</strong>, and from four carbons upwards the double bond needs a locant.</p>
+  ${dia(M(4,null,1,[]),'but-1-ene, C4H8')}
+  <h3>Alkynes <span class="tag ext">recognition</span></h3>
+  <p>Contain a C≡C triple bond. General formula <code>CnH2n-2</code>. Suffix <strong>-yne</strong>, e.g. ethyne, propyne, but-2-yne. The IB expects you to recognise alkynes but does not require you to name branched ones.</p>
+  ${warn('<p style="margin:0">A double bond removes two hydrogens, not one. C4H10 (butane) becomes C4H8 (butene), not C4H9.</p>')}`;
+ },
+ check:{q:'What is the general formula of an alkene with one C=C?', a:'CnH2n'}
+},
+{
+ id:'groups', title:'Functional groups', tag:'core', topics:['group'],
+ body:function(){ return `
+  <p>A <strong>functional group</strong> is the atom or group of atoms responsible for the characteristic reactions of a molecule. The IB names nine.</p>
+  <table><tr><th>Group</th><th>Structure</th><th>Found in</th><th>Scope</th></tr>
+  <tr><td>halogeno</td><td class="f2">C–X</td><td>halogenoalkane</td><td><span class="tag core">name it</span></td></tr>
+  <tr><td>hydroxyl</td><td class="f2">–OH</td><td>alcohol</td><td><span class="tag core">name it</span></td></tr>
+  <tr><td>carbonyl</td><td class="f2">C=O</td><td>aldehyde / ketone</td><td><span class="tag core">name it</span></td></tr>
+  <tr><td>carboxyl</td><td class="f2">–COOH</td><td>carboxylic acid</td><td><span class="tag core">name it</span></td></tr>
+  <tr><td>alkoxy</td><td class="f2">–O–</td><td>ether</td><td><span class="tag ext">recognise</span></td></tr>
+  <tr><td>amino</td><td class="f2">–NH2</td><td>amine</td><td><span class="tag ext">recognise</span></td></tr>
+  <tr><td>amido</td><td class="f2">–CONH2</td><td>amide</td><td><span class="tag ext">recognise</span></td></tr>
+  <tr><td>ester</td><td class="f2">–COO–</td><td>ester</td><td><span class="tag ext">recognise</span></td></tr>
+  <tr><td>phenyl</td><td class="f2">C6H5–</td><td>aromatic compounds</td><td><span class="tag ext">recognise</span></td></tr></table>
+  ${rule('<p style="margin:0">The <strong>carbonyl</strong> group C=O appears in aldehydes, ketones, carboxylic acids, esters and amides. Saying "it has a carbonyl" does not identify the family — you must look at what else is attached to that carbon.</p>')}`;
+ },
+ check:{q:'Which functional group is present in both aldehydes and ketones?', a:'Carbonyl, C=O'}
+},
+{
+ id:'series', title:'Homologous series', tag:'core', topics:['series'],
+ body:function(){ return `
+  <p>A <strong>homologous series</strong> is a family of compounds with the same functional group and the same general formula, where successive members differ by <code>CH2</code>.</p>
+  <p>Members of a series share chemical properties and show a gradual trend in physical properties such as boiling point.</p>
+  <table><tr><th>Series</th><th>Feature</th><th>Suffix / prefix</th></tr>
+  <tr><td>alkane</td><td class="f2">C–C only</td><td class="f2">-ane</td></tr>
+  <tr><td>alkene</td><td class="f2">C=C</td><td class="f2">-ene</td></tr>
+  <tr><td>alkyne</td><td class="f2">C≡C</td><td class="f2">-yne</td></tr>
+  <tr><td>halogenoalkane</td><td class="f2">C–X</td><td class="f2">chloro- / bromo-</td></tr>
+  <tr><td>alcohol</td><td class="f2">–OH</td><td class="f2">-ol</td></tr>
+  <tr><td>aldehyde</td><td class="f2">–CHO</td><td class="f2">-al</td></tr>
+  <tr><td>ketone</td><td class="f2">C=O in the chain</td><td class="f2">-one</td></tr>
+  <tr><td>carboxylic acid</td><td class="f2">–COOH</td><td class="f2">-oic acid</td></tr>
+  <tr><td>ether</td><td class="f2">C–O–C</td><td class="f2">-oxy-</td></tr>
+  <tr><td>amine</td><td class="f2">–NH2</td><td class="f2">-amine</td></tr>
+  <tr><td>amide</td><td class="f2">–CONH2</td><td class="f2">-amide</td></tr>
+  <tr><td>ester</td><td class="f2">–COO–</td><td class="f2">-oate</td></tr></table>
+  ${rule('<p style="margin:0"><strong>Series ≠ group.</strong> The homologous series is <em>alcohol</em>; the functional group it contains is <em>hydroxyl</em>. Exam questions ask for one or the other, and the wrong word loses the mark.</p>')}`;
+ },
+ check:{q:'Name the series and the group present in propan-1-ol.', a:'Series: alcohol. Group: hydroxyl.'}
+},
+{
+ id:'straight', title:'Naming straight-chain compounds', tag:'core', topics:['naming'],
+ body:function(){ return `
+  <p>With no branches, a name is just <strong>stem + suffix</strong>, plus a locant if the functional group could sit in more than one place.</p>
+  <table><tr><th>Family</th><th>Suffix</th><th>Example</th></tr>
+  <tr><td>alkane</td><td class="f2">-ane</td><td class="f2">propane</td></tr>
+  <tr><td>alkene</td><td class="f2">-ene</td><td class="f2">pent-2-ene</td></tr>
+  <tr><td>alcohol</td><td class="f2">-ol</td><td class="f2">butan-2-ol</td></tr>
+  <tr><td>aldehyde</td><td class="f2">-al</td><td class="f2">propanal</td></tr>
+  <tr><td>ketone</td><td class="f2">-one</td><td class="f2">pentan-3-one</td></tr>
+  <tr><td>carboxylic acid</td><td class="f2">-oic acid</td><td class="f2">ethanoic acid</td></tr></table>
+  ${rule('<p style="margin:0">Alcohols and ketones keep the <code>-an-</code> from the alkane: butane → butan-2-ol, not "but-2-ol".</p>')}
+  <p>Locants are dropped only when there is no ambiguity: methanol, ethanol, propanone, ethanal. Everything with a choice of position gets a number.</p>`;
+ },
+ check:{q:'Write the name for a 5-carbon straight chain with C=O on carbon 2.', a:'pentan-2-one'}
+},
+{
+ id:'numbering', title:'Numbering the parent chain', tag:'core', topics:['naming','number'],
+ body:function(){ return `
+  <p>You may number the chain from either end. Priority decides which end wins.</p>
+  ${rule(`<ol style="margin:6px 0 0"><li>The <strong>principal functional group</strong> gets the lowest possible number.</li>
+  <li>If there is no functional group, the <strong>double bond</strong> gets the lowest number.</li>
+  <li>If neither, the <strong>set of substituents</strong> gets the lowest numbers.</li>
+  <li>Still tied? The substituent that comes first alphabetically gets the lower number.</li></ol>`)}
+  ${dia(M(5,{t:'ol',p:2},null,[]),'pentan-2-ol — numbered from the right-hand end so the OH is 2, not 4')}
+  <p>Compare the two possible numberings before committing. Write both locant sets down if you need to; the lower one at the first point of difference wins. {2,3} beats {2,4} because 3 &lt; 4.</p>
+  ${warn('<p style="margin:0">Aldehydes and carboxylic acids are <em>always</em> on carbon 1 — the group can only exist at the end of a chain. Never write "butan-1-al" or "propan-1-oic acid"; the locant is redundant.</p>')}`;
+ },
+ check:{q:'A six-carbon chain has OH on the second carbon from the right and a methyl on the second carbon from the left. Where does numbering start?', a:'From the right — the OH takes priority, giving hexan-2-ol with the methyl at 5'}
+},
+{
+ id:'branches', title:'Branches and substituents', tag:'core', topics:['naming','sub'],
+ body:function(){ return `
+  <p>Any carbon chain hanging off the parent chain is an <strong>alkyl substituent</strong>. Its name is the stem plus <code>-yl</code>.</p>
+  <table><tr><th>Carbons</th><th>Substituent</th><th>Formula</th></tr>
+  <tr><td>1</td><td class="f2">methyl</td><td class="f2">–CH3</td></tr>
+  <tr><td>2</td><td class="f2">ethyl</td><td class="f2">–C2H5</td></tr>
+  <tr><td>3</td><td class="f2">propyl</td><td class="f2">–C3H7</td></tr></table>
+  <p>Halogens are also written as prefixes: <code>fluoro-</code>, <code>chloro-</code>, <code>bromo-</code>, <code>iodo-</code>.</p>
+  ${dia(M(4,null,null,[{t:'methyl',p:2}]),'2-methylbutane — parent chain 4, one methyl branch')}
+  <p>Note that the branch carbons are <em>not</em> part of the stem. 2-methylbutane contains five carbons in total but its parent chain is only four, so the stem is but-, not pent-.</p>
+  ${rule('<p style="margin:0">Each substituent needs its own locant, even when two sit on the same carbon: <code>2,2-dimethylbutane</code>.</p>')}`;
+ },
+ check:{q:'What is the substituent name for a –C2H5 branch?', a:'ethyl'}
+},
+{
+ id:'repeats', title:'Repeated branches and multipliers', tag:'core', topics:['naming','sub'],
+ body:function(){ return `
+  <p>When the same substituent appears more than once, use a multiplier and list every locant.</p>
+  <table><tr><th>Count</th><th>Multiplier</th><th>Example</th></tr>
+  <tr><td>2</td><td class="f2">di-</td><td class="f2">2,3-dimethylbutane</td></tr>
+  <tr><td>3</td><td class="f2">tri-</td><td class="f2">2,2,3-trimethylbutane</td></tr>
+  <tr><td>4</td><td class="f2">tetra-</td><td class="f2">2,2,3,3-tetramethylbutane</td></tr></table>
+  ${dia(M(4,null,null,[{t:'methyl',p:2},{t:'methyl',p:3}]),'2,3-dimethylbutane')}
+  ${rule('<p style="margin:0">The number of locants must equal the number of substituents. Three methyls means three numbers, even if two of them are the same.</p>')}
+  ${warn('<p style="margin:0">Multipliers are ignored when alphabetising. <code>dimethyl</code> files under <strong>m</strong>, not <strong>d</strong>.</p>')}`;
+ },
+ check:{q:'Two methyls on carbon 2 of butane — what is the name?', a:'2,2-dimethylbutane'}
+},
+{
+ id:'alpha', title:'Alphabetical order and punctuation', tag:'core', topics:['naming','punct'],
+ body:function(){ return `
+  <p>Substituent prefixes are listed alphabetically, whatever their locants.</p>
+  <p><code>3-chloro-2-methylhexane</code> — chloro before methyl, even though its number is higher.</p>
+  <h3>Punctuation rules</h3>
+  <ul>
+   <li>Number next to a letter → <strong>hyphen</strong>: <code>but-2-ene</code></li>
+   <li>Number next to a number → <strong>comma</strong>: <code>2,3-dimethyl…</code></li>
+   <li>No spaces anywhere, except before <code>acid</code>: <code>ethanoic acid</code></li>
+   <li>The whole name is one word, written in lower case.</li>
+  </ul>
+  ${rule('<p style="margin:0">Alphabetise on the substituent name itself: <em>ethyl</em> before <em>methyl</em>; <em>bromo</em> before <em>chloro</em>; and <em>di</em>, <em>tri</em>, <em>tetra</em> never count.</p>')}
+  ${warn('<p style="margin:0">Marks are lost for punctuation as readily as for chemistry. "2 methyl butane" and "2-Methylbutane" are both wrong.</p>')}`;
+ },
+ check:{q:'Order these prefixes: methyl, bromo, ethyl.', a:'bromo, ethyl, methyl'}
+},
+{
+ id:'alkenes', title:'Alkenes', tag:'core', topics:['naming','series'],
+ body:function(){ return `
+  <p>Alkenes contain C=C and are <strong>unsaturated</strong>. General formula <code>CnH2n</code>.</p>
+  <p>The locant of the double bond is the <strong>lower</strong> of the two carbons it joins. A bond between C2 and C3 is "2".</p>
+  ${dia(M(5,null,2,[]),'pent-2-ene — the double bond joins C2 and C3')}
+  <ul>
+   <li>ethene and propene need no locant — there is only one possible position.</li>
+   <li>From four carbons upwards the locant is required: but-1-ene, but-2-ene.</li>
+   <li>The double bond outranks alkyl substituents when numbering.</li>
+  </ul>
+  ${dia(M(6,null,1,[{t:'methyl',p:4}]),'4-methylhex-1-ene')}
+  ${warn('<p style="margin:0">Forgetting the double-bond locant is one of the most frequently penalised slips. "Butene" is not an acceptable answer when but-1-ene and but-2-ene both exist.</p>')}`;
+ },
+ check:{q:'A six-carbon chain has C=C between carbons 3 and 4. Name it.', a:'hex-3-ene'}
+},
+{
+ id:'halo', title:'Halogenoalkanes', tag:'core', topics:['naming','series'],
+ body:function(){ return `
+  <p>A halogen replaces a hydrogen on an alkane chain. It is named as a <strong>prefix</strong>, never a suffix.</p>
+  <table><tr><th>Halogen</th><th>Prefix</th></tr>
+  <tr><td>F</td><td class="f2">fluoro-</td></tr><tr><td>Cl</td><td class="f2">chloro-</td></tr>
+  <tr><td>Br</td><td class="f2">bromo-</td></tr><tr><td>I</td><td class="f2">iodo-</td></tr></table>
+  ${dia(M(3,null,null,[{t:'chloro',p:2}]),'2-chloropropane')}
+  <p>Because halogens are prefixes, they do <em>not</em> take priority over a functional group when numbering — an alcohol or ketone still wins.</p>
+  ${dia(M(4,{t:'ol',p:2},null,[{t:'chloro',p:3}]),'3-chlorobutan-2-ol — the OH takes the lower number')}
+  ${rule('<p style="margin:0">General formula <code>CnH2n+1X</code> for one halogen on a saturated chain.</p>')}`;
+ },
+ check:{q:'Name CH3CH2CH2Br.', a:'1-bromopropane'}
+},
+{
+ id:'alcohols', title:'Alcohols', tag:'core', topics:['naming','series'],
+ body:function(){ return `
+  <p>Alcohols contain the <strong>hydroxyl</strong> group –OH bonded to a carbon. Suffix <strong>-ol</strong>, general formula <code>CnH2n+1OH</code>.</p>
+  ${dia(M(4,{t:'ol',p:1}),'butan-1-ol')}
+  ${dia(M(4,{t:'ol',p:2}),'butan-2-ol')}
+  <p>Keep the <code>-an-</code>: butane → butan-2-ol. Methanol and ethanol drop the locant because there is only one possibility.</p>
+  <h3>Primary, secondary and tertiary</h3>
+  <p>Classified by how many <strong>carbon atoms</strong> are attached to the carbon carrying the OH:</p>
+  <ul>
+   <li><strong>Primary (1°)</strong> — that carbon is joined to one other carbon (or none, in methanol).</li>
+   <li><strong>Secondary (2°)</strong> — joined to two other carbons.</li>
+   <li><strong>Tertiary (3°)</strong> — joined to three other carbons.</li>
+  </ul>
+  ${dia(M(4,{t:'ol',p:2},null,[{t:'methyl',p:2}]),'2-methylbutan-2-ol — tertiary: the OH carbon touches three carbons')}
+  ${warn('<p style="margin:0">Count carbons attached to the OH <em>carbon</em>, not hydrogens, and not the oxygen.</p>')}`;
+ },
+ check:{q:'Is propan-2-ol primary, secondary or tertiary?', a:'Secondary — the OH carbon is bonded to two other carbons'}
+},
+{
+ id:'aldehydes', title:'Aldehydes', tag:'core', topics:['naming','series'],
+ body:function(){ return `
+  <p>An aldehyde has a carbonyl carbon at the <strong>end</strong> of the chain, so it also carries a hydrogen: –CHO. Suffix <strong>-al</strong>, general formula <code>CnH2nO</code>.</p>
+  ${dia(M(3,{t:'al',p:1}),'propanal, CH3CH2CHO')}
+  <ul>
+   <li>The CHO carbon is <strong>always carbon 1</strong> — no locant is written.</li>
+   <li>The CHO carbon counts towards the chain length: propanal has three carbons in total.</li>
+   <li>Condensed form ends in <code>CHO</code>, not <code>COH</code>.</li>
+  </ul>
+  ${warn('<p style="margin:0">Writing <code>COH</code> suggests a carbon bonded to an –OH, which is an alcohol. The aldehyde is <code>CHO</code>: C double-bonded to O, single-bonded to H.</p>')}`;
+ },
+ check:{q:'How many carbons does butanal contain in total?', a:'Four — the CHO carbon is one of them'}
+},
+{
+ id:'ketones', title:'Ketones', tag:'core', topics:['naming','series'],
+ body:function(){ return `
+  <p>A ketone has the carbonyl carbon <strong>inside</strong> the chain, with carbons on both sides. Suffix <strong>-one</strong>, general formula <code>CnH2nO</code> — the same as aldehydes.</p>
+  ${dia(M(5,{t:'one',p:2}),'pentan-2-one')}
+  <ul>
+   <li>The smallest possible ketone is propanone — you need at least three carbons.</li>
+   <li>Propanone needs no locant; from four carbons upwards a locant is required.</li>
+   <li>The C=O carbon can never be position 1 or the last position — that would make it an aldehyde.</li>
+  </ul>
+  ${rule('<p style="margin:0">Aldehyde vs ketone: look at the carbonyl carbon. Carbon on one side only → aldehyde. Carbon on both sides → ketone.</p>')}
+  ${warn('<p style="margin:0">Aldehydes and ketones with the same number of carbons are <strong>functional group isomers</strong> — propanal and propanone are both C3H6O.</p>')}`;
+ },
+ check:{q:'Why is there no "butan-1-one"?', a:'A carbonyl at the end of a chain is an aldehyde — butanal'}
+},
+{
+ id:'acids', title:'Carboxylic acids', tag:'core', topics:['naming','series'],
+ body:function(){ return `
+  <p>A carboxylic acid contains the <strong>carboxyl</strong> group –COOH: a carbonyl and a hydroxyl on the same carbon. Suffix <strong>-oic acid</strong>, general formula <code>CnH2nO2</code>.</p>
+  ${dia(M(3,{t:'oic',p:1}),'propanoic acid, CH3CH2COOH')}
+  <ul>
+   <li>Always carbon 1, so no locant.</li>
+   <li>The COOH carbon counts towards the chain: ethanoic acid is <code>CH3COOH</code>, two carbons.</li>
+   <li>"acid" is a separate word — <code>butanoic acid</code>.</li>
+  </ul>
+  ${warn('<p style="margin:0">The OH inside a carboxyl group is <strong>not</strong> an alcohol. <code>CH3COOH</code> is ethanoic acid, not an alcohol, and never "ethanol".</p>')}`;
+ },
+ check:{q:'Give the molecular formula of ethanoic acid.', a:'C2H4O2'}
+},
+{
+ id:'others', title:'Other IB functional groups', tag:'ext', topics:['group'],
+ body:function(){ return `
+  <p>These four families must be <strong>recognised</strong> from a structure and matched to their group name. The IB does not require you to name branched examples.</p>
+  <h3>Ethers — alkoxy, C–O–C</h3>
+  <p>An oxygen sandwiched between two carbon groups. Named as an alkoxy substituent on the longer chain: <code>CH3OCH2CH3</code> is methoxyethane.</p>
+  <h3>Amines — amino, –NH2</h3>
+  <p>Nitrogen bonded to carbon and hydrogens. <code>CH3CH2NH2</code> is ethylamine (or ethanamine).</p>
+  <h3>Amides — amido, –CONH2</h3>
+  <p>A carbonyl bonded directly to nitrogen. <code>CH3CONH2</code> is ethanamide.</p>
+  <h3>Esters — –COO–</h3>
+  <p>A carbonyl bonded to an oxygen that is bonded to another carbon. <code>CH3COOCH2CH3</code> is ethyl ethanoate.</p>
+  ${rule('<p style="margin:0">Amine vs amide: an <strong>amide</strong> has C=O next to the nitrogen. An <strong>amine</strong> does not. One extra oxygen changes the whole family.</p>')}`;
+ },
+ check:{q:'Which family has C=O joined directly to N?', a:'Amide'}
+},
+{
+ id:'esters', title:'Esters and ester naming', tag:'ext', topics:['group'],
+ body:function(){ return `
+  <p>An ester is formed from a carboxylic acid and an alcohol. The group is <code>–COO–</code>: a carbonyl carbon joined to an oxygen that leads to another carbon.</p>
+  <h3>The two-part name</h3>
+  <p>Ester names are two words. The <strong>alcohol part comes first</strong> as an alkyl group; the <strong>acid part comes second</strong>, ending in <code>-oate</code>.</p>
+  <table><tr><th>Ester</th><th>From acid</th><th>From alcohol</th></tr>
+  <tr><td class="f2">methyl ethanoate</td><td>ethanoic acid</td><td>methanol</td></tr>
+  <tr><td class="f2">ethyl propanoate</td><td>propanoic acid</td><td>ethanol</td></tr></table>
+  ${rule('<p style="margin:0">Read the structure from the single-bonded oxygen outwards: that side gives the alkyl word. The carbonyl side gives the <code>-oate</code> word.</p>')}
+  ${warn('<p style="margin:0">The order is the opposite of how the molecule is usually drawn, which is why esters are so often named backwards.</p>')}`;
+ },
+ check:{q:'Which acid and alcohol form ethyl methanoate?', a:'Methanoic acid and ethanol'}
+},
+{
+ id:'phenyl', title:'Phenyl and benzene', tag:'ext', topics:['group'],
+ body:function(){ return `
+  <p>Benzene is <code>C6H6</code>: a ring of six carbons with delocalised electrons, drawn as a hexagon with a circle or with alternating double bonds.</p>
+  <p>When the ring is attached to something else it becomes the <strong>phenyl</strong> group, <code>C6H5–</code>.</p>
+  <div class="svgwrap"><svg viewBox="0 0 120 100" width="150" role="img" aria-label="benzene ring">
+    <polygon points="60,16 96,37 96,79 60,100 24,79 24,37" fill="none" stroke="var(--carbon)" stroke-width="1.6"/>
+    <circle cx="60" cy="58" r="17" fill="none" stroke="var(--carbon)" stroke-width="1.6"/>
+  </svg><div class="svgcap">benzene, C6H6</div></div>
+  <ul>
+   <li>Every ring corner is a carbon carrying one hydrogen.</li>
+   <li>Benzene is <strong>unsaturated</strong>, though it does not behave like an alkene.</li>
+   <li><code>C6H5CH3</code> is methylbenzene; <code>C6H5OH</code> is phenol.</li>
+  </ul>`;
+ },
+ check:{q:'How many carbons and hydrogens are in a phenyl group?', a:'Six carbons, five hydrogens — C6H5'}
+},
+{
+ id:'satur', title:'Saturated vs unsaturated', tag:'core', topics:['satur'],
+ body:function(){ return `
+  <p><strong>Saturated</strong> means every carbon–carbon bond is single, and the molecule holds the maximum possible number of hydrogens.</p>
+  <p><strong>Unsaturated</strong> means at least one multiple bond between carbons — C=C or C≡C.</p>
+  ${dia(M(5,null,null,[]),'pentane — saturated')}
+  ${dia(M(5,null,2,[]),'pent-2-ene — unsaturated')}
+  ${rule('<p style="margin:0">The test is carbon–carbon only. An alcohol, a halogenoalkane and a carboxylic acid can all be perfectly saturated.</p>')}
+  ${warn('<p style="margin:0">A C=O double bond does <strong>not</strong> make a molecule unsaturated in this sense — but aldehydes, ketones and acids are still often described as unsaturated at the carbonyl. For IB purposes, judge saturation by C–C bonds.</p>')}`;
+ },
+ check:{q:'Is 2-chlorobutane saturated?', a:'Yes — all its carbon–carbon bonds are single'}
+},
+{
+ id:'general', title:'General formulas', tag:'core', topics:['general'],
+ body:function(){ return `
+  <p>A general formula describes an entire homologous series in one expression, where <code>n</code> is the number of carbons.</p>
+  <table><tr><th>Series</th><th>General formula</th><th>Example</th></tr>
+  <tr><td>alkane</td><td class="f2">CnH2n+2</td><td class="f2">C4H10</td></tr>
+  <tr><td>alkene</td><td class="f2">CnH2n</td><td class="f2">C4H8</td></tr>
+  <tr><td>alkyne</td><td class="f2">CnH2n-2</td><td class="f2">C4H6</td></tr>
+  <tr><td>alcohol</td><td class="f2">CnH2n+1OH</td><td class="f2">C4H10O</td></tr>
+  <tr><td>aldehyde</td><td class="f2">CnH2nO</td><td class="f2">C4H8O</td></tr>
+  <tr><td>ketone</td><td class="f2">CnH2nO</td><td class="f2">C4H8O</td></tr>
+  <tr><td>carboxylic acid</td><td class="f2">CnH2nO2</td><td class="f2">C4H8O2</td></tr>
+  <tr><td>halogenoalkane</td><td class="f2">CnH2n+1X</td><td class="f2">C4H9Cl</td></tr></table>
+  ${rule('<p style="margin:0">Start from <code>CnH2n+2</code> and adjust: each C=C or C=O costs two hydrogens; each halogen costs one and adds an X; an OH costs nothing but adds an O.</p>')}`;
+ },
+ check:{q:'What is the molecular formula of the C5 member of the aldehyde series?', a:'C5H10O'}
+},
+{
+ id:'isomers', title:'Structural isomers', tag:'core', topics:['isomer'],
+ body:function(){ return `
+  <p><strong>Structural isomers</strong> have the same molecular formula but different connectivity.</p>
+  <h3>C4H10 — two isomers</h3>
+  ${dia(M(4,null,null,[]),'butane')}
+  ${dia(M(3,null,null,[{t:'methyl',p:2}]),'2-methylpropane')}
+  <h3>C4H8 — chain and position isomers</h3>
+  ${dia(M(4,null,1,[]),'but-1-ene')}
+  ${dia(M(4,null,2,[]),'but-2-ene')}
+  <h3>Functional group isomers</h3>
+  <p>Same formula, different homologous series entirely:</p>
+  <ul>
+   <li><code>C3H6O</code> — propanal (aldehyde) and propanone (ketone)</li>
+   <li><code>C2H6O</code> — ethanol (alcohol) and methoxymethane (ether)</li>
+   <li><code>C3H6O2</code> — propanoic acid (acid) and methyl ethanoate (ester)</li>
+  </ul>
+  ${warn('<p style="margin:0">Two drawings that look different may be the same molecule drawn at a different angle. Name both — identical names mean identical molecules.</p>')}`;
+ },
+ check:{q:'Are butane and 2-methylpropane isomers?', a:'Yes — both are C4H10 with different connectivity'}
+},
+{
+ id:'algorithm', title:'The complete naming algorithm', tag:'core', topics:['naming'],
+ body:function(){ return `
+  <p>Work through these ten steps in order and the name comes out the same every time.</p>
+  <ol>
+   <li><strong>Identify the functional group.</strong> This fixes the suffix and the numbering priority.</li>
+   <li><strong>Choose the parent chain:</strong> the longest continuous chain that <em>contains the functional group</em>.</li>
+   <li><strong>Count the carbons</strong> in that chain → the stem.</li>
+   <li><strong>Number the chain</strong> so the functional group gets the lowest locant.</li>
+   <li><strong>Identify every substituent</strong> hanging off the parent chain.</li>
+   <li><strong>Assign locants</strong> to each substituent.</li>
+   <li><strong>Combine repeats</strong> with di-, tri-, tetra-, keeping every locant.</li>
+   <li><strong>Alphabetise</strong> the substituent names, ignoring multipliers.</li>
+   <li><strong>Add the suffix</strong> with its locant if one is needed.</li>
+   <li><strong>Check punctuation:</strong> hyphens between numbers and letters, commas between numbers, one word, lower case.</li>
+  </ol>
+  ${dia(M(6,{t:'ol',p:2},null,[{t:'methyl',p:4}]),'worked example')}
+  <p>Group = hydroxyl → suffix <code>-ol</code>. Longest chain containing it = 6 → <code>hex</code>. Number so OH is 2. Methyl lands on 4. Result: <strong>4-methylhexan-2-ol</strong>.</p>`;
+ },
+ check:{q:'Which step decides the stem?', a:'Step 2–3: choosing and counting the parent chain'}
+},
+{
+ id:'mistakes', title:'Common mistakes', tag:'core', topics:['naming','error'],
+ body:function(){ return `
+  <p>Nine errors account for most of the marks lost on nomenclature questions.</p>
+  <ol>
+   <li><strong>Picking the chain that looks longest.</strong> The longest chain often bends. Trace every path.</li>
+   <li><strong>Numbering from the wrong end.</strong> Always compare both directions.</li>
+   <li><strong>Not counting the functional group carbon.</strong> The C in CHO and COOH is part of the chain.</li>
+   <li><strong>Dropping the double bond locant.</strong> "Hexene" is not a name; hex-2-ene is.</li>
+   <li><strong>Aldehyde vs ketone.</strong> End of chain → -al. Inside the chain → -one.</li>
+   <li><strong>Amine vs amide.</strong> The amide has a C=O next to the nitrogen.</li>
+   <li><strong>Carboxyl OH read as an alcohol.</strong> COOH is one group, not an alcohol plus a carbonyl.</li>
+   <li><strong>Ignoring alphabetical order.</strong> chloro before methyl, always.</li>
+   <li><strong>Miscounting skeletal carbons.</strong> Every vertex and every line end.</li>
+  </ol>
+  ${rule('<p style="margin:0">Before writing a final answer, re-read it backwards from the suffix: does the suffix match the group, does the stem match your carbon count, does each locant match the drawing?</p>')}`;
+ },
+ check:{q:'A chain drawn horizontally has 5 carbons, but a bent path through it has 6. Which is the parent chain?', a:'The 6-carbon path — the parent chain does not have to be drawn straight'}
+},
+{
+ id:'quickref', title:'Quick-reference tables', tag:'core', topics:['prefix','naming'],
+ body:function(){ return `
+  <h3>Stems</h3>
+  <p class="mono">1 meth · 2 eth · 3 prop · 4 but · 5 pent · 6 hex</p>
+  <h3>Suffixes</h3>
+  <table><tr><th>Family</th><th>Suffix</th><th>Locant?</th></tr>
+  <tr><td>alkane</td><td class="f2">-ane</td><td>no</td></tr>
+  <tr><td>alkene</td><td class="f2">-ene</td><td>yes, from C4</td></tr>
+  <tr><td>alcohol</td><td class="f2">-ol</td><td>yes, from C3</td></tr>
+  <tr><td>aldehyde</td><td class="f2">-al</td><td>no (always C1)</td></tr>
+  <tr><td>ketone</td><td class="f2">-one</td><td>yes, from C4</td></tr>
+  <tr><td>carboxylic acid</td><td class="f2">-oic acid</td><td>no (always C1)</td></tr></table>
+  <h3>Prefixes</h3>
+  <p class="mono">fluoro · chloro · bromo · iodo · methyl · ethyl · propyl</p>
+  <h3>Multipliers</h3>
+  <p class="mono">di (2) · tri (3) · tetra (4) — ignored when alphabetising</p>
+  <h3>Punctuation</h3>
+  <p class="mono">number|letter → hyphen · number|number → comma · one word · lower case</p>
+  <h3>Priority when numbering</h3>
+  <p class="mono">functional group → double bond → substituent set → alphabetical</p>`;
+ },
+ check:{q:'From how many carbons does an alcohol need a locant?', a:'Three — propan-1-ol and propan-2-ol both exist'}
+}
+];
+/* ============================================================
+   TEST / PRACTICE ENGINE
+   Each generator returns:
+   { type, topic, stem, sub, html, opts:[{html,val,svg}], answer,
+     input:'mc'|'text', check(v), explain, chapter }
+   Everything is derived from a generated molecule, so the answer
+   is always correct by construction.
+   ============================================================ */
+var TOPICS = {
+  prefix:'Carbon stems', repr:'Representations', count:'Counting carbons',
+  group:'Functional groups', series:'Homologous series', naming:'Naming',
+  number:'Numbering', sub:'Substituents', satur:'Saturation',
+  general:'General formulas', isomer:'Isomers', error:'Spotting errors',
+  punct:'Punctuation', formula:'Formulas'
+};
+
+function mcOpts(correct, wrongs){
+  var all = [{v:correct, ok:true}].concat(wrongs.map(function(w){
+    return {v:(typeof w === 'string' ? w : w.name), ok:false, why:(w.why||'')};
+  }));
+  return shuffle(all);
+}
+function optHTML(v){ return '<span>' + esc(v) + '</span>'; }
+
+/* ---------- individual question types ---------- */
+var GENS = {};
+
+GENS.structure_to_name = function(level){
+  var m = genMol(pick(FAMILIES), level);
+  var w = wrongNames(m, 3);
+  return {
+    type:'Structure → name', topic:'naming', chapter:'algorithm', level:level,
+    stem:'What is the IUPAC name of this compound?',
+    html:'<div class="svgwrap">' + skeletalSVG(m) + '</div>',
+    input:'mc', opts:mcOpts(nameOf(m), w), answer:nameOf(m),
+    explain:'Parent chain: ' + m.n + ' carbons (' + stemOf(m.n) + '-). Family: ' + familyOf(m) + '. ' + explainNumbering(m)
+  };
+};
+
+GENS.name_to_structure = function(level){
+  var m = genMol(pick(['alkane','alkene','halogenoalkane','alcohol','ketone','aldehyde','carboxylic acid']), level);
+  var wrongs = [], guard = 0;
+  while(wrongs.length < 3 && guard++ < 40){
+    var v = variantMol(m);
+    if(v && !wrongs.some(function(x){ return nameOf(x)===nameOf(v); })) wrongs.push(v);
+  }
+  var all = shuffle([{v:m, ok:true}].concat(wrongs.map(function(x){ return {v:x, ok:false}; })));
+  return {
+    type:'Name → structure', topic:'repr', chapter:'skeletal', level:level,
+    stem:'Which structure is ' + nameOf(m) + '?',
+    html:'', input:'mc', svgOpts:true,
+    opts:all.map(function(o){ return {v:nameOf(o.v), ok:o.ok, html:skeletalSVG(o.v, 0.8)}; }),
+    answer:nameOf(m),
+    explain:'Look for ' + m.n + ' carbons in the parent chain and the ' + groupOf(m) + ' group in the right position.'
+  };
+};
+
+GENS.name_to_formula = function(level){
+  var m = genMol(pick(FAMILIES), level);
+  var f = molecularFormula(m);
+  var wrongs = [], guard = 0;
+  while(wrongs.length < 3 && guard++ < 40){
+    var v = variantMol(m);
+    if(!v) continue;
+    var vf = molecularFormula(v);
+    if(vf !== f && wrongs.indexOf(vf) < 0) wrongs.push(vf);
+  }
+  return {
+    type:'Name → molecular formula', topic:'formula', chapter:'general', level:level,
+    stem:'What is the molecular formula of ' + nameOf(m) + '?',
+    html:'', input:'mc', opts:mcOpts(f, wrongs), answer:f,
+    explain:'Total carbons: ' + carbonCount(m) + '. Start from CnH2n+2 and adjust for the functional group. ' + f + '.'
+  };
+};
+
+GENS.name_to_condensed = function(level){
+  var m = genMol(pick(FAMILIES), level);
+  var c = condensedNice(m);
+  var wrongs = [], guard = 0;
+  while(wrongs.length < 3 && guard++ < 40){
+    var v = variantMol(m);
+    if(!v) continue;
+    var vc = condensedNice(v);
+    if(vc !== c && wrongs.indexOf(vc) < 0) wrongs.push(vc);
+  }
+  return {
+    type:'Name → condensed formula', topic:'repr', chapter:'repr', level:level,
+    stem:'Which condensed structural formula is ' + nameOf(m) + '?',
+    html:'', input:'mc', opts:mcOpts(c, wrongs), answer:c,
+    explain:'Write the chain carbon by carbon, grouping hydrogens with their carbon and bracketing branches: ' + c + '.'
+  };
+};
+
+GENS.condensed_to_name = function(level){
+  var m = genMol(pick(FAMILIES), level);
+  return {
+    type:'Condensed formula → name', topic:'naming', chapter:'algorithm', level:level,
+    stem:'Name this compound.',
+    html:'<div class="svgwrap" style="padding:18px"><span class="mono" style="font-size:20px">' + esc(condensedNice(m)) + '</span></div>',
+    input:'mc', opts:mcOpts(nameOf(m), wrongNames(m, 3)), answer:nameOf(m),
+    explain:explainNumbering(m)
+  };
+};
+
+GENS.skeletal_to_name_typed = function(level){
+  var m = genMol(pick(FAMILIES), Math.max(2, level));
+  return {
+    type:'Structure → name (type it)', topic:'naming', chapter:'algorithm', level:level,
+    stem:'Type the IUPAC name of this compound.',
+    sub:'Punctuation is ignored, spelling is not.',
+    html:'<div class="svgwrap">' + skeletalSVG(m) + '</div>',
+    input:'text', answer:nameOf(m),
+    check:function(v){ return sameName(v, nameOf(m)); },
+    explain:explainNumbering(m)
+  };
+};
+
+GENS.count_carbons = function(level){
+  var m = genMol(pick(FAMILIES), level);
+  var c = carbonCount(m);
+  var wrongs = [c-1, c+1, c+2].filter(function(x){ return x>0 && x!==c; }).map(String).slice(0,3);
+  return {
+    type:'Count the carbons', topic:'count', chapter:'skeletal', level:level,
+    stem:'How many carbon atoms are in this molecule altogether?',
+    html:'<div class="svgwrap">' + skeletalSVG(m) + '</div>',
+    input:'mc', opts:mcOpts(String(c), wrongs), answer:String(c),
+    explain:'Parent chain ' + m.n + (carbonCount(m) > m.n ? ' plus ' + (c - m.n) + ' in the branches' : '') + ' = ' + c + '. Remember every vertex and every line end is a carbon; O and halogens are not.'
+  };
+};
+
+GENS.identify_group = function(level){
+  var m = genMol(pick(['halogenoalkane','alcohol','aldehyde','ketone','carboxylic acid']), level);
+  var g = groupOf(m);
+  var all = ['halogeno','hydroxyl','carbonyl','carboxyl','amino','alkoxy','ester'];
+  var wrongs = shuffle(all.filter(function(x){ return x!==g; })).slice(0,3);
+  return {
+    type:'Identify the functional group', topic:'group', chapter:'groups', level:level,
+    stem:'Which functional group is present?',
+    html:'<div class="svgwrap">' + skeletalSVG(m) + '</div>',
+    input:'mc', opts:mcOpts(g, wrongs), answer:g,
+    explain:'This is ' + nameOf(m) + ', a ' + familyOf(m) + ', so the group is ' + g + '.'
+  };
+};
+
+GENS.identify_series = function(level){
+  var m = genMol(pick(FAMILIES), level);
+  var f = familyOf(m);
+  var wrongs = shuffle(FAMILIES.filter(function(x){ return x!==f; })).slice(0,3);
+  return {
+    type:'Identify the homologous series', topic:'series', chapter:'series', level:level,
+    stem:'Which homologous series does this belong to?',
+    html:'<div class="svgwrap">' + skeletalSVG(m) + '</div>',
+    input:'mc', opts:mcOpts(f, wrongs), answer:f,
+    explain:nameOf(m) + ' — the ' + (groupOf(m)==='none' ? 'absence of a functional group and only single C–C bonds' : groupOf(m) + ' group') + ' identifies it as a ' + f + '.'
+  };
+};
+
+GENS.group_vs_series = function(level){
+  var pairs = [
+    ['alcohol','hydroxyl'], ['carboxylic acid','carboxyl'], ['halogenoalkane','halogeno'],
+    ['aldehyde','carbonyl'], ['ketone','carbonyl'], ['ether','alkoxy'], ['amine','amino'], ['amide','amido']
+  ];
+  var p = pick(pairs);
+  var askGroup = Math.random() < 0.5;
+  if(askGroup){
+    var wrongs = shuffle(['hydroxyl','carboxyl','halogeno','carbonyl','alkoxy','amino','amido'].filter(function(x){ return x!==p[1]; })).slice(0,3);
+    return {
+      type:'Group vs family', topic:'group', chapter:'series', level:level,
+      stem:'Which functional group does the ' + p[0] + ' series contain?',
+      html:'', input:'mc', opts:mcOpts(p[1], wrongs), answer:p[1],
+      explain:'The series is ' + p[0] + '; the group it contains is ' + p[1] + '. The two words are not interchangeable.'
+    };
+  }
+  var fams = pairs.filter(function(x){ return x[1]===p[1]; }).map(function(x){ return x[0]; });
+  var wrongs2 = shuffle(pairs.map(function(x){ return x[0]; }).filter(function(x){ return fams.indexOf(x)<0; })).slice(0,3);
+  return {
+    type:'Group vs family', topic:'group', chapter:'series', level:level,
+    stem:'Which homologous series contains the ' + p[1] + ' group?',
+    html:'', input:'mc', opts:mcOpts(p[0], wrongs2), answer:p[0],
+    explain:'The ' + p[1] + ' group is characteristic of the ' + p[0] + ' series.'
+  };
+};
+
+GENS.prefix_drill = function(level){
+  var n = rnd(1,6);
+  var askStem = Math.random() < 0.5;
+  if(askStem){
+    var wrongs = shuffle(STEM.filter(function(s){ return s!==STEM[n-1]; })).slice(0,3);
+    return {
+      type:'Carbon stem drill', topic:'prefix', chapter:'stems', level:1,
+      stem:'Which stem is used for a parent chain of ' + n + ' carbon' + (n>1?'s':'') + '?',
+      html:'', input:'mc', opts:mcOpts(STEM[n-1] + '-', wrongs.map(function(s){ return s + '-'; })), answer:STEM[n-1] + '-',
+      explain:'meth · eth · prop · but · pent · hex — position ' + n + ' is ' + STEM[n-1] + '-.'
+    };
+  }
+  var wrongs2 = shuffle([1,2,3,4,5,6].filter(function(x){ return x!==n; })).slice(0,3).map(String);
+  return {
+    type:'Carbon stem drill', topic:'prefix', chapter:'stems', level:1,
+    stem:'How many carbons are in the parent chain of ' + STEM[n-1] + 'ane?',
+    html:'', input:'mc', opts:mcOpts(String(n), wrongs2), answer:String(n),
+    explain:STEM[n-1] + '- means ' + n + ' carbon' + (n>1?'s':'') + '.'
+  };
+};
+
+GENS.general_formula = function(level){
+  var m = genMol(pick(FAMILIES), level);
+  var g = generalFormula(m);
+  var all = ['CnH2n+2','CnH2n','CnH2n-2','CnH2n+1OH','CnH2nO','CnH2nO2','CnH2n+1X'];
+  var wrongs = shuffle(all.filter(function(x){ return x!==g; })).slice(0,3);
+  return {
+    type:'General formula', topic:'general', chapter:'general', level:level,
+    stem:'What is the general formula of the series containing ' + nameOf(m) + '?',
+    html:'', input:'mc', opts:mcOpts(g, wrongs), answer:g,
+    explain:nameOf(m) + ' is ' + (/^[aeiou]/.test(familyOf(m))?'an ':'a ') + familyOf(m) + ', general formula ' + g + '.'
+  };
+};
+
+GENS.saturation = function(level){
+  var m = genMol(pick(FAMILIES), level);
+  var a = isSaturated(m) ? 'saturated' : 'unsaturated';
+  return {
+    type:'Saturated or unsaturated', topic:'satur', chapter:'satur', level:level,
+    stem:'Is this molecule saturated or unsaturated?',
+    html:'<div class="svgwrap">' + skeletalSVG(m) + '</div>',
+    input:'mc', opts:mcOpts(a, [a==='saturated'?'unsaturated':'saturated']), answer:a,
+    explain: isSaturated(m)
+      ? nameOf(m) + ' has only single carbon–carbon bonds, so it is saturated — a halogen or an OH does not change that.'
+      : nameOf(m) + ' contains a multiple bond, so it is unsaturated.'
+  };
+};
+
+GENS.aldehyde_or_ketone = function(level){
+  var m = genMol(pick(['aldehyde','ketone']), Math.max(2,level));
+  var a = familyOf(m);
+  return {
+    type:'Aldehyde or ketone', topic:'series', chapter:'ketones', level:level,
+    stem:'Is this an aldehyde or a ketone?',
+    html:'<div class="svgwrap">' + skeletalSVG(m) + '</div>',
+    input:'mc', opts:mcOpts(a, [a==='aldehyde'?'ketone':'aldehyde']), answer:a,
+    explain: a==='aldehyde'
+      ? 'The carbonyl carbon sits at the end of the chain with a hydrogen attached → aldehyde, suffix -al (' + nameOf(m) + ').'
+      : 'The carbonyl carbon has carbons on both sides → ketone, suffix -one (' + nameOf(m) + ').'
+  };
+};
+
+GENS.alcohol_class = function(level){
+  var m, tries = 0, cls;
+  do{
+    m = genMol('alcohol', Math.max(2,level));
+    cls = alcoholClass(m);
+    tries++;
+  } while(cls === null && tries < 20);
+  return {
+    type:'Primary / secondary / tertiary', topic:'group', chapter:'alcohols', level:level,
+    stem:'Is this alcohol primary, secondary or tertiary?',
+    html:'<div class="svgwrap">' + skeletalSVG(m) + '</div>',
+    input:'mc', opts:mcOpts(cls, shuffle(['primary','secondary','tertiary'].filter(function(x){ return x!==cls; }))), answer:cls,
+    explain:'The carbon carrying the OH is bonded to ' + carbonsOnOHCarbon(m) + ' other carbon atom' + (carbonsOnOHCarbon(m)===1?'':'s') + ' → ' + cls + '. (' + nameOf(m) + ')'
+  };
+};
+function carbonsOnOHCarbon(m){
+  var p = m.fg.p;
+  var c = (p>1?1:0) + (p<m.n?1:0);
+  c += m.subs.filter(function(s){ return s.p===p && ALKYL[s.t]; }).length;
+  return c;
+}
+function alcoholClass(m){
+  var c = carbonsOnOHCarbon(m);
+  return c===0 ? 'primary' : (c===1 ? 'primary' : (c===2 ? 'secondary' : (c===3 ? 'tertiary' : null)));
+}
+
+GENS.spot_the_error = function(level){
+  var m = genMol(pick(FAMILIES), Math.max(2,level));
+  var w = wrongNames(m, 4);
+  if(w.length < 3) return GENS.structure_to_name(level);
+  var others = w.slice(1, 4);
+  return {
+    type:'Correct the name', topic:'error', chapter:'mistakes', level:level,
+    stem:'A student named this molecule "' + w[0].name + '". What is the correct name?',
+    html:'<div class="svgwrap">' + skeletalSVG(m) + '</div>',
+    input:'mc', opts:mcOpts(nameOf(m), others),
+    answer:nameOf(m),
+    explain:'The student had ' + w[0].why + '. The correct name is ' + nameOf(m) + '.'
+  };
+};
+
+GENS.same_or_different = function(level){
+  var m = genMol(pick(FAMILIES), level);
+  var same = Math.random() < 0.5;
+  var other;
+  if(same){ other = flip(clone(m)); other = canonical(other); }
+  else {
+    var guard = 0;
+    do{ other = variantMol(m); } while(!other && guard++ < 20);
+    if(!other) other = genMol(pick(FAMILIES), level);
+  }
+  var isSame = nameOf(other) === nameOf(m);
+  return {
+    type:'Same molecule or different?', topic:'isomer', chapter:'isomers', level:level,
+    stem:'Are these two structures the same molecule?',
+    html:'<div class="svgwrap">' + skeletalSVG(m) + '<div class="svgcap">structure A</div></div>' +
+         '<div class="svgwrap">' + skeletalSVG(other) + '<div class="svgcap">structure B</div></div>',
+    input:'mc', opts:mcOpts(isSame ? 'Same molecule' : 'Different molecules', [isSame ? 'Different molecules' : 'Same molecule']),
+    answer: isSame ? 'Same molecule' : 'Different molecules',
+    explain: isSame
+      ? 'Both are ' + nameOf(m) + ' — the second is just drawn the other way round. Name them both and compare.'
+      : 'A is ' + nameOf(m) + ' and B is ' + nameOf(other) + '.'
+  };
+};
+
+GENS.isomer_count = function(level){
+  var sets = [
+    {f:'C4H10', n:2, ex:'butane and 2-methylpropane'},
+    {f:'C5H12', n:3, ex:'pentane, 2-methylbutane and 2,2-dimethylpropane'},
+    {f:'C3H6O', n:2, ex:'propanal and propanone'},
+    {f:'C4H8', n:3, ex:'but-1-ene, but-2-ene and 2-methylpropene'}
+  ];
+  var s = pick(sets);
+  var wrongs = shuffle([1,2,3,4,5].filter(function(x){ return x!==s.n; })).slice(0,3).map(String);
+  return {
+    type:'Count the isomers', topic:'isomer', chapter:'isomers', level:3,
+    stem:'How many structural isomers (ignoring stereoisomers) exist for ' + s.f + '?',
+    html:'', input:'mc', opts:mcOpts(String(s.n), wrongs), answer:String(s.n),
+    explain:'There are ' + s.n + ': ' + s.ex + '.'
+  };
+};
+
+GENS.formula_to_family = function(level){
+  var m = genMol(pick(['alkane','alkene','alcohol','aldehyde','carboxylic acid']), level);
+  var f = molecularFormula(m), fam = familyOf(m);
+  var alt = {alkane:['alkene','alcohol','ketone'], alkene:['alkane','alcohol','carboxylic acid'],
+             alcohol:['alkane','aldehyde','carboxylic acid'], aldehyde:['alcohol','alkane','carboxylic acid'],
+             'carboxylic acid':['alcohol','aldehyde','alkane']}[fam];
+  var ans = (fam==='aldehyde') ? 'aldehyde or ketone' : fam;
+  var opts = mcOpts(ans, alt.filter(function(x){ return x!==fam; }).slice(0,3));
+  return {
+    type:'Formula → possible family', topic:'general', chapter:'general', level:level,
+    stem:'A compound has the molecular formula ' + f + '. Which family could it belong to?',
+    html:'', input:'mc', opts:opts, answer:ans,
+    explain:f + ' fits the general formula ' + generalFormula(m) + '. One example is ' + nameOf(m) + '.'
+  };
+};
+
+GENS.locant_question = function(level){
+  var m = genMol(pick(['alcohol','ketone','alkene','halogenoalkane']), Math.max(2,level));
+  var loc = m.fg ? m.fg.p : (m.ene !== null && m.ene !== undefined ? m.ene : m.subs[0].p);
+  var what = m.fg ? ('the ' + groupOf(m) + ' group') : (m.ene !== null && m.ene !== undefined ? 'the double bond' : 'the halogen');
+  var wrongs = shuffle([1,2,3,4,5,6].filter(function(x){ return x!==loc && x<=m.n; })).slice(0,3).map(String);
+  return {
+    type:'Find the locant', topic:'number', chapter:'numbering', level:level,
+    stem:'In the correctly numbered molecule, what locant does ' + what + ' get?',
+    html:'<div class="svgwrap">' + skeletalSVG(m) + '</div>',
+    input:'mc', opts:mcOpts(String(loc), wrongs), answer:String(loc),
+    explain:'Number from the end that gives ' + what + ' the lower value. The name is ' + nameOf(m) + '.'
+  };
+};
+
+GENS.parent_chain = function(level){
+  var m = genMol(pick(FAMILIES), 3);
+  var wrongs = shuffle([2,3,4,5,6].filter(function(x){ return x!==m.n; })).slice(0,3).map(String);
+  return {
+    type:'Find the parent chain', topic:'number', chapter:'algorithm', level:level,
+    stem:'How many carbons are in the parent chain?',
+    sub:'The parent chain is the longest chain containing the functional group — not the total carbon count.',
+    html:'<div class="svgwrap">' + skeletalSVG(m) + '</div>',
+    input:'mc', opts:mcOpts(String(m.n), wrongs), answer:String(m.n),
+    explain:'Parent chain = ' + m.n + ' (' + stemOf(m.n) + '-), with ' + (carbonCount(m)-m.n) + ' further carbon(s) in branches. Full name: ' + nameOf(m) + '.'
+  };
+};
+
+GENS.punctuation = function(level){
+  var m = genMol(pick(['alcohol','alkene','halogenoalkane','alkane']), 3);
+  var correct = nameOf(m);
+  var bad = [
+    correct.replace(/-/g, ' '),
+    correct.charAt(0).toUpperCase() + correct.slice(1),
+    correct.replace(/,/g, '-')
+  ].filter(function(x){ return x !== correct; });
+  if(bad.length < 3) bad.push(correct.replace(/-/g, ''));
+  return {
+    type:'Punctuation', topic:'punct', chapter:'alpha', level:level,
+    stem:'Which of these is written correctly?',
+    html:'', input:'mc', opts:mcOpts(correct, bad.slice(0,3)), answer:correct,
+    explain:'Hyphens between numbers and letters, commas between numbers, all one word in lower case: ' + correct + '.'
+  };
+};
+
+GENS.build_the_name = function(level){
+  var m = genMol(pick(FAMILIES), Math.max(2,level));
+  return {
+    type:'Build the name', topic:'naming', chapter:'algorithm', level:level,
+    stem:'Type the name of the compound with this condensed formula.',
+    html:'<div class="svgwrap" style="padding:18px"><span class="mono" style="font-size:20px">' + esc(condensedNice(m)) + '</span></div>',
+    input:'text', answer:nameOf(m),
+    check:function(v){ return sameName(v, nameOf(m)); },
+    explain:explainNumbering(m)
+  };
+};
+
+GENS.formula_typed = function(level){
+  var m = genMol(pick(FAMILIES), level);
+  var f = molecularFormula(m);
+  return {
+    type:'Name → formula (type it)', topic:'formula', chapter:'general', level:level,
+    stem:'Type the molecular formula of ' + nameOf(m) + '.',
+    sub:'Write it as C4H10O — no subscripts needed.',
+    html:'', input:'text', answer:f,
+    check:function(v){ return sameFormula(v, f); },
+    explain:'Total carbons ' + carbonCount(m) + ', giving ' + f + '.'
+  };
+};
+
+GENS.match_representation = function(level){
+  var m = genMol(pick(['alkane','alcohol','halogenoalkane','alkene']), level);
+  if(!canDisplay(m)) return GENS.name_to_condensed(level);
+  var c = condensedNice(m);
+  var wrongs = [], guard = 0;
+  while(wrongs.length < 3 && guard++ < 40){
+    var v = variantMol(m);
+    if(!v) continue;
+    var vc = condensedNice(v);
+    if(vc !== c && wrongs.indexOf(vc) < 0) wrongs.push(vc);
+  }
+  return {
+    type:'Displayed → condensed', topic:'repr', chapter:'repr', level:level,
+    stem:'Which condensed formula matches this displayed structure?',
+    html:'<div class="svgwrap">' + displayedSVG(m) + '</div>',
+    input:'mc', opts:mcOpts(c, wrongs), answer:c,
+    explain:'Group each carbon with its own hydrogens, reading left to right: ' + c + ' (' + nameOf(m) + ').'
+  };
+};
+
+function explainNumbering(m){
+  var bits = [];
+  bits.push('Parent chain ' + m.n + ' carbons → ' + stemOf(m.n) + '-.');
+  if(m.fg){
+    var suf = {ol:'-ol', al:'-al', one:'-one', oic:'-oic acid'}[m.fg.t];
+    bits.push(groupOf(m) + ' group → suffix ' + suf + (['al','oic'].indexOf(m.fg.t)>=0 ? ', always on carbon 1.' : ', numbered to give it the lowest locant (' + m.fg.p + ').'));
+  } else if(m.ene !== null && m.ene !== undefined){
+    bits.push('C=C between carbons ' + m.ene + ' and ' + (m.ene+1) + ' → lowest locant is ' + m.ene + '.');
+  }
+  if(m.subs.length){
+    bits.push('Substituents: ' + m.subs.map(function(s){ return s.t + ' at ' + s.p; }).join(', ') + ', listed alphabetically.');
+  }
+  bits.push('Name: ' + nameOf(m) + '.');
+  return bits.join(' ');
+}
+
+/* ---------- question type registry ---------- */
+var QTYPES = [
+  {k:'structure_to_name', w:5, topics:['naming']},
+  {k:'name_to_structure', w:4, topics:['repr']},
+  {k:'name_to_formula', w:3, topics:['formula']},
+  {k:'name_to_condensed', w:3, topics:['repr']},
+  {k:'condensed_to_name', w:4, topics:['naming']},
+  {k:'skeletal_to_name_typed', w:3, topics:['naming']},
+  {k:'count_carbons', w:2, topics:['count']},
+  {k:'identify_group', w:3, topics:['group']},
+  {k:'identify_series', w:3, topics:['series']},
+  {k:'group_vs_series', w:2, topics:['group','series']},
+  {k:'prefix_drill', w:2, topics:['prefix']},
+  {k:'general_formula', w:2, topics:['general']},
+  {k:'saturation', w:2, topics:['satur']},
+  {k:'aldehyde_or_ketone', w:2, topics:['series']},
+  {k:'alcohol_class', w:2, topics:['group']},
+  {k:'spot_the_error', w:3, topics:['error','naming']},
+  {k:'same_or_different', w:2, topics:['isomer']},
+  {k:'isomer_count', w:1, topics:['isomer']},
+  {k:'formula_to_family', w:2, topics:['general']},
+  {k:'locant_question', w:3, topics:['number']},
+  {k:'parent_chain', w:2, topics:['number']},
+  {k:'punctuation', w:2, topics:['punct']},
+  {k:'build_the_name', w:2, topics:['naming']},
+  {k:'formula_typed', w:2, topics:['formula']},
+  {k:'match_representation', w:2, topics:['repr']}
+];
+
+function weightedPick(list){
+  var total = list.reduce(function(a,b){ return a + b.w; }, 0);
+  var r = Math.random()*total;
+  for(var i=0;i<list.length;i++){ r -= list[i].w; if(r<=0) return list[i]; }
+  return list[list.length-1];
+}
+
+function makeQuestion(opts){
+  opts = opts || {};
+  var pool = QTYPES;
+  if(opts.topics && opts.topics.length){
+    pool = QTYPES.filter(function(t){
+      return t.topics.some(function(x){ return opts.topics.indexOf(x) >= 0; });
+    });
+    if(!pool.length) pool = QTYPES;
+  }
+  if(opts.only) pool = QTYPES.filter(function(t){ return opts.only.indexOf(t.k) >= 0; });
+  var q = null, t = null, tries = 0;
+  while(tries++ < 6){
+    t = weightedPick(pool);
+    try { q = GENS[t.k](opts.level || 2); } catch(e){ q = null; }
+    if(q && wellFormed(q)) break;
+    q = null;
+  }
+  if(!q){ q = GENS.structure_to_name(opts.level || 2); t = {k:'structure_to_name'}; }
+  q.key = t.k;
+  return q;
+}
+// a malformed multiple-choice question is worse than a repeated one
+function wellFormed(q){
+  if(!q || !q.stem || !q.answer) return false;
+  if(q.input !== 'mc') return true;
+  if(!q.opts || q.opts.length < 2) return false;
+  var right = q.opts.filter(function(o){ return o.ok || o.v === q.answer; }).length;
+  if(right !== 1) return false;
+  var vals = q.opts.map(function(o){ return o.v; });
+  return vals.filter(function(v,i){ return vals.indexOf(v) !== i; }).length === 0;
+}
+/* ============================================================
+   APP — views, notes, quiz runtime, progress
+   ============================================================ */
+var $ = function(s){ return document.querySelector(s); };
+var $$ = function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+/* ---------- progress (device-local, degrades silently) ---------- */
+var STORE_KEY = 'ib-nomenclature-v1';
+var progress = {answered:0, correct:0, streak:0, best:0, topics:{}, sessions:0};
+function loadProgress(){
+  try{
+    var raw = window.localStorage.getItem(STORE_KEY);
+    if(raw) progress = Object.assign(progress, JSON.parse(raw));
+  }catch(e){ /* storage unavailable — session-only progress */ }
+}
+function saveProgress(){
+  try{ window.localStorage.setItem(STORE_KEY, JSON.stringify(progress)); }catch(e){}
+}
+function recordAnswer(topic, ok){
+  progress.answered++;
+  if(ok){ progress.correct++; progress.streak++; if(progress.streak > progress.best) progress.best = progress.streak; }
+  else progress.streak = 0;
+  var t = progress.topics[topic] || (progress.topics[topic] = {seen:0, right:0});
+  t.seen++; if(ok) t.right++;
+  saveProgress();
+  renderStats();
+}
+function weakTopics(min){
+  return Object.keys(progress.topics)
+    .map(function(k){ var t = progress.topics[k]; return {k:k, seen:t.seen, pct: t.seen ? t.right/t.seen : 1}; })
+    .filter(function(t){ return t.seen >= (min||3) && t.pct < 0.7; })
+    .sort(function(a,b){ return a.pct - b.pct; });
+}
+function renderStats(){
+  var pct = progress.answered ? Math.round(progress.correct/progress.answered*100) : 0;
+  $('#homeStats').innerHTML =
+    stat(progress.answered, 'answered') +
+    stat(pct + '%', 'accuracy') +
+    stat(progress.streak, 'current streak') +
+    stat(progress.best, 'best streak');
+}
+function stat(v, l){ return '<div class="stat"><div class="v">' + v + '</div><div class="l">' + l + '</div></div>'; }
+
+/* ---------- views ---------- */
+function show(v){
+  $$('.view').forEach(function(el){ el.classList.toggle('on', el.id === 'view-' + v); });
+  $$('#tabs button').forEach(function(b){ b.setAttribute('aria-current', b.dataset.view === v ? 'true' : 'false'); });
+  window.scrollTo({top:0, behavior:'instant'});
+  if(v === 'test'){ /* leave whatever test state is active */ }
+}
+$('#tabs').addEventListener('click', function(e){
+  var b = e.target.closest('button'); if(!b) return;
+  show(b.dataset.view);
+});
+$$('[data-goto]').forEach(function(b){
+  b.addEventListener('click', function(){ show(b.dataset.goto); });
+});
+
+/* ---------- home: the name parser ---------- */
+function renderParser(){
+  var m = genMol(pick(FAMILIES), 3);
+  var name = nameOf(m);
+  var segs = segmentName(name);
+  var labelled = 0;
+  $('#parseName').innerHTML = segs.map(function(s){
+    if(s.t === 'punct' || !s.label) return '<span class="seg-punct">' + esc(s.s) + '</span>';
+    // stagger the labels over two rows so long ones cannot collide
+    var row = (labelled++ % 2 === 1) ? ' row2' : '';
+    return '<span class="seg seg-' + s.t + row + '" data-label="' + esc(s.label) + '">' + esc(s.s) + '</span>';
+  }).join('');
+  $('#parseFoot').innerHTML =
+    '<span class="mono">' + esc(molecularFormula(m)) + '</span> &nbsp;·&nbsp; ' +
+    esc(familyOf(m)) + ' &nbsp;·&nbsp; ' + (isSaturated(m) ? 'saturated' : 'unsaturated') +
+    '<div class="svgwrap" style="background:transparent;border:0;margin:10px 0 0">' + skeletalSVG(m) + '</div>';
+}
+$('#parseAgain').addEventListener('click', renderParser);
+
+/* ---------- notes ---------- */
+var currentCh = 0;
+function renderRail(){
+  $('#railList').innerHTML = CHAPTERS.map(function(c, i){
+    return '<li><button data-ch="' + i + '"' + (i === currentCh ? ' aria-current="true"' : '') + '>' + esc(c.title) + '</button></li>';
+  }).join('');
+}
+function renderChapter(i){
+  currentCh = Math.max(0, Math.min(CHAPTERS.length - 1, i));
+  var c = CHAPTERS[currentCh];
+  $('#chapterBody').innerHTML =
+    '<div class="chnum">Chapter ' + String(currentCh + 1).padStart(2, '0') + ' &nbsp;<span class="tag ' + c.tag + '">' +
+      (c.tag === 'core' ? 'IB naming requirement' : 'recognition / extension') + '</span></div>' +
+    '<h2 style="margin:8px 0 4px">' + esc(c.title) + '</h2>' +
+    c.body() +
+    (c.check ? '<div class="check" id="checkBox"><div class="eyebrow">Check yourself</div><div class="q">' +
+       esc(c.check.q) + '</div><button id="revealBtn">Show answer</button><div class="a">' + esc(c.check.a) + '</div></div>' : '');
+  var rb = $('#revealBtn');
+  if(rb) rb.addEventListener('click', function(){ $('#checkBox').classList.add('open'); rb.style.display = 'none'; });
+  $('#prevCh').disabled = currentCh === 0;
+  $('#nextCh').disabled = currentCh === CHAPTERS.length - 1;
+  renderRail();
+  var active = document.querySelector('#railList button[aria-current="true"]');
+  if(active && active.scrollIntoView && window.innerWidth > 860) active.scrollIntoView({block:'nearest'});
+}
+$('#railList').addEventListener('click', function(e){
+  var b = e.target.closest('button'); if(!b) return;
+  renderChapter(parseInt(b.dataset.ch, 10));
+  var cb = $('#chapterBody');
+  if(window.innerWidth <= 860 && cb.scrollIntoView) cb.scrollIntoView({behavior:'smooth', block:'start'});
+});
+$('#prevCh').addEventListener('click', function(){ renderChapter(currentCh - 1); window.scrollTo({top:0}); });
+$('#nextCh').addEventListener('click', function(){ renderChapter(currentCh + 1); window.scrollTo({top:0}); });
+function openChapterById(id){
+  var i = CHAPTERS.findIndex(function(c){ return c.id === id; });
+  if(i < 0) i = 0;
+  show('notes'); renderChapter(i);
+}
+
+/* ---------- test: menu ---------- */
+var MODES = [
+  {k:'quick',  t:'Quick test',        d:'Ten mixed questions across every topic. Good for a five-minute check.', n:10, level:2, meta:'10 questions'},
+  {k:'full',   t:'Full test',         d:'Forty questions, rising in difficulty, covering the whole of Structure 3.2.', n:40, level:0, meta:'40 questions · adaptive'},
+  {k:'naming', t:'Naming only',       d:'Structure to name and name to structure, nothing else.', n:15, level:2, only:['structure_to_name','condensed_to_name','skeletal_to_name_typed','build_the_name','name_to_structure','spot_the_error'], meta:'15 questions'},
+  {k:'conv',   t:'Formula conversion',d:'Move between names, molecular formulas, condensed and displayed structures.', n:15, level:2, only:['name_to_formula','name_to_condensed','formula_typed','match_representation','count_carbons','formula_to_family'], meta:'15 questions'},
+  {k:'groups', t:'Functional group drill', d:'Fast recognition of groups, families and general formulas.', n:20, level:1, only:['identify_group','identify_series','group_vs_series','general_formula','saturation','aldehyde_or_ketone','alcohol_class','prefix_drill'], meta:'20 questions · fast'},
+  {k:'speed',  t:'Speed round',       d:'Twenty short recognition questions, no long naming.', n:20, level:1, only:['prefix_drill','count_carbons','identify_group','identify_series','saturation','general_formula'], meta:'20 questions'}
+];
+function renderModes(){
+  $('#modeList').innerHTML = MODES.map(function(m, i){
+    return '<button class="mode" data-mode="' + i + '"><div class="mt">' + esc(m.t) + '</div><div class="md">' + esc(m.d) + '</div><div class="mm">' + esc(m.meta) + '</div></button>';
+  }).join('');
+  $('#topicChips').innerHTML = Object.keys(TOPICS).map(function(k){
+    return '<button class="chip" data-topic="' + k + '" aria-pressed="false">' + esc(TOPICS[k]) + '</button>';
+  }).join('');
+  renderWeak();
+}
+function renderWeak(){
+  var w = weakTopics(3);
+  if(!w.length){
+    $('#weakBox').innerHTML = '<p class="mini">Answer a few questions and your weakest topics will appear here.</p>';
+    return;
+  }
+  $('#weakBox').innerHTML = '<div class="eyebrow">Weak areas</div>' +
+    '<p style="color:var(--ink-2);margin:8px 0">' + w.slice(0,4).map(function(t){
+      return esc(TOPICS[t.k] || t.k) + ' <span class="mono bad">' + Math.round(t.pct*100) + '%</span>';
+    }).join(' &nbsp;·&nbsp; ') + '</p>' +
+    '<button class="btn" id="startWeak">Practise weak areas</button>';
+  $('#startWeak').addEventListener('click', function(){
+    startTest({n:15, level:2, topics:w.map(function(t){ return t.k; }), title:'Weak areas'});
+  });
+}
+$('#modeList').addEventListener('click', function(e){
+  var b = e.target.closest('.mode'); if(!b) return;
+  var m = MODES[parseInt(b.dataset.mode, 10)];
+  startTest({n:m.n, level:m.level, only:m.only, title:m.t, adaptive:m.level === 0});
+});
+$('#topicChips').addEventListener('click', function(e){
+  var b = e.target.closest('.chip'); if(!b) return;
+  b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+});
+$('#startTopic').addEventListener('click', function(){
+  var t = $$('#topicChips .chip[aria-pressed="true"]').map(function(b){ return b.dataset.topic; });
+  if(!t.length){ $('#startTopic').textContent = 'Pick at least one topic first'; setTimeout(function(){ $('#startTopic').textContent = 'Start topic practice'; }, 1600); return; }
+  startTest({n:15, level:2, topics:t, title:'Topic practice'});
+});
+
+/* ---------- test: runtime ---------- */
+var session = null;
+function startTest(cfg){
+  session = {
+    cfg:cfg, i:0, right:0, log:[], level:cfg.level || 2, run:0,
+    queue:[]
+  };
+  $('#testMenu').classList.add('hidden');
+  $('#testDone').classList.add('hidden');
+  $('#testRun').classList.remove('hidden');
+  show('test');
+  nextQuestion();
+}
+function questionOpts(){
+  var lvl = session.cfg.adaptive ? adaptiveLevel() : session.level;
+  return {level:lvl, topics:session.cfg.topics, only:session.cfg.only};
+}
+function adaptiveLevel(){
+  // climbs on a run of correct answers, drops back after a miss
+  var base = 1 + Math.floor(session.i / Math.max(6, session.cfg.n / 4));
+  var adj = Math.min(1, Math.floor(session.run / 3));
+  return Math.max(1, Math.min(4, base + adj));
+}
+function nextQuestion(){
+  if(session.i >= session.cfg.n) return finishTest();
+  var q = makeQuestion(questionOpts());
+  session.current = q;
+  renderQuestion(q);
+  // keep one question warm so the next one appears instantly
+  session.queue = [makeQuestion(questionOpts())];
+}
+function renderQuestion(q){
+  var pct = Math.round(session.i / session.cfg.n * 100);
+  var optsHTML;
+  if(q.input === 'mc'){
+    optsHTML = '<div class="opts' + (q.svgOpts ? ' grid2' : '') + '" id="opts">' + q.opts.map(function(o, i){
+      return '<button class="opt' + (q.svgOpts ? ' svgopt' : '') + '" data-i="' + i + '">' + (o.html || optHTML(o.v)) + '</button>';
+    }).join('') + '</div>';
+  } else {
+    optsHTML = '<div class="typed"><input id="answerInput" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="type your answer"><button class="btn" id="submitBtn">Check</button></div>';
+  }
+  $('#testRun').innerHTML =
+    '<div class="qbar"><span class="cnt">' + (session.i + 1) + ' / ' + session.cfg.n + '</span>' +
+    '<span class="prog"><i style="width:' + pct + '%"></i></span>' +
+    '<button class="btn ghost" id="quitBtn" style="padding:6px 12px">End</button></div>' +
+    '<div class="qcard">' +
+      '<div class="qtype">' + esc(q.type) + (session.cfg.adaptive ? ' · level ' + (q.level || 2) : '') + '</div>' +
+      '<div class="qstem">' + esc(q.stem) + '</div>' +
+      (q.sub ? '<div class="qsub">' + esc(q.sub) + '</div>' : '') +
+      (q.html || '') + optsHTML +
+      '<div id="fbSlot"></div>' +
+    '</div>';
+  $('#quitBtn').addEventListener('click', finishTest);
+  if(q.input === 'mc'){
+    $('#opts').addEventListener('click', function(e){
+      var b = e.target.closest('.opt'); if(!b || b.disabled) return;
+      answerMC(parseInt(b.dataset.i, 10));
+    });
+  } else {
+    var inp = $('#answerInput');
+    inp.focus();
+    inp.addEventListener('keydown', function(e){ if(e.key === 'Enter') answerTyped(); });
+    $('#submitBtn').addEventListener('click', answerTyped);
+  }
+}
+function answerMC(idx){
+  var q = session.current;
+  var chosen = q.opts[idx];
+  var ok = !!chosen.ok || chosen.v === q.answer;
+  $$('#opts .opt').forEach(function(b, i){
+    b.disabled = true;
+    var o = q.opts[i];
+    if(o.ok || o.v === q.answer) b.classList.add('correct');
+    else if(i === idx) b.classList.add('wrong');
+  });
+  settle(ok, chosen.v, chosen.why);
+}
+function answerTyped(){
+  var q = session.current;
+  var v = $('#answerInput').value.trim();
+  if(!v) return;
+  var ok = q.check ? q.check(v) : sameName(v, q.answer);
+  $('#answerInput').disabled = true;
+  $('#submitBtn').disabled = true;
+  $('#answerInput').style.borderColor = ok ? 'var(--key)' : 'var(--oxygen)';
+  settle(ok, v);
+}
+function settle(ok, given, why){
+  var q = session.current;
+  session.i++;
+  if(ok){ session.right++; session.run++; } else { session.run = 0; }
+  recordAnswer(q.topic, ok);
+  session.log.push({stem:q.stem, type:q.type, given:given, answer:q.answer, ok:ok, chapter:q.chapter, explain:q.explain});
+  var last = session.i >= session.cfg.n;
+  $('#fbSlot').innerHTML =
+    '<div class="fb ' + (ok ? 'ok' : 'no') + '">' +
+      '<div class="verdict">' + (ok ? 'Correct' : 'Not quite') + '</div>' +
+      (ok ? '' : '<p><strong>Answer:</strong> <span class="mono">' + esc(q.answer) + '</span>' + (why ? ' — your choice was ' + esc(why) + '.' : '') + '</p>') +
+      '<p>' + esc(q.explain || '') + '</p>' +
+      (q.chapter ? '<button class="link" id="toChapter">Read the notes on this &rarr;</button>' : '') +
+      '<div style="margin-top:14px"><button class="btn" id="nextBtn">' + (last ? 'See results' : 'Next question') + '</button></div>' +
+    '</div>';
+  var tc = $('#toChapter');
+  if(tc) tc.addEventListener('click', function(){ openChapterById(q.chapter); });
+  $('#nextBtn').addEventListener('click', function(){
+    if(last) finishTest(); else { session.current = session.queue.shift() || makeQuestion(questionOpts()); renderQuestion(session.current); session.queue = [makeQuestion(questionOpts())]; }
+  });
+  $('#nextBtn').focus();
+}
+function finishTest(){
+  var s = session;
+  $('#testRun').classList.add('hidden');
+  $('#testDone').classList.remove('hidden');
+  var answered = s.log.length;
+  var pct = answered ? Math.round(s.right / answered * 100) : 0;
+  var wrong = s.log.filter(function(l){ return !l.ok; });
+  var byTopic = {};
+  s.log.forEach(function(l){
+    var k = l.type;
+    var t = byTopic[k] || (byTopic[k] = {n:0, r:0});
+    t.n++; if(l.ok) t.r++;
+  });
+  progress.sessions++; saveProgress();
+  $('#testDone').innerHTML =
+    '<div class="eyebrow">' + esc(s.cfg.title || 'Test') + ' complete</div>' +
+    '<div class="ring">' + pct + '%</div>' +
+    '<p style="color:var(--ink-2);margin-top:0">' + s.right + ' of ' + answered + ' correct' + (pct >= 80 ? ' — that is exam-ready on this selection.' : pct >= 60 ? ' — solid, but the misses below are worth a second look.' : ' — work through the linked chapters, then run it again.') + '</p>' +
+    '<div class="eyebrow" style="margin-top:20px">By question type</div>' +
+    Object.keys(byTopic).map(function(k){
+      var t = byTopic[k], p = Math.round(t.r / t.n * 100);
+      return '<div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--line-soft);padding:7px 0;font-size:14.5px"><span>' + esc(k) + '</span><span class="mono ' + (p >= 70 ? 'good' : 'bad') + '">' + t.r + '/' + t.n + '</span></div>';
+    }).join('') +
+    (wrong.length ? '<div class="eyebrow" style="margin-top:24px">Review your ' + wrong.length + ' miss' + (wrong.length > 1 ? 'es' : '') + '</div>' +
+      wrong.map(function(l, i){
+        return '<div class="rev"><div class="qtype">' + esc(l.type) + '</div><div class="rq">' + esc(l.stem) + '</div>' +
+          '<div class="ra">You: <span class="bad">' + esc(l.given) + '</span> &nbsp; Correct: <span class="good">' + esc(l.answer) + '</span></div>' +
+          '<p style="color:var(--ink-2);font-size:14px;margin:8px 0 0">' + esc(l.explain || '') + '</p>' +
+          (l.chapter ? '<button class="link" data-chap="' + esc(l.chapter) + '" style="margin-top:8px">Read the notes &rarr;</button>' : '') + '</div>';
+      }).join('') : '<p style="margin-top:20px">Nothing wrong to review.</p>') +
+    '<div style="display:flex;gap:10px;margin-top:24px;flex-wrap:wrap">' +
+      '<button class="btn" id="againBtn">Run it again</button>' +
+      '<button class="btn ghost" id="menuBtn">Back to modes</button>' +
+    '</div>';
+  $('#testDone').addEventListener('click', function(e){
+    var c = e.target.closest('[data-chap]');
+    if(c) openChapterById(c.dataset.chap);
+  });
+  $('#againBtn').addEventListener('click', function(){ startTest(s.cfg); });
+  $('#menuBtn').addEventListener('click', function(){
+    $('#testDone').classList.add('hidden');
+    $('#testMenu').classList.remove('hidden');
+    renderWeak();
+  });
+  window.scrollTo({top:0, behavior:'instant'});
+}
+
+/* ---------- boot ---------- */
+loadProgress();
+renderStats();
+renderParser();
+renderChapter(0);
+renderModes();
+/* ============================================================
+   POLYATOMIC IONS — reference table + its own drill.
+   Kept entirely separate from the nomenclature test engine.
+   ============================================================ */
+var IONS = [
+  // --- the ones you named ---
+  {n:'hydroxide',        f:'OH',      c:-1, g:'Essential', alt:[]},
+  {n:'nitrate',          f:'NO3',     c:-1, g:'Essential', alt:[]},
+  {n:'nitrite',          f:'NO2',     c:-1, g:'Essential', alt:[]},
+  {n:'carbonate',        f:'CO3',     c:-2, g:'Essential', alt:[]},
+  {n:'hydrogencarbonate',f:'HCO3',    c:-1, g:'Essential', alt:['bicarbonate']},
+  {n:'sulfate',          f:'SO4',     c:-2, g:'Essential', alt:['sulphate']},
+  {n:'sulfite',          f:'SO3',     c:-2, g:'Essential', alt:['sulphite']},
+  {n:'phosphate',        f:'PO4',     c:-3, g:'Essential', alt:[]},
+  {n:'phosphite',        f:'PO3',     c:-3, g:'Essential', alt:[]},
+  {n:'ammonium',         f:'NH4',     c:1,  g:'Essential', alt:[]},
+  {n:'ethanoate',        f:'CH3COO',  c:-1, g:'Essential', alt:['acetate']},
+  {n:'ethanedioate',     f:'C2O4',    c:-2, g:'Essential', alt:['oxalate']},
+
+  // --- the chlorine oxyanion series ---
+  {n:'hypochlorite',     f:'ClO',     c:-1, g:'Chlorine oxyanions', alt:[]},
+  {n:'chlorite',         f:'ClO2',    c:-1, g:'Chlorine oxyanions', alt:[]},
+  {n:'chlorate',         f:'ClO3',    c:-1, g:'Chlorine oxyanions', alt:[]},
+  {n:'perchlorate',      f:'ClO4',    c:-1, g:'Chlorine oxyanions', alt:[]},
+
+  // --- also expected at IB ---
+  {n:'hydrogensulfate',  f:'HSO4',    c:-1, g:'Also expected', alt:['bisulfate']},
+  {n:'manganate(VII)',   f:'MnO4',    c:-1, g:'Also expected', alt:['permanganate']},
+  {n:'dichromate(VI)',   f:'Cr2O7',   c:-2, g:'Also expected', alt:['dichromate']},
+  {n:'chromate(VI)',     f:'CrO4',    c:-2, g:'Also expected', alt:['chromate']},
+  {n:'cyanide',          f:'CN',      c:-1, g:'Also expected', alt:[]},
+  {n:'peroxide',         f:'O2',      c:-2, g:'Also expected', alt:[]},
+  {n:'thiosulfate',      f:'S2O3',    c:-2, g:'Also expected', alt:['thiosulphate']},
+  {n:'silicate',         f:'SiO3',    c:-2, g:'Also expected', alt:[]},
+
+  // --- monatomic, included because they are the classic confusions ---
+  {n:'chloride',         f:'Cl',      c:-1, g:'Monatomic (do not confuse)', alt:[], mono:true},
+  {n:'nitride',          f:'N',       c:-3, g:'Monatomic (do not confuse)', alt:[], mono:true},
+  {n:'oxide',            f:'O',       c:-2, g:'Monatomic (do not confuse)', alt:[], mono:true},
+  {n:'sulfide',          f:'S',       c:-2, g:'Monatomic (do not confuse)', alt:['sulphide'], mono:true}
+];
+
+function chargeStr(c){
+  var mag = Math.abs(c) > 1 ? Math.abs(c) : '';
+  return mag + (c > 0 ? '+' : '\u2212');
+}
+function ionHTML(i){
+  var f = i.f.replace(/(\d+)/g, '<sub>$1</sub>');
+  return f + '<sup>' + chargeStr(i.c) + '</sup>';
+}
+function ionPlain(i){ return i.f + ' ' + chargeStr(i.c); }
+function fcStr(f, c){ return f + ' ' + chargeStr(c); }
+// render an option value: subscript the formula digits, superscript the charge
+function ionOptHTML(v){
+  if(/^\d?[+\u2212]$/.test(v)) return '<sup>' + v + '</sup>';
+  var parts = String(v).split(' ');
+  var f = parts[0].replace(/(\d+)/g, '<sub>$1</sub>');
+  return parts.length > 1 ? f + '<sup>' + parts.slice(1).join('') + '</sup>' : f;
+}
+
+/* ---------- reference view ---------- */
+function renderIonTable(){
+  var groups = [];
+  IONS.forEach(function(i){ if(groups.indexOf(i.g) < 0) groups.push(i.g); });
+  var html = groups.map(function(g){
+    var rows = IONS.filter(function(i){ return i.g === g; }).map(function(i){
+      return '<tr><td>' + esc(i.n) + (i.alt.length ? ' <span class="mini">(' + esc(i.alt.join(', ')) + ')</span>' : '') +
+             '</td><td class="f2">' + ionHTML(i) + '</td><td class="f2">' + chargeStr(i.c) + '</td></tr>';
+    }).join('');
+    return '<h3>' + esc(g) + '</h3><table><tr><th>Name</th><th>Formula</th><th>Charge</th></tr>' + rows + '</table>';
+  }).join('');
+  $('#ionTable').innerHTML = html;
+}
+
+/* ---------- ion drill ---------- */
+var ionProgress = {answered:0, correct:0, best:0, streak:0, missed:{}};
+var ION_KEY = 'ib-ions-v1';
+function loadIonProgress(){
+  try{ var r = window.localStorage.getItem(ION_KEY); if(r) ionProgress = Object.assign(ionProgress, JSON.parse(r)); }catch(e){}
+}
+function saveIonProgress(){ try{ window.localStorage.setItem(ION_KEY, JSON.stringify(ionProgress)); }catch(e){} }
+
+function normIon(s){
+  return String(s).toLowerCase()
+    .replace(/\s+/g,'')
+    .replace(/\^/g,'')
+    .replace(/[\u2212\u2013\u2014]/g,'-')
+    .replace(/sulph/g,'sulf')
+    .replace(/[()]/g,'')
+    .replace(/[-−]$/,'-');
+}
+function ionFormulaMatch(v, i){
+  var t = normIon(v);
+  var want = [
+    normIon(i.f + chargeStr(i.c)),
+    normIon(i.f + Math.abs(i.c) + (i.c>0?'+':'-')),
+    normIon(i.f + (i.c>0?'+':'-') + Math.abs(i.c))
+  ];
+  if(Math.abs(i.c) === 1) want.push(normIon(i.f + (i.c>0?'+':'-')));
+  return want.indexOf(t) >= 0;
+}
+function ionNameMatch(v, i){
+  var t = normIon(v);
+  if(t === normIon(i.n)) return true;
+  return i.alt.some(function(a){ return normIon(a) === t; });
+}
+
+var ionSession = null;
+var ION_MODES = [
+  {k:'name2f',  t:'Name → formula',   d:'You are given the name; pick the formula and charge.',       n:12},
+  {k:'f2name',  t:'Formula → name',   d:'You are given the formula; pick the name.',                  n:12},
+  {k:'charge',  t:'Charge only',      d:'Fast drill on the charge alone.',                            n:15},
+  {k:'typed',   t:'Type the formula', d:'Write the formula and charge yourself — no options.',         n:10},
+  {k:'mixed',   t:'Mixed drill',      d:'All of the above, shuffled, including the confusable pairs.', n:20}
+];
+function renderIonMenu(){
+  $('#ionModes').innerHTML = ION_MODES.map(function(m, i){
+    return '<button class="mode" data-imode="' + i + '"><div class="mt">' + esc(m.t) + '</div><div class="md">' + esc(m.d) + '</div><div class="mm">' + m.n + ' questions</div></button>';
+  }).join('');
+  var pct = ionProgress.answered ? Math.round(ionProgress.correct / ionProgress.answered * 100) : 0;
+  var missed = Object.keys(ionProgress.missed).sort(function(a,b){ return ionProgress.missed[b] - ionProgress.missed[a]; }).slice(0,5);
+  $('#ionStats').innerHTML =
+    '<div class="stats">' + stat(ionProgress.answered, 'answered') + stat(pct + '%', 'accuracy') +
+    stat(ionProgress.streak, 'streak') + stat(ionProgress.best, 'best streak') + '</div>' +
+    (missed.length ? '<p class="mini" style="margin-top:12px">Most missed: ' + missed.map(esc).join(' · ') + '</p>' : '');
+}
+
+function makeIonQ(kind){
+  var i = pick(IONS);
+  var others = shuffle(IONS.filter(function(x){ return x.n !== i.n; }));
+  if(kind === 'mixed') kind = pick(['name2f','f2name','charge','name2f','f2name','typed']);
+
+  if(kind === 'charge'){
+    var wrongs = shuffle([1,-1,-2,-3,2].filter(function(c){ return c !== i.c; })).slice(0,3).map(chargeStr);
+    return {
+      kind:'Charge', stem:'What is the charge on the ' + i.n + ' ion?',
+      html:'<div class="svgwrap" style="padding:16px"><span class="mono" style="font-size:22px">' + ionHTML({f:i.f, c:i.c}).replace(/<sup>.*<\/sup>/, '<sup>?</sup>') + '</span></div>',
+      input:'mc', opts:mcOpts(chargeStr(i.c), wrongs), answer:chargeStr(i.c),
+      explain:i.n + ' is ' + i.f + chargeStr(i.c) + '.'
+    };
+  }
+  if(kind === 'f2name'){
+    // prefer distractors from the same family — that is where the marks are lost
+    var near = others.filter(function(x){ return x.f.replace(/\d/g,'') === i.f.replace(/\d/g,'') || x.n.slice(0,4) === i.n.slice(0,4); });
+    var pool = shuffle(near).slice(0,2).concat(others).filter(function(x, k, arr){ return arr.indexOf(x) === k; });
+    return {
+      kind:'Formula → name', stem:'Which ion is this?',
+      html:'<div class="svgwrap" style="padding:16px"><span class="mono" style="font-size:24px">' + ionHTML(i) + '</span></div>',
+      input:'mc', opts:mcOpts(i.n, pool.slice(0,3).map(function(x){ return x.n; })), answer:i.n,
+      explain:i.n + ' = ' + ionPlain(i) + '.'
+    };
+  }
+  if(kind === 'typed'){
+    return {
+      kind:'Type the formula', stem:'Write the formula and charge of the ' + i.n + ' ion.',
+      sub:'Type it like SO4 2- or NO3-. Case matters for element symbols.',
+      html:'', input:'text', answer:fcStr(i.f, i.c),
+      check:function(v){ return ionFormulaMatch(v, i); },
+      explain:i.n + ' is ' + i.f + chargeStr(i.c) + '.'
+    };
+  }
+  // name2f — distractors change either the subscript or the charge
+  var correct = fcStr(i.f, i.c);
+  var bad = [];
+  var sameStem = others.filter(function(x){ return x.f.replace(/\d/g,'') === i.f.replace(/\d/g,''); });
+  sameStem.slice(0,2).forEach(function(x){ bad.push(fcStr(x.f, x.c)); });
+  bad.push(fcStr(i.f, i.c === -1 ? -2 : (i.c === -2 ? -1 : -2)));
+  var m = i.f.match(/^([A-Za-z]+)(\d*)/);
+  if(m){
+    var num = m[2] ? parseInt(m[2], 10) : 1;
+    bad.push(fcStr(i.f.replace(/^([A-Za-z]+)\d*/, m[1] + (num + 1)), i.c));
+  }
+  others.slice(0,3).forEach(function(x){ bad.push(fcStr(x.f, x.c)); });
+  bad = bad.filter(function(x, k, arr){ return x !== correct && arr.indexOf(x) === k; }).slice(0,3);
+  return {
+    kind:'Name → formula', stem:'What is the formula of the ' + i.n + ' ion?',
+    html:'', input:'mc', opts:mcOpts(correct, bad), answer:correct,
+    explain:i.n + ' is ' + correct + (i.mono ? ' — a single atom, not a polyatomic ion.' : '.')
+  };
+}
+
+function startIonDrill(mode){
+  ionSession = {mode:mode, i:0, right:0, log:[]};
+  $('#ionMenu').classList.add('hidden');
+  $('#ionDone').classList.add('hidden');
+  $('#ionRun').classList.remove('hidden');
+  nextIonQ();
+}
+function nextIonQ(){
+  if(ionSession.i >= ionSession.mode.n) return finishIonDrill();
+  ionSession.current = makeIonQ(ionSession.mode.k);
+  renderIonQ(ionSession.current);
+}
+function renderIonQ(q){
+  var pct = Math.round(ionSession.i / ionSession.mode.n * 100);
+  var optsHTML;
+  if(q.input === 'mc'){
+    optsHTML = '<div class="opts" id="ionOpts">' + q.opts.map(function(o, i){
+      return '<button class="opt" data-i="' + i + '">' + ionOptHTML(o.v) + '</button>';
+    }).join('') + '</div>';
+  } else {
+    optsHTML = '<div class="typed"><input id="ionInput" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="e.g. SO4 2-"><button class="btn" id="ionSubmit">Check</button></div>';
+  }
+  $('#ionRun').innerHTML =
+    '<div class="qbar"><span class="cnt">' + (ionSession.i + 1) + ' / ' + ionSession.mode.n + '</span>' +
+    '<span class="prog"><i style="width:' + pct + '%"></i></span>' +
+    '<button class="btn ghost" id="ionQuit" style="padding:6px 12px">End</button></div>' +
+    '<div class="qcard"><div class="qtype">' + esc(q.kind) + '</div>' +
+    '<div class="qstem">' + esc(q.stem) + '</div>' +
+    (q.sub ? '<div class="qsub">' + esc(q.sub) + '</div>' : '') +
+    (q.html || '') + optsHTML + '<div id="ionFb"></div></div>';
+  $('#ionQuit').addEventListener('click', finishIonDrill);
+  if(q.input === 'mc'){
+    $('#ionOpts').addEventListener('click', function(e){
+      var b = e.target.closest('.opt'); if(!b || b.disabled) return;
+      var idx = parseInt(b.dataset.i, 10), chosen = q.opts[idx];
+      var ok = !!chosen.ok || chosen.v === q.answer;
+      $$('#ionOpts .opt').forEach(function(bb, k){
+        bb.disabled = true;
+        if(q.opts[k].ok || q.opts[k].v === q.answer) bb.classList.add('correct');
+        else if(k === idx) bb.classList.add('wrong');
+      });
+      settleIon(ok, chosen.v);
+    });
+  } else {
+    var inp = $('#ionInput');
+    inp.focus();
+    inp.addEventListener('keydown', function(e){ if(e.key === 'Enter') submitIon(); });
+    $('#ionSubmit').addEventListener('click', submitIon);
+  }
+}
+function submitIon(){
+  var q = ionSession.current, v = $('#ionInput').value.trim();
+  if(!v) return;
+  var ok = q.check(v);
+  $('#ionInput').disabled = true; $('#ionSubmit').disabled = true;
+  $('#ionInput').style.borderColor = ok ? 'var(--key)' : 'var(--oxygen)';
+  settleIon(ok, v);
+}
+function settleIon(ok, given){
+  var q = ionSession.current;
+  ionSession.i++;
+  if(ok){ ionSession.right++; ionProgress.correct++; ionProgress.streak++; if(ionProgress.streak > ionProgress.best) ionProgress.best = ionProgress.streak; }
+  else {
+    ionProgress.streak = 0;
+    var key = (q.explain.split(' ')[0] || '').replace(/[^a-zA-Z()IV]/g, '');
+    if(key) ionProgress.missed[key] = (ionProgress.missed[key] || 0) + 1;
+  }
+  ionProgress.answered++;
+  saveIonProgress();
+  ionSession.log.push({stem:q.stem, given:given, answer:q.answer, ok:ok, explain:q.explain});
+  var last = ionSession.i >= ionSession.mode.n;
+  $('#ionFb').innerHTML =
+    '<div class="fb ' + (ok ? 'ok' : 'no') + '"><div class="verdict">' + (ok ? 'Correct' : 'Not quite') + '</div>' +
+    (ok ? '' : '<p><strong>Answer:</strong> <span class="mono">' + esc(q.answer) + '</span></p>') +
+    '<p>' + esc(q.explain) + '</p>' +
+    '<div style="margin-top:14px"><button class="btn" id="ionNext">' + (last ? 'See results' : 'Next') + '</button></div></div>';
+  $('#ionNext').addEventListener('click', function(){ if(last) finishIonDrill(); else nextIonQ(); });
+  $('#ionNext').focus();
+}
+function finishIonDrill(){
+  var s = ionSession;
+  $('#ionRun').classList.add('hidden');
+  $('#ionDone').classList.remove('hidden');
+  var answered = s.log.length, pct = answered ? Math.round(s.right / answered * 100) : 0;
+  var wrong = s.log.filter(function(l){ return !l.ok; });
+  $('#ionDone').innerHTML =
+    '<div class="eyebrow">' + esc(s.mode.t) + ' complete</div>' +
+    '<div class="ring">' + pct + '%</div>' +
+    '<p style="color:var(--ink-2);margin-top:0">' + s.right + ' of ' + answered + ' correct.</p>' +
+    (wrong.length ? '<div class="eyebrow" style="margin-top:20px">Review</div>' + wrong.map(function(l){
+      return '<div class="rev"><div class="rq">' + esc(l.stem) + '</div><div class="ra">You: <span class="bad">' + esc(l.given) + '</span> &nbsp; Correct: <span class="good">' + esc(l.answer) + '</span></div></div>';
+    }).join('') : '<p>Nothing missed.</p>') +
+    '<div style="display:flex;gap:10px;margin-top:24px;flex-wrap:wrap"><button class="btn" id="ionAgain">Run it again</button>' +
+    '<button class="btn ghost" id="ionBack">Back to ion drills</button></div>';
+  $('#ionAgain').addEventListener('click', function(){ startIonDrill(s.mode); });
+  $('#ionBack').addEventListener('click', function(){
+    $('#ionDone').classList.add('hidden'); $('#ionMenu').classList.remove('hidden'); renderIonMenu();
+  });
+  window.scrollTo({top:0});
+}
+$('#ionModes').addEventListener('click', function(e){
+  var b = e.target.closest('.mode'); if(!b) return;
+  startIonDrill(ION_MODES[parseInt(b.dataset.imode, 10)]);
+});
+
+loadIonProgress();
+renderIonTable();
+renderIonMenu();
+</script>
+</body></html>
