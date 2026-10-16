@@ -31,7 +31,7 @@ open index.html        # macOS  (Windows: start index.html, Linux: xdg-open inde
 ```
 
 **Option 4: put it online (optional)**
-To get a link that works on any device, including your phone: in the repository go to **Settings → Pages**, set the source to **Deploy from a branch**, choose `main` and `/ (root)`, and save. After a minute or two the app will be at
+To get a link that works on any device, including your phone: in the repository go to **Settings → Pages**, set the source to **Deploy from a branch**, choose `ib-chemistry-practice` and `/ (root)`, and save. After a minute or two the app will be at
 `https://allencallum51-coder.github.io/chemistry-organic-naming-practice-IB/`.
 
 It runs in any modern browser (Chrome, Edge, Firefox, Safari), on a computer, tablet or phone.
