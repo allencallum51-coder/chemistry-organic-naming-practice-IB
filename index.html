@@ -4684,11 +4684,11 @@ CHAPTERS.push(
  body:function(){ return `
   <p>The <strong>valence shell electron pair repulsion (VSEPR)</strong> model predicts the shape of a molecule or ion from the electron domains around its central atom. Electron domains repel one another, so they arrange themselves <strong>as far apart as possible</strong> to minimise repulsion.</p>
   <h3>What counts as one electron domain</h3>
-  <table><tr><th>Around the central atom</th><th>Domains</th></tr>
+  <div style="overflow-x:auto;max-width:calc(100vw - 66px)"><table><tr><th>Around the central atom</th><th>Domains</th></tr>
   <tr><td>a single bond</td><td>1</td></tr>
   <tr><td>a double bond</td><td>1</td></tr>
   <tr><td>a triple bond</td><td>1</td></tr>
-  <tr><td>a lone (non-bonding) pair</td><td>1</td></tr></table>
+  <tr><td>a lone (non-bonding) pair</td><td>1</td></tr></table></div>
   ${rule('<p style="margin:0">Count <strong>bonded atoms + lone pairs</strong> on the central atom. CO₂ has two C=O double bonds but only <strong>two</strong> electron domains, so it is linear.</p>')}
   <h3>Counting lone pairs on the central atom</h3>
   <p>Start from the Lewis formula. For a central atom whose terminal atoms are H or halogens (each forms one single bond), a quick check is:</p>
@@ -4713,13 +4713,15 @@ CHAPTERS.push(
  id:'shp_vsepr', unit:'shp', ref:'S2.2.4', title:'VSEPR shapes up to four domains', tag:'core', topics:['vshape','vangle'],
  body:function(){ return `
   <p>The number of electron domains fixes the electron domain geometry. The number of lone pairs then decides which molecular geometry you name.</p>
-  <table>${SHP_HEAD}
+  <div style="overflow-x:auto;max-width:calc(100vw - 66px)"><table>${SHP_HEAD}
   ${shpRow(2,0,'BeCl₂, CO₂, HCN')}
   ${shpRow(3,0,'BF₃, SO₃, CO₃²⁻, NO₃⁻')}
   ${shpRow(3,1,'SO₂, O₃, NO₂⁻')}
   ${shpRow(4,0,'CH₄, CCl₄, NH₄⁺')}
   ${shpRow(4,1,'NH₃, PCl₃, H₃O⁺')}
-  ${shpRow(4,2,'H₂O, OF₂, NH₂⁻')}</table>
+  ${shpRow(4,2,'H₂O, OF₂, NH₂⁻')}</table></div>
+  <h3>What the shapes look like</h3>
+  ${shapeGallery([[2,0],[3,0],[3,1],[4,0],[4,1],[4,2]])}
   ${rule('<p style="margin:0">Four steps: <strong>1</strong> find the central atom. <strong>2</strong> count bonding domains and lone pairs. <strong>3</strong> total domains → electron domain geometry. <strong>4</strong> lone pairs → molecular geometry and bond angle.</p>')}
   <h3>Names you can use</h3>
   <ul>
@@ -4737,10 +4739,11 @@ CHAPTERS.push(
   <p>Not all electron domains repel equally. A lone pair is held by only one nucleus, so it is closer to the central atom and spreads out more.</p>
   ${fx('lone pair–lone pair  >  lone pair–bonding pair  >  bonding pair–bonding pair', 'order of repulsion')}
   <h3>Lone pairs squeeze the bonds together</h3>
-  <table><tr><th>Species</th><th>Lone pairs</th><th>Shape</th><th>Bond angle</th></tr>
+  <div style="overflow-x:auto;max-width:calc(100vw - 66px)"><table><tr><th>Species</th><th>Lone pairs</th><th>Shape</th><th>Bond angle</th></tr>
   <tr><td class="f2">CH₄</td><td>0</td><td>tetrahedral</td><td class="f2">109.5°</td></tr>
   <tr><td class="f2">NH₃</td><td>1</td><td>trigonal pyramidal</td><td class="f2">&lt;109.5° (about 107°)</td></tr>
-  <tr><td class="f2">H₂O</td><td>2</td><td>bent</td><td class="f2">&lt;109.5° (about 104.5°)</td></tr></table>
+  <tr><td class="f2">H₂O</td><td>2</td><td>bent</td><td class="f2">&lt;109.5° (about 104.5°)</td></tr></table></div>
+  ${shapeGallery([[4,0],[4,1],[4,2]], [['C','H','CH₄'],['N','H','NH₃'],['O','H','H₂O']])}
   <p>All three have four electron domains. Each extra lone pair pushes the bonding pairs closer together, removing roughly 2.5°. In the same way SO₂ (one lone pair, three domains) is bent with an angle a little <strong>less than 120°</strong>, about 117°.</p>
   <h3>Multiple bonds</h3>
   <p>A double or triple bond still counts as one domain, but it holds more electron density, so it repels more strongly than a single bond. In methanal, H₂CO, the bigger C=O domain pushes the two C–H bonds together: the H–C–H angle is a little <strong>less than 120°</strong> and each H–C=O angle is a little more.</p>
@@ -4759,14 +4762,14 @@ CHAPTERS.push(
    <li>What is the molecular geometry? (VSEPR)</li>
    <li>Do the bond dipoles cancel by symmetry?</li>
   </ol>
-  <table><tr><th>Molecule</th><th>Shape</th><th>Dipoles</th><th>Result</th></tr>
+  <div style="overflow-x:auto;max-width:calc(100vw - 66px)"><table><tr><th>Molecule</th><th>Shape</th><th>Dipoles</th><th>Result</th></tr>
   <tr><td class="f2">CO₂</td><td>linear</td><td>two equal C=O dipoles in opposite directions cancel</td><td>non-polar</td></tr>
   <tr><td class="f2">BF₃</td><td>trigonal planar</td><td>three equal dipoles at 120° cancel</td><td>non-polar</td></tr>
   <tr><td class="f2">CCl₄</td><td>tetrahedral</td><td>four equal dipoles cancel</td><td>non-polar</td></tr>
   <tr><td class="f2">CHCl₃</td><td>tetrahedral</td><td>C–H and C–Cl dipoles are different — no cancelling</td><td>polar</td></tr>
   <tr><td class="f2">H₂O</td><td>bent</td><td>dipoles point the same way overall</td><td>polar</td></tr>
   <tr><td class="f2">NH₃</td><td>trigonal pyramidal</td><td>dipoles do not cancel</td><td>polar</td></tr>
-  <tr><td class="f2">SO₂</td><td>bent</td><td>dipoles do not cancel</td><td>polar</td></tr></table>
+  <tr><td class="f2">SO₂</td><td>bent</td><td>dipoles do not cancel</td><td>polar</td></tr></table></div>
   ${rule('<p style="margin:0">Symmetrical shape <strong>and</strong> identical terminal atoms → the dipoles cancel → non-polar. A lone pair on the central atom (in a shape with up to four domains) or different terminal atoms → polar.</p>')}
   ${warn('<p style="margin:0">Polar bonds do not guarantee a polar molecule. CO₂ and CCl₄ both have polar bonds but are non-polar, because their shapes make the dipoles cancel.</p>')}`;
  },
@@ -4780,14 +4783,16 @@ CHAPTERS.push(
   <p>Three <strong>equatorial</strong> positions at 120° in a plane, and two <strong>axial</strong> positions at 90° above and below it. Lone pairs always go <strong>equatorial</strong>, where they have more room (only two neighbours at 90°, not three).</p>
   <h3>Six domains: octahedral arrangement</h3>
   <p>All six positions are equivalent, at 90° to their neighbours. A second lone pair goes <strong>opposite</strong> the first (180° apart), which is why XeF₄ is square planar.</p>
-  <table>${SHP_HEAD}
+  <div style="overflow-x:auto;max-width:calc(100vw - 66px)"><table>${SHP_HEAD}
   ${shpRow(5,0,'PCl₅, PF₅')}
   ${shpRow(5,1,'SF₄, SeF₄')}
   ${shpRow(5,2,'ClF₃, BrF₃')}
   ${shpRow(5,3,'XeF₂, I₃⁻')}
   ${shpRow(6,0,'SF₆, PF₆⁻')}
   ${shpRow(6,1,'BrF₅, IF₅')}
-  ${shpRow(6,2,'XeF₄, ICl₄⁻')}</table>
+  ${shpRow(6,2,'XeF₄, ICl₄⁻')}</table></div>
+  <h3>What the shapes look like</h3>
+  ${shapeGallery([[5,0],[5,1],[5,2],[5,3],[6,0],[6,1],[6,2]])}
   ${rule('<p style="margin:0">Same method as before: count bonding domains and lone pairs. Five domains → trigonal bipyramidal electron domain geometry; six → octahedral. Then name the molecular geometry from the number of lone pairs.</p>')}
   <h3>Polarity</h3>
   <p>PCl₅, SF₆, XeF₂ and XeF₄ are <strong>non-polar</strong>: their lone pairs (if any) sit symmetrically, so the bond dipoles cancel. SF₄, ClF₃ and BrF₅ are <strong>polar</strong>.</p>
@@ -4801,21 +4806,21 @@ CHAPTERS.push(
   <p>Often more than one Lewis formula can be drawn for a species. <strong>Formal charge</strong> (FC) is worked out for every atom and used to decide which Lewis formula is <strong>preferred</strong>.</p>
   ${fx('FC = V − ½B − N', 'V valence electrons of the atom · B bonding (shared) electrons around it · N non-bonding (lone-pair) electrons')}
   <p>Each bond line is two bonding electrons, so ½B is simply the <strong>number of bonds</strong> (a double bond counts 2, a triple bond 3). The formal charges in a species always add up to its overall charge.</p>
-  <table><tr><th>Atom</th><th>V</th><th>bonds (½B)</th><th>N</th><th>FC</th></tr>
+  <div style="overflow-x:auto;max-width:calc(100vw - 66px)"><table><tr><th>Atom</th><th>V</th><th>bonds (½B)</th><th>N</th><th>FC</th></tr>
   <tr><td>N in NH₄⁺</td><td>5</td><td>4</td><td>0</td><td class="f2">+1</td></tr>
   <tr><td>C in :C≡O:</td><td>4</td><td>3</td><td>2</td><td class="f2">−1</td></tr>
   <tr><td>O in :C≡O:</td><td>6</td><td>3</td><td>2</td><td class="f2">+1</td></tr>
-  <tr><td>O in OH⁻</td><td>6</td><td>1</td><td>6</td><td class="f2">−1</td></tr></table>
+  <tr><td>O in OH⁻</td><td>6</td><td>1</td><td>6</td><td class="f2">−1</td></tr></table></div>
   <h3>Choosing the preferred Lewis formula</h3>
   <ol>
    <li>Formal charges <strong>closest to zero</strong> (smallest values, fewest charged atoms).</li>
    <li>If there is still a choice, any <strong>negative</strong> formal charge should be on the <strong>most electronegative</strong> atom.</li>
   </ol>
-  <table><tr><th>Species</th><th>Options</th><th>Preferred</th></tr>
+  <div style="overflow-x:auto;max-width:calc(100vw - 66px)"><table><tr><th>Species</th><th>Options</th><th>Preferred</th></tr>
   <tr><td class="f2">SO₄²⁻</td><td>four S–O (S +2, each O −1) <em>or</em> two S=O + two S–O (S 0, two O −1)</td><td>two S=O — charges nearer zero (S expands its octet)</td></tr>
   <tr><td class="f2">CO₂</td><td>O=C=O (all 0) <em>or</em> O≡C–O (+1, 0, −1)</td><td>O=C=O</td></tr>
   <tr><td class="f2">N₂O</td><td>N=N=O (−1, +1, 0) <em>or</em> N≡N–O (0, +1, −1)</td><td>N≡N–O — the −1 is on O, more electronegative than N</td></tr>
-  <tr><td class="f2">OCN⁻</td><td>O=C=N (0, 0, −1) <em>or</em> O–C≡N (−1, 0, 0)</td><td>O–C≡N — the −1 is on O</td></tr></table>
+  <tr><td class="f2">OCN⁻</td><td>O=C=N (0, 0, −1) <em>or</em> O–C≡N (−1, 0, 0)</td><td>O–C≡N — the −1 is on O</td></tr></table></div>
   ${warn('<p style="margin:0">Formal charge is not oxidation state. Formal charge assumes the bonding electrons are shared <strong>equally</strong>; oxidation state assumes they all go to the more electronegative atom. Neither is the real charge on the atom.</p>')}`;
  },
  check:{q:'Calculate the formal charge on the central O atom in ozone, O=O–O (it has one lone pair).', a:'FC = 6 − 3 − 2 = +1 (the singly bonded O is −1, the doubly bonded O is 0; total 0)'}
@@ -4824,14 +4829,14 @@ CHAPTERS.push(
  id:'shp_sigpi', unit:'shp', hl:true, ref:'S2.2.15', title:'Sigma and pi bonds', tag:'core', topics:['sigpi'],
  body:function(){ return `
   <p>Covalent bonds form when atomic orbitals overlap. There are two ways they can overlap.</p>
-  <table><tr><th>Bond</th><th>Overlap</th><th>Electron density</th></tr>
+  <div style="overflow-x:auto;max-width:calc(100vw - 66px)"><table><tr><th>Bond</th><th>Overlap</th><th>Electron density</th></tr>
   <tr><td><strong>sigma, σ</strong></td><td>direct, head-on (end-to-end) overlap of orbitals — s, p or hybrid orbitals</td><td>concentrated on the line between the two nuclei</td></tr>
-  <tr><td><strong>pi, π</strong></td><td>sideways overlap of parallel p orbitals</td><td>above and below the line (plane) of the nuclei</td></tr></table>
+  <tr><td><strong>pi, π</strong></td><td>sideways overlap of parallel p orbitals</td><td>above and below the line (plane) of the nuclei</td></tr></table></div>
   <h3>Counting them</h3>
-  <table><tr><th>Bond</th><th>σ</th><th>π</th></tr>
+  <div style="overflow-x:auto;max-width:calc(100vw - 66px)"><table><tr><th>Bond</th><th>σ</th><th>π</th></tr>
   <tr><td>single</td><td>1</td><td>0</td></tr>
   <tr><td>double</td><td>1</td><td>1</td></tr>
-  <tr><td>triple</td><td>1</td><td>2</td></tr></table>
+  <tr><td>triple</td><td>1</td><td>2</td></tr></table></div>
   ${rule('<p style="margin:0">Every bond contains exactly one σ bond, so <strong>σ = total number of bonds</strong>. Then <strong>π = (number of double bonds) + 2 × (number of triple bonds)</strong>. Remember to count every C–H bond — draw out or picture the full structural formula.</p>')}
   <p>Ethene, CH₂=CH₂: four C–H and one C=C → <strong>5 σ, 1 π</strong>. Ethyne, HC≡CH: two C–H and one C≡C → <strong>3 σ, 2 π</strong>.</p>
   <ul>
@@ -4847,10 +4852,10 @@ CHAPTERS.push(
  id:'shp_hybrid', unit:'shp', hl:true, ref:'S2.2.16', title:'Hybridization: sp, sp², sp³', tag:'core', topics:['hybrid'],
  body:function(){ return `
   <p><strong>Hybridization</strong> is the mixing of atomic orbitals to form new, equivalent <strong>hybrid orbitals</strong> for bonding. The number of hybrid orbitals formed equals the number of atomic orbitals mixed, and equals the number of electron domains on the atom.</p>
-  <table><tr><th>Domains</th><th>Orbitals mixed</th><th>Hybridization</th><th>Electron domain geometry</th><th>Angle</th><th>Examples</th></tr>
+  <div style="overflow-x:auto;max-width:calc(100vw - 66px)"><table><tr><th>Domains</th><th>Orbitals mixed</th><th>Hybridization</th><th>Electron domain geometry</th><th>Angle</th><th>Examples</th></tr>
   <tr><td>2</td><td>one s + one p</td><td><strong>sp</strong></td><td>linear</td><td class="f2">180°</td><td class="f2">C in HC≡CH, CO₂, HCN; Be in BeCl₂</td></tr>
   <tr><td>3</td><td>one s + two p</td><td><strong>sp²</strong></td><td>trigonal planar</td><td class="f2">120°</td><td class="f2">C in CH₂=CH₂, C=O carbon; B in BF₃</td></tr>
-  <tr><td>4</td><td>one s + three p</td><td><strong>sp³</strong></td><td>tetrahedral</td><td class="f2">109.5°</td><td class="f2">C in CH₄; N in NH₃; O in H₂O</td></tr></table>
+  <tr><td>4</td><td>one s + three p</td><td><strong>sp³</strong></td><td>tetrahedral</td><td class="f2">109.5°</td><td class="f2">C in CH₄; N in NH₃; O in H₂O</td></tr></table></div>
   ${rule('<p style="margin:0">Count electron domains (lone pairs included) on the atom: 2 → sp, 3 → sp², 4 → sp³. This works in both directions — from hybridization you can predict the electron domain geometry, and vice versa.</p>')}
   <h3>Organic examples</h3>
   <ul>
@@ -4876,7 +4881,7 @@ function shPick(hl, filter){ return pick(shPool(hl).filter(filter || function(){
 function genDomains(hl){
   var s = shPick(hl), d = String(shDom(s));
   return {
-    type:shType('Count the electron domains', hl), topic: hl ? 'vsepr56' : 'vsepr', chapter: hl ? 'shp_expanded' : 'shp_domains', hl:hl,
+    _s:s, type:shType('Count the electron domains', hl), topic: hl ? 'vsepr56' : 'vsepr', chapter: hl ? 'shp_expanded' : 'shp_domains', hl:hl,
     stem:'How many electron domains surround the central ' + s.c + ' atom in ' + s.f + '?',
     input:'mc', opts:shOpts(d, hl ? ['3','4','5','6','7'] : ['2','3','4','5']), answer:d,
     explain:'The central ' + s.c + ' in ' + s.f + ' has ' + shCount(s) + '.' + (s.mult ? ' A double or triple bond counts as one domain.' : '')
@@ -4885,7 +4890,7 @@ function genDomains(hl){
 function genLonePairs(hl){
   var s = shPick(hl), l = String(s.lp);
   return {
-    type:shType('Lone pairs on the central atom', hl), topic: hl ? 'vsepr56' : 'vsepr', chapter: hl ? 'shp_expanded' : 'shp_domains', hl:hl,
+    _s:s, type:shType('Lone pairs on the central atom', hl), topic: hl ? 'vsepr56' : 'vsepr', chapter: hl ? 'shp_expanded' : 'shp_domains', hl:hl,
     stem:'How many lone pairs are on the central ' + s.c + ' atom in ' + s.f + '?',
     input:'mc', opts:shOpts(l, ['0','1','2','3']), answer:l,
     explain:'The central ' + s.c + ' in ' + s.f + ' has ' + shCount(s) + ', which gives a ' + shMG(s) + ' molecular geometry.'
@@ -4894,7 +4899,7 @@ function genLonePairs(hl){
 function genEDG(hl){
   var s = shPick(hl, function(x){ return x.lp > 0 || Math.random() < 0.3; }), a = shEDG(s);
   return {
-    type:shType('Electron domain geometry', hl), topic: hl ? 'vsepr56' : 'vsepr', chapter: hl ? 'shp_expanded' : 'shp_domains', hl:hl,
+    _s:s, type:shType('Electron domain geometry', hl), topic: hl ? 'vsepr56' : 'vsepr', chapter: hl ? 'shp_expanded' : 'shp_domains', hl:hl,
     stem:'What is the electron domain geometry around the central atom in ' + s.f + '?',
     sub:'Include lone pairs — this is the arrangement of all the electron domains.',
     input:'mc', opts:shOpts(a, hl ? ['trigonal planar','tetrahedral','trigonal bipyramidal','octahedral','square planar','see-saw'] : ['linear','trigonal planar','tetrahedral','trigonal pyramidal','bent']), answer:a,
@@ -4905,7 +4910,7 @@ function genMG(hl){
   var s = shPick(hl), a = shMG(s);
   var pool = hl ? HL_SHAPES.concat(['tetrahedral','trigonal pyramidal']) : SL_SHAPES;
   return {
-    type:shType('Name the shape', hl), topic: hl ? 'vsepr56' : 'vshape', chapter: hl ? 'shp_expanded' : 'shp_vsepr', hl:hl,
+    _s:s, type:shType('Name the shape', hl), topic: hl ? 'vsepr56' : 'vshape', chapter: hl ? 'shp_expanded' : 'shp_vsepr', hl:hl,
     stem:'What is the molecular geometry (shape) of ' + s.f + '?',
     input:'mc', opts:shOpts(a, pool.concat(s.lp ? [shEDG(s)] : [])), answer:a,
     explain:shWhy(s)
@@ -4920,7 +4925,7 @@ function genPair(hl){
   if(s.lp){ var sw = shMG(s) + ' / ' + shEDG(s); if(!seen[sw]){ seen[sw] = 1; wrongs.push(sw); } var same = shEDG(s) + ' / ' + shEDG(s); if(!seen[same]){ seen[same] = 1; wrongs.push(same); } }
   shuffle(shPool(hl).slice()).forEach(function(x){ var v = fmt(x); if(!seen[v]){ seen[v] = 1; wrongs.push(v); } });
   return {
-    type:shType('Electron domain vs molecular geometry', hl), topic: hl ? 'vsepr56' : 'vshape', chapter: hl ? 'shp_expanded' : 'shp_domains', hl:hl,
+    _s:s, type:shType('Electron domain vs molecular geometry', hl), topic: hl ? 'vsepr56' : 'vshape', chapter: hl ? 'shp_expanded' : 'shp_domains', hl:hl,
     stem:'Which pair correctly gives the electron domain geometry / molecular geometry of ' + s.f + '?',
     input:'mc', opts:mcOpts(a, wrongs.slice(0, 3)), answer:a,
     explain:shWhy(s)
@@ -4929,7 +4934,7 @@ function genPair(hl){
 function genAngle(hl){
   var s = shPick(hl, function(x){ return !x.noAng || x.lp > 0; }), a = shAng(s);
   return {
-    type:shType('Bond angle', hl), topic: hl ? 'vsepr56' : 'vangle', chapter: hl ? 'shp_expanded' : 'shp_angles', hl:hl,
+    _s:s, type:shType('Bond angle', hl), topic: hl ? 'vsepr56' : 'vangle', chapter: hl ? 'shp_expanded' : 'shp_angles', hl:hl,
     stem:'What bond angle(s) does VSEPR predict around the central atom in ' + s.f + '?',
     input:'mc', opts:shOpts(a, hl ? HL_ANGLES : SL_ANGLES), answer:a,
     explain:shWhy(s) + ' Predicted angle: ' + a + '.' + (s.lp && shDom(s) <= 4 ? ' Lone pairs repel more strongly than bonding pairs, so the angle is less than the ' + {3:'120°', 4:'109.5°'}[shDom(s)] + ' of the parent shape' + (s.noAng ? '.' : ' — typically about ' + GEO[shDom(s)][s.lp].typ + '°, but you only need "less than".') : '')
@@ -4940,7 +4945,7 @@ function genFromCounts(hl){
   var lps = Object.keys(GEO[d]).map(Number), lp = pick(lps), b = d - lp, g = GEO[d][lp];
   var pool = hl ? HL_SHAPES.concat(['tetrahedral']) : SL_SHAPES;
   return {
-    type:shType('Domains → shape', hl), topic: hl ? 'vsepr56' : 'vshape', chapter: hl ? 'shp_expanded' : 'shp_vsepr', hl:hl,
+    _g:[d, lp], type:shType('Domains → shape', hl), topic: hl ? 'vsepr56' : 'vshape', chapter: hl ? 'shp_expanded' : 'shp_vsepr', hl:hl,
     stem:'A central atom has ' + b + ' bonding domain' + (b === 1 ? '' : 's') + ' and ' + lp + ' lone pair' + (lp === 1 ? '' : 's') + '. What is its molecular geometry?',
     input:'mc', opts:shOpts(g.mg, pool.concat(lp ? [EDG[d]] : [])), answer:g.mg,
     explain:d + ' electron domains → ' + EDG[d] + ' electron domain geometry. With ' + lp + ' lone pair' + (lp === 1 ? '' : 's') + ' the atoms form a ' + g.mg + ' shape (' + g.ang + ').'
@@ -4951,7 +4956,7 @@ function genWhich(hl){
   seen[target] = 1;
   shuffle(pool.slice()).forEach(function(x){ var m = shMG(x); if(!seen[m] && wrongs.length < 3){ seen[m] = 1; wrongs.push({name:x.f, why:x.f + ' is ' + m}); } });
   return {
-    type:shType('Which species has this shape?', hl), topic: hl ? 'vsepr56' : 'vshape', chapter: hl ? 'shp_expanded' : 'shp_vsepr', hl:hl,
+    _s:s, type:shType('Which species has this shape?', hl), topic: hl ? 'vsepr56' : 'vshape', chapter: hl ? 'shp_expanded' : 'shp_vsepr', hl:hl,
     stem:'Which species has a ' + target + ' molecular geometry?',
     input:'mc', opts:mcOpts(s.f, wrongs), answer:s.f,
     explain:shWhy(s)
@@ -4975,7 +4980,7 @@ function shapeKey(v){ return String(v).toLowerCase().replace(/[^a-z]/g, ''); }
 function genTyped(hl){
   var s = shPick(hl), a = shMG(s);
   return {
-    type:shType('Name the shape (type it)', hl), topic: hl ? 'vsepr56' : 'vshape', chapter: hl ? 'shp_expanded' : 'shp_vsepr', hl:hl,
+    _s:s, type:shType('Name the shape (type it)', hl), topic: hl ? 'vsepr56' : 'vshape', chapter: hl ? 'shp_expanded' : 'shp_vsepr', hl:hl,
     stem:'Type the molecular geometry (shape) of ' + s.f + '.',
     sub: hl ? 'e.g. trigonal bipyramidal, see-saw, T-shaped, linear, octahedral, square pyramidal, square planar' : 'e.g. linear, trigonal planar, bent, tetrahedral, trigonal pyramidal',
     input:'text', answer:a,
@@ -5027,7 +5032,7 @@ function genPolar(hl){
     ? (s.pn ? s.f + ' is ' + shMG(s) + ', but ' + s.pn + ', so there is a net dipole.' : s.f + ' is ' + shMG(s) + ': the lone pair' + (s.lp > 1 ? 's make' : ' makes') + ' the molecule unsymmetrical, so the bond dipoles do not cancel and there is a net dipole.')
     : s.f + ' is ' + shMG(s) + ' with identical terminal atoms' + (s.lp ? ' and symmetrically placed lone pairs' : '') + ', so the polar bonds’ dipoles cancel — no net dipole.';
   return {
-    type:shType('Polar or non-polar?', hl), topic:'molpol', chapter: hl ? 'shp_expanded' : 'shp_polar', hl:hl,
+    _s:s, type:shType('Polar or non-polar?', hl), topic:'molpol', chapter: hl ? 'shp_expanded' : 'shp_polar', hl:hl,
     stem:'Is ' + s.f + ' a polar or a non-polar molecule?',
     input:'mc', opts:mcOpts(ans, [s.pol ? N : P, 'Non-polar — it contains no polar bonds', 'Polar — every molecule with polar bonds is polar']), answer:ans,
     explain:why
@@ -5160,7 +5165,7 @@ function genLessThan(hl){
   var s = shPick(hl, function(x){ return x.lp > 0 && GEO[shDom(x)][x.lp].ang.charAt(0) === '<'; });
   var d = shDom(s), par = shAng(s).replace(/</g, ''), pl = par.indexOf('and') >= 0;
   return {
-    type:shType('Less than which angle?', hl), topic: hl ? 'vsepr56' : 'vangle', chapter: hl ? 'shp_expanded' : 'shp_angles', hl:hl,
+    _s:s, type:shType('Less than which angle?', hl), topic: hl ? 'vsepr56' : 'vangle', chapter: hl ? 'shp_expanded' : 'shp_angles', hl:hl,
     stem:'The lone pair' + (s.lp > 1 ? 's' : '') + ' on the central ' + s.c + ' in ' + s.f + ' squeeze' + (s.lp > 1 ? '' : 's') + ' the bonds together. The bond angle' + (pl ? 's are' : ' is') + ' less than…',
     input:'mc', opts:shOpts(par, ['180°','120°','109.5°','90°','90° and 120°']), answer:par,
     explain:s.f + ' has ' + shCount(s) + ' → ' + EDG[d] + ' arrangement, where the ideal angle' + (pl ? 's are ' : ' is ') + par + '. Lone pairs repel more than bonding pairs, so the angle' + (pl ? 's are' : ' is') + ' ' + shAng(s) + '.'
@@ -5327,21 +5332,178 @@ QTYPES.push(
 MODES.push(
   {k:'shpq',   unit:'shp', t:'Geometry quick test', d:'Ten mixed questions: domains, shapes, bond angles and polarity — plus five and six domains, formal charge, σ / π and hybridization at HL.', n:10, level:2, units:['shp'], meta:'10 questions'},
   {k:'shpnm',  unit:'shp', t:'Naming shapes', d:'Electron domain geometry vs molecular geometry, from formulas and from domain counts. Pick or type the name.', n:15, level:2,
-   only:['shp_edg','shp_mg','shp_pair','shp_counts','shp_which','shp_typed','shp5_edg','shp5_mg','shp5_pair','shp5_counts','shp5_which','shp5_typed'], meta:'15 questions · SL + HL'},
+   only:['shp_edg','shp_mg','shp_pair','shp_counts','shp_which','shp_typed','shp_pic','shp_pic_match','shp5_edg','shp5_mg','shp5_pair','shp5_counts','shp5_which','shp5_typed','shp5_pic','shp5_pic_match'], meta:'15 questions · SL + HL'},
   {k:'shpang', unit:'shp', t:'Bond angles', d:'Predict bond angles, compare them, and explain the effect of lone pairs and multiple bonds.', n:12, level:2,
-   only:['shp_angle','shp_compare','shp_less','shp_concept','shp5_angle','shp5_less'], meta:'12 questions · SL + HL'},
+   only:['shp_angle','shp_compare','shp_less','shp_concept','shp_pic_angle','shp5_angle','shp5_less','shp5_pic_angle'], meta:'12 questions · SL + HL'},
   {k:'shpdom', unit:'shp', t:'Counting domains', d:'Electron domains and lone pairs on the central atom — the first step of every shape question.', n:12, level:2,
    only:['shp_domains','shp_lp','shp_edg','shp_concept','shp5_domains','shp5_lp'], meta:'12 questions · SL + HL'},
   {k:'shppol', unit:'shp', t:'Molecular polarity', d:'Polar or non-polar? Decide from bond polarity and shape.', n:12, level:2,
    only:['pol_yn','pol_which','pol_concept','pol5_yn'], meta:'12 questions · SL + HL'},
   {k:'shp56',  unit:'shp', hl:true, t:'Five & six domains', d:'Trigonal bipyramidal, see-saw, T-shaped, linear, octahedral, square pyramidal and square planar.', n:12, level:2,
-   only:['shp5_domains','shp5_lp','shp5_edg','shp5_mg','shp5_pair','shp5_counts','shp5_which','shp5_typed','shp5_angle','shp5_less','pol5_yn','shp5_concept'], meta:'12 questions'},
+   only:['shp5_domains','shp5_lp','shp5_edg','shp5_mg','shp5_pair','shp5_counts','shp5_which','shp5_typed','shp5_angle','shp5_less','pol5_yn','shp5_concept','shp5_pic','shp5_pic_angle','shp5_pic_match'], meta:'12 questions'},
   {k:'shpfc',  unit:'shp', hl:true, t:'Formal charge', d:'Calculate FC = V − ½B − N, and choose the preferred Lewis formula.', n:12, level:2,
    only:['fc_calc','fc_prefer','fc_concept'], meta:'12 questions'},
   {k:'shpsp',  unit:'shp', hl:true, t:'Sigma & pi bonds', d:'Count σ and π bonds in organic and inorganic molecules; head-on vs sideways overlap.', n:12, level:2,
    only:['sp_count','sp_both','sp_bond','sp_concept'], meta:'12 questions'},
   {k:'shphyb', unit:'shp', hl:true, t:'Hybridization', d:'sp, sp² and sp³ from electron domains, in organic and inorganic species — and geometry from hybridization.', n:12, level:2,
    only:['hyb_central','hyb_atom','hyb_geom','hyb_concept'], meta:'12 questions'}
+);
+
+/* ---------- unit 04: 3D shape diagrams (wedge = towards you, hashed = away, lobe with two dots = lone pair) ---------- */
+// domain directions (unit vectors on screen) and bond style: p in plane, w wedge, d hashed
+var SHP_LAYOUT = {
+  2:[[-1,0,'p'],[1,0,'p']],
+  3:[[0,-1,'p'],[-0.87,0.5,'p'],[0.87,0.5,'p']],
+  4:[[0,-1,'p'],[-0.94,0.34,'p'],[0.34,0.8,'w'],[0.88,0.3,'d']],
+  5:[[0,-1,'p'],[0,1,'p'],[-1,0.12,'p'],[0.6,0.52,'w'],[0.78,-0.28,'d']],
+  6:[[0,-1,'p'],[0,1,'p'],[-0.74,-0.34,'d'],[0.74,-0.34,'d'],[-0.64,0.44,'w'],[0.64,0.44,'w']]
+};
+// two lone pairs on four domains: draw the atoms symmetrically, lone pairs above
+var SHP_LAYOUT_42 = [[-0.72,-0.7,'w'],[0.72,-0.7,'d'],[-0.86,0.5,'p'],[0.86,0.5,'p']];
+// which domain slots hold lone pairs, and which two bonds carry the angle arc [i, j, sweep(optional, for 180°)]
+var SHP_LP = {'3_1':[0], '4_1':[0], '4_2':[0,1], '5_1':[2], '5_2':[3,4], '5_3':[2,3,4], '6_1':[1], '6_2':[0,1]};
+var SHP_ARC = {'2_0':[0,1,0], '3_0':[0,2], '3_1':[1,2], '4_0':[0,1], '4_1':[1,2], '4_2':[2,3], '5_0':[0,2], '5_1':[1,3], '5_2':[0,2], '6_0':[5,3], '6_1':[5,3], '6_2':[5,3]};
+function shLayout(d, lp){ return (d === 4 && lp === 2) ? SHP_LAYOUT_42 : SHP_LAYOUT[d]; }
+// o: {c: central label, x: terminal label, angle: true to mark the bond angle, w: width}
+function shapeSVG(d, lp, o){
+  o = o || {};
+  var cx = 100, cy = 80, R = 58, key = d + '_' + lp, L = shLayout(d, lp), lps = SHP_LP[key] || [], g = [];
+  var cLab = o.c || 'E', xLab = o.x || 'X';
+  L.forEach(function(p, i){
+    var ux = p[0], uy = p[1], n = Math.sqrt(ux*ux + uy*uy); ux /= n; uy /= n;
+    var px = -uy, py = ux;
+    if(lps.indexOf(i) >= 0){
+      // lone pair: an outlined lobe with two electrons
+      var lx = cx + ux*R*0.56, ly = cy + uy*R*0.56, rot = Math.atan2(uy, ux) * 180 / Math.PI;
+      g.push('<ellipse cx="' + r2(lx) + '" cy="' + r2(ly) + '" rx="17" ry="9.5" transform="rotate(' + r2(rot) + ' ' + r2(lx) + ' ' + r2(ly) + ')" fill="var(--surface)" stroke="var(--ink-3)" stroke-width="1.2"' + (p[2] === 'd' ? ' stroke-dasharray="3 2"' : '') + '/>');
+      var ex = cx + ux*R*0.64, ey = cy + uy*R*0.64;
+      g.push('<circle cx="' + r2(ex + px*3.6) + '" cy="' + r2(ey + py*3.6) + '" r="2.1" fill="var(--carbon)"/>', '<circle cx="' + r2(ex - px*3.6) + '" cy="' + r2(ey - py*3.6) + '" r="2.1" fill="var(--carbon)"/>');
+      return;
+    }
+    var x1 = cx + ux*11, y1 = cy + uy*11, x2 = cx + ux*(R - 12), y2 = cy + uy*(R - 12);
+    if(p[2] === 'w'){
+      g.push('<polygon points="' + [x1, y1, x2 + px*5, y2 + py*5, x2 - px*5, y2 - py*5].map(r2).join(',') + '" fill="var(--carbon)"/>');
+    } else if(p[2] === 'd'){
+      for(var k=0;k<7;k++){
+        var t = k / 6, mx = x1 + (x2 - x1)*t, my = y1 + (y2 - y1)*t, h = 0.8 + 4.2*t;
+        g.push(ln(mx - px*h, my - py*h, mx + px*h, my + py*h, 1.3));
+      }
+    } else {
+      g.push(ln(x1, y1, x2, y2));
+    }
+    g.push(svgLabel(cx + ux*R, cy + uy*R, xLab, groupCol(xLab), 14));
+  });
+  if(o.angle && SHP_ARC[key]){
+    var A = SHP_ARC[key], a = L[A[0]], b = L[A[1]], rr = 25;
+    var a1 = Math.atan2(a[1], a[0]), a2 = Math.atan2(b[1], b[0]);
+    var dl = a2 - a1; while(dl <= -Math.PI) dl += 2*Math.PI; while(dl > Math.PI) dl -= 2*Math.PI;
+    var sweep = A.length > 2 ? A[2] : (dl > 0 ? 1 : 0);
+    if(A.length > 2) dl = sweep ? Math.PI : -Math.PI;
+    var mid = a1 + dl / 2;
+    g.push('<path d="M' + r2(cx + rr*Math.cos(a1)) + ' ' + r2(cy + rr*Math.sin(a1)) + ' A' + rr + ' ' + rr + ' 0 0 ' + sweep + ' ' + r2(cx + rr*Math.cos(a2)) + ' ' + r2(cy + rr*Math.sin(a2)) + '" fill="none" stroke="var(--key)" stroke-width="1.3"/>');
+    var tx = cx + (rr + 15)*Math.cos(mid), ty = cy + (rr + 15)*Math.sin(mid);
+    g.push('<text x="' + r2(tx) + '" y="' + r2(ty) + '" text-anchor="middle" dominant-baseline="middle" font-family="var(--mono)" font-size="11" font-weight="600" fill="var(--key)" stroke="var(--surface-2)" stroke-width="3" paint-order="stroke">' + esc(GEO[d][lp].ang.split(' and ')[0]) + '</text>');
+  }
+  g.push(svgLabel(cx, cy, cLab, 'var(--carbon)', 15));
+  return '<svg viewBox="30 8 140 144" width="' + (o.w || 200) + '" style="max-width:100%;height:auto" role="img" aria-label="3D diagram of a ' + esc(GEO[d][lp].mg) + ' shape with ' + lp + ' lone pair' + (lp === 1 ? '' : 's') + '">' + g.join('') + '</svg>';
+}
+function shapeBox(d, lp, o){
+  o = o || {};
+  var cap = o.cap !== undefined ? o.cap : GEO[d][lp].mg + ' · ' + GEO[d][lp].ang;
+  return '<div class="svgwrap" style="margin:6px 0">' + shapeSVG(d, lp, o) + (cap ? '<div class="svgcap">' + esc(cap) + '</div>' : '') + '</div>';
+}
+function shapeGallery(list, labels){
+  return '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin:14px 0">' +
+    list.map(function(s, i){ var l = labels && labels[i]; return shapeBox(s[0], s[1], {angle:true, c:l && l[0], x:l && l[1], cap:(l && l[2] ? l[2] + ' — ' : '') + GEO[s[0]][s[1]].mg + ' · ' + GEO[s[0]][s[1]].ang}); }).join('') + '</div>' +
+    '<p class="mini" style="margin-top:-6px">Solid wedge: towards you · hashed wedge: away from you · plain line: in the plane of the page · lobe with two dots: lone pair.</p>';
+}
+// the single atom bonded to the centre, when all the terminal atoms are the same (else null)
+function shTerm(s){
+  var f = s.f.replace(/\s*\(.*\)$/, '').replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻₀₁₂₃₄₅₆₇₈₉]/g, '');
+  var rest = f.replace(s.c, ''), els = rest.match(/[A-Z][a-z]?/g) || [];
+  if(!els.length) return s.c;
+  return els.every(function(e){ return e === els[0]; }) ? els[0] : null;
+}
+function shFb(s){
+  var x = shTerm(s);
+  return shapeBox(shDom(s), s.lp, {angle:true, c:s.c, x:x || 'X', cap:s.f + ' — ' + shMG(s) + ' · ' + shAng(s) + (x ? '' : ' (X = the bonded atoms)')});
+}
+
+/* ---------- unit 04: questions with diagrams ---------- */
+function shCombos(hl){
+  var out = [];
+  (hl ? [5, 6] : [2, 3, 4]).forEach(function(d){ Object.keys(GEO[d]).forEach(function(lp){ out.push([d, +lp]); }); });
+  return out;
+}
+function genPic(hl){
+  var c = pick(shCombos(hl)), d = c[0], lp = c[1], g = GEO[d][lp];
+  var pool = hl ? HL_SHAPES.concat(['tetrahedral']) : SL_SHAPES;
+  return {
+    type:shType('Name the shape in the diagram', hl), topic: hl ? 'vsepr56' : 'vshape', chapter: hl ? 'shp_expanded' : 'shp_vsepr', hl:hl,
+    stem:'Name the molecular geometry shown.',
+    sub:'E = central atom, X = bonded atom. Lone pairs are drawn as lobes with two dots.',
+    html:shapeBox(d, lp, {cap:''}),
+    input:'mc', opts:shOpts(g.mg, pool.concat(lp ? [EDG[d]] : [])), answer:g.mg,
+    explain:(d - lp) + ' bonded atoms + ' + lp + ' lone pair' + (lp === 1 ? '' : 's') + ' = ' + d + ' electron domains → ' + EDG[d] + ' arrangement. Name the shape from the atoms only: ' + g.mg + '.',
+    fbHTML:shapeBox(d, lp, {angle:true})
+  };
+}
+function genPicAngle(hl){
+  var c = pick(shCombos(hl)), d = c[0], lp = c[1], g = GEO[d][lp];
+  return {
+    type:shType('Bond angle from the diagram', hl), topic: hl ? 'vsepr56' : 'vangle', chapter: hl ? 'shp_expanded' : 'shp_angles', hl:hl,
+    stem:'What bond angle(s) does VSEPR predict for the shape shown?',
+    sub:'E = central atom, X = bonded atom.',
+    html:shapeBox(d, lp, {cap:''}),
+    input:'mc', opts:shOpts(g.ang, hl ? HL_ANGLES : SL_ANGLES), answer:g.ang,
+    explain:'This is ' + g.mg + ' (' + d + ' domains, ' + lp + ' lone pair' + (lp === 1 ? '' : 's') + '): ' + g.ang + '.' + (lp && g.ang.charAt(0) === '<' ? ' The lone pair' + (lp > 1 ? 's repel' : ' repels') + ' more strongly than bonding pairs, so the angle is less than in the shape without lone pairs.' : ''),
+    fbHTML:shapeBox(d, lp, {angle:true})
+  };
+}
+function genPicMatch(hl){
+  var s = shPick(hl, function(x){ return shTerm(x); }), x = shTerm(s), d = shDom(s), mg = shMG(s);
+  var seen = {}; seen[mg] = 1;
+  var wrongs = shuffle(shCombos(hl).concat(hl ? [[4,0],[4,1]] : [])).filter(function(c){ var m = GEO[c[0]][c[1]].mg; if(seen[m]) return false; seen[m] = 1; return true; }).slice(0, 3);
+  var opts = mcOpts(mg, wrongs.map(function(c){ return {name:GEO[c[0]][c[1]].mg, why:'that diagram is ' + GEO[c[0]][c[1]].mg}; }));
+  opts.forEach(function(o){
+    var c = o.ok ? [d, s.lp] : wrongs.filter(function(w){ return GEO[w[0]][w[1]].mg === o.v; })[0];
+    o.html = shapeSVG(c[0], c[1], {c:s.c, x:x, w:170});
+  });
+  return {
+    type:shType('Pick the diagram', hl), topic: hl ? 'vsepr56' : 'vshape', chapter: hl ? 'shp_expanded' : 'shp_vsepr', hl:hl,
+    stem:'Which diagram shows the shape of ' + s.f + '?',
+    input:'mc', svgOpts:true, opts:opts, answer:mg,
+    explain:shWhy(s),
+    fbHTML:shFb(s)
+  };
+}
+GENS.shp_pic        = function(){ return genPic(false); };
+GENS.shp_pic_angle  = function(){ return genPicAngle(false); };
+GENS.shp_pic_match  = function(){ return genPicMatch(false); };
+GENS.shp5_pic       = function(){ return genPic(true); };
+GENS.shp5_pic_angle = function(){ return genPicAngle(true); };
+GENS.shp5_pic_match = function(){ return genPicMatch(true); };
+// show the shape in the feedback of the existing species questions
+['shp_domains','shp5_domains','shp_lp','shp_edg','shp_mg','shp_pair','shp_angle','shp_which','shp_typed','shp_less','shp_counts',
+ 'shp5_lp','shp5_edg','shp5_mg','shp5_pair','shp5_angle','shp5_which','shp5_typed','shp5_less','shp5_counts','pol_yn','pol5_yn'].forEach(function(k){
+  var f = GENS[k];
+  GENS[k] = function(){
+    var q = f.apply(this, arguments);
+    if(q && !q.fbHTML){ if(q._s) q.fbHTML = shFb(q._s); else if(q._g) q.fbHTML = shapeBox(q._g[0], q._g[1], {angle:true}); }
+    return q;
+  };
+});
+QTYPES.push(
+  {k:'shp_pic',        w:3, topics:['vshape'], unit:'shp'},
+  {k:'shp_pic_angle',  w:2, topics:['vangle'], unit:'shp'},
+  {k:'shp_pic_match',  w:3, topics:['vshape'], unit:'shp'},
+  {k:'shp5_pic',       w:3, topics:['vsepr56','vshape'], unit:'shp', hl:true},
+  {k:'shp5_pic_angle', w:2, topics:['vsepr56','vangle'], unit:'shp', hl:true},
+  {k:'shp5_pic_match', w:3, topics:['vsepr56','vshape'], unit:'shp', hl:true}
+);
+MODES.push(
+  {k:'shppic', unit:'shp', t:'Shapes from diagrams', d:'3D wedge–dash diagrams: name the shape, give the bond angle, or pick the right diagram for a molecule.', n:15, level:2,
+   only:['shp_pic','shp_pic_angle','shp_pic_match','shp5_pic','shp5_pic_angle','shp5_pic_match'], meta:'15 questions · SL + HL'}
 );
 
 /* ============================================================
@@ -5441,12 +5603,12 @@ CHAPTERS.push(
  id:'eqm_k', unit:'eqm', ref:'R2.3.3', title:'What the size of K tells you', tag:'core', topics:['eqk'],
  body:function(){ return `
   <p>The <strong>magnitude</strong> of K tells you how far the reaction has gone at equilibrium — the <strong>position of equilibrium</strong>. It says nothing about how fast it gets there.</p>
-  <table><tr><th>K</th><th>Position of equilibrium</th></tr>
+  <div style="overflow-x:auto;max-width:calc(100vw - 66px)"><table><tr><th>K</th><th>Position of equilibrium</th></tr>
   <tr><td class="f2">K ≫ 1</td><td>far to the right — reaction almost goes to completion; mostly products</td></tr>
   <tr><td class="f2">K &gt; 1</td><td>to the right — products favoured</td></tr>
   <tr><td class="f2">K = 1</td><td>neither side favoured — comparable amounts</td></tr>
   <tr><td class="f2">K &lt; 1</td><td>to the left — reactants favoured</td></tr>
-  <tr><td class="f2">K ≪ 1</td><td>far to the left — reaction hardly happens; mostly reactants</td></tr></table>
+  <tr><td class="f2">K ≪ 1</td><td>far to the left — reaction hardly happens; mostly reactants</td></tr></table></div>
   <h3>Reverse reactions</h3>
   <p>Writing the equation the other way round swaps top and bottom, so at the same temperature <strong>K(reverse) = 1 / K(forward)</strong>. If K = 4.0 for A ⇌ B, then K = 0.25 for B ⇌ A.</p>
   ${rule('<p style="margin:0">K depends on <strong>temperature only</strong>. Changing concentration, pressure or adding a catalyst never changes the value of K.</p>')}`;
@@ -5457,14 +5619,14 @@ CHAPTERS.push(
  id:'eqm_lc', unit:'eqm', ref:'R2.3.4', title:'Le Chatelier’s principle', tag:'core', topics:['eqlc'],
  body:function(){ return `
   <p><strong>Le Chatelier’s principle</strong>: if a system at equilibrium is disturbed, the position of equilibrium shifts to <strong>oppose</strong> (partly undo) the change.</p>
-  <table><tr><th>Change</th><th>Equilibrium shifts…</th><th>Effect on K</th></tr>
+  <div style="overflow-x:auto;max-width:calc(100vw - 66px)"><table><tr><th>Change</th><th>Equilibrium shifts…</th><th>Effect on K</th></tr>
   <tr><td>add a reactant / remove a product</td><td><strong>right</strong> — to use up the reactant / replace the product</td><td>none</td></tr>
   <tr><td>add a product / remove a reactant</td><td><strong>left</strong></td><td>none</td></tr>
   <tr><td>increase pressure (gases)</td><td>towards the side with <strong>fewer moles of gas</strong></td><td>none</td></tr>
   <tr><td>decrease pressure (gases)</td><td>towards the side with <strong>more moles of gas</strong></td><td>none</td></tr>
   <tr><td>increase temperature</td><td>in the <strong>endothermic</strong> direction</td><td>changes</td></tr>
   <tr><td>decrease temperature</td><td>in the <strong>exothermic</strong> direction</td><td>changes</td></tr>
-  <tr><td>add a catalyst</td><td><strong>no shift</strong> — equilibrium is reached faster</td><td>none</td></tr></table>
+  <tr><td>add a catalyst</td><td><strong>no shift</strong> — equilibrium is reached faster</td><td>none</td></tr></table></div>
   <h3>Worked example: the Haber process</h3>
   ${eqmBox(EQM[0], true)}
   <ul>
@@ -5473,9 +5635,9 @@ CHAPTERS.push(
    <li><strong>Iron catalyst</strong>: no change in yield — NH₃ just forms faster.</li>
   </ul>
   <h3>Temperature and K</h3>
-  <table><tr><th>Forward reaction</th><th>Temperature up</th><th>Temperature down</th></tr>
+  <div style="overflow-x:auto;max-width:calc(100vw - 66px)"><table><tr><th>Forward reaction</th><th>Temperature up</th><th>Temperature down</th></tr>
   <tr><td>exothermic (ΔH &lt; 0)</td><td>shifts left, K decreases</td><td>shifts right, K increases</td></tr>
-  <tr><td>endothermic (ΔH &gt; 0)</td><td>shifts right, K increases</td><td>shifts left, K decreases</td></tr></table>
+  <tr><td>endothermic (ΔH &gt; 0)</td><td>shifts right, K increases</td><td>shifts left, K decreases</td></tr></table></div>
   <h3>Heterogeneous equilibria</h3>
   <p>The same reasoning works for X(g) ⇌ X(aq): raising the pressure of CO₂ above a drink pushes more CO₂ into solution. Opening the bottle lowers the pressure, the equilibrium shifts left, and the drink fizzes.</p>
   ${rule('<p style="margin:0">If both sides have the same number of moles of gas — H₂(g) + I₂(g) ⇌ 2HI(g) — changing the pressure causes <strong>no shift</strong>.</p>')}
@@ -5487,19 +5649,19 @@ CHAPTERS.push(
  id:'eqm_q', unit:'eqm', hl:true, ref:'R2.3.5 · R2.3.7', title:'Reaction quotient Q, and ΔG', tag:'core', topics:['eqq'],
  body:function(){ return `
   <p>The <strong>reaction quotient, Q</strong>, has exactly the same expression as Kc, but uses the concentrations at <strong>any moment</strong>, not just at equilibrium. Comparing Q with K tells you which way the reaction will go.</p>
-  <table><tr><th>Comparison</th><th>Meaning</th><th>Reaction proceeds…</th></tr>
+  <div style="overflow-x:auto;max-width:calc(100vw - 66px)"><table><tr><th>Comparison</th><th>Meaning</th><th>Reaction proceeds…</th></tr>
   <tr><td class="f2">Q &lt; K</td><td>too few products</td><td><strong>forward</strong> (to the right)</td></tr>
   <tr><td class="f2">Q = K</td><td>at equilibrium</td><td>no net change</td></tr>
-  <tr><td class="f2">Q &gt; K</td><td>too many products</td><td><strong>backward</strong> (to the left)</td></tr></table>
+  <tr><td class="f2">Q &gt; K</td><td>too many products</td><td><strong>backward</strong> (to the left)</td></tr></table></div>
   <h3>Example</h3>
   <p>H₂(g) + I₂(g) ⇌ 2HI(g), Kc = 50. At one moment [H₂] = [I₂] = 0.10 and [HI] = 0.50 mol dm⁻³.</p>
   ${fx('Q = [HI]² / ([H₂][I₂]) = 0.25 / 0.010 = 25', 'Q < K → the reaction proceeds forward until Q reaches 50')}
   <h3>ΔG and K</h3>
   <p>The standard Gibbs energy change and K both describe the position of equilibrium (ΔG⦵ = −RT ln K, in the data booklet). You only need the signs here:</p>
-  <table><tr><th>ΔG⦵</th><th>K</th><th>Position</th></tr>
+  <div style="overflow-x:auto;max-width:calc(100vw - 66px)"><table><tr><th>ΔG⦵</th><th>K</th><th>Position</th></tr>
   <tr><td>negative</td><td>&gt; 1</td><td>products favoured</td></tr>
   <tr><td>zero</td><td>= 1</td><td>neither favoured</td></tr>
-  <tr><td>positive</td><td>&lt; 1</td><td>reactants favoured</td></tr></table>
+  <tr><td>positive</td><td>&lt; 1</td><td>reactants favoured</td></tr></table></div>
   ${rule('<p style="margin:0">Q is to K what "where you are" is to "where you are going". The reaction always moves to make Q equal K.</p>')}`;
  },
  check:{q:'For a reaction, K = 4.0 and at one moment Q = 9.0. Which way does the reaction proceed?', a:'Backward (to the left) — Q > K, so there are too many products'}
@@ -5902,20 +6064,20 @@ CHAPTERS.push(
  id:'ox_names', unit:'ox', ref:'R3.2.1', title:'Roman numerals in names', tag:'core', topics:['oxname'],
  body:function(){ return `
   <p>Elements with more than one possible oxidation state — most transition elements, and non-metals such as S, N and Cl — show it in the <strong>name</strong> as a <strong>Roman numeral</strong> in brackets, straight after the element it belongs to. Formulas never contain Roman numerals.</p>
-  <table><tr><th>Formula</th><th>Name</th><th>Oxidation state</th></tr>
+  <div style="overflow-x:auto;max-width:calc(100vw - 66px)"><table><tr><th>Formula</th><th>Name</th><th>Oxidation state</th></tr>
   <tr><td class="f2">FeCl₂ / FeCl₃</td><td>iron(II) chloride / iron(III) chloride</td><td>Fe +2 / +3</td></tr>
   <tr><td class="f2">Cu₂O / CuO</td><td>copper(I) oxide / copper(II) oxide</td><td>Cu +1 / +2</td></tr>
   <tr><td class="f2">MnO₂</td><td>manganese(IV) oxide</td><td>Mn +4</td></tr>
-  <tr><td class="f2">SO₂ / SO₃</td><td>sulfur(IV) oxide / sulfur(VI) oxide</td><td>S +4 / +6</td></tr></table>
+  <tr><td class="f2">SO₂ / SO₃</td><td>sulfur(IV) oxide / sulfur(VI) oxide</td><td>S +4 / +6</td></tr></table></div>
   <h3>Oxyanions</h3>
-  <table><tr><th>Ion</th><th>Systematic name</th><th>Common name</th></tr>
+  <div style="overflow-x:auto;max-width:calc(100vw - 66px)"><table><tr><th>Ion</th><th>Systematic name</th><th>Common name</th></tr>
   <tr><td class="f2">SO₄²⁻</td><td>sulfate(VI)</td><td>sulfate</td></tr>
   <tr><td class="f2">SO₃²⁻</td><td>sulfate(IV)</td><td>sulfite</td></tr>
   <tr><td class="f2">NO₃⁻</td><td>nitrate(V)</td><td>nitrate</td></tr>
   <tr><td class="f2">NO₂⁻</td><td>nitrate(III)</td><td>nitrite</td></tr>
   <tr><td class="f2">ClO⁻ / ClO₃⁻ / ClO₄⁻</td><td>chlorate(I) / chlorate(V) / chlorate(VII)</td><td>hypochlorite / chlorate / perchlorate</td></tr>
   <tr><td class="f2">MnO₄⁻</td><td>manganate(VII)</td><td>permanganate</td></tr>
-  <tr><td class="f2">Cr₂O₇²⁻ / CrO₄²⁻</td><td>dichromate(VI) / chromate(VI)</td><td>dichromate / chromate</td></tr></table>
+  <tr><td class="f2">Cr₂O₇²⁻ / CrO₄²⁻</td><td>dichromate(VI) / chromate(VI)</td><td>dichromate / chromate</td></tr></table></div>
   ${rule('<p style="margin:0">To name: work out the oxidation state, then write it as a Roman numeral. To write a formula: the numeral gives the charge on the metal ion — iron(III) means Fe³⁺, so with Cl⁻ it is FeCl₃.</p>')}
   ${warn('<p style="margin:0">The numeral is the oxidation state, not the number of atoms: copper(I) oxide is Cu₂O, with two Cu atoms each at +1.</p>')}`;
  },
@@ -5924,9 +6086,9 @@ CHAPTERS.push(
 {
  id:'ox_redox', unit:'ox', ref:'R3.2.1', title:'Oxidised, reduced and agents', tag:'core', topics:['redox'],
  body:function(){ return `
-  <table><tr><th></th><th>Electrons</th><th>Oxidation state</th></tr>
+  <div style="overflow-x:auto;max-width:calc(100vw - 66px)"><table><tr><th></th><th>Electrons</th><th>Oxidation state</th></tr>
   <tr><td><strong>Oxidation</strong></td><td>loss of electrons</td><td><strong>increases</strong></td></tr>
-  <tr><td><strong>Reduction</strong></td><td>gain of electrons</td><td><strong>decreases</strong></td></tr></table>
+  <tr><td><strong>Reduction</strong></td><td>gain of electrons</td><td><strong>decreases</strong></td></tr></table></div>
   ${fx('OIL RIG — Oxidation Is Loss, Reduction Is Gain (of electrons)')}
   <p>Older definitions still work: oxidation is also gain of oxygen or loss of hydrogen; reduction is loss of oxygen or gain of hydrogen.</p>
   <h3>Agents</h3>
