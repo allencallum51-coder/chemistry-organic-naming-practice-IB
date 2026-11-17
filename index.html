@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Nomenclature — IB Chemistry S2.2 · S3.2 · R2.1</title>
+<title>Nomenclature — IB Chemistry S2 · S3 · R2 · R3</title>
 <style>
 :root{
   --paper:#E7EBEC;
@@ -305,7 +305,7 @@ td.f2{font-family:var(--mono)}
   <header class="top">
     <div>
       <div class="brand">Nomen<span class="dot">·</span>clature</div>
-      <div class="brand-sub">IB Chemistry — Structure 2.2 · Structure 3.2 · Reactivity 2.1</div>
+      <div class="brand-sub">IB Chemistry — Structure 2.2 · 3.1 · 3.2 · Reactivity 2.1 · 2.3 · 3.2</div>
     </div>
     <div class="topright">
       <div class="lvl" id="levelSwitch" role="group" aria-label="Course level">
@@ -324,9 +324,9 @@ td.f2{font-family:var(--mono)}
   <!-- HOME -->
   <section class="view on" id="view-home">
     <div class="hero">
-      <div class="eyebrow">Structure 2.2 · Structure 3.2 · Reactivity 2.1</div>
-      <h1>Name it, rearrange it, balance it, count it, shape it.</h1>
-      <p class="lede">Four units share one set of notes and one test engine. Questions are generated fresh from real structures and real equations, so the answer is always computed — never looked up. HL-only material is marked, and the SL / HL switch hides it completely.</p>
+      <div class="eyebrow">Structure 2.2 · 3.1 · 3.2 · Reactivity 2.1 · 2.3 · 3.2</div>
+      <h1>Name it, shape it, balance it, count it, shift it.</h1>
+      <p class="lede">Six units share one set of notes and one test engine. Questions are generated fresh from real structures and real equations, so the answer is always computed — never looked up. HL-only material is marked, and the SL / HL switch hides it completely.</p>
     </div>
 
     <div class="parser">
@@ -346,12 +346,12 @@ td.f2{font-family:var(--mono)}
       <button data-goto="notes">
         <div class="gk">Part one</div>
         <div class="gt">Notes / Learn</div>
-        <div class="gd">All four units in one chapter rail, grouped by unit, with worked structures, worked calculations and check-yourself questions.</div>
+        <div class="gd">All six units in one chapter rail, grouped by unit, with worked structures, worked calculations and check-yourself questions.</div>
       </button>
       <button data-goto="test">
         <div class="gk">Part two</div>
         <div class="gt">Test / Practice</div>
-        <div class="gd">Pick a unit, or mix all four. Naming, isomers, balancing, calculations and molecular shapes — every question generated fresh.</div>
+        <div class="gd">Pick a unit, or mix all six. Naming, isomers, balancing, calculations, molecular shapes, equilibrium and oxidation states — every question generated fresh.</div>
       </button>
     </div>
 
@@ -2084,7 +2084,7 @@ function openChapterById(id){
 // unit: 'all' | 'nom' | 'iso' | 'eq'. Modes with hl:true are hidden at SL.
 var MODES = [
   {k:'quick',  unit:'all', t:'Quick test',        d:'Ten mixed questions across every unit you can see. Good for a five-minute check.', n:10, level:2, meta:'10 questions'},
-  {k:'full',   unit:'all', t:'Full test',         d:'Forty questions from all four units, rising in difficulty.', n:40, level:0, meta:'40 questions · adaptive'},
+  {k:'full',   unit:'all', t:'Full test',         d:'Forty questions from all six units, rising in difficulty.', n:40, level:0, meta:'40 questions · adaptive'},
   {k:'nomq',   unit:'nom', t:'Nomenclature quick test', d:'Ten mixed questions across Structure 3.2 naming and formulas.', n:10, level:2, units:['nom'], meta:'10 questions'},
   {k:'naming', unit:'nom', t:'Naming only',       d:'Structure to name and name to structure, nothing else.', n:15, level:2, only:['structure_to_name','condensed_to_name','skeletal_to_name_typed','build_the_name','name_to_structure','spot_the_error'], meta:'15 questions'},
   {k:'conv',   unit:'nom', t:'Formula conversion',d:'Move between names, molecular formulas, condensed and displayed structures.', n:15, level:2, only:['name_to_formula','name_to_condensed','formula_typed','match_representation','count_carbons','formula_to_family'], meta:'15 questions'},
@@ -5344,6 +5344,768 @@ MODES.push(
    only:['hyb_central','hyb_atom','hyb_geom','hyb_concept'], meta:'12 questions'}
 );
 
+/* ============================================================
+   UNIT 05 — EQUILIBRIUM (Reactivity 2.3)
+   SL: R2.3.1 dynamic equilibrium, R2.3.2 Kc expressions, R2.3.3 magnitude of K,
+       R2.3.4 Le Chatelier's principle (the main drill: which way does it shift?).
+   HL: R2.3.5 reaction quotient Q, R2.3.7 ΔG and K (sign reasoning only).
+   Deliberately light on calculation: direction and reasoning first.
+   ============================================================ */
+UNITS.push({k:'eqm', code:'05', t:'Equilibrium', ref:'R2.3', d:'Dynamic equilibrium, Kc expressions, the size of K, and Le Chatelier: which way does the equilibrium shift? Q and ΔG at HL.'});
+UNIT_ORDER.push('eqm');
+TOPICS.eqdyn = 'Dynamic equilibrium';
+TOPICS.eqkc  = 'Kc expressions';
+TOPICS.eqk   = 'Size of K';
+TOPICS.eqlc  = 'Le Chatelier shifts';
+TOPICS.eqq   = 'Q, K and ΔG';
+['eqdyn','eqkc','eqk','eqlc','eqq'].forEach(function(k){ TOPIC_UNIT[k] = 'eqm'; });
+HL_TOPICS.push('eqq');
+
+function supN(n){ return n > 1 ? String(n).split('').map(function(d){ return SUPS[d]; }).join('') : ''; }
+// re / pr: [coefficient, formula]; st: state of every species; dH in kJ mol⁻¹ (null = do not ask about temperature)
+var EQM = [
+  {re:[[1,'N₂'],[3,'H₂']], pr:[[2,'NH₃']], st:'g', dH:-92, note:'the Haber process'},
+  {re:[[2,'SO₂'],[1,'O₂']], pr:[[2,'SO₃']], st:'g', dH:-198, note:'the Contact process'},
+  {re:[[1,'H₂'],[1,'I₂']], pr:[[2,'HI']], st:'g', dH:-9},
+  {re:[[1,'N₂O₄']], pr:[[2,'NO₂']], st:'g', dH:57, note:'colourless N₂O₄, brown NO₂'},
+  {re:[[1,'CO'],[2,'H₂']], pr:[[1,'CH₃OH']], st:'g', dH:-91},
+  {re:[[1,'CO'],[1,'H₂O']], pr:[[1,'CO₂'],[1,'H₂']], st:'g', dH:-41},
+  {re:[[1,'N₂'],[1,'O₂']], pr:[[2,'NO']], st:'g', dH:181},
+  {re:[[1,'PCl₅']], pr:[[1,'PCl₃'],[1,'Cl₂']], st:'g', dH:88},
+  {re:[[1,'CH₄'],[1,'H₂O']], pr:[[1,'CO'],[3,'H₂']], st:'g', dH:206},
+  {re:[[2,'NO'],[1,'O₂']], pr:[[2,'NO₂']], st:'g', dH:-114},
+  {re:[[1,'C₂H₄'],[1,'H₂O']], pr:[[1,'C₂H₅OH']], st:'g', dH:-45},
+  {re:[[1,'CO'],[1,'Cl₂']], pr:[[1,'COCl₂']], st:'g', dH:-108},
+  {re:[[4,'NH₃'],[5,'O₂']], pr:[[4,'NO'],[6,'H₂O']], st:'g', dH:-905},
+  {re:[[2,'HI']], pr:[[1,'H₂'],[1,'I₂']], st:'g', dH:9},
+  {re:[[1,'CH₃COOH'],[1,'C₂H₅OH']], pr:[[1,'CH₃COOC₂H₅'],[1,'H₂O']], st:'l', dH:null, note:'esterification'},
+  {re:[[1,'Fe³⁺'],[1,'SCN⁻']], pr:[[1,'FeSCN²⁺']], st:'aq', dH:null, note:'blood-red FeSCN²⁺'}
+];
+function side(a, st){ return a.map(function(x){ return (x[0] > 1 ? x[0] : '') + x[1] + (st ? '(' + st + ')' : ''); }).join(' + '); }
+function eqmText(r, showH){ return side(r.re, r.st) + ' ⇌ ' + side(r.pr, r.st) + (showH && r.dH !== null ? '\u2003\u2003ΔH = ' + (r.dH > 0 ? '+' : '−') + Math.abs(r.dH) + ' kJ mol⁻¹' : ''); }
+function eqmBox(r, showH){ return '<div class="eqbox" style="font-size:17px">' + esc(eqmText(r, showH)) + '</div>'; }
+function gasMol(a){ return a.reduce(function(t, x){ return t + x[0]; }, 0); }
+function conc(a, pow){ return a.map(function(x){ return '[' + x[1] + ']' + (pow ? supN(x[0]) : ''); }).join(''); }
+function kcFrac(top, bot){ return top + ' / ' + (bot.indexOf('][') >= 0 ? '(' + bot + ')' : bot); }
+function kcOf(r){ return 'Kc = ' + kcFrac(conc(r.pr, true), conc(r.re, true)); }
+function kcWrongs(r){
+  var mult = function(a){ return a.map(function(x){ return (x[0] > 1 ? x[0] : '') + '[' + x[1] + ']'; }).join(''); };
+  var sum = function(a){ return a.map(function(x){ return '[' + x[1] + ']' + supN(x[0]); }).join(' + '); };
+  return [
+    'Kc = ' + kcFrac(conc(r.re, true), conc(r.pr, true)),
+    'Kc = ' + kcFrac(mult(r.pr), mult(r.re)),
+    'Kc = ' + conc(r.pr, true) + ' / (' + sum(r.re) + ')',
+    'Kc = ' + kcFrac(conc(r.pr, false), conc(r.re, false)),
+    'Kc = ' + conc(r.pr, true) + conc(r.re, true)
+  ];
+}
+
+/* ---------- unit 05 chapters ---------- */
+CHAPTERS.push(
+{
+ id:'eqm_dyn', unit:'eqm', ref:'R2.3.1', title:'Dynamic equilibrium', tag:'core', topics:['eqdyn'],
+ body:function(){ return `
+  <p>A reversible reaction in a <strong>closed system</strong> reaches <strong>dynamic equilibrium</strong> when the rate of the forward reaction <strong>equals</strong> the rate of the backward reaction.</p>
+  <h3>Characteristics</h3>
+  <ul>
+   <li><strong>Closed system</strong> — nothing enters or leaves.</li>
+   <li><strong>Dynamic</strong> — both reactions are still happening, at equal rates.</li>
+   <li>The <strong>concentrations</strong> of reactants and products stay <strong>constant</strong> — but they are almost never equal.</li>
+   <li><strong>Macroscopic properties</strong> (colour, pressure, density) stay constant.</li>
+   <li>The same equilibrium can be reached from either direction — starting with reactants or with products.</li>
+  </ul>
+  <p>Physical systems behave the same way: in a sealed bottle of water, the rate of evaporation equals the rate of condensation.</p>
+  ${warn('<p style="margin:0">"At equilibrium the concentrations are equal" is wrong. The concentrations are <strong>constant</strong>; it is the <strong>rates</strong> that are equal.</p>')}`;
+ },
+ check:{q:'Why is chemical equilibrium described as dynamic?', a:'The forward and backward reactions continue to happen, at equal rates, so there is no overall change'}
+},
+{
+ id:'eqm_kc', unit:'eqm', ref:'R2.3.2', title:'Writing Kc expressions', tag:'core', topics:['eqkc'],
+ body:function(){ var r = EQM[0], e = EQM[1]; return `
+  <p>The <strong>equilibrium law</strong>: for a homogeneous reaction (all species in the same phase) at equilibrium, the concentrations fit a constant expression, <strong>Kc</strong>.</p>
+  ${fx('aA + bB ⇌ cC + dD     Kc = [C]ᶜ[D]ᵈ / ([A]ᵃ[B]ᵇ)', '[ ] = concentration at equilibrium in mol dm⁻³')}
+  <ul>
+   <li><strong>Products on top</strong>, reactants underneath.</li>
+   <li>Each concentration is raised to the <strong>power of its coefficient</strong> in the balanced equation.</li>
+   <li>Concentrations are <strong>multiplied</strong>, never added.</li>
+  </ul>
+  <h3>Examples</h3>
+  ${eqmBox(r)}${fx(kcOf(r))}
+  ${eqmBox(e)}${fx(kcOf(e))}
+  ${eqmBox(EQM[14])}${fx(kcOf(EQM[14]), 'all liquids in one phase, so water is included here')}
+  ${warn('<p style="margin:0">Coefficients become <strong>powers</strong>: 3H₂ gives [H₂]³, not 3[H₂]. And Kc belongs to a particular equation — write the equation the other way round and Kc is inverted.</p>')}`;
+ },
+ check:{q:'Write Kc for 2SO₂(g) + O₂(g) ⇌ 2SO₃(g).', a:'Kc = [SO₃]² / ([SO₂]²[O₂])'}
+},
+{
+ id:'eqm_k', unit:'eqm', ref:'R2.3.3', title:'What the size of K tells you', tag:'core', topics:['eqk'],
+ body:function(){ return `
+  <p>The <strong>magnitude</strong> of K tells you how far the reaction has gone at equilibrium — the <strong>position of equilibrium</strong>. It says nothing about how fast it gets there.</p>
+  <table><tr><th>K</th><th>Position of equilibrium</th></tr>
+  <tr><td class="f2">K ≫ 1</td><td>far to the right — reaction almost goes to completion; mostly products</td></tr>
+  <tr><td class="f2">K &gt; 1</td><td>to the right — products favoured</td></tr>
+  <tr><td class="f2">K = 1</td><td>neither side favoured — comparable amounts</td></tr>
+  <tr><td class="f2">K &lt; 1</td><td>to the left — reactants favoured</td></tr>
+  <tr><td class="f2">K ≪ 1</td><td>far to the left — reaction hardly happens; mostly reactants</td></tr></table>
+  <h3>Reverse reactions</h3>
+  <p>Writing the equation the other way round swaps top and bottom, so at the same temperature <strong>K(reverse) = 1 / K(forward)</strong>. If K = 4.0 for A ⇌ B, then K = 0.25 for B ⇌ A.</p>
+  ${rule('<p style="margin:0">K depends on <strong>temperature only</strong>. Changing concentration, pressure or adding a catalyst never changes the value of K.</p>')}`;
+ },
+ check:{q:'K for a reaction is 2 × 10⁻³⁰ at 298 K. What does this tell you?', a:'K ≪ 1: the equilibrium lies far to the left — almost no products form'}
+},
+{
+ id:'eqm_lc', unit:'eqm', ref:'R2.3.4', title:'Le Chatelier’s principle', tag:'core', topics:['eqlc'],
+ body:function(){ return `
+  <p><strong>Le Chatelier’s principle</strong>: if a system at equilibrium is disturbed, the position of equilibrium shifts to <strong>oppose</strong> (partly undo) the change.</p>
+  <table><tr><th>Change</th><th>Equilibrium shifts…</th><th>Effect on K</th></tr>
+  <tr><td>add a reactant / remove a product</td><td><strong>right</strong> — to use up the reactant / replace the product</td><td>none</td></tr>
+  <tr><td>add a product / remove a reactant</td><td><strong>left</strong></td><td>none</td></tr>
+  <tr><td>increase pressure (gases)</td><td>towards the side with <strong>fewer moles of gas</strong></td><td>none</td></tr>
+  <tr><td>decrease pressure (gases)</td><td>towards the side with <strong>more moles of gas</strong></td><td>none</td></tr>
+  <tr><td>increase temperature</td><td>in the <strong>endothermic</strong> direction</td><td>changes</td></tr>
+  <tr><td>decrease temperature</td><td>in the <strong>exothermic</strong> direction</td><td>changes</td></tr>
+  <tr><td>add a catalyst</td><td><strong>no shift</strong> — equilibrium is reached faster</td><td>none</td></tr></table>
+  <h3>Worked example: the Haber process</h3>
+  ${eqmBox(EQM[0], true)}
+  <ul>
+   <li><strong>Higher pressure</strong>: 4 mol of gas on the left, 2 on the right → shifts <strong>right</strong>, more NH₃.</li>
+   <li><strong>Higher temperature</strong>: the forward reaction is exothermic, so the endothermic (backward) direction is favoured → shifts <strong>left</strong>, less NH₃, and <strong>K decreases</strong>.</li>
+   <li><strong>Iron catalyst</strong>: no change in yield — NH₃ just forms faster.</li>
+  </ul>
+  <h3>Temperature and K</h3>
+  <table><tr><th>Forward reaction</th><th>Temperature up</th><th>Temperature down</th></tr>
+  <tr><td>exothermic (ΔH &lt; 0)</td><td>shifts left, K decreases</td><td>shifts right, K increases</td></tr>
+  <tr><td>endothermic (ΔH &gt; 0)</td><td>shifts right, K increases</td><td>shifts left, K decreases</td></tr></table>
+  <h3>Heterogeneous equilibria</h3>
+  <p>The same reasoning works for X(g) ⇌ X(aq): raising the pressure of CO₂ above a drink pushes more CO₂ into solution. Opening the bottle lowers the pressure, the equilibrium shifts left, and the drink fizzes.</p>
+  ${rule('<p style="margin:0">If both sides have the same number of moles of gas — H₂(g) + I₂(g) ⇌ 2HI(g) — changing the pressure causes <strong>no shift</strong>.</p>')}
+  ${warn('<p style="margin:0">A catalyst speeds up the forward and backward reactions <strong>equally</strong>. It changes neither the position of equilibrium nor K. Only temperature changes K.</p>')}`;
+ },
+ check:{q:'For N₂O₄(g) ⇌ 2NO₂(g), ΔH = +57 kJ mol⁻¹, which way does the equilibrium shift when the temperature is raised, and what happens to K?', a:'Right (the endothermic direction), so more brown NO₂ forms and K increases'}
+},
+{
+ id:'eqm_q', unit:'eqm', hl:true, ref:'R2.3.5 · R2.3.7', title:'Reaction quotient Q, and ΔG', tag:'core', topics:['eqq'],
+ body:function(){ return `
+  <p>The <strong>reaction quotient, Q</strong>, has exactly the same expression as Kc, but uses the concentrations at <strong>any moment</strong>, not just at equilibrium. Comparing Q with K tells you which way the reaction will go.</p>
+  <table><tr><th>Comparison</th><th>Meaning</th><th>Reaction proceeds…</th></tr>
+  <tr><td class="f2">Q &lt; K</td><td>too few products</td><td><strong>forward</strong> (to the right)</td></tr>
+  <tr><td class="f2">Q = K</td><td>at equilibrium</td><td>no net change</td></tr>
+  <tr><td class="f2">Q &gt; K</td><td>too many products</td><td><strong>backward</strong> (to the left)</td></tr></table>
+  <h3>Example</h3>
+  <p>H₂(g) + I₂(g) ⇌ 2HI(g), Kc = 50. At one moment [H₂] = [I₂] = 0.10 and [HI] = 0.50 mol dm⁻³.</p>
+  ${fx('Q = [HI]² / ([H₂][I₂]) = 0.25 / 0.010 = 25', 'Q < K → the reaction proceeds forward until Q reaches 50')}
+  <h3>ΔG and K</h3>
+  <p>The standard Gibbs energy change and K both describe the position of equilibrium (ΔG⦵ = −RT ln K, in the data booklet). You only need the signs here:</p>
+  <table><tr><th>ΔG⦵</th><th>K</th><th>Position</th></tr>
+  <tr><td>negative</td><td>&gt; 1</td><td>products favoured</td></tr>
+  <tr><td>zero</td><td>= 1</td><td>neither favoured</td></tr>
+  <tr><td>positive</td><td>&lt; 1</td><td>reactants favoured</td></tr></table>
+  ${rule('<p style="margin:0">Q is to K what "where you are" is to "where you are going". The reaction always moves to make Q equal K.</p>')}`;
+ },
+ check:{q:'For a reaction, K = 4.0 and at one moment Q = 9.0. Which way does the reaction proceed?', a:'Backward (to the left) — Q > K, so there are too many products'}
+}
+);
+
+/* ---------- unit 05 question generators ---------- */
+var LC_R = 'Shifts right — the forward reaction is favoured (more products)';
+var LC_L = 'Shifts left — the backward reaction is favoured (more reactants)';
+var LC_N = 'No shift — the position of equilibrium is unchanged';
+// pick a change that makes sense for the reaction; returns {txt, dir:'R'|'L'|'N', why, kind}
+function lcChange(r, kinds){
+  var opts = [];
+  var add = function(kind, txt, dir, why){ if(!kinds || kinds.indexOf(kind) >= 0) opts.push({kind:kind, txt:txt, dir:dir, why:why}); };
+  var R0 = pick(r.re)[1], P0 = pick(r.pr)[1];
+  add('conc', 'more ' + R0 + ' is added', 'R', 'Adding a reactant: the equilibrium shifts right to use some of it up.');
+  add('conc', 'some ' + P0 + ' is removed', 'R', 'Removing a product: the equilibrium shifts right to replace it.');
+  add('conc', 'more ' + P0 + ' is added', 'L', 'Adding a product: the equilibrium shifts left to use some of it up.');
+  add('conc', 'some ' + R0 + ' is removed', 'L', 'Removing a reactant: the equilibrium shifts left to replace it.');
+  if(r.st === 'g'){
+    var nr = gasMol(r.re), np = gasMol(r.pr), cnt = nr + ' mol of gas on the left, ' + np + ' on the right';
+    var up = nr > np ? 'R' : nr < np ? 'L' : 'N';
+    var dn = up === 'R' ? 'L' : up === 'L' ? 'R' : 'N';
+    add('pres', 'the pressure is increased (by reducing the volume)', up,
+      up === 'N' ? cnt + ' — equal, so pressure has no effect on the position.' : cnt + '. Higher pressure favours the side with fewer moles of gas → shifts ' + (up === 'R' ? 'right' : 'left') + '.');
+    add('pres', 'the pressure is decreased (by increasing the volume)', dn,
+      dn === 'N' ? cnt + ' — equal, so pressure has no effect on the position.' : cnt + '. Lower pressure favours the side with more moles of gas → shifts ' + (dn === 'R' ? 'right' : 'left') + '.');
+  }
+  if(r.dH !== null){
+    var ex = r.dH < 0, h = 'The forward reaction is ' + (ex ? 'exothermic' : 'endothermic') + ' (ΔH ' + (ex ? '< 0' : '> 0') + ').';
+    add('temp', 'the temperature is increased', ex ? 'L' : 'R', h + ' Raising the temperature favours the endothermic direction → shifts ' + (ex ? 'left' : 'right') + '.');
+    add('temp', 'the temperature is decreased', ex ? 'R' : 'L', h + ' Lowering the temperature favours the exothermic direction → shifts ' + (ex ? 'right' : 'left') + '.');
+  }
+  add('cat', 'a catalyst is added', 'N', 'A catalyst speeds up the forward and backward reactions equally: equilibrium is reached faster, but its position does not change.');
+  return pick(opts);
+}
+function lcKEffect(c, r){
+  if(c.kind !== 'temp') return 'stays the same';
+  return c.dir === 'R' ? 'increases' : 'decreases';
+}
+GENS.lc_shift = function(){
+  var r = pick(EQM), c = lcChange(r), ans = {R:LC_R, L:LC_L, N:LC_N}[c.dir];
+  return {
+    type:'Le Chatelier — which way?', topic:'eqlc', chapter:'eqm_lc',
+    stem:'The system below is at equilibrium. Then ' + c.txt + '. What happens to the position of equilibrium?',
+    html:eqmBox(r, true),
+    input:'mc', opts:mcOpts(ans, [LC_R, LC_L, LC_N].filter(function(x){ return x !== ans; })), answer:ans,
+    explain:c.why
+  };
+};
+GENS.lc_pressure = function(){
+  var r = pick(EQM.filter(function(x){ return x.st === 'g'; })), c = lcChange(r, ['pres']), ans = {R:LC_R, L:LC_L, N:LC_N}[c.dir];
+  return {
+    type:'Le Chatelier — pressure', topic:'eqlc', chapter:'eqm_lc',
+    stem:'At equilibrium, ' + c.txt + '. What happens to the position of equilibrium?',
+    html:eqmBox(r, false),
+    input:'mc', opts:mcOpts(ans, [LC_R, LC_L, LC_N].filter(function(x){ return x !== ans; })), answer:ans,
+    explain:c.why
+  };
+};
+GENS.lc_temp = function(){
+  var r = pick(EQM.filter(function(x){ return x.dH !== null; })), c = lcChange(r, ['temp']), ans = {R:LC_R, L:LC_L, N:LC_N}[c.dir];
+  return {
+    type:'Le Chatelier — temperature', topic:'eqlc', chapter:'eqm_lc',
+    stem:'At equilibrium, ' + c.txt + '. What happens to the position of equilibrium?',
+    html:eqmBox(r, true),
+    input:'mc', opts:mcOpts(ans, [LC_R, LC_L, LC_N].filter(function(x){ return x !== ans; })), answer:ans,
+    explain:c.why
+  };
+};
+GENS.lc_side = function(){
+  // the same idea, phrased the way the question was asked: products or reactants?
+  var r = pick(EQM), c = lcChange(r);
+  var P = 'Towards the products — the forward reaction is favoured', R = 'Towards the reactants — the backward reaction is favoured', N = 'Neither — the position does not change';
+  var ans = {R:P, L:R, N:N}[c.dir];
+  return {
+    type:'Products or reactants?', topic:'eqlc', chapter:'eqm_lc',
+    stem:'At equilibrium, ' + c.txt + '. Does the equilibrium now shift towards the products or the reactants?',
+    html:eqmBox(r, true),
+    input:'mc', opts:mcOpts(ans, [P, R, N].filter(function(x){ return x !== ans; })), answer:ans,
+    explain:c.why
+  };
+};
+GENS.lc_yield = function(){
+  var r = pick(EQM.filter(function(x){ return x.st === 'g' || x.dH !== null; }));
+  var c = lcChange(r, ['pres','temp','cat']), prod = r.pr[0][1];
+  var ans = {R:'It increases', L:'It decreases', N:'It stays the same'}[c.dir];
+  return {
+    type:'Effect on yield', topic:'eqlc', chapter:'eqm_lc',
+    stem:'What happens to the equilibrium amount (yield) of ' + prod + ' when ' + c.txt + '?',
+    html:eqmBox(r, true),
+    input:'mc', opts:mcOpts(ans, ['It increases','It decreases','It stays the same'].filter(function(x){ return x !== ans; })), answer:ans,
+    explain:c.why + ' So the amount of ' + prod + ' ' + ans.replace('It ', '').toLowerCase() + '.'
+  };
+};
+GENS.lc_k = function(){
+  var r = pick(EQM.filter(function(x){ return x.dH !== null; }));
+  var c = lcChange(r, Math.random() < 0.6 ? ['temp'] : ['pres','cat','conc']);
+  var ans = 'Kc ' + lcKEffect(c, r);
+  return {
+    type:'Effect on Kc', topic:'eqlc', chapter:'eqm_lc',
+    stem:'What happens to the value of Kc when ' + c.txt + '?',
+    html:eqmBox(r, true),
+    input:'mc', opts:mcOpts(ans, ['Kc increases','Kc decreases','Kc stays the same'].filter(function(x){ return x !== ans; })), answer:ans,
+    explain: c.kind === 'temp' ? c.why + ' The equilibrium mixture has relatively more ' + (c.dir === 'R' ? 'products' : 'reactants') + ', so Kc ' + lcKEffect(c, r) + '. Temperature is the only change that alters K.'
+      : c.why + ' Only a change of temperature changes the value of K, so Kc stays the same.'
+  };
+};
+GENS.lc_dh = function(){
+  var r = pick(EQM.filter(function(x){ return x.dH !== null; })), up = Math.random() < 0.5, ex = r.dH < 0;
+  var dir = up ? (ex ? 'left' : 'right') : (ex ? 'right' : 'left');
+  var ans = ex ? 'Exothermic' : 'Endothermic';
+  return {
+    type:'Deduce the sign of ΔH', topic:'eqlc', chapter:'eqm_lc',
+    stem:'When the temperature of this equilibrium is ' + (up ? 'increased' : 'decreased') + ', the equilibrium shifts to the ' + dir + '. Is the forward reaction exothermic or endothermic?',
+    html:eqmBox(r, false),
+    input:'mc', opts:mcOpts(ans, [ex ? 'Endothermic' : 'Exothermic', 'Cannot tell without the value of K']), answer:ans,
+    explain:(up ? 'A higher temperature favours the endothermic direction. ' : 'A lower temperature favours the exothermic direction. ') +
+      'It shifted ' + dir + ', so the ' + (dir === 'right' ? 'forward' : 'backward') + ' reaction is ' + (up ? 'endothermic' : 'exothermic') + ' — the forward reaction is ' + ans.toLowerCase() + '.'
+  };
+};
+GENS.lc_best = function(){
+  var r = pick(EQM.filter(function(x){ return x.st === 'g' && x.dH !== null && gasMol(x.re) !== gasMol(x.pr); }));
+  var hp = gasMol(r.re) > gasMol(r.pr), lt = r.dH < 0;
+  var fmt = function(p, t){ return (p ? 'High' : 'Low') + ' pressure, ' + (t ? 'low' : 'high') + ' temperature'; };
+  var ans = fmt(hp, lt);
+  return {
+    type:'Best conditions for yield', topic:'eqlc', chapter:'eqm_lc',
+    stem:'Which conditions give the greatest equilibrium yield of ' + r.pr[0][1] + '?',
+    html:eqmBox(r, true),
+    input:'mc', opts:mcOpts(ans, [fmt(!hp, lt), fmt(hp, !lt), fmt(!hp, !lt)]), answer:ans,
+    explain:gasMol(r.re) + ' mol of gas → ' + gasMol(r.pr) + ' mol, so ' + (hp ? 'high' : 'low') + ' pressure favours the products. The forward reaction is ' + (lt ? 'exothermic, so low' : 'endothermic, so high') + ' temperature favours the products.' +
+      (lt ? ' (Industry often uses a moderate temperature anyway, because a low temperature makes the rate too slow.)' : '')
+  };
+};
+GENS.kc_expr = function(){
+  var r = pick(EQM), a = kcOf(r);
+  return {
+    type:'Kc expression', topic:'eqkc', chapter:'eqm_kc',
+    stem:'Which is the correct equilibrium constant expression for this reaction?',
+    html:eqmBox(r, false),
+    input:'mc', opts:shOpts(a, kcWrongs(r)), answer:a,
+    explain:'Products on top, reactants underneath, each raised to the power of its coefficient: ' + a + '.'
+  };
+};
+GENS.kc_power = function(){
+  var r = pick(EQM.filter(function(x){ return x.re.concat(x.pr).some(function(s){ return s[0] > 1; }); }));
+  var all = r.re.map(function(x){ return [x, 'bottom']; }).concat(r.pr.map(function(x){ return [x, 'top']; }));
+  var sp = pick(all.filter(function(x){ return x[0][0] > 1; }) .concat(all)), s = sp[0];
+  var a = '[' + s[1] + ']' + supN(s[0]) + ' on the ' + sp[1];
+  var wr = ['[' + s[1] + ']' + supN(s[0]) + ' on the ' + (sp[1] === 'top' ? 'bottom' : 'top'), (s[0] > 1 ? s[0] : '') + '[' + s[1] + '] on the ' + sp[1], '[' + s[1] + ']' + supN(s[0] + 1) + ' on the ' + sp[1], '[' + s[1] + ']' + (s[0] === 1 ? '²' : '') + ' on the ' + sp[1]];
+  return {
+    type:'Kc — where and what power?', topic:'eqkc', chapter:'eqm_kc',
+    stem:'In the Kc expression for this reaction, how does ' + s[1] + ' appear?',
+    html:eqmBox(r, false),
+    input:'mc', opts:shOpts(a, wr), answer:a,
+    explain:s[1] + ' is a ' + (sp[1] === 'top' ? 'product, so it goes on the top' : 'reactant, so it goes on the bottom') + ', raised to the power of its coefficient (' + s[0] + '). Full expression: ' + kcOf(r) + '.'
+  };
+};
+var K_BANDS = [
+  {v:['3 × 10¹²','1.2 × 10³⁰','6 × 10²⁵'], a:'The equilibrium lies far to the right — the reaction almost goes to completion'},
+  {v:['46','8.0','2.5'], a:'The equilibrium lies to the right — products are favoured'},
+  {v:['1.0'], a:'Neither side is favoured — reactants and products are present in comparable amounts'},
+  {v:['0.40','0.12','0.025'], a:'The equilibrium lies to the left — reactants are favoured'},
+  {v:['4.6 × 10⁻³¹','2 × 10⁻¹⁵','5 × 10⁻²⁰'], a:'The equilibrium lies far to the left — the reaction hardly happens'}
+];
+GENS.k_size = function(){
+  var b = pick(K_BANDS), v = pick(b.v);
+  return {
+    type:'What does K tell you?', topic:'eqk', chapter:'eqm_k',
+    stem:'At a certain temperature, K = ' + v + ' for a reaction. What does this tell you about the equilibrium?',
+    input:'mc', opts:mcOpts(b.a, shuffle(K_BANDS.filter(function(x){ return x !== b; }).map(function(x){ return x.a; })).slice(0, 2).concat(['The reaction is very fast'])), answer:b.a,
+    explain:'K = ' + v + '. ' + b.a + '. K describes the position of equilibrium (how far), not the rate (how fast).'
+  };
+};
+var K_REV = [['4.0','0.25'],['0.50','2.0'],['25','0.040'],['2.0 × 10³','5.0 × 10⁻⁴'],['1.0 × 10⁻⁵','1.0 × 10⁵'],['0.20','5.0'],['50','0.020']];
+GENS.k_reverse = function(){
+  var p = pick(K_REV), r = pick(EQM);
+  var rev = {re:r.pr, pr:r.re, st:r.st, dH:r.dH};
+  var wr = [p[0], '−' + p[0], pick(K_REV.filter(function(x){ return x[1] !== p[1] && x[0] !== p[1]; }))[1]];
+  return {
+    type:'K for the reverse reaction', topic:'eqk', chapter:'eqm_k',
+    stem:'At a certain temperature, Kc = ' + p[0] + ' for ' + eqmText(r, false) + '. What is Kc for the reverse reaction, at the same temperature?',
+    sub:'The reverse reaction:',
+    html:eqmBox(rev, false),
+    input:'mc', opts:mcOpts(p[1], wr), answer:p[1],
+    explain:'Reversing the equation turns the expression upside down: K(reverse) = 1 / K(forward) = 1 / ' + p[0] + ' = ' + p[1] + '.'
+  };
+};
+var EQM_FACTS = [
+  {t:'eqdyn', q:'At dynamic equilibrium, which statement is true?', a:'The rates of the forward and backward reactions are equal', w:['The concentrations of reactants and products are equal','Both reactions have stopped','The forward reaction is faster than the backward reaction']},
+  {t:'eqdyn', q:'At equilibrium, the concentrations of reactants and products are…', a:'constant, but usually not equal', w:['always equal','zero for the reactants','constantly increasing']},
+  {t:'eqdyn', q:'Which condition is needed for a reaction to reach equilibrium?', a:'A closed system', w:['An open container','A catalyst','A temperature above 100 °C']},
+  {t:'eqdyn', q:'Which is a physical system at equilibrium?', a:'Water and water vapour in a sealed bottle', w:['Water boiling in an open pan','Ice melting on a bench','Salt dissolving until none is left']},
+  {t:'eqdyn', q:'Why does the colour of an N₂O₄ / NO₂ mixture stay constant at equilibrium, even though reactions are still happening?', a:'NO₂ forms and is used up at the same rate, so its concentration does not change', w:['Both reactions have stopped','All the N₂O₄ has reacted','The NO₂ molecules stop moving']},
+  {t:'eqk', q:'Which change alters the value of K?', a:'Changing the temperature', w:['Adding a catalyst','Increasing the pressure','Adding more reactant']},
+  {t:'eqk', q:'K for A ⇌ B is 10. What is K for B ⇌ A at the same temperature?', a:'0.1', w:['10','−10','100']},
+  {t:'eqk', q:'A large value of K means…', a:'the equilibrium lies to the right — mostly products', w:['the reaction is fast','the equilibrium lies to the left','the reaction needs a catalyst']},
+  {t:'eqlc', q:'State Le Chatelier’s principle.', a:'A system at equilibrium shifts its position to oppose a change in conditions', w:['A system at equilibrium always shifts to the right','A catalyst shifts equilibrium to the products','The value of K changes to oppose any change']},
+  {t:'eqlc', q:'How does a catalyst affect a system at equilibrium?', a:'It speeds up the forward and backward reactions equally, so equilibrium is reached faster with no change in position or K', w:['It shifts the equilibrium to the right','It increases K','It only speeds up the forward reaction']},
+  {t:'eqlc', q:'The Haber process (exothermic) runs at about 450 °C rather than a low temperature. Why?', a:'A low temperature would give a higher yield but the rate would be too slow — 450 °C is a compromise', w:['A high temperature increases the yield of ammonia','The catalyst only works above 1000 °C','Temperature has no effect on the yield']},
+  {t:'eqlc', q:'For CO₂(g) ⇌ CO₂(aq), what happens when a fizzy drink is opened?', a:'The pressure falls, the equilibrium shifts left and CO₂ comes out of solution', w:['The pressure rises and more CO₂ dissolves','Nothing — this is not an equilibrium','The equilibrium shifts right and the drink goes flat faster']},
+  {t:'eqlc', q:'Why does pressure have no effect on H₂(g) + I₂(g) ⇌ 2HI(g)?', a:'Both sides have the same number of moles of gas (2)', w:['The reaction is exothermic','HI is a liquid','Pressure never affects gas equilibria']},
+  {t:'eqq', hl:true, q:'How is the reaction quotient Q different from K?', a:'Q uses the concentrations at any moment; K uses the concentrations at equilibrium', w:['Q has reactants on top','Q is only used for gases','Q depends only on temperature']},
+  {t:'eqq', hl:true, q:'If Q < K, the reaction…', a:'proceeds forward, making more products, until Q = K', w:['proceeds backward until Q = K','is already at equilibrium','stops completely']},
+  {t:'eqq', hl:true, q:'If Q > K, the reaction…', a:'proceeds backward, making more reactants, until Q = K', w:['proceeds forward until Q = K','is already at equilibrium','speeds up in both directions']},
+  {t:'eqq', hl:true, q:'ΔG⦵ for a reaction is negative. What does this tell you about K?', a:'K > 1 — products are favoured at equilibrium', w:['K < 1 — reactants are favoured','K = 0','K = 1 exactly']},
+  {t:'eqq', hl:true, q:'ΔG⦵ for a reaction is positive. What does this tell you about K?', a:'K < 1 — reactants are favoured at equilibrium', w:['K > 1 — products are favoured','K is negative','The reaction cannot happen at all']},
+  {t:'eqq', hl:true, q:'What is the value of K when ΔG⦵ = 0?', a:'1', w:['0','−1','It cannot be determined']}
+];
+function eqmFact(t, hl){
+  var f = pick(EQM_FACTS.filter(function(x){ return t.indexOf(x.t) >= 0 && !!x.hl === hl; }));
+  var chap = {eqdyn:'eqm_dyn', eqk:'eqm_k', eqlc:'eqm_lc', eqq:'eqm_q'}[f.t];
+  return {type: hl ? 'Q, K and ΔG — concepts' : 'Equilibrium — concepts', topic:f.t, chapter:chap, hl:hl,
+    stem:f.q, input:'mc', opts:mcOpts(f.a, f.w), answer:f.a, explain:f.a + '.'};
+}
+GENS.eqm_concept = function(){ return eqmFact(['eqdyn','eqk','eqlc'], false); };
+GENS.eqm_dyn     = function(){ return eqmFact(['eqdyn'], false); };
+GENS.q_concept   = function(){ return eqmFact(['eqq'], true); };
+
+/* ---- HL: Q ---- */
+var Q_FWD = 'Forward — to the right (Q < K)', Q_BWD = 'Backward — to the left (Q > K)', Q_EQ = 'Neither — it is already at equilibrium (Q = K)';
+GENS.q_compare = function(){
+  var K = pick([0.50, 4.0, 25, 50, 160, 0.020]), f = pick([0.1, 0.4, 1, 2.5, 10]), Q = K * f;
+  var fmtv = function(v){ return String(+v.toPrecision(2)); };
+  var ans = f < 1 ? Q_FWD : f > 1 ? Q_BWD : Q_EQ;
+  return {
+    type:'Q vs K — which way?', topic:'eqq', chapter:'eqm_q', hl:true,
+    stem:'For a reaction at a certain temperature, Kc = ' + fmtv(K) + '. At one moment the reaction quotient Q = ' + fmtv(Q) + '. In which direction will the reaction proceed?',
+    input:'mc', opts:mcOpts(ans, [Q_FWD, Q_BWD, Q_EQ].filter(function(x){ return x !== ans; })), answer:ans,
+    explain:'Q = ' + fmtv(Q) + (f < 1 ? ' is less than' : f > 1 ? ' is greater than' : ' equals') + ' K = ' + fmtv(K) + '. ' +
+      (f < 1 ? 'There are too few products, so the reaction goes forward until Q = K.' : f > 1 ? 'There are too many products, so the reaction goes backward until Q = K.' : 'The system is at equilibrium: no net change.')
+  };
+};
+// simple whole-number Q from given concentrations (mental arithmetic only)
+var Q_SETS = [
+  {r:EQM[2],  c:[['H₂','0.10'],['I₂','0.10'],['HI','0.50']], q:25},
+  {r:EQM[2],  c:[['H₂','0.20'],['I₂','0.10'],['HI','1.0']], q:50},
+  {r:EQM[2],  c:[['H₂','0.50'],['I₂','0.50'],['HI','0.50']], q:1},
+  {r:EQM[5],  c:[['CO','0.20'],['H₂O','0.10'],['CO₂','0.40'],['H₂','0.20']], q:4},
+  {r:EQM[5],  c:[['CO','1.0'],['H₂O','1.0'],['CO₂','0.50'],['H₂','0.50']], q:0.25},
+  {r:EQM[3],  c:[['N₂O₄','0.10'],['NO₂','0.20']], q:0.4},
+  {r:EQM[3],  c:[['N₂O₄','0.50'],['NO₂','0.10']], q:0.02},
+  {r:EQM[7],  c:[['PCl₅','0.10'],['PCl₃','0.20'],['Cl₂','0.50']], q:1}
+];
+GENS.q_calc = function(){
+  var s = pick(Q_SETS), f = pick([0.25, 0.5, 2, 4, 1]), K = +(s.q * f).toPrecision(2);
+  var ans = s.q < K ? Q_FWD : s.q > K ? Q_BWD : Q_EQ;
+  return {
+    type:'Calculate Q — which way?', topic:'eqq', chapter:'eqm_q', hl:true,
+    stem:'Kc = ' + K + ' at this temperature. At one moment the concentrations are ' + s.c.map(function(x){ return '[' + x[0] + '] = ' + x[1]; }).join(', ') + ' mol dm⁻³. In which direction will the reaction proceed?',
+    html:eqmBox(s.r, false),
+    input:'mc', opts:mcOpts(ans, [Q_FWD, Q_BWD, Q_EQ].filter(function(x){ return x !== ans; })), answer:ans,
+    explain:'Q has the same form as Kc: ' + kcOf(s.r).replace('Kc', 'Q') + ' = ' + s.q + '. ' + (s.q < K ? 'Q < K → forward.' : s.q > K ? 'Q > K → backward.' : 'Q = K → at equilibrium.')
+  };
+};
+GENS.g_sign = function(){
+  var g = pick([-120, -35, -4, 0, 6, 48, 210]);
+  var ans = g < 0 ? 'K > 1 — products are favoured' : g > 0 ? 'K < 1 — reactants are favoured' : 'K = 1 — neither side is favoured';
+  return {
+    type:'ΔG and K', topic:'eqq', chapter:'eqm_q', hl:true,
+    stem:'ΔG⦵ = ' + (g > 0 ? '+' : g < 0 ? '−' : '') + Math.abs(g) + ' kJ mol⁻¹ for a reaction at 298 K. What does this tell you about the equilibrium?',
+    input:'mc', opts:mcOpts(ans, ['K > 1 — products are favoured','K < 1 — reactants are favoured','K = 1 — neither side is favoured'].filter(function(x){ return x !== ans; })), answer:ans,
+    explain:'ΔG⦵ = −RT ln K. ' + (g < 0 ? 'Negative ΔG⦵ → ln K > 0 → K > 1.' : g > 0 ? 'Positive ΔG⦵ → ln K < 0 → K < 1.' : 'ΔG⦵ = 0 → ln K = 0 → K = 1.')
+  };
+};
+
+QTYPES.push(
+  {k:'lc_shift',    w:6, topics:['eqlc'],  unit:'eqm'},
+  {k:'lc_pressure', w:3, topics:['eqlc'],  unit:'eqm'},
+  {k:'lc_temp',     w:3, topics:['eqlc'],  unit:'eqm'},
+  {k:'lc_side',     w:4, topics:['eqlc'],  unit:'eqm'},
+  {k:'lc_yield',    w:3, topics:['eqlc'],  unit:'eqm'},
+  {k:'lc_k',        w:3, topics:['eqlc','eqk'], unit:'eqm'},
+  {k:'lc_dh',       w:2, topics:['eqlc'],  unit:'eqm'},
+  {k:'lc_best',     w:2, topics:['eqlc'],  unit:'eqm'},
+  {k:'kc_expr',     w:4, topics:['eqkc'],  unit:'eqm'},
+  {k:'kc_power',    w:2, topics:['eqkc'],  unit:'eqm'},
+  {k:'k_size',      w:3, topics:['eqk'],   unit:'eqm'},
+  {k:'k_reverse',   w:2, topics:['eqk'],   unit:'eqm'},
+  {k:'eqm_concept', w:3, topics:['eqdyn','eqk','eqlc'], unit:'eqm'},
+  {k:'eqm_dyn',     w:2, topics:['eqdyn'], unit:'eqm'},
+  {k:'q_compare',   w:3, topics:['eqq'],   unit:'eqm', hl:true},
+  {k:'q_calc',      w:3, topics:['eqq'],   unit:'eqm', hl:true},
+  {k:'g_sign',      w:2, topics:['eqq'],   unit:'eqm', hl:true},
+  {k:'q_concept',   w:2, topics:['eqq'],   unit:'eqm', hl:true}
+);
+MODES.push(
+  {k:'eqmq',  unit:'eqm', t:'Equilibrium quick test', d:'Ten mixed questions: Le Chatelier shifts, Kc expressions and the size of K — plus Q and ΔG at HL.', n:10, level:2, units:['eqm'], meta:'10 questions'},
+  {k:'eqmlc', unit:'eqm', t:'Le Chatelier — which way?', d:'Change the pressure, temperature or concentration, or add a catalyst: does the equilibrium favour products or reactants?', n:20, level:2,
+   only:['lc_shift','lc_pressure','lc_temp','lc_side','lc_yield','lc_dh','lc_best'], meta:'20 questions · SL + HL'},
+  {k:'eqmkc', unit:'eqm', t:'Kc expressions & K', d:'Write the Kc expression, read what the size of K means, and invert K for the reverse reaction. Only temperature changes K.', n:12, level:2,
+   only:['kc_expr','kc_power','k_size','k_reverse','lc_k'], meta:'12 questions · SL + HL'},
+  {k:'eqmq2', unit:'eqm', hl:true, t:'Q and ΔG', d:'Compare Q with K to decide the direction; read the position of equilibrium from the sign of ΔG.', n:12, level:2,
+   only:['q_compare','q_calc','g_sign','q_concept'], meta:'12 questions'}
+);
+
+/* ============================================================
+   UNIT 06 — OXIDATION STATES (Structure 3.1.6 · Reactivity 3.2.1)
+   Deduce oxidation states, name compounds with Roman numerals,
+   and identify oxidised / reduced species and agents. All SL.
+   ============================================================ */
+UNITS.push({k:'ox', code:'06', t:'Oxidation states', ref:'S3.1.6 · R3.2.1', d:'Deduce oxidation states, name compounds with Roman numerals, and spot what is oxidised and reduced.'});
+UNIT_ORDER.push('ox');
+TOPICS.oxst   = 'Oxidation states';
+TOPICS.oxname = 'Roman numeral names';
+TOPICS.redox  = 'Oxidised or reduced?';
+['oxst','oxname','redox'].forEach(function(k){ TOPIC_UNIT[k] = 'ox'; });
+
+// f species, el target element, n atoms of it, k known atoms [symbol, count, oxidation state], q overall charge
+var OXS = [
+  {f:'SO₄²⁻', el:'S', n:1, k:[['O',4,-2]], q:-2}, {f:'SO₃²⁻', el:'S', n:1, k:[['O',3,-2]], q:-2},
+  {f:'SO₂', el:'S', n:1, k:[['O',2,-2]], q:0}, {f:'SO₃', el:'S', n:1, k:[['O',3,-2]], q:0},
+  {f:'H₂S', el:'S', n:1, k:[['H',2,1]], q:0}, {f:'H₂SO₄', el:'S', n:1, k:[['H',2,1],['O',4,-2]], q:0},
+  {f:'Na₂S₂O₃', el:'S', n:2, k:[['Na',2,1],['O',3,-2]], q:0}, {f:'S₈', el:'S', n:8, k:[], q:0},
+  {f:'NO₃⁻', el:'N', n:1, k:[['O',3,-2]], q:-1}, {f:'NO₂⁻', el:'N', n:1, k:[['O',2,-2]], q:-1},
+  {f:'NH₃', el:'N', n:1, k:[['H',3,1]], q:0}, {f:'NH₄⁺', el:'N', n:1, k:[['H',4,1]], q:1},
+  {f:'N₂', el:'N', n:2, k:[], q:0}, {f:'NO', el:'N', n:1, k:[['O',1,-2]], q:0}, {f:'NO₂', el:'N', n:1, k:[['O',2,-2]], q:0},
+  {f:'N₂O', el:'N', n:2, k:[['O',1,-2]], q:0}, {f:'HNO₃', el:'N', n:1, k:[['H',1,1],['O',3,-2]], q:0},
+  {f:'N₂O₄', el:'N', n:2, k:[['O',4,-2]], q:0}, {f:'N₂H₄', el:'N', n:2, k:[['H',4,1]], q:0},
+  {f:'MnO₄⁻', el:'Mn', n:1, k:[['O',4,-2]], q:-1}, {f:'MnO₂', el:'Mn', n:1, k:[['O',2,-2]], q:0},
+  {f:'MnO₄²⁻', el:'Mn', n:1, k:[['O',4,-2]], q:-2}, {f:'KMnO₄', el:'Mn', n:1, k:[['K',1,1],['O',4,-2]], q:0},
+  {f:'Cr₂O₇²⁻', el:'Cr', n:2, k:[['O',7,-2]], q:-2}, {f:'CrO₄²⁻', el:'Cr', n:1, k:[['O',4,-2]], q:-2},
+  {f:'Cr₂O₃', el:'Cr', n:2, k:[['O',3,-2]], q:0}, {f:'K₂Cr₂O₇', el:'Cr', n:2, k:[['K',2,1],['O',7,-2]], q:0},
+  {f:'Fe₂O₃', el:'Fe', n:2, k:[['O',3,-2]], q:0}, {f:'FeO', el:'Fe', n:1, k:[['O',1,-2]], q:0},
+  {f:'FeCl₃', el:'Fe', n:1, k:[['Cl',3,-1]], q:0}, {f:'Fe(OH)₂', el:'Fe', n:1, k:[['O',2,-2],['H',2,1]], q:0},
+  {f:'Cu₂O', el:'Cu', n:2, k:[['O',1,-2]], q:0}, {f:'CuO', el:'Cu', n:1, k:[['O',1,-2]], q:0},
+  {f:'ClO⁻', el:'Cl', n:1, k:[['O',1,-2]], q:-1}, {f:'ClO₃⁻', el:'Cl', n:1, k:[['O',3,-2]], q:-1},
+  {f:'ClO₄⁻', el:'Cl', n:1, k:[['O',4,-2]], q:-1}, {f:'ClO₂', el:'Cl', n:1, k:[['O',2,-2]], q:0},
+  {f:'Cl₂', el:'Cl', n:2, k:[], q:0}, {f:'HCl', el:'Cl', n:1, k:[['H',1,1]], q:0}, {f:'Cl₂O₇', el:'Cl', n:2, k:[['O',7,-2]], q:0},
+  {f:'H₂O₂', el:'O', n:2, k:[['H',2,1]], q:0, sp:'peroxide: O is −1, not −2'}, {f:'Na₂O₂', el:'O', n:2, k:[['Na',2,1]], q:0, sp:'peroxide: O is −1, not −2'},
+  {f:'OF₂', el:'O', n:1, k:[['F',2,-1]], q:0, sp:'F is more electronegative than O, so O is positive here'},
+  {f:'NaH', el:'H', n:1, k:[['Na',1,1]], q:0, sp:'metal hydride: H is −1, not +1'}, {f:'CaH₂', el:'H', n:2, k:[['Ca',1,2]], q:0, sp:'metal hydride: H is −1, not +1'},
+  {f:'PO₄³⁻', el:'P', n:1, k:[['O',4,-2]], q:-3}, {f:'P₄O₁₀', el:'P', n:4, k:[['O',10,-2]], q:0},
+  {f:'PCl₃', el:'P', n:1, k:[['Cl',3,-1]], q:0}, {f:'PH₃', el:'P', n:1, k:[['H',3,1]], q:0},
+  {f:'CO₂', el:'C', n:1, k:[['O',2,-2]], q:0}, {f:'CO', el:'C', n:1, k:[['O',1,-2]], q:0},
+  {f:'CH₄', el:'C', n:1, k:[['H',4,1]], q:0}, {f:'CO₃²⁻', el:'C', n:1, k:[['O',3,-2]], q:-2},
+  {f:'C₂O₄²⁻', el:'C', n:2, k:[['O',4,-2]], q:-2}, {f:'CH₃OH', el:'C', n:1, k:[['H',4,1],['O',1,-2]], q:0},
+  {f:'HCOOH', el:'C', n:1, k:[['H',2,1],['O',2,-2]], q:0},
+  {f:'IO₃⁻', el:'I', n:1, k:[['O',3,-2]], q:-1}, {f:'I₂', el:'I', n:2, k:[], q:0}, {f:'KI', el:'I', n:1, k:[['K',1,1]], q:0},
+  {f:'VO²⁺', el:'V', n:1, k:[['O',1,-2]], q:2}, {f:'VO₂⁺', el:'V', n:1, k:[['O',2,-2]], q:1}, {f:'V₂O₅', el:'V', n:2, k:[['O',5,-2]], q:0},
+  {f:'PbO₂', el:'Pb', n:1, k:[['O',2,-2]], q:0}, {f:'Al³⁺', el:'Al', n:1, k:[], q:3}, {f:'O²⁻', el:'O', n:1, k:[], q:-2},
+  {f:'Mg', el:'Mg', n:1, k:[], q:0}, {f:'O₂', el:'O', n:2, k:[], q:0}
+];
+var OX_RULE = {O:'O is −2', H:'H is +1', F:'F is always −1', Cl:'Cl is −1 (bonded to a less electronegative element)', Na:'Group 1 metals are +1', K:'Group 1 metals are +1', Ca:'Group 2 metals are +2', Mg:'Group 2 metals are +2'};
+function oxVal(x){ var s = x.k.reduce(function(t, a){ return t + a[1] * a[2]; }, 0); return (x.q - s) / x.n; }
+function oxTxt(v){ return v > 0 ? '+' + v : v < 0 ? '−' + (-v) : '0'; }
+function oxWhy(x){
+  var v = oxVal(x);
+  if(!x.k.length && x.q === 0) return x.f + ' is an uncombined element, so ' + x.el + ' is 0 — electrons are shared equally between identical atoms.';
+  if(!x.k.length) return x.f + ' is a simple ion, so the oxidation state equals its charge: ' + oxTxt(v) + '.';
+  var known = x.k.map(function(a){ return (OX_RULE[a[0]] || a[0] + ' is ' + oxTxt(a[2])) + ' (' + a[1] + ' × ' + oxTxt(a[2]) + ' = ' + oxTxt(a[1] * a[2]) + ')'; }).join('; ');
+  var sum = x.k.reduce(function(t, a){ return t + a[1] * a[2]; }, 0);
+  return known + '. The total must equal the charge, ' + oxTxt(x.q) + ': ' + (x.n > 1 ? x.n + ' × ' : '') + x.el + ' = ' + oxTxt(x.q) + ' − (' + oxTxt(sum) + ') = ' + oxTxt(x.q - sum) + (x.n > 1 ? ', so each ' + x.el + ' is ' + oxTxt(v) : ', so ' + x.el + ' is ' + oxTxt(v)) + '.' + (x.sp ? ' Note — ' + x.sp + '.' : '');
+}
+function oxNear(v){ return [v - 2, v - 1, v + 1, v + 2, -v, v + 3].filter(function(y){ return y !== v && y >= -4 && y <= 8; }).map(oxTxt); }
+
+var ROMAN = ['0','I','II','III','IV','V','VI','VII','VIII'];
+// formula, name with Roman numeral, element symbol (the numeral describes this element)
+var OX_NAMES = [
+  ['FeCl₂','iron(II) chloride','Fe'],['FeCl₃','iron(III) chloride','Fe'],['FeO','iron(II) oxide','Fe'],['Fe₂O₃','iron(III) oxide','Fe'],['FeSO₄','iron(II) sulfate','Fe'],['Fe₂(SO₄)₃','iron(III) sulfate','Fe'],
+  ['CuO','copper(II) oxide','Cu'],['Cu₂O','copper(I) oxide','Cu'],['CuCl₂','copper(II) chloride','Cu'],['CuCl','copper(I) chloride','Cu'],['CuSO₄','copper(II) sulfate','Cu'],
+  ['MnO₂','manganese(IV) oxide','Mn'],['MnCl₂','manganese(II) chloride','Mn'],['PbO₂','lead(IV) oxide','Pb'],['PbO','lead(II) oxide','Pb'],['SnCl₂','tin(II) chloride','Sn'],['SnCl₄','tin(IV) chloride','Sn'],
+  ['Cr₂O₃','chromium(III) oxide','Cr'],['CrCl₃','chromium(III) chloride','Cr'],['CoCl₂','cobalt(II) chloride','Co'],['NiO','nickel(II) oxide','Ni'],
+  ['SO₂','sulfur(IV) oxide','S'],['SO₃','sulfur(VI) oxide','S'],['NO','nitrogen(II) oxide','N'],['NO₂','nitrogen(IV) oxide','N'],['N₂O','nitrogen(I) oxide','N'],['P₄O₁₀','phosphorus(V) oxide','P'],
+  ['KMnO₄','potassium manganate(VII)','Mn'],['K₂Cr₂O₇','potassium dichromate(VI)','Cr'],['K₂CrO₄','potassium chromate(VI)','Cr'],
+  ['NaClO','sodium chlorate(I)','Cl'],['KClO₃','potassium chlorate(V)','Cl'],['NaClO₄','sodium chlorate(VII)','Cl'],
+  ['Na₂SO₃','sodium sulfate(IV)','S'],['Na₂SO₄','sodium sulfate(VI)','S'],['NaNO₂','sodium nitrate(III)','N'],['NaNO₃','sodium nitrate(V)','N']
+];
+function numeralOf(name){ var m = name.match(/\(([IVX]+)\)/); return m ? ROMAN.indexOf(m[1]) : 0; }
+function withNumeral(name, n){ return name.replace(/\([IVX]+\)/, '(' + ROMAN[n] + ')'); }
+
+/* ---------- unit 06 chapters ---------- */
+CHAPTERS.push(
+{
+ id:'ox_rules', unit:'ox', ref:'S3.1.6 · R3.2.1', title:'Assigning oxidation states', tag:'core', topics:['oxst'],
+ body:function(){ return `
+  <p>An <strong>oxidation state</strong> is the charge an atom would have if all its bonds were fully ionic — it tracks how many electrons the atom has (formally) lost or gained. It is written with a <strong>sign and a number</strong>: +6, −2, 0.</p>
+  <h3>The rules, in order of priority</h3>
+  <ol>
+   <li>An <strong>uncombined element</strong> is <strong>0</strong> (Mg, O₂, Cl₂, S₈) — identical atoms share electrons equally.</li>
+   <li>A <strong>simple ion</strong> has an oxidation state equal to its charge (Al³⁺ is +3, O²⁻ is −2).</li>
+   <li>The oxidation states in a species <strong>add up to its overall charge</strong> — 0 for a compound, the ion charge for an ion.</li>
+   <li><strong>F</strong> is always −1. <strong>Group 1</strong> metals are +1, <strong>Group 2</strong> are +2, Al is +3.</li>
+   <li><strong>H</strong> is +1 — except in metal hydrides (NaH, CaH₂), where it is −1.</li>
+   <li><strong>O</strong> is −2 — except in peroxides (H₂O₂, Na₂O₂), where it is −1, and in OF₂, where it is +2.</li>
+   <li>Cl, Br and I are −1 unless bonded to O or a more electronegative halogen.</li>
+  </ol>
+  <h3>Worked examples</h3>
+  ${fx('SO₄²⁻:  S + 4(−2) = −2  →  S = +6')}
+  ${fx('Cr₂O₇²⁻:  2Cr + 7(−2) = −2  →  2Cr = +12  →  Cr = +6')}
+  ${fx('NH₄⁺:  N + 4(+1) = +1  →  N = −3')}
+  ${fx('Na₂S₂O₃:  2(+1) + 2S + 3(−2) = 0  →  2S = +4  →  S = +2')}
+  ${rule('<p style="margin:0">The more electronegative atom always gets the negative oxidation state. That is why O is +2 in OF₂ — F wins.</p>')}
+  ${warn('<p style="margin:0">With two atoms of the element, divide at the end: in Cr₂O₇²⁻ the two Cr atoms total +12, so <em>each</em> Cr is +6 — not +12.</p>')}`;
+ },
+ check:{q:'What is the oxidation state of Mn in MnO₄⁻?', a:'+7: Mn + 4(−2) = −1, so Mn = +7'}
+},
+{
+ id:'ox_names', unit:'ox', ref:'R3.2.1', title:'Roman numerals in names', tag:'core', topics:['oxname'],
+ body:function(){ return `
+  <p>Elements with more than one possible oxidation state — most transition elements, and non-metals such as S, N and Cl — show it in the <strong>name</strong> as a <strong>Roman numeral</strong> in brackets, straight after the element it belongs to. Formulas never contain Roman numerals.</p>
+  <table><tr><th>Formula</th><th>Name</th><th>Oxidation state</th></tr>
+  <tr><td class="f2">FeCl₂ / FeCl₃</td><td>iron(II) chloride / iron(III) chloride</td><td>Fe +2 / +3</td></tr>
+  <tr><td class="f2">Cu₂O / CuO</td><td>copper(I) oxide / copper(II) oxide</td><td>Cu +1 / +2</td></tr>
+  <tr><td class="f2">MnO₂</td><td>manganese(IV) oxide</td><td>Mn +4</td></tr>
+  <tr><td class="f2">SO₂ / SO₃</td><td>sulfur(IV) oxide / sulfur(VI) oxide</td><td>S +4 / +6</td></tr></table>
+  <h3>Oxyanions</h3>
+  <table><tr><th>Ion</th><th>Systematic name</th><th>Common name</th></tr>
+  <tr><td class="f2">SO₄²⁻</td><td>sulfate(VI)</td><td>sulfate</td></tr>
+  <tr><td class="f2">SO₃²⁻</td><td>sulfate(IV)</td><td>sulfite</td></tr>
+  <tr><td class="f2">NO₃⁻</td><td>nitrate(V)</td><td>nitrate</td></tr>
+  <tr><td class="f2">NO₂⁻</td><td>nitrate(III)</td><td>nitrite</td></tr>
+  <tr><td class="f2">ClO⁻ / ClO₃⁻ / ClO₄⁻</td><td>chlorate(I) / chlorate(V) / chlorate(VII)</td><td>hypochlorite / chlorate / perchlorate</td></tr>
+  <tr><td class="f2">MnO₄⁻</td><td>manganate(VII)</td><td>permanganate</td></tr>
+  <tr><td class="f2">Cr₂O₇²⁻ / CrO₄²⁻</td><td>dichromate(VI) / chromate(VI)</td><td>dichromate / chromate</td></tr></table>
+  ${rule('<p style="margin:0">To name: work out the oxidation state, then write it as a Roman numeral. To write a formula: the numeral gives the charge on the metal ion — iron(III) means Fe³⁺, so with Cl⁻ it is FeCl₃.</p>')}
+  ${warn('<p style="margin:0">The numeral is the oxidation state, not the number of atoms: copper(I) oxide is Cu₂O, with two Cu atoms each at +1.</p>')}`;
+ },
+ check:{q:'Name Fe₂(SO₄)₃.', a:'iron(III) sulfate — each SO₄ is −2, three of them give −6, shared by two Fe, so each Fe is +3'}
+},
+{
+ id:'ox_redox', unit:'ox', ref:'R3.2.1', title:'Oxidised, reduced and agents', tag:'core', topics:['redox'],
+ body:function(){ return `
+  <table><tr><th></th><th>Electrons</th><th>Oxidation state</th></tr>
+  <tr><td><strong>Oxidation</strong></td><td>loss of electrons</td><td><strong>increases</strong></td></tr>
+  <tr><td><strong>Reduction</strong></td><td>gain of electrons</td><td><strong>decreases</strong></td></tr></table>
+  ${fx('OIL RIG — Oxidation Is Loss, Reduction Is Gain (of electrons)')}
+  <p>Older definitions still work: oxidation is also gain of oxygen or loss of hydrogen; reduction is loss of oxygen or gain of hydrogen.</p>
+  <h3>Agents</h3>
+  <ul>
+   <li>The <strong>oxidising agent</strong> takes electrons from something else — so it is itself <strong>reduced</strong>.</li>
+   <li>The <strong>reducing agent</strong> gives electrons away — so it is itself <strong>oxidised</strong>.</li>
+  </ul>
+  <h3>Method</h3>
+  <p>Assign oxidation states to each element on both sides. The one that goes <strong>up</strong> has been oxidised; the one that goes <strong>down</strong> has been reduced.</p>
+  ${fx('Zn + Cu²⁺ → Zn²⁺ + Cu', 'Zn 0 → +2: oxidised (reducing agent) · Cu +2 → 0: reduced (oxidising agent)')}
+  ${fx('Fe₂O₃ + 3CO → 2Fe + 3CO₂', 'Fe +3 → 0: Fe₂O₃ reduced (oxidising agent) · C +2 → +4: CO oxidised (reducing agent)')}
+  ${rule('<p style="margin:0">If no oxidation state changes, it is not a redox reaction — neutralisation and precipitation reactions are not redox.</p>')}
+  ${warn('<p style="margin:0">Name the whole species as the agent: in the blast furnace the oxidising agent is Fe₂O₃, not "Fe".</p>')}`;
+ },
+ check:{q:'In Cl₂ + 2Br⁻ → 2Cl⁻ + Br₂, which species is the oxidising agent?', a:'Cl₂ — it is reduced from 0 to −1 by taking electrons from Br⁻'}
+}
+);
+
+/* ---------- unit 06 question generators ---------- */
+GENS.ox_calc = function(){
+  var x = pick(OXS), v = oxVal(x), a = oxTxt(v);
+  return {
+    type:'Find the oxidation state', topic:'oxst', chapter:'ox_rules',
+    stem:'What is the oxidation state of ' + x.el + ' in ' + x.f + '?',
+    input:'mc', opts:shOpts(a, oxNear(v)), answer:a,
+    explain:oxWhy(x)
+  };
+};
+GENS.ox_typed = function(){
+  var x = pick(OXS.filter(function(y){ return y.k.length; })), v = oxVal(x), a = oxTxt(v);
+  return {
+    type:'Oxidation state (type it)', topic:'oxst', chapter:'ox_rules',
+    stem:'Type the oxidation state of ' + x.el + ' in ' + x.f + '.',
+    sub:'Include the sign, e.g. +6 or −2.',
+    input:'text', answer:a,
+    check:function(g){ var s = String(g).replace(/\s/g, '').replace(/[−–]/g, '-'); var n = parseInt(s, 10); return /^[+-]?\d+$/.test(s) && n === v && (v <= 0 || s.charAt(0) !== '-'); },
+    explain:oxWhy(x)
+  };
+};
+GENS.ox_highest = function(){
+  var el = pick(['S','N','Cl','Mn','Cr','C','P']);
+  var pool = OXS.filter(function(x){ return x.el === el; }), seen = {}, set = [];
+  shuffle(pool.slice()).forEach(function(x){ var v = oxVal(x); if(!seen[v] && set.length < 4){ seen[v] = 1; set.push(x); } });
+  if(set.length < 3) return null;
+  var hi = Math.random() < 0.5;
+  set.sort(function(a, b){ return oxVal(b) - oxVal(a); });
+  var ans = hi ? set[0] : set[set.length - 1];
+  return {
+    type:'Highest / lowest oxidation state', topic:'oxst', chapter:'ox_rules',
+    stem:'In which species does ' + el + ' have the ' + (hi ? 'highest' : 'lowest') + ' oxidation state?',
+    input:'mc', opts:mcOpts(ans.f, set.filter(function(x){ return x !== ans; }).map(function(x){ return {name:x.f, why:el + ' is ' + oxTxt(oxVal(x)) + ' in ' + x.f}; })), answer:ans.f,
+    explain:set.map(function(x){ return x.f + ': ' + oxTxt(oxVal(x)); }).join(' · ') + '.'
+  };
+};
+GENS.ox_name = function(){
+  var x = pick(OX_NAMES), n = numeralOf(x[1]);
+  var wr = [n - 1, n + 1, n + 2, n - 2].filter(function(k){ return k >= 1 && k <= 7; }).map(function(k){ return withNumeral(x[1], k); });
+  return {
+    type:'Formula → name', topic:'oxname', chapter:'ox_names',
+    stem:'What is the systematic name of ' + x[0] + '?',
+    input:'mc', opts:shOpts(x[1], wr), answer:x[1],
+    explain:x[2] + ' is ' + oxTxt(n) + ' in ' + x[0] + ', so the name carries (' + ROMAN[n] + '): ' + x[1] + '.'
+  };
+};
+GENS.ox_formula = function(){
+  var x = pick(OX_NAMES), el = x[2];
+  var same = OX_NAMES.filter(function(y){ return y[2] === el && y[0] !== x[0]; }).map(function(y){ return y[0]; });
+  if(same.length < 2) return null;
+  return {
+    type:'Name → formula', topic:'oxname', chapter:'ox_names',
+    stem:'What is the formula of ' + x[1] + '?',
+    input:'mc', opts:shOpts(x[0], same), answer:x[0],
+    explain:'(' + ROMAN[numeralOf(x[1])] + ') means ' + el + ' is ' + oxTxt(numeralOf(x[1])) + '. ' + x[0] + ' is the only option where ' + el + ' has that oxidation state with the right partner.'
+  };
+};
+GENS.ox_numeral = function(){
+  var x = pick(OX_NAMES), n = numeralOf(x[1]), a = oxTxt(n);
+  return {
+    type:'What does the numeral mean?', topic:'oxname', chapter:'ox_names',
+    stem:'In ' + x[1] + ', what is the oxidation state of ' + x[2] + '?',
+    input:'mc', opts:shOpts(a, oxNear(n)), answer:a,
+    explain:'The Roman numeral (' + ROMAN[n] + ') is the oxidation state of the element just before it: ' + x[2] + ' is ' + a + '.'
+  };
+};
+// redox reactions: ox = species oxidised (and element change), red = species reduced
+var RDX = [
+  {eq:'Zn + Cu²⁺ → Zn²⁺ + Cu', ox:'Zn', oc:'Zn: 0 → +2', red:'Cu²⁺', rc:'Cu: +2 → 0', all:['Zn','Cu²⁺','Zn²⁺','Cu']},
+  {eq:'Cl₂ + 2Br⁻ → 2Cl⁻ + Br₂', ox:'Br⁻', oc:'Br: −1 → 0', red:'Cl₂', rc:'Cl: 0 → −1', all:['Cl₂','Br⁻','Cl⁻','Br₂']},
+  {eq:'2Mg + O₂ → 2MgO', ox:'Mg', oc:'Mg: 0 → +2', red:'O₂', rc:'O: 0 → −2', all:['Mg','O₂','MgO']},
+  {eq:'Fe₂O₃ + 3CO → 2Fe + 3CO₂', ox:'CO', oc:'C: +2 → +4', red:'Fe₂O₃', rc:'Fe: +3 → 0', all:['Fe₂O₃','CO','Fe','CO₂']},
+  {eq:'2Fe³⁺ + 2I⁻ → 2Fe²⁺ + I₂', ox:'I⁻', oc:'I: −1 → 0', red:'Fe³⁺', rc:'Fe: +3 → +2', all:['Fe³⁺','I⁻','Fe²⁺','I₂']},
+  {eq:'CuO + H₂ → Cu + H₂O', ox:'H₂', oc:'H: 0 → +1', red:'CuO', rc:'Cu: +2 → 0', all:['CuO','H₂','Cu','H₂O']},
+  {eq:'2Na + Cl₂ → 2NaCl', ox:'Na', oc:'Na: 0 → +1', red:'Cl₂', rc:'Cl: 0 → −1', all:['Na','Cl₂','NaCl']},
+  {eq:'MnO₄⁻ + 5Fe²⁺ + 8H⁺ → Mn²⁺ + 5Fe³⁺ + 4H₂O', ox:'Fe²⁺', oc:'Fe: +2 → +3', red:'MnO₄⁻', rc:'Mn: +7 → +2', all:['MnO₄⁻','Fe²⁺','H⁺','Mn²⁺']},
+  {eq:'Cr₂O₇²⁻ + 6Fe²⁺ + 14H⁺ → 2Cr³⁺ + 6Fe³⁺ + 7H₂O', ox:'Fe²⁺', oc:'Fe: +2 → +3', red:'Cr₂O₇²⁻', rc:'Cr: +6 → +3', all:['Cr₂O₇²⁻','Fe²⁺','H⁺','Cr³⁺']},
+  {eq:'2H₂S + SO₂ → 3S + 2H₂O', ox:'H₂S', oc:'S: −2 → 0', red:'SO₂', rc:'S: +4 → 0', all:['H₂S','SO₂','S','H₂O']},
+  {eq:'Cu + 2Ag⁺ → Cu²⁺ + 2Ag', ox:'Cu', oc:'Cu: 0 → +2', red:'Ag⁺', rc:'Ag: +1 → 0', all:['Cu','Ag⁺','Cu²⁺','Ag']},
+  {eq:'2Al + Fe₂O₃ → Al₂O₃ + 2Fe', ox:'Al', oc:'Al: 0 → +3', red:'Fe₂O₃', rc:'Fe: +3 → 0', all:['Al','Fe₂O₃','Al₂O₃','Fe']},
+  {eq:'H₂O₂ + 2I⁻ + 2H⁺ → I₂ + 2H₂O', ox:'I⁻', oc:'I: −1 → 0', red:'H₂O₂', rc:'O: −1 → −2', all:['H₂O₂','I⁻','H⁺','I₂']},
+  {eq:'Zn + 2HCl → ZnCl₂ + H₂', ox:'Zn', oc:'Zn: 0 → +2', red:'HCl', rc:'H: +1 → 0', all:['Zn','HCl','ZnCl₂','H₂']},
+  {eq:'Mg + 2H⁺ → Mg²⁺ + H₂', ox:'Mg', oc:'Mg: 0 → +2', red:'H⁺', rc:'H: +1 → 0', all:['Mg','H⁺','Mg²⁺','H₂']}
+];
+var NOT_RDX = ['NaOH + HCl → NaCl + H₂O','AgNO₃ + NaCl → AgCl + NaNO₃','CaCO₃ → CaO + CO₂','CuO + H₂SO₄ → CuSO₄ + H₂O','BaCl₂ + Na₂SO₄ → BaSO₄ + 2NaCl','NH₃ + HCl → NH₄Cl'];
+GENS.rdx_which = function(){
+  var r = pick(RDX), ask = pick(['oxidised','reduced','oxidising agent','reducing agent']);
+  var ans = (ask === 'oxidised' || ask === 'reducing agent') ? r.ox : r.red;
+  var role = ask === 'oxidised' ? 'is oxidised' : ask === 'reduced' ? 'is reduced' : 'is the ' + ask;
+  return {
+    type:'Oxidised, reduced or agent?', topic:'redox', chapter:'ox_redox',
+    stem:'In this reaction, which species ' + role + '?',
+    html:'<div class="eqbox" style="font-size:17px">' + esc(r.eq) + '</div>',
+    input:'mc', opts:shOpts(ans, r.all), answer:ans,
+    explain:r.oc + ' (increase → ' + r.ox + ' is oxidised, so it is the reducing agent). ' + r.rc + ' (decrease → ' + r.red + ' is reduced, so it is the oxidising agent).'
+  };
+};
+GENS.rdx_change = function(){
+  var r = pick(RDX), useOx = Math.random() < 0.5, a = useOx ? r.oc : r.rc;
+  var flip = function(c){ var p = c.split(': '), q = p[1].split(' → '); return p[0] + ': ' + q[1] + ' → ' + q[0]; };
+  var other = useOx ? r.rc : r.oc;
+  return {
+    type:'Oxidation state change', topic:'redox', chapter:'ox_redox',
+    stem:'Which change in oxidation state shows the ' + (useOx ? 'oxidation' : 'reduction') + ' in this reaction?',
+    html:'<div class="eqbox" style="font-size:17px">' + esc(r.eq) + '</div>',
+    input:'mc', opts:shOpts(a, [flip(a), other, flip(other)]), answer:a,
+    explain:(useOx ? 'Oxidation is an increase in oxidation state: ' : 'Reduction is a decrease in oxidation state: ') + a + '.'
+  };
+};
+GENS.rdx_isredox = function(){
+  var yes = Math.random() < 0.5, eq = yes ? pick(RDX) : null, txt = yes ? eq.eq : pick(NOT_RDX);
+  var ans = yes ? 'Yes — oxidation states change' : 'No — no oxidation state changes';
+  return {
+    type:'Redox or not?', topic:'redox', chapter:'ox_redox',
+    stem:'Is this a redox reaction?',
+    html:'<div class="eqbox" style="font-size:17px">' + esc(txt) + '</div>',
+    input:'mc', opts:mcOpts(ans, [yes ? 'No — no oxidation state changes' : 'Yes — oxidation states change', 'Yes — every reaction with an ionic compound is redox']), answer:ans,
+    explain: yes ? eq.oc + ' and ' + eq.rc + ', so electrons are transferred — redox.' : 'Every element keeps its oxidation state (it is an acid–base, precipitation or decomposition reaction), so it is not redox.'
+  };
+};
+var OX_FACTS = [
+  {t:'oxst', q:'Why is the oxidation state of an uncombined element zero?', a:'The atoms are identical, so electrons are shared equally — none are gained or lost', w:['Elements have no electrons','Elements are always unreactive','Only metals can have oxidation states']},
+  {t:'oxst', q:'What is the oxidation state of O in H₂O₂?', a:'−1', w:['−2','+1','0']},
+  {t:'oxst', q:'What is the oxidation state of H in NaH?', a:'−1', w:['+1','0','+2']},
+  {t:'oxst', q:'The oxidation states of all the atoms in SO₄²⁻ add up to…', a:'−2', w:['0','+6','−8']},
+  {t:'oxst', q:'How is an oxidation state written in IB Chemistry?', a:'A sign followed by a number, e.g. +6 or −2', w:['A Roman numeral, e.g. VI','A number followed by a sign, e.g. 6+','A number only, e.g. 6']},
+  {t:'oxname', q:'Where are Roman numerals used?', a:'In names, to show the oxidation state of an element with more than one possible state', w:['In formulas, after the symbol','Only for Group 1 metals','To show the number of atoms']},
+  {t:'oxname', q:'Which name is correct for SO₄²⁻?', a:'sulfate(VI)', w:['sulfate(IV)','sulfate(II)','sulfite(VI)']},
+  {t:'oxname', q:'Copper(I) oxide has the formula…', a:'Cu₂O', w:['CuO','CuO₂','Cu₂O₂']},
+  {t:'redox', q:'Oxidation is…', a:'loss of electrons — an increase in oxidation state', w:['gain of electrons — a decrease in oxidation state','gain of electrons — an increase in oxidation state','loss of oxygen']},
+  {t:'redox', q:'An oxidising agent…', a:'accepts electrons and is itself reduced', w:['donates electrons and is itself oxidised','accepts electrons and is itself oxidised','is always oxygen']},
+  {t:'redox', q:'A reducing agent…', a:'donates electrons and is itself oxidised', w:['accepts electrons and is itself reduced','donates electrons and is itself reduced','always contains hydrogen']},
+  {t:'redox', q:'In terms of oxygen and hydrogen, reduction is…', a:'loss of oxygen or gain of hydrogen', w:['gain of oxygen or loss of hydrogen','gain of oxygen and gain of hydrogen','loss of both oxygen and hydrogen']}
+];
+GENS.ox_concept = function(){
+  var f = pick(OX_FACTS), chap = {oxst:'ox_rules', oxname:'ox_names', redox:'ox_redox'}[f.t];
+  return {type:'Oxidation states — concepts', topic:f.t, chapter:chap, stem:f.q, input:'mc', opts:mcOpts(f.a, f.w), answer:f.a, explain:f.a + '.'};
+};
+
+QTYPES.push(
+  {k:'ox_calc',     w:6, topics:['oxst'],   unit:'ox'},
+  {k:'ox_typed',    w:3, topics:['oxst'],   unit:'ox'},
+  {k:'ox_highest',  w:2, topics:['oxst'],   unit:'ox'},
+  {k:'ox_name',     w:3, topics:['oxname'], unit:'ox'},
+  {k:'ox_formula',  w:2, topics:['oxname'], unit:'ox'},
+  {k:'ox_numeral',  w:2, topics:['oxname'], unit:'ox'},
+  {k:'rdx_which',   w:4, topics:['redox'],  unit:'ox'},
+  {k:'rdx_change',  w:2, topics:['redox'],  unit:'ox'},
+  {k:'rdx_isredox', w:2, topics:['redox'],  unit:'ox'},
+  {k:'ox_concept',  w:2, topics:['oxst','oxname','redox'], unit:'ox'}
+);
+MODES.push(
+  {k:'oxq',   unit:'ox', t:'Oxidation states quick test', d:'Ten mixed questions: assign oxidation states, Roman numeral names, oxidised and reduced species.', n:10, level:2, units:['ox'], meta:'10 questions'},
+  {k:'oxcalc', unit:'ox', t:'Assign oxidation states', d:'Ions, compounds, peroxides and hydrides — pick or type the oxidation state.', n:20, level:2,
+   only:['ox_calc','ox_typed','ox_highest'], meta:'20 questions · SL + HL'},
+  {k:'oxnm',  unit:'ox', t:'Roman numeral names', d:'Formula to name, name to formula, and what the numeral means — including oxyanions.', n:12, level:2,
+   only:['ox_name','ox_formula','ox_numeral'], meta:'12 questions · SL + HL'},
+  {k:'oxrdx', unit:'ox', t:'Oxidised or reduced?', d:'Spot the species oxidised and reduced, the oxidising and reducing agents, and whether a reaction is redox at all.', n:12, level:2,
+   only:['rdx_which','rdx_change','rdx_isredox'], meta:'12 questions · SL + HL'}
+);
+
 /* ---------- course level (SL / HL) ---------- */
 function setLevel(l){
   LEVEL = l === 'SL' ? 'SL' : 'HL';
@@ -5365,7 +6127,8 @@ function renderUnitCards(){
       '<div class="ut">' + esc(u.t) + '</div><div class="ud">' + esc(u.d) + '</div>' +
       '<div class="um">' + ch + ' chapters · ' + qt + ' question types' +
       (u.k === 'iso' ? (LEVEL === 'HL' ? ' <span class="tag hl">stereo · HL</span>' : ' <span class="tag ext">stereo hidden at SL</span>') : '') +
-      (u.k === 'shp' ? (LEVEL === 'HL' ? ' <span class="tag hl">5–6 domains · FC · σ/π · hybrid · HL</span>' : ' <span class="tag ext">HL topics hidden at SL</span>') : '') + '</div></button>';
+      (u.k === 'shp' ? (LEVEL === 'HL' ? ' <span class="tag hl">5–6 domains · FC · σ/π · hybrid · HL</span>' : ' <span class="tag ext">HL topics hidden at SL</span>') : '') +
+      (u.k === 'eqm' ? (LEVEL === 'HL' ? ' <span class="tag hl">Q · ΔG · HL</span>' : ' <span class="tag ext">Q and ΔG hidden at SL</span>') : '') + '</div></button>';
   }).join('');
 }
 $('#unitCards').addEventListener('click', function(e){
