@@ -1,6 +1,6 @@
 # IB Chemistry Practice
 
-> **The latest version is on the [`claude/eager-sagan-1sb41c`](https://github.com/allencallum51-coder/chemistry-organic-naming-practice-IB/tree/claude/eager-sagan-1sb41c) branch.**
+> **The latest version is on the [`latest`](https://github.com/allencallum51-coder/chemistry-organic-naming-practice-IB/tree/latest) branch.**
 >
 > This `main` branch only has the first version (organic nomenclature only). The [`ib-chemistry-practice`](https://github.com/allencallum51-coder/chemistry-organic-naming-practice-IB/tree/ib-chemistry-practice) branch has units 01–03.
 
@@ -19,7 +19,7 @@ It also has an **Ions** section for drilling the ions you need to know, and an *
 
 ## Get the latest version
 
-- **Just the app:** open [`index.html` on the `claude/eager-sagan-1sb41c` branch](https://github.com/allencallum51-coder/chemistry-organic-naming-practice-IB/blob/claude/eager-sagan-1sb41c/index.html), click **Download raw file**, then double-click the downloaded file to open it in your browser. You don't need to install anything, and it works offline.
-- **Whole repo:** use the branch dropdown (top left, currently showing `main`) to switch to `claude/eager-sagan-1sb41c`, then click **Code → Download ZIP**.
+- **Just the app:** open [`index.html` on the `latest` branch](https://github.com/allencallum51-coder/chemistry-organic-naming-practice-IB/blob/latest/index.html), click **Download raw file**, then double-click the downloaded file to open it in your browser. You don't need to install anything, and it works offline.
+- **Whole repo:** use the branch dropdown (top left, currently showing `main`) to switch to `latest`, then click **Code → Download ZIP**.
 
 Your scores, weak areas and SL/HL choice are saved in your browser on that device only.
