@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Nomenclature — IB Chemistry S3.2 · R2.1</title>
+<title>Nomenclature — IB Chemistry S2.2 · S3.2 · R2.1</title>
 <style>
 :root{
   --paper:#E7EBEC;
@@ -305,7 +305,7 @@ td.f2{font-family:var(--mono)}
   <header class="top">
     <div>
       <div class="brand">Nomen<span class="dot">·</span>clature</div>
-      <div class="brand-sub">IB Chemistry — Structure 3.2 · Reactivity 2.1</div>
+      <div class="brand-sub">IB Chemistry — Structure 2.2 · Structure 3.2 · Reactivity 2.1</div>
     </div>
     <div class="topright">
       <div class="lvl" id="levelSwitch" role="group" aria-label="Course level">
@@ -324,9 +324,9 @@ td.f2{font-family:var(--mono)}
   <!-- HOME -->
   <section class="view on" id="view-home">
     <div class="hero">
-      <div class="eyebrow">Structure 3.2 · Reactivity 2.1</div>
-      <h1>Name it, rearrange it, balance it, count it.</h1>
-      <p class="lede">Three units share one set of notes and one test engine. Questions are generated fresh from real structures and real equations, so the answer is always computed — never looked up. HL-only material is marked, and the SL / HL switch hides it completely.</p>
+      <div class="eyebrow">Structure 2.2 · Structure 3.2 · Reactivity 2.1</div>
+      <h1>Name it, rearrange it, balance it, count it, shape it.</h1>
+      <p class="lede">Four units share one set of notes and one test engine. Questions are generated fresh from real structures and real equations, so the answer is always computed — never looked up. HL-only material is marked, and the SL / HL switch hides it completely.</p>
     </div>
 
     <div class="parser">
@@ -346,12 +346,12 @@ td.f2{font-family:var(--mono)}
       <button data-goto="notes">
         <div class="gk">Part one</div>
         <div class="gt">Notes / Learn</div>
-        <div class="gd">All three units in one chapter rail, grouped by unit, with worked structures, worked calculations and check-yourself questions.</div>
+        <div class="gd">All four units in one chapter rail, grouped by unit, with worked structures, worked calculations and check-yourself questions.</div>
       </button>
       <button data-goto="test">
         <div class="gk">Part two</div>
         <div class="gt">Test / Practice</div>
-        <div class="gd">Pick a unit, or mix all three. Naming, isomers, balancing and calculations — every question generated fresh.</div>
+        <div class="gd">Pick a unit, or mix all four. Naming, isomers, balancing, calculations and molecular shapes — every question generated fresh.</div>
       </button>
     </div>
 
@@ -2084,7 +2084,7 @@ function openChapterById(id){
 // unit: 'all' | 'nom' | 'iso' | 'eq'. Modes with hl:true are hidden at SL.
 var MODES = [
   {k:'quick',  unit:'all', t:'Quick test',        d:'Ten mixed questions across every unit you can see. Good for a five-minute check.', n:10, level:2, meta:'10 questions'},
-  {k:'full',   unit:'all', t:'Full test',         d:'Forty questions from all three units, rising in difficulty.', n:40, level:0, meta:'40 questions · adaptive'},
+  {k:'full',   unit:'all', t:'Full test',         d:'Forty questions from all four units, rising in difficulty.', n:40, level:0, meta:'40 questions · adaptive'},
   {k:'nomq',   unit:'nom', t:'Nomenclature quick test', d:'Ten mixed questions across Structure 3.2 naming and formulas.', n:10, level:2, units:['nom'], meta:'10 questions'},
   {k:'naming', unit:'nom', t:'Naming only',       d:'Structure to name and name to structure, nothing else.', n:15, level:2, only:['structure_to_name','condensed_to_name','skeletal_to_name_typed','build_the_name','name_to_structure','spot_the_error'], meta:'15 questions'},
   {k:'conv',   unit:'nom', t:'Formula conversion',d:'Move between names, molecular formulas, condensed and displayed structures.', n:15, level:2, only:['name_to_formula','name_to_condensed','formula_typed','match_representation','count_carbons','formula_to_family'], meta:'15 questions'},
@@ -4572,11 +4572,12 @@ MODES.push(
 /* ============================================================
    UNIT 04 — MOLECULAR GEOMETRY (Structure 2.2)
    SL: S2.2.4 VSEPR up to four electron domains, S2.2.6 molecular polarity.
-   HL: S2.2.13 five and six electron domains, S2.2.16 sp / sp2 / sp3 hybridization.
+   HL: S2.2.13 five and six electron domains, S2.2.14 formal charge,
+       S2.2.15 sigma and pi bonds, S2.2.16 sp / sp2 / sp3 hybridization.
    Plugs into the same UNITS / CHAPTERS / GENS / QTYPES / TOPICS / MODES
    registries; everything HL is flagged hl:true so the SL switch hides it.
    ============================================================ */
-UNITS.push({k:'shp', code:'04', t:'Molecular geometry', ref:'S2.2', d:'Electron domains, VSEPR shapes, bond angles and molecular polarity; five and six domains and hybridization at HL.'});
+UNITS.push({k:'shp', code:'04', t:'Molecular geometry', ref:'S2.2', d:'Electron domains, VSEPR shapes, bond angles and molecular polarity; five and six domains, formal charge, σ and π bonds and hybridization at HL.'});
 UNIT_ORDER.push('shp');
 
 TOPICS.vsepr   = 'Electron domains';
@@ -4584,26 +4585,30 @@ TOPICS.vshape  = 'Naming shapes';
 TOPICS.vangle  = 'Bond angles';
 TOPICS.molpol  = 'Molecular polarity';
 TOPICS.vsepr56 = 'Five & six domains';
+TOPICS.fcharge = 'Formal charge';
+TOPICS.sigpi   = 'Sigma & pi bonds';
 TOPICS.hybrid  = 'Hybridization';
-['vsepr','vshape','vangle','molpol','vsepr56','hybrid'].forEach(function(k){ TOPIC_UNIT[k] = 'shp'; });
-HL_TOPICS.push('vsepr56', 'hybrid');
+['vsepr','vshape','vangle','molpol','vsepr56','fcharge','sigpi','hybrid'].forEach(function(k){ TOPIC_UNIT[k] = 'shp'; });
+HL_TOPICS.push('vsepr56', 'fcharge', 'sigpi', 'hybrid');
 
 /* ---------- data ---------- */
 // GEO[domains][lone pairs] -> molecular geometry and the VSEPR bond angle(s)
 var EDG = {2:'linear', 3:'trigonal planar', 4:'tetrahedral', 5:'trigonal bipyramidal', 6:'octahedral'};
 var GEO = {
   2:{0:{mg:'linear', ang:'180°'}},
-  3:{0:{mg:'trigonal planar', ang:'120°'}, 1:{mg:'bent', ang:'<120° (≈117°)'}},
-  4:{0:{mg:'tetrahedral', ang:'109.5°'}, 1:{mg:'trigonal pyramidal', ang:'≈107°'}, 2:{mg:'bent', ang:'≈104.5°'}},
+  3:{0:{mg:'trigonal planar', ang:'120°'}, 1:{mg:'bent', ang:'<120°', typ:117}},
+  4:{0:{mg:'tetrahedral', ang:'109.5°'}, 1:{mg:'trigonal pyramidal', ang:'<109.5°', typ:107}, 2:{mg:'bent', ang:'<109.5°', typ:104.5}},
   5:{0:{mg:'trigonal bipyramidal', ang:'90° and 120°'}, 1:{mg:'see-saw', ang:'<90° and <120°'}, 2:{mg:'T-shaped', ang:'<90°'}, 3:{mg:'linear', ang:'180°'}},
   6:{0:{mg:'octahedral', ang:'90°'}, 1:{mg:'square pyramidal', ang:'<90°'}, 2:{mg:'square planar', ang:'90°'}}
 };
 var HYB = {2:'sp', 3:'sp²', 4:'sp³'};
 var SL_SHAPES = ['linear','trigonal planar','bent','tetrahedral','trigonal pyramidal'];
 var HL_SHAPES = ['trigonal bipyramidal','see-saw','T-shaped','linear','octahedral','square pyramidal','square planar'];
-var SL_ANGLES = ['180°','120°','<120° (≈117°)','109.5°','≈107°','≈104.5°'];
+var SL_ANGLES = ['180°','120°','<120°','109.5°','<109.5°','90°'];
 var HL_ANGLES = ['180°','120°','90°','90° and 120°','<90° and <120°','<90°','109.5°'];
-var ANG_RANK = {'180°':180, '120°':120, '<120° (≈117°)':117, '109.5°':109.5, '≈107°':107, '≈104.5°':104.5};
+// typical value used only to rank species and in explanations ("about 107°"); answers never require it
+function shTyp(s){ var g = GEO[shDom(s)][s.lp]; return g.typ || parseFloat(g.ang); }
+function shAngTxt(s){ var g = GEO[shDom(s)][s.lp]; return g.ang + (g.typ ? ' (about ' + g.typ + '°)' : ''); }
 
 // f: species, c: central atom, b: bonding domains, lp: lone pairs on the central atom,
 // mult: has a double/triple bond, pol: true / false for neutral molecules (omitted for ions),
@@ -4724,7 +4729,7 @@ CHAPTERS.push(
   </ul>
   ${warn('<p style="margin:0">"Bent" turns up twice: three domains with one lone pair (SO₂, &lt;120°) and four domains with two lone pairs (H₂O, ≈104.5°). The name is the same; the bond angle is not.</p>')}`;
  },
- check:{q:'BF₃ and NH₃ both have three bonded atoms. Why are their shapes different?', a:'NH₃ also has a lone pair, so it has four electron domains (tetrahedral arrangement → trigonal pyramidal, ≈107°); BF₃ has three domains and no lone pair (trigonal planar, 120°)'}
+ check:{q:'BF₃ and NH₃ both have three bonded atoms. Why are their shapes different?', a:'NH₃ also has a lone pair, so it has four electron domains (tetrahedral arrangement → trigonal pyramidal, <109.5°); BF₃ has three domains and no lone pair (trigonal planar, 120°)'}
 },
 {
  id:'shp_angles', unit:'shp', ref:'S2.2.4', title:'What changes a bond angle', tag:'core', topics:['vangle'],
@@ -4734,15 +4739,15 @@ CHAPTERS.push(
   <h3>Lone pairs squeeze the bonds together</h3>
   <table><tr><th>Species</th><th>Lone pairs</th><th>Shape</th><th>Bond angle</th></tr>
   <tr><td class="f2">CH₄</td><td>0</td><td>tetrahedral</td><td class="f2">109.5°</td></tr>
-  <tr><td class="f2">NH₃</td><td>1</td><td>trigonal pyramidal</td><td class="f2">≈107°</td></tr>
-  <tr><td class="f2">H₂O</td><td>2</td><td>bent</td><td class="f2">≈104.5°</td></tr></table>
+  <tr><td class="f2">NH₃</td><td>1</td><td>trigonal pyramidal</td><td class="f2">&lt;109.5° (about 107°)</td></tr>
+  <tr><td class="f2">H₂O</td><td>2</td><td>bent</td><td class="f2">&lt;109.5° (about 104.5°)</td></tr></table>
   <p>All three have four electron domains. Each extra lone pair pushes the bonding pairs closer together, removing roughly 2.5°. In the same way SO₂ (one lone pair, three domains) is bent with an angle a little <strong>less than 120°</strong>, about 117°.</p>
   <h3>Multiple bonds</h3>
   <p>A double or triple bond still counts as one domain, but it holds more electron density, so it repels more strongly than a single bond. In methanal, H₂CO, the bigger C=O domain pushes the two C–H bonds together: the H–C–H angle is a little <strong>less than 120°</strong> and each H–C=O angle is a little more.</p>
-  ${rule('<p style="margin:0">In an exam, give the VSEPR value (180°, 120°, 109.5°, 107°, 104.5°) and say which way lone pairs or multiple bonds move it. Real angles for larger central atoms (PCl₃, H₂S) are often smaller still, but the VSEPR prediction is what is assessed.</p>')}
+  ${rule('<p style="margin:0">You are not expected to know exact angles for shapes with lone pairs. Know the parent angle (180°, 120°, 109.5°, 90°) and say the lone pair makes it <strong>less than</strong> that: NH₃ and H₂O are both &lt;109.5°, SO₂ is &lt;120°. In this app those answers are written with "&lt;". The typical values (107°, 104.5°, 117°) are worth knowing for comparing species — H₂O has a smaller angle than NH₃ — and are accepted in written answers.</p>')}
   ${warn('<p style="margin:0">Do not say a lone pair "takes up a bond position". Say it <em>repels more strongly</em> than a bonding pair and so <em>reduces</em> the angle between the bonds.</p>')}`;
  },
- check:{q:'Why is the H–N–H bond angle in NH₃ smaller than the H–C–H angle in CH₄?', a:'NH₃ has a lone pair; lone pair–bonding pair repulsion is greater than bonding pair–bonding pair repulsion, so the N–H bonds are pushed closer together (≈107° instead of 109.5°)'}
+ check:{q:'Why is the H–N–H bond angle in NH₃ smaller than the H–C–H angle in CH₄?', a:'NH₃ has a lone pair; lone pair–bonding pair repulsion is greater than bonding pair–bonding pair repulsion, so the N–H bonds are pushed closer together and the angle is less than 109.5° (about 107°)'}
 },
 {
  id:'shp_polar', unit:'shp', ref:'S2.2.6', title:'Molecular polarity', tag:'core', topics:['molpol'],
@@ -4789,6 +4794,54 @@ CHAPTERS.push(
   ${warn('<p style="margin:0">XeF₂ has three lone pairs but is <strong>linear</strong>, not bent: all three lone pairs sit in the equatorial plane, leaving the two F atoms axial at 180°.</p>')}`;
  },
  check:{q:'State the electron domain geometry and molecular geometry of SF₄.', a:'Five domains (4 bonding + 1 lone pair): trigonal bipyramidal electron domain geometry, see-saw molecular geometry, angles <90° and <120°'}
+},
+{
+ id:'shp_fc', unit:'shp', hl:true, ref:'S2.2.14', title:'Formal charge', tag:'core', topics:['fcharge'],
+ body:function(){ return `
+  <p>Often more than one Lewis formula can be drawn for a species. <strong>Formal charge</strong> (FC) is worked out for every atom and used to decide which Lewis formula is <strong>preferred</strong>.</p>
+  ${fx('FC = V − ½B − N', 'V valence electrons of the atom · B bonding (shared) electrons around it · N non-bonding (lone-pair) electrons')}
+  <p>Each bond line is two bonding electrons, so ½B is simply the <strong>number of bonds</strong> (a double bond counts 2, a triple bond 3). The formal charges in a species always add up to its overall charge.</p>
+  <table><tr><th>Atom</th><th>V</th><th>bonds (½B)</th><th>N</th><th>FC</th></tr>
+  <tr><td>N in NH₄⁺</td><td>5</td><td>4</td><td>0</td><td class="f2">+1</td></tr>
+  <tr><td>C in :C≡O:</td><td>4</td><td>3</td><td>2</td><td class="f2">−1</td></tr>
+  <tr><td>O in :C≡O:</td><td>6</td><td>3</td><td>2</td><td class="f2">+1</td></tr>
+  <tr><td>O in OH⁻</td><td>6</td><td>1</td><td>6</td><td class="f2">−1</td></tr></table>
+  <h3>Choosing the preferred Lewis formula</h3>
+  <ol>
+   <li>Formal charges <strong>closest to zero</strong> (smallest values, fewest charged atoms).</li>
+   <li>If there is still a choice, any <strong>negative</strong> formal charge should be on the <strong>most electronegative</strong> atom.</li>
+  </ol>
+  <table><tr><th>Species</th><th>Options</th><th>Preferred</th></tr>
+  <tr><td class="f2">SO₄²⁻</td><td>four S–O (S +2, each O −1) <em>or</em> two S=O + two S–O (S 0, two O −1)</td><td>two S=O — charges nearer zero (S expands its octet)</td></tr>
+  <tr><td class="f2">CO₂</td><td>O=C=O (all 0) <em>or</em> O≡C–O (+1, 0, −1)</td><td>O=C=O</td></tr>
+  <tr><td class="f2">N₂O</td><td>N=N=O (−1, +1, 0) <em>or</em> N≡N–O (0, +1, −1)</td><td>N≡N–O — the −1 is on O, more electronegative than N</td></tr>
+  <tr><td class="f2">OCN⁻</td><td>O=C=N (0, 0, −1) <em>or</em> O–C≡N (−1, 0, 0)</td><td>O–C≡N — the −1 is on O</td></tr></table>
+  ${warn('<p style="margin:0">Formal charge is not oxidation state. Formal charge assumes the bonding electrons are shared <strong>equally</strong>; oxidation state assumes they all go to the more electronegative atom. Neither is the real charge on the atom.</p>')}`;
+ },
+ check:{q:'Calculate the formal charge on the central O atom in ozone, O=O–O (it has one lone pair).', a:'FC = 6 − 3 − 2 = +1 (the singly bonded O is −1, the doubly bonded O is 0; total 0)'}
+},
+{
+ id:'shp_sigpi', unit:'shp', hl:true, ref:'S2.2.15', title:'Sigma and pi bonds', tag:'core', topics:['sigpi'],
+ body:function(){ return `
+  <p>Covalent bonds form when atomic orbitals overlap. There are two ways they can overlap.</p>
+  <table><tr><th>Bond</th><th>Overlap</th><th>Electron density</th></tr>
+  <tr><td><strong>sigma, σ</strong></td><td>direct, head-on (end-to-end) overlap of orbitals — s, p or hybrid orbitals</td><td>concentrated on the line between the two nuclei</td></tr>
+  <tr><td><strong>pi, π</strong></td><td>sideways overlap of parallel p orbitals</td><td>above and below the line (plane) of the nuclei</td></tr></table>
+  <h3>Counting them</h3>
+  <table><tr><th>Bond</th><th>σ</th><th>π</th></tr>
+  <tr><td>single</td><td>1</td><td>0</td></tr>
+  <tr><td>double</td><td>1</td><td>1</td></tr>
+  <tr><td>triple</td><td>1</td><td>2</td></tr></table>
+  ${rule('<p style="margin:0">Every bond contains exactly one σ bond, so <strong>σ = total number of bonds</strong>. Then <strong>π = (number of double bonds) + 2 × (number of triple bonds)</strong>. Remember to count every C–H bond — draw out or picture the full structural formula.</p>')}
+  <p>Ethene, CH₂=CH₂: four C–H and one C=C → <strong>5 σ, 1 π</strong>. Ethyne, HC≡CH: two C–H and one C≡C → <strong>3 σ, 2 π</strong>.</p>
+  <ul>
+   <li>A π bond only forms alongside a σ bond — never on its own.</li>
+   <li>A π bond is weaker than a σ bond (less overlap), so a C=C bond is less than twice as strong as C–C.</li>
+   <li>The π bond prevents rotation about a double bond — the origin of cis–trans isomerism.</li>
+  </ul>
+  ${warn('<p style="margin:0">A double bond is not "two σ bonds" and a triple bond is not "three π bonds". It is always one σ, plus one or two π.</p>')}`;
+ },
+ check:{q:'How many σ and π bonds are there in HCN?', a:'2 σ (C–H and the σ part of C≡N) and 2 π'}
 },
 {
  id:'shp_hybrid', unit:'shp', hl:true, ref:'S2.2.16', title:'Hybridization: sp, sp², sp³', tag:'core', topics:['hybrid'],
@@ -4874,12 +4927,12 @@ function genPair(hl){
   };
 }
 function genAngle(hl){
-  var s = shPick(hl, function(x){ return !x.noAng; }), a = shAng(s);
+  var s = shPick(hl, function(x){ return !x.noAng || x.lp > 0; }), a = shAng(s);
   return {
     type:shType('Bond angle', hl), topic: hl ? 'vsepr56' : 'vangle', chapter: hl ? 'shp_expanded' : 'shp_angles', hl:hl,
     stem:'What bond angle(s) does VSEPR predict around the central atom in ' + s.f + '?',
     input:'mc', opts:shOpts(a, hl ? HL_ANGLES : SL_ANGLES), answer:a,
-    explain:shWhy(s) + ' Predicted angle: ' + a + '.' + (s.lp && shDom(s) <= 4 ? ' Lone pairs repel more strongly than bonding pairs, so the angle is smaller than the ' + {3:'120°', 4:'109.5°'}[shDom(s)] + ' of the parent shape.' : '')
+    explain:shWhy(s) + ' Predicted angle: ' + a + '.' + (s.lp && shDom(s) <= 4 ? ' Lone pairs repel more strongly than bonding pairs, so the angle is less than the ' + {3:'120°', 4:'109.5°'}[shDom(s)] + ' of the parent shape' + (s.noAng ? '.' : ' — typically about ' + GEO[shDom(s)][s.lp].typ + '°, but you only need "less than".') : '')
   };
 }
 function genFromCounts(hl){
@@ -4952,16 +5005,16 @@ GENS.shp5_typed    = function(){ return genTyped(true); };
 // largest / smallest bond angle among species with different VSEPR angles
 GENS.shp_compare = function(){
   var seen = {}, set = [];
-  shuffle(SHP_SL.filter(function(x){ return !x.noAng; })).forEach(function(x){ var a = shAng(x); if(!seen[a] && set.length < 4){ seen[a] = 1; set.push(x); } });
+  shuffle(SHP_SL.filter(function(x){ return !x.noAng; })).forEach(function(x){ var a = shTyp(x); if(!seen[a] && set.length < 4){ seen[a] = 1; set.push(x); } });
   if(set.length < 3) return null;
   var big = Math.random() < 0.5;
-  set.sort(function(p, q){ return ANG_RANK[shAng(q)] - ANG_RANK[shAng(p)]; });
+  set.sort(function(p, q){ return shTyp(q) - shTyp(p); });
   var ans = big ? set[0] : set[set.length - 1];
   return {
     type:'Compare bond angles', topic:'vangle', chapter:'shp_angles',
     stem:'Which species has the ' + (big ? 'largest' : 'smallest') + ' bond angle around its central atom?',
-    input:'mc', opts:mcOpts(ans.f, set.filter(function(x){ return x !== ans; }).map(function(x){ return {name:x.f, why:x.f + ' is ' + shMG(x) + ', ' + shAng(x)}; })), answer:ans.f,
-    explain:set.map(function(x){ return x.f + ': ' + shMG(x) + ', ' + shAng(x); }).join('; ') + '.'
+    input:'mc', opts:mcOpts(ans.f, set.filter(function(x){ return x !== ans; }).map(function(x){ return {name:x.f, why:x.f + ' is ' + shMG(x) + ', ' + shAngTxt(x)}; })), answer:ans.f,
+    explain:set.map(function(x){ return x.f + ': ' + shMG(x) + ', ' + shAngTxt(x); }).join('; ') + '. Fewer electron domains → larger angle; with the same number of domains, more lone pairs → more repulsion → smaller angle.'
   };
 };
 
@@ -5014,6 +5067,14 @@ var SHP_FACTS = [
   {t:'vsepr56', hl:true, q:'Why is XeF₄ square planar rather than see-saw?', a:'Its two lone pairs sit opposite each other (180° apart) in an octahedral arrangement, minimising lone pair–lone pair repulsion', w:['Xe has no lone pairs','It has only four electron domains','Its lone pairs occupy equatorial positions of a trigonal bipyramid']},
   {t:'vsepr56', hl:true, q:'XeF₂ has three lone pairs on Xe. What is its shape?', a:'Linear — the three lone pairs occupy the equatorial plane, leaving the F atoms at 180°', w:['Bent, like H₂O','T-shaped','Trigonal planar']},
   {t:'vsepr56', hl:true, q:'Which bond angles are present in a trigonal bipyramidal molecule such as PCl₅?', a:'90° (axial–equatorial) and 120° (equatorial–equatorial)', w:['90° only','109.5° only','120° and 180° only']},
+  {t:'fcharge', hl:true, q:'Which expression gives the formal charge on an atom?', a:'valence electrons − ½(bonding electrons) − non-bonding electrons', w:['valence electrons − bonding electrons − ½(non-bonding electrons)','bonding electrons − non-bonding electrons','valence electrons + bonding electrons − 8']},
+  {t:'fcharge', hl:true, q:'Which Lewis formula is preferred when several are possible?', a:'The one with formal charges closest to zero, with any negative charge on the most electronegative atom', w:['The one with the most double bonds','The one with all single bonds','The one with the largest formal charges']},
+  {t:'fcharge', hl:true, q:'What do the formal charges of all the atoms in a species add up to?', a:'The overall charge of the species', w:['Always zero','The number of bonds','The number of lone pairs']},
+  {t:'fcharge', hl:true, q:'How does formal charge differ from oxidation state?', a:'Formal charge assumes bonding electrons are shared equally; oxidation state assigns them all to the more electronegative atom', w:['They are always the same number','Formal charge ignores lone pairs','Oxidation state assumes equal sharing']},
+  {t:'sigpi', hl:true, q:'How is a sigma (σ) bond formed?', a:'By direct, head-on (end-to-end) overlap of orbitals, with electron density between the nuclei', w:['By sideways overlap of parallel p orbitals','By transfer of an electron','By overlap of two lone pairs']},
+  {t:'sigpi', hl:true, q:'How is a pi (π) bond formed?', a:'By sideways overlap of parallel p orbitals, with electron density above and below the line of the nuclei', w:['By head-on overlap of s orbitals','By overlap of two hybrid orbitals along the bond axis','By attraction between ions']},
+  {t:'sigpi', hl:true, q:'Why is there no free rotation about a C=C double bond?', a:'Rotation would break the sideways overlap of the π bond', w:['The σ bond is too strong to rotate','Double bonds are longer than single bonds','The carbon atoms are sp³ hybridized']},
+  {t:'sigpi', hl:true, q:'Which statement about π bonds is correct?', a:'A π bond is only ever found together with a σ bond', w:['A π bond can exist on its own','A π bond is stronger than a σ bond','Single bonds contain one π bond']},
   {t:'hybrid', hl:true, q:'What is hybridization?', a:'The mixing of atomic orbitals to form new hybrid orbitals for bonding', w:['The sharing of electrons between two atoms','The overlap of two p orbitals to form a π bond','The transfer of electrons from a metal to a non-metal']},
   {t:'hybrid', hl:true, q:'Which orbitals mix to form sp² hybrid orbitals?', a:'One s and two p orbitals, giving three sp² orbitals', w:['One s and three p orbitals, giving four orbitals','Two s and one p orbital','One s and one p orbital, giving two orbitals']},
   {t:'hybrid', hl:true, q:'In ethene, what forms the π bond between the two carbon atoms?', a:'Sideways overlap of the unhybridized p orbitals on each sp² carbon', w:['End-on overlap of two sp² orbitals','Overlap of two sp³ orbitals','Overlap of the s orbitals']},
@@ -5022,9 +5083,9 @@ var SHP_FACTS = [
 ];
 function shFact(topics, hl){
   var f = pick(SHP_FACTS.filter(function(x){ return topics.indexOf(x.t) >= 0 && !!x.hl === hl; }));
-  var chap = {vsepr:'shp_domains', vangle:'shp_angles', molpol:'shp_polar', vsepr56:'shp_expanded', hybrid:'shp_hybrid'}[f.t];
+  var chap = {vsepr:'shp_domains', vangle:'shp_angles', molpol:'shp_polar', vsepr56:'shp_expanded', fcharge:'shp_fc', sigpi:'shp_sigpi', hybrid:'shp_hybrid'}[f.t];
   return {
-    type: hl ? (f.t === 'hybrid' ? 'Hybridization — concepts' : 'Five & six domains — concepts') : (f.t === 'molpol' ? 'Polarity — concepts' : 'VSEPR — concepts'), topic:f.t, chapter:chap, hl:hl,
+    type: hl ? ({hybrid:'Hybridization — concepts', fcharge:'Formal charge — concepts', sigpi:'σ and π — concepts'}[f.t] || 'Five & six domains — concepts') : (f.t === 'molpol' ? 'Polarity — concepts' : 'VSEPR — concepts'), topic:f.t, chapter:chap, hl:hl,
     stem:f.q, input:'mc', opts:mcOpts(f.a, f.w), answer:f.a, explain:f.a + '.'
   };
 }
@@ -5032,6 +5093,8 @@ GENS.shp_concept  = function(){ return shFact(['vsepr','vangle'], false); };
 GENS.pol_concept  = function(){ return shFact(['molpol'], false); };
 GENS.shp5_concept = function(){ return shFact(['vsepr56'], true); };
 GENS.hyb_concept  = function(){ return shFact(['hybrid'], true); };
+GENS.fc_concept   = function(){ return shFact(['fcharge'], true); };
+GENS.sp_concept   = function(){ return shFact(['sigpi'], true); };
 
 /* ---- HL: hybridization ---- */
 var HYB_ATOMS = [
@@ -5092,6 +5155,135 @@ GENS.hyb_geom = function(){
   };
 };
 
+/* ---- "less than which angle?" — the lone pair squeezes the parent angle ---- */
+function genLessThan(hl){
+  var s = shPick(hl, function(x){ return x.lp > 0 && GEO[shDom(x)][x.lp].ang.charAt(0) === '<'; });
+  var d = shDom(s), par = shAng(s).replace(/</g, ''), pl = par.indexOf('and') >= 0;
+  return {
+    type:shType('Less than which angle?', hl), topic: hl ? 'vsepr56' : 'vangle', chapter: hl ? 'shp_expanded' : 'shp_angles', hl:hl,
+    stem:'The lone pair' + (s.lp > 1 ? 's' : '') + ' on the central ' + s.c + ' in ' + s.f + ' squeeze' + (s.lp > 1 ? '' : 's') + ' the bonds together. The bond angle' + (pl ? 's are' : ' is') + ' less than…',
+    input:'mc', opts:shOpts(par, ['180°','120°','109.5°','90°','90° and 120°']), answer:par,
+    explain:s.f + ' has ' + shCount(s) + ' → ' + EDG[d] + ' arrangement, where the ideal angle' + (pl ? 's are ' : ' is ') + par + '. Lone pairs repel more than bonding pairs, so the angle' + (pl ? 's are' : ' is') + ' ' + shAng(s) + '.'
+  };
+}
+GENS.shp_less  = function(){ return genLessThan(false); };
+GENS.shp5_less = function(){ return genLessThan(true); };
+
+/* ---- HL: formal charge ---- */
+// one atom in one Lewis formula: V valence electrons, b bonds (= half the bonding electrons), n non-bonding electrons
+var FC_ATOMS = [
+  {sp:'NH₄⁺', at:'N', V:5, b:4, n:0},
+  {sp:'H₃O⁺', at:'O', V:6, b:3, n:2},
+  {sp:'OH⁻', at:'O', V:6, b:1, n:6},
+  {sp:'BF₄⁻', at:'B', V:3, b:4, n:0},
+  {sp:':C≡O:', at:'C', V:4, b:3, n:2},
+  {sp:':C≡O:', at:'O', V:6, b:3, n:2},
+  {sp:'[:C≡N:]⁻', at:'C', V:4, b:3, n:2},
+  {sp:'[:C≡N:]⁻', at:'N', V:5, b:3, n:2},
+  {sp:'O₃ drawn as O=O–O', at:'central O', V:6, b:3, n:2},
+  {sp:'O₃ drawn as O=O–O', at:'singly bonded O', V:6, b:1, n:6},
+  {sp:'O₃ drawn as O=O–O', at:'doubly bonded end O', V:6, b:2, n:4},
+  {sp:'CO₂ drawn as O=C=O', at:'C', V:4, b:4, n:0},
+  {sp:'CO₂ drawn as O≡C–O', at:'triply bonded O', V:6, b:3, n:2},
+  {sp:'NO₃⁻ (one N=O, two N–O)', at:'N', V:5, b:4, n:0},
+  {sp:'NO₃⁻ (one N=O, two N–O)', at:'a singly bonded O', V:6, b:1, n:6},
+  {sp:'SO₄²⁻ drawn with four S–O single bonds', at:'S', V:6, b:4, n:0},
+  {sp:'SO₄²⁻ drawn with two S=O and two S–O', at:'S', V:6, b:6, n:0},
+  {sp:'SO₂ drawn as O=S–O', at:'S', V:6, b:3, n:2},
+  {sp:'SO₂ drawn as O=S=O', at:'S', V:6, b:4, n:2},
+  {sp:'PO₄³⁻ drawn with four P–O single bonds', at:'P', V:5, b:4, n:0},
+  {sp:'PO₄³⁻ drawn with one P=O', at:'P', V:5, b:5, n:0},
+  {sp:'N₂O drawn as N=N=O', at:'end N', V:5, b:2, n:4},
+  {sp:'N₂O drawn as N≡N–O', at:'central N', V:5, b:4, n:0},
+  {sp:'N₂O drawn as N≡N–O', at:'O', V:6, b:1, n:6},
+  {sp:'HCN', at:'C', V:4, b:4, n:0},
+  {sp:'[S=C=N]⁻', at:'N', V:5, b:2, n:4}
+];
+function signed(x){ return x > 0 ? '+' + x : x < 0 ? '−' + (-x) : '0'; }
+GENS.fc_calc = function(){
+  var x = pick(FC_ATOMS), fc = x.V - x.b - x.n, a = signed(fc);
+  return {
+    type:'Calculate a formal charge', topic:'fcharge', chapter:'shp_fc', hl:true,
+    stem:'In the Lewis formula of ' + x.sp + ', the ' + x.at + ' atom forms ' + x.b + ' bond' + (x.b === 1 ? '' : 's') + ' (' + (2 * x.b) + ' bonding electrons) and has ' + x.n + ' non-bonding electrons. What is its formal charge?',
+    sub:'Valence electrons of ' + x.at.replace(/^.*\b(?=[A-Z])/, '') + ': ' + x.V + '.',
+    input:'mc', opts:shOpts(a, ['−2','−1','0','+1','+2']), answer:a,
+    explain:'FC = V − ½B − N = ' + x.V + ' − ' + x.b + ' − ' + x.n + ' = ' + a + '.'
+  };
+};
+var FC_CHOICES = [
+  {sp:'SO₄²⁻', opts:[['two S=O and two S–O bonds','S 0, two O 0, two O −1'],['four S–O single bonds','S +2, every O −1']], why:'formal charges closer to zero (sulfur can expand its octet)'},
+  {sp:'SO₂', opts:[['O=S=O','all atoms 0'],['O=S–O','S +1, single-bonded O −1']], why:'every formal charge is zero'},
+  {sp:'PO₄³⁻', opts:[['one P=O and three P–O bonds','P 0, one O 0, three O −1'],['four P–O single bonds','P +1, every O −1']], why:'formal charges closer to zero'},
+  {sp:'CO₂', opts:[['O=C=O','all atoms 0'],['O≡C–O','+1, 0, −1']], why:'every formal charge is zero'},
+  {sp:'N₂O', opts:[['N≡N–O','0, +1, −1'],['N=N=O','−1, +1, 0']], why:'the charges are equally small, but the −1 sits on O, the more electronegative atom'},
+  {sp:'OCN⁻', opts:[['[O–C≡N]⁻','−1, 0, 0'],['[O=C=N]⁻','0, 0, −1']], why:'the −1 sits on O, which is more electronegative than N'},
+  {sp:'SCN⁻', opts:[['[S=C=N]⁻','0, 0, −1'],['[S–C≡N]⁻','−1, 0, 0']], why:'the −1 sits on N, which is more electronegative than S'}
+];
+GENS.fc_prefer = function(){
+  var c = pick(FC_CHOICES);
+  var ans = c.opts[0][0];
+  return {
+    type:'Preferred Lewis formula', topic:'fcharge', chapter:'shp_fc', hl:true,
+    stem:'Which Lewis formula of ' + c.sp + ' is preferred, judged by formal charge?',
+    sub:c.opts.map(function(o){ return o[0] + ' — formal charges: ' + o[1]; }).join(' · '),
+    input:'mc', opts:mcOpts(ans, c.opts.slice(1).map(function(o){ return o[0]; }).concat(['Both are equally preferred'])), answer:ans,
+    explain:ans + ' is preferred: ' + c.why + '.'
+  };
+};
+
+/* ---- HL: sigma and pi ---- */
+// s single, d double, t triple bonds in the full structural formula
+var SIGPI = [
+  {f:'H₂', s:1, d:0, t:0}, {f:'N₂', s:0, d:0, t:1}, {f:'O₂', s:0, d:1, t:0},
+  {f:'HCN', s:1, d:0, t:1}, {f:'CO₂', s:0, d:2, t:0},
+  {f:'C₂H₆ (ethane)', s:7, d:0, t:0}, {f:'C₂H₄ (ethene)', s:4, d:1, t:0}, {f:'C₂H₂ (ethyne)', s:2, d:0, t:1},
+  {f:'CH₂=CHCH₃ (propene)', s:7, d:1, t:0}, {f:'CH₃C≡CH (propyne)', s:5, d:0, t:1},
+  {f:'HCHO (methanal)', s:2, d:1, t:0}, {f:'CH₃CHO (ethanal)', s:5, d:1, t:0},
+  {f:'HCOOH (methanoic acid)', s:3, d:1, t:0}, {f:'CH₃COOH (ethanoic acid)', s:6, d:1, t:0},
+  {f:'CH₃COCH₃ (propanone)', s:8, d:1, t:0}, {f:'CH₃CN (ethanenitrile)', s:4, d:0, t:1},
+  {f:'CH₂=CH–CH=CH₂ (buta-1,3-diene)', s:7, d:2, t:0}, {f:'CH₂=CHCN (propenenitrile)', s:4, d:1, t:1},
+  {f:'CO(NH₂)₂ (urea)', s:6, d:1, t:0}, {f:'CH₃OH (methanol)', s:5, d:0, t:0}
+];
+function nSig(x){ return x.s + x.d + x.t; }
+function nPi(x){ return x.d + 2 * x.t; }
+function spWhy(x){
+  var parts = [];
+  if(x.s) parts.push(x.s + ' single bond' + (x.s > 1 ? 's' : ''));
+  if(x.d) parts.push(x.d + ' double bond' + (x.d > 1 ? 's' : ''));
+  if(x.t) parts.push(x.t + ' triple bond' + (x.t > 1 ? 's' : ''));
+  return x.f + ' has ' + parts.join(', ') + ' → σ = ' + nSig(x) + ' (one per bond), π = ' + x.d + ' + 2 × ' + x.t + ' = ' + nPi(x) + '.';
+}
+GENS.sp_count = function(){
+  var x = pick(SIGPI), sig = Math.random() < 0.5, n = sig ? nSig(x) : nPi(x), a = String(n);
+  var near = [n - 2, n - 1, n + 1, n + 2, n + 3].filter(function(v){ return v >= 0; }).map(String);
+  return {
+    type:'Count ' + (sig ? 'σ' : 'π') + ' bonds', topic:'sigpi', chapter:'shp_sigpi', hl:true,
+    stem:'How many ' + (sig ? 'sigma (σ)' : 'pi (π)') + ' bonds are there in one molecule of ' + x.f + '?',
+    input:'mc', opts:shOpts(a, near), answer:a,
+    explain:spWhy(x)
+  };
+};
+GENS.sp_both = function(){
+  var x = pick(SIGPI), fmt = function(s, p){ return s + ' σ and ' + p + ' π'; };
+  var S = nSig(x), P = nPi(x), a = fmt(S, P);
+  var wr = [fmt(S + P, 0), fmt(S - P > 0 ? S - P : S + 1, P), fmt(S, P + 1), fmt(S + x.d + x.t, P), fmt(S, Math.max(0, P - 1)), fmt(S + 1, P), fmt(S + 1, P + 1)];
+  return {
+    type:'σ and π bonds', topic:'sigpi', chapter:'shp_sigpi', hl:true,
+    stem:'How many σ and π bonds are in one molecule of ' + x.f + '?',
+    input:'mc', opts:shOpts(a, wr), answer:a,
+    explain:spWhy(x)
+  };
+};
+GENS.sp_bond = function(){
+  var k = pick([['single bond','1 σ only'],['double bond','1 σ and 1 π'],['triple bond','1 σ and 2 π']]);
+  return {
+    type:'What is in the bond?', topic:'sigpi', chapter:'shp_sigpi', hl:true,
+    stem:'A ' + k[0] + ' consists of…',
+    input:'mc', opts:shOpts(k[1], ['1 σ only','1 σ and 1 π','1 σ and 2 π','2 σ','2 σ and 1 π','3 π']), answer:k[1],
+    explain:'Every bond has exactly one σ bond; a double bond adds one π, a triple bond adds two.'
+  };
+};
+
 QTYPES.push(
   {k:'shp_domains',  w:2, topics:['vsepr'],  unit:'shp'},
   {k:'shp_lp',       w:2, topics:['vsepr'],  unit:'shp'},
@@ -5103,6 +5295,7 @@ QTYPES.push(
   {k:'shp_typed',    w:2, topics:['vshape'], unit:'shp'},
   {k:'shp_angle',    w:4, topics:['vangle'], unit:'shp'},
   {k:'shp_compare',  w:2, topics:['vangle'], unit:'shp'},
+  {k:'shp_less',     w:3, topics:['vangle'], unit:'shp'},
   {k:'shp_concept',  w:2, topics:['vsepr','vangle'], unit:'shp'},
   {k:'pol_yn',       w:3, topics:['molpol'], unit:'shp'},
   {k:'pol_which',    w:2, topics:['molpol'], unit:'shp'},
@@ -5116,25 +5309,37 @@ QTYPES.push(
   {k:'shp5_which',   w:2, topics:['vsepr56','vshape'], unit:'shp', hl:true},
   {k:'shp5_typed',   w:2, topics:['vsepr56','vshape'], unit:'shp', hl:true},
   {k:'shp5_angle',   w:3, topics:['vsepr56','vangle'], unit:'shp', hl:true},
+  {k:'shp5_less',    w:2, topics:['vsepr56','vangle'], unit:'shp', hl:true},
   {k:'pol5_yn',      w:2, topics:['vsepr56','molpol'], unit:'shp', hl:true},
   {k:'shp5_concept', w:2, topics:['vsepr56'], unit:'shp', hl:true},
   {k:'hyb_central',  w:3, topics:['hybrid'],  unit:'shp', hl:true},
   {k:'hyb_atom',     w:3, topics:['hybrid'],  unit:'shp', hl:true},
   {k:'hyb_geom',     w:2, topics:['hybrid'],  unit:'shp', hl:true},
-  {k:'hyb_concept',  w:2, topics:['hybrid'],  unit:'shp', hl:true}
+  {k:'hyb_concept',  w:2, topics:['hybrid'],  unit:'shp', hl:true},
+  {k:'fc_calc',      w:3, topics:['fcharge'], unit:'shp', hl:true},
+  {k:'fc_prefer',    w:3, topics:['fcharge'], unit:'shp', hl:true},
+  {k:'fc_concept',   w:2, topics:['fcharge'], unit:'shp', hl:true},
+  {k:'sp_count',     w:3, topics:['sigpi'],   unit:'shp', hl:true},
+  {k:'sp_both',      w:3, topics:['sigpi'],   unit:'shp', hl:true},
+  {k:'sp_bond',      w:1, topics:['sigpi'],   unit:'shp', hl:true},
+  {k:'sp_concept',   w:2, topics:['sigpi'],   unit:'shp', hl:true}
 );
 MODES.push(
-  {k:'shpq',   unit:'shp', t:'Geometry quick test', d:'Ten mixed questions: domains, shapes, bond angles and polarity — plus five and six domains and hybridization at HL.', n:10, level:2, units:['shp'], meta:'10 questions'},
+  {k:'shpq',   unit:'shp', t:'Geometry quick test', d:'Ten mixed questions: domains, shapes, bond angles and polarity — plus five and six domains, formal charge, σ / π and hybridization at HL.', n:10, level:2, units:['shp'], meta:'10 questions'},
   {k:'shpnm',  unit:'shp', t:'Naming shapes', d:'Electron domain geometry vs molecular geometry, from formulas and from domain counts. Pick or type the name.', n:15, level:2,
    only:['shp_edg','shp_mg','shp_pair','shp_counts','shp_which','shp_typed','shp5_edg','shp5_mg','shp5_pair','shp5_counts','shp5_which','shp5_typed'], meta:'15 questions · SL + HL'},
   {k:'shpang', unit:'shp', t:'Bond angles', d:'Predict bond angles, compare them, and explain the effect of lone pairs and multiple bonds.', n:12, level:2,
-   only:['shp_angle','shp_compare','shp_concept','shp5_angle'], meta:'12 questions · SL + HL'},
+   only:['shp_angle','shp_compare','shp_less','shp_concept','shp5_angle','shp5_less'], meta:'12 questions · SL + HL'},
   {k:'shpdom', unit:'shp', t:'Counting domains', d:'Electron domains and lone pairs on the central atom — the first step of every shape question.', n:12, level:2,
    only:['shp_domains','shp_lp','shp_edg','shp_concept','shp5_domains','shp5_lp'], meta:'12 questions · SL + HL'},
   {k:'shppol', unit:'shp', t:'Molecular polarity', d:'Polar or non-polar? Decide from bond polarity and shape.', n:12, level:2,
    only:['pol_yn','pol_which','pol_concept','pol5_yn'], meta:'12 questions · SL + HL'},
   {k:'shp56',  unit:'shp', hl:true, t:'Five & six domains', d:'Trigonal bipyramidal, see-saw, T-shaped, linear, octahedral, square pyramidal and square planar.', n:12, level:2,
-   only:['shp5_domains','shp5_lp','shp5_edg','shp5_mg','shp5_pair','shp5_counts','shp5_which','shp5_typed','shp5_angle','pol5_yn','shp5_concept'], meta:'12 questions'},
+   only:['shp5_domains','shp5_lp','shp5_edg','shp5_mg','shp5_pair','shp5_counts','shp5_which','shp5_typed','shp5_angle','shp5_less','pol5_yn','shp5_concept'], meta:'12 questions'},
+  {k:'shpfc',  unit:'shp', hl:true, t:'Formal charge', d:'Calculate FC = V − ½B − N, and choose the preferred Lewis formula.', n:12, level:2,
+   only:['fc_calc','fc_prefer','fc_concept'], meta:'12 questions'},
+  {k:'shpsp',  unit:'shp', hl:true, t:'Sigma & pi bonds', d:'Count σ and π bonds in organic and inorganic molecules; head-on vs sideways overlap.', n:12, level:2,
+   only:['sp_count','sp_both','sp_bond','sp_concept'], meta:'12 questions'},
   {k:'shphyb', unit:'shp', hl:true, t:'Hybridization', d:'sp, sp² and sp³ from electron domains, in organic and inorganic species — and geometry from hybridization.', n:12, level:2,
    only:['hyb_central','hyb_atom','hyb_geom','hyb_concept'], meta:'12 questions'}
 );
@@ -5159,7 +5364,8 @@ function renderUnitCards(){
     return '<button data-unitgo="' + u.k + '"><div class="gk">Unit ' + esc(u.code) + ' · ' + esc(u.ref) + '</div>' +
       '<div class="ut">' + esc(u.t) + '</div><div class="ud">' + esc(u.d) + '</div>' +
       '<div class="um">' + ch + ' chapters · ' + qt + ' question types' +
-      (u.k === 'iso' ? (LEVEL === 'HL' ? ' <span class="tag hl">stereo · HL</span>' : ' <span class="tag ext">stereo hidden at SL</span>') : '') + '</div></button>';
+      (u.k === 'iso' ? (LEVEL === 'HL' ? ' <span class="tag hl">stereo · HL</span>' : ' <span class="tag ext">stereo hidden at SL</span>') : '') +
+      (u.k === 'shp' ? (LEVEL === 'HL' ? ' <span class="tag hl">5–6 domains · FC · σ/π · hybrid · HL</span>' : ' <span class="tag ext">HL topics hidden at SL</span>') : '') + '</div></button>';
   }).join('');
 }
 $('#unitCards').addEventListener('click', function(e){
