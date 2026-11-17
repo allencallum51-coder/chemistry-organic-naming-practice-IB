@@ -4569,6 +4569,576 @@ MODES.push(
    only:['pe_calc','pe_concept','ae_calc'], meta:'10 questions'}
 );
 
+/* ============================================================
+   UNIT 04 — MOLECULAR GEOMETRY (Structure 2.2)
+   SL: S2.2.4 VSEPR up to four electron domains, S2.2.6 molecular polarity.
+   HL: S2.2.13 five and six electron domains, S2.2.16 sp / sp2 / sp3 hybridization.
+   Plugs into the same UNITS / CHAPTERS / GENS / QTYPES / TOPICS / MODES
+   registries; everything HL is flagged hl:true so the SL switch hides it.
+   ============================================================ */
+UNITS.push({k:'shp', code:'04', t:'Molecular geometry', ref:'S2.2', d:'Electron domains, VSEPR shapes, bond angles and molecular polarity; five and six domains and hybridization at HL.'});
+UNIT_ORDER.push('shp');
+
+TOPICS.vsepr   = 'Electron domains';
+TOPICS.vshape  = 'Naming shapes';
+TOPICS.vangle  = 'Bond angles';
+TOPICS.molpol  = 'Molecular polarity';
+TOPICS.vsepr56 = 'Five & six domains';
+TOPICS.hybrid  = 'Hybridization';
+['vsepr','vshape','vangle','molpol','vsepr56','hybrid'].forEach(function(k){ TOPIC_UNIT[k] = 'shp'; });
+HL_TOPICS.push('vsepr56', 'hybrid');
+
+/* ---------- data ---------- */
+// GEO[domains][lone pairs] -> molecular geometry and the VSEPR bond angle(s)
+var EDG = {2:'linear', 3:'trigonal planar', 4:'tetrahedral', 5:'trigonal bipyramidal', 6:'octahedral'};
+var GEO = {
+  2:{0:{mg:'linear', ang:'180°'}},
+  3:{0:{mg:'trigonal planar', ang:'120°'}, 1:{mg:'bent', ang:'<120° (≈117°)'}},
+  4:{0:{mg:'tetrahedral', ang:'109.5°'}, 1:{mg:'trigonal pyramidal', ang:'≈107°'}, 2:{mg:'bent', ang:'≈104.5°'}},
+  5:{0:{mg:'trigonal bipyramidal', ang:'90° and 120°'}, 1:{mg:'see-saw', ang:'<90° and <120°'}, 2:{mg:'T-shaped', ang:'<90°'}, 3:{mg:'linear', ang:'180°'}},
+  6:{0:{mg:'octahedral', ang:'90°'}, 1:{mg:'square pyramidal', ang:'<90°'}, 2:{mg:'square planar', ang:'90°'}}
+};
+var HYB = {2:'sp', 3:'sp²', 4:'sp³'};
+var SL_SHAPES = ['linear','trigonal planar','bent','tetrahedral','trigonal pyramidal'];
+var HL_SHAPES = ['trigonal bipyramidal','see-saw','T-shaped','linear','octahedral','square pyramidal','square planar'];
+var SL_ANGLES = ['180°','120°','<120° (≈117°)','109.5°','≈107°','≈104.5°'];
+var HL_ANGLES = ['180°','120°','90°','90° and 120°','<90° and <120°','<90°','109.5°'];
+var ANG_RANK = {'180°':180, '120°':120, '<120° (≈117°)':117, '109.5°':109.5, '≈107°':107, '≈104.5°':104.5};
+
+// f: species, c: central atom, b: bonding domains, lp: lone pairs on the central atom,
+// mult: has a double/triple bond, pol: true / false for neutral molecules (omitted for ions),
+// pn: why it is polar when that is not just "lone pairs", noAng: real angle strays from the VSEPR value
+var SHP_SL = [
+  {f:'BeCl₂', c:'Be', b:2, lp:0, pol:false},
+  {f:'CO₂',   c:'C',  b:2, lp:0, mult:true, pol:false},
+  {f:'HCN',   c:'C',  b:2, lp:0, mult:true, pol:true, pn:'H and N are different atoms, so the C–H and C≡N dipoles do not cancel'},
+  {f:'BF₃',   c:'B',  b:3, lp:0, pol:false},
+  {f:'BCl₃',  c:'B',  b:3, lp:0, pol:false},
+  {f:'SO₃',   c:'S',  b:3, lp:0, mult:true, pol:false},
+  {f:'CO₃²⁻', c:'C',  b:3, lp:0, mult:true},
+  {f:'NO₃⁻',  c:'N',  b:3, lp:0, mult:true},
+  {f:'H₂CO (methanal)', c:'C', b:3, lp:0, mult:true, pol:true, noAng:true, pn:'the C=O dipole is much larger than the C–H dipoles, so they do not cancel'},
+  {f:'SO₂',   c:'S',  b:2, lp:1, mult:true, pol:true},
+  {f:'O₃',    c:'O',  b:2, lp:1, mult:true},
+  {f:'NO₂⁻',  c:'N',  b:2, lp:1, mult:true},
+  {f:'CH₄',   c:'C',  b:4, lp:0, pol:false},
+  {f:'CCl₄',  c:'C',  b:4, lp:0, pol:false},
+  {f:'SiCl₄', c:'Si', b:4, lp:0, pol:false},
+  {f:'NH₄⁺',  c:'N',  b:4, lp:0},
+  {f:'CHCl₃', c:'C',  b:4, lp:0, pol:true, noAng:true, pn:'one H and three Cl atoms are not identical, so the bond dipoles do not cancel'},
+  {f:'CH₂Cl₂', c:'C', b:4, lp:0, pol:true, noAng:true, pn:'two H and two Cl atoms are not identical, so the bond dipoles do not cancel'},
+  {f:'NH₃',   c:'N',  b:3, lp:1, pol:true},
+  {f:'PCl₃',  c:'P',  b:3, lp:1, pol:true, noAng:true},
+  {f:'NF₃',   c:'N',  b:3, lp:1, pol:true, noAng:true},
+  {f:'H₃O⁺',  c:'O',  b:3, lp:1},
+  {f:'H₂O',   c:'O',  b:2, lp:2, pol:true},
+  {f:'OF₂',   c:'O',  b:2, lp:2, pol:true, noAng:true},
+  {f:'SCl₂',  c:'S',  b:2, lp:2, pol:true, noAng:true},
+  {f:'NH₂⁻',  c:'N',  b:2, lp:2}
+];
+var SHP_HL = [
+  {f:'PCl₅',  c:'P',  b:5, lp:0, pol:false},
+  {f:'PF₅',   c:'P',  b:5, lp:0, pol:false},
+  {f:'SF₄',   c:'S',  b:4, lp:1, pol:true},
+  {f:'SeF₄',  c:'Se', b:4, lp:1, pol:true},
+  {f:'ClF₃',  c:'Cl', b:3, lp:2, pol:true},
+  {f:'BrF₃',  c:'Br', b:3, lp:2, pol:true},
+  {f:'XeF₂',  c:'Xe', b:2, lp:3, pol:false},
+  {f:'I₃⁻',   c:'I',  b:2, lp:3},
+  {f:'SF₆',   c:'S',  b:6, lp:0, pol:false},
+  {f:'PF₆⁻',  c:'P',  b:6, lp:0},
+  {f:'BrF₅',  c:'Br', b:5, lp:1, pol:true},
+  {f:'IF₅',   c:'I',  b:5, lp:1, pol:true},
+  {f:'XeF₄',  c:'Xe', b:4, lp:2, pol:false},
+  {f:'ICl₄⁻', c:'I',  b:4, lp:2}
+];
+function shDom(s){ return s.b + s.lp; }
+function shMG(s){ return GEO[shDom(s)][s.lp].mg; }
+function shAng(s){ return GEO[shDom(s)][s.lp].ang; }
+function shEDG(s){ return EDG[shDom(s)]; }
+function shCount(s){
+  return s.b + ' bonding domain' + (s.b === 1 ? '' : 's') + ' + ' + s.lp + ' lone pair' + (s.lp === 1 ? '' : 's') + ' = ' + shDom(s) + ' electron domains';
+}
+function shWhy(s){
+  return 'The central ' + s.c + ' in ' + s.f + ' has ' + shCount(s) + (s.mult ? ' (a double or triple bond counts as one domain)' : '') +
+    '. Electron domain geometry: ' + shEDG(s) + '. Molecular geometry: ' + shMG(s) + '.';
+}
+function shPool(hl){ return hl ? SHP_HL : SHP_SL; }
+function shType(t, hl){ return hl ? t + ' (5 & 6 domains)' : t; }
+
+/* ---------- unit 04 chapters ---------- */
+function shpRow(d, lp, ex){
+  var g = GEO[d][lp];
+  return '<tr><td>' + d + '</td><td>' + (d - lp) + '</td><td>' + lp + '</td><td>' + EDG[d] + '</td><td><strong>' + g.mg + '</strong></td><td class="f2">' + esc(g.ang) + '</td><td class="f2">' + ex + '</td></tr>';
+}
+var SHP_HEAD = '<tr><th>Domains</th><th>Bonding</th><th>Lone pairs</th><th>Electron domain geometry</th><th>Molecular geometry</th><th>Bond angle</th><th>Examples</th></tr>';
+
+CHAPTERS.push(
+{
+ id:'shp_domains', unit:'shp', ref:'S2.2.4', title:'Electron domains', tag:'core', topics:['vsepr'],
+ body:function(){ return `
+  <p>The <strong>valence shell electron pair repulsion (VSEPR)</strong> model predicts the shape of a molecule or ion from the electron domains around its central atom. Electron domains repel one another, so they arrange themselves <strong>as far apart as possible</strong> to minimise repulsion.</p>
+  <h3>What counts as one electron domain</h3>
+  <table><tr><th>Around the central atom</th><th>Domains</th></tr>
+  <tr><td>a single bond</td><td>1</td></tr>
+  <tr><td>a double bond</td><td>1</td></tr>
+  <tr><td>a triple bond</td><td>1</td></tr>
+  <tr><td>a lone (non-bonding) pair</td><td>1</td></tr></table>
+  ${rule('<p style="margin:0">Count <strong>bonded atoms + lone pairs</strong> on the central atom. CO₂ has two C=O double bonds but only <strong>two</strong> electron domains, so it is linear.</p>')}
+  <h3>Counting lone pairs on the central atom</h3>
+  <p>Start from the Lewis formula. For a central atom whose terminal atoms are H or halogens (each forms one single bond), a quick check is:</p>
+  ${fx('lone pairs = (valence electrons of central atom − number of bonds − ion charge) ÷ 2', 'for an anion, subtracting a negative charge adds electrons')}
+  <ul>
+   <li>NH₃: (5 − 3) ÷ 2 = 1 lone pair → 4 domains.</li>
+   <li>H₂O: (6 − 2) ÷ 2 = 2 lone pairs → 4 domains.</li>
+   <li>NH₄⁺: (5 − 4 − 1) ÷ 2 = 0 lone pairs → 4 domains.</li>
+   <li>NH₂⁻: (5 − 2 + 1) ÷ 2 = 2 lone pairs → 4 domains.</li>
+  </ul>
+  <p>A terminal O joined by a double bond uses two of the central atom's electrons: SO₂ has (6 − 2 − 2) ÷ 2 = 1 lone pair → 3 domains. For oxyanions such as CO₃²⁻ and NO₃⁻ work from the Lewis formula — the charge sits on the oxygen atoms, not the central atom.</p>
+  <h3>Two geometries</h3>
+  <ul>
+   <li><strong>Electron domain geometry</strong> — the arrangement of <em>all</em> the electron domains, bonding and non-bonding.</li>
+   <li><strong>Molecular geometry</strong> — the arrangement of the <em>atoms</em> only. Lone pairs are there, but they are not part of the shape you name.</li>
+  </ul>
+  ${warn('<p style="margin:0">NH₃ has a <strong>tetrahedral</strong> electron domain geometry but a <strong>trigonal pyramidal</strong> molecular geometry. If a question asks for "the shape", it means the molecular geometry.</p>')}`;
+ },
+ check:{q:'How many electron domains are there around the carbon atom in HCN?', a:'Two — the C–H single bond and the C≡N triple bond each count as one domain, so HCN is linear'}
+},
+{
+ id:'shp_vsepr', unit:'shp', ref:'S2.2.4', title:'VSEPR shapes up to four domains', tag:'core', topics:['vshape','vangle'],
+ body:function(){ return `
+  <p>The number of electron domains fixes the electron domain geometry. The number of lone pairs then decides which molecular geometry you name.</p>
+  <table>${SHP_HEAD}
+  ${shpRow(2,0,'BeCl₂, CO₂, HCN')}
+  ${shpRow(3,0,'BF₃, SO₃, CO₃²⁻, NO₃⁻')}
+  ${shpRow(3,1,'SO₂, O₃, NO₂⁻')}
+  ${shpRow(4,0,'CH₄, CCl₄, NH₄⁺')}
+  ${shpRow(4,1,'NH₃, PCl₃, H₃O⁺')}
+  ${shpRow(4,2,'H₂O, OF₂, NH₂⁻')}</table>
+  ${rule('<p style="margin:0">Four steps: <strong>1</strong> find the central atom. <strong>2</strong> count bonding domains and lone pairs. <strong>3</strong> total domains → electron domain geometry. <strong>4</strong> lone pairs → molecular geometry and bond angle.</p>')}
+  <h3>Names you can use</h3>
+  <ul>
+   <li><strong>bent</strong> is also called <strong>angular</strong> or <strong>V-shaped</strong>.</li>
+   <li><strong>trigonal pyramidal</strong> is sometimes shortened to <strong>pyramidal</strong>.</li>
+   <li><strong>trigonal planar</strong> is sometimes written <strong>triangular planar</strong>.</li>
+  </ul>
+  ${warn('<p style="margin:0">"Bent" turns up twice: three domains with one lone pair (SO₂, &lt;120°) and four domains with two lone pairs (H₂O, ≈104.5°). The name is the same; the bond angle is not.</p>')}`;
+ },
+ check:{q:'BF₃ and NH₃ both have three bonded atoms. Why are their shapes different?', a:'NH₃ also has a lone pair, so it has four electron domains (tetrahedral arrangement → trigonal pyramidal, ≈107°); BF₃ has three domains and no lone pair (trigonal planar, 120°)'}
+},
+{
+ id:'shp_angles', unit:'shp', ref:'S2.2.4', title:'What changes a bond angle', tag:'core', topics:['vangle'],
+ body:function(){ return `
+  <p>Not all electron domains repel equally. A lone pair is held by only one nucleus, so it is closer to the central atom and spreads out more.</p>
+  ${fx('lone pair–lone pair  >  lone pair–bonding pair  >  bonding pair–bonding pair', 'order of repulsion')}
+  <h3>Lone pairs squeeze the bonds together</h3>
+  <table><tr><th>Species</th><th>Lone pairs</th><th>Shape</th><th>Bond angle</th></tr>
+  <tr><td class="f2">CH₄</td><td>0</td><td>tetrahedral</td><td class="f2">109.5°</td></tr>
+  <tr><td class="f2">NH₃</td><td>1</td><td>trigonal pyramidal</td><td class="f2">≈107°</td></tr>
+  <tr><td class="f2">H₂O</td><td>2</td><td>bent</td><td class="f2">≈104.5°</td></tr></table>
+  <p>All three have four electron domains. Each extra lone pair pushes the bonding pairs closer together, removing roughly 2.5°. In the same way SO₂ (one lone pair, three domains) is bent with an angle a little <strong>less than 120°</strong>, about 117°.</p>
+  <h3>Multiple bonds</h3>
+  <p>A double or triple bond still counts as one domain, but it holds more electron density, so it repels more strongly than a single bond. In methanal, H₂CO, the bigger C=O domain pushes the two C–H bonds together: the H–C–H angle is a little <strong>less than 120°</strong> and each H–C=O angle is a little more.</p>
+  ${rule('<p style="margin:0">In an exam, give the VSEPR value (180°, 120°, 109.5°, 107°, 104.5°) and say which way lone pairs or multiple bonds move it. Real angles for larger central atoms (PCl₃, H₂S) are often smaller still, but the VSEPR prediction is what is assessed.</p>')}
+  ${warn('<p style="margin:0">Do not say a lone pair "takes up a bond position". Say it <em>repels more strongly</em> than a bonding pair and so <em>reduces</em> the angle between the bonds.</p>')}`;
+ },
+ check:{q:'Why is the H–N–H bond angle in NH₃ smaller than the H–C–H angle in CH₄?', a:'NH₃ has a lone pair; lone pair–bonding pair repulsion is greater than bonding pair–bonding pair repulsion, so the N–H bonds are pushed closer together (≈107° instead of 109.5°)'}
+},
+{
+ id:'shp_polar', unit:'shp', ref:'S2.2.6', title:'Molecular polarity', tag:'core', topics:['molpol'],
+ body:function(){ return `
+  <p>A molecule's polarity depends on <strong>both</strong> the polarity of its bonds <strong>and</strong> its molecular geometry. Each polar bond is a <strong>bond dipole</strong> with a size and a direction. If the dipoles cancel, there is no <strong>net dipole moment</strong> and the molecule is non-polar.</p>
+  <h3>Three steps</h3>
+  <ol>
+   <li>Are there polar bonds? (different electronegativities)</li>
+   <li>What is the molecular geometry? (VSEPR)</li>
+   <li>Do the bond dipoles cancel by symmetry?</li>
+  </ol>
+  <table><tr><th>Molecule</th><th>Shape</th><th>Dipoles</th><th>Result</th></tr>
+  <tr><td class="f2">CO₂</td><td>linear</td><td>two equal C=O dipoles in opposite directions cancel</td><td>non-polar</td></tr>
+  <tr><td class="f2">BF₃</td><td>trigonal planar</td><td>three equal dipoles at 120° cancel</td><td>non-polar</td></tr>
+  <tr><td class="f2">CCl₄</td><td>tetrahedral</td><td>four equal dipoles cancel</td><td>non-polar</td></tr>
+  <tr><td class="f2">CHCl₃</td><td>tetrahedral</td><td>C–H and C–Cl dipoles are different — no cancelling</td><td>polar</td></tr>
+  <tr><td class="f2">H₂O</td><td>bent</td><td>dipoles point the same way overall</td><td>polar</td></tr>
+  <tr><td class="f2">NH₃</td><td>trigonal pyramidal</td><td>dipoles do not cancel</td><td>polar</td></tr>
+  <tr><td class="f2">SO₂</td><td>bent</td><td>dipoles do not cancel</td><td>polar</td></tr></table>
+  ${rule('<p style="margin:0">Symmetrical shape <strong>and</strong> identical terminal atoms → the dipoles cancel → non-polar. A lone pair on the central atom (in a shape with up to four domains) or different terminal atoms → polar.</p>')}
+  ${warn('<p style="margin:0">Polar bonds do not guarantee a polar molecule. CO₂ and CCl₄ both have polar bonds but are non-polar, because their shapes make the dipoles cancel.</p>')}`;
+ },
+ check:{q:'CO₂ and SO₂ both contain polar bonds. Why is only SO₂ polar?', a:'CO₂ is linear, so its two bond dipoles cancel; SO₂ has a lone pair on S, so it is bent and the dipoles do not cancel'}
+},
+{
+ id:'shp_expanded', unit:'shp', hl:true, ref:'S2.2.13', title:'Five and six electron domains', tag:'core', topics:['vsepr56'],
+ body:function(){ return `
+  <p>Atoms in <strong>period 3 and below</strong> (P, S, Cl, Se, Br, I, Xe…) can have more than eight electrons in their valence shell — an <strong>expanded octet</strong> — so they can have five or six electron domains. Period 2 atoms (C, N, O, F) cannot: NCl₅ does not exist, but PCl₅ does.</p>
+  <h3>Five domains: trigonal bipyramidal arrangement</h3>
+  <p>Three <strong>equatorial</strong> positions at 120° in a plane, and two <strong>axial</strong> positions at 90° above and below it. Lone pairs always go <strong>equatorial</strong>, where they have more room (only two neighbours at 90°, not three).</p>
+  <h3>Six domains: octahedral arrangement</h3>
+  <p>All six positions are equivalent, at 90° to their neighbours. A second lone pair goes <strong>opposite</strong> the first (180° apart), which is why XeF₄ is square planar.</p>
+  <table>${SHP_HEAD}
+  ${shpRow(5,0,'PCl₅, PF₅')}
+  ${shpRow(5,1,'SF₄, SeF₄')}
+  ${shpRow(5,2,'ClF₃, BrF₃')}
+  ${shpRow(5,3,'XeF₂, I₃⁻')}
+  ${shpRow(6,0,'SF₆, PF₆⁻')}
+  ${shpRow(6,1,'BrF₅, IF₅')}
+  ${shpRow(6,2,'XeF₄, ICl₄⁻')}</table>
+  ${rule('<p style="margin:0">Same method as before: count bonding domains and lone pairs. Five domains → trigonal bipyramidal electron domain geometry; six → octahedral. Then name the molecular geometry from the number of lone pairs.</p>')}
+  <h3>Polarity</h3>
+  <p>PCl₅, SF₆, XeF₂ and XeF₄ are <strong>non-polar</strong>: their lone pairs (if any) sit symmetrically, so the bond dipoles cancel. SF₄, ClF₃ and BrF₅ are <strong>polar</strong>.</p>
+  ${warn('<p style="margin:0">XeF₂ has three lone pairs but is <strong>linear</strong>, not bent: all three lone pairs sit in the equatorial plane, leaving the two F atoms axial at 180°.</p>')}`;
+ },
+ check:{q:'State the electron domain geometry and molecular geometry of SF₄.', a:'Five domains (4 bonding + 1 lone pair): trigonal bipyramidal electron domain geometry, see-saw molecular geometry, angles <90° and <120°'}
+},
+{
+ id:'shp_hybrid', unit:'shp', hl:true, ref:'S2.2.16', title:'Hybridization: sp, sp², sp³', tag:'core', topics:['hybrid'],
+ body:function(){ return `
+  <p><strong>Hybridization</strong> is the mixing of atomic orbitals to form new, equivalent <strong>hybrid orbitals</strong> for bonding. The number of hybrid orbitals formed equals the number of atomic orbitals mixed, and equals the number of electron domains on the atom.</p>
+  <table><tr><th>Domains</th><th>Orbitals mixed</th><th>Hybridization</th><th>Electron domain geometry</th><th>Angle</th><th>Examples</th></tr>
+  <tr><td>2</td><td>one s + one p</td><td><strong>sp</strong></td><td>linear</td><td class="f2">180°</td><td class="f2">C in HC≡CH, CO₂, HCN; Be in BeCl₂</td></tr>
+  <tr><td>3</td><td>one s + two p</td><td><strong>sp²</strong></td><td>trigonal planar</td><td class="f2">120°</td><td class="f2">C in CH₂=CH₂, C=O carbon; B in BF₃</td></tr>
+  <tr><td>4</td><td>one s + three p</td><td><strong>sp³</strong></td><td>tetrahedral</td><td class="f2">109.5°</td><td class="f2">C in CH₄; N in NH₃; O in H₂O</td></tr></table>
+  ${rule('<p style="margin:0">Count electron domains (lone pairs included) on the atom: 2 → sp, 3 → sp², 4 → sp³. This works in both directions — from hybridization you can predict the electron domain geometry, and vice versa.</p>')}
+  <h3>Organic examples</h3>
+  <ul>
+   <li><strong>Ethane</strong>: each C has four single bonds → sp³.</li>
+   <li><strong>Ethene</strong>: each C has three domains (C=C, two C–H) → sp². The unhybridized p orbital on each C overlaps sideways to form the π bond.</li>
+   <li><strong>Ethyne</strong>: each C has two domains (C≡C, C–H) → sp. Two unhybridized p orbitals per C form two π bonds.</li>
+   <li>In one molecule the atoms can differ: in propene, CH₃–CH=CH₂, C1 is sp³ and C2 and C3 are sp².</li>
+  </ul>
+  ${warn('<p style="margin:0">Lone pairs count. NH₃ and H₂O are both <strong>sp³</strong> even though they are not tetrahedral in shape — hybridization follows the electron domain geometry, not the molecular geometry.</p>')}
+  <p class="mini">Only sp, sp² and sp³ are assessed. Hybridization for five or six domains is not required.</p>`;
+ },
+ check:{q:'What is the hybridization of each carbon in CH₃CHO (ethanal)?', a:'The CH₃ carbon is sp³ (four single bonds); the CHO carbon is sp² (three domains: C–C, C–H, C=O)'}
+}
+);
+
+/* ---------- unit 04 question generators ---------- */
+function shOpts(ans, pool, n){
+  var uniq = pool.filter(function(x, i){ return x !== ans && pool.indexOf(x) === i; });
+  return mcOpts(ans, shuffle(uniq).slice(0, n || 3));
+}
+function shPick(hl, filter){ return pick(shPool(hl).filter(filter || function(){ return true; })); }
+
+function genDomains(hl){
+  var s = shPick(hl), d = String(shDom(s));
+  return {
+    type:shType('Count the electron domains', hl), topic: hl ? 'vsepr56' : 'vsepr', chapter: hl ? 'shp_expanded' : 'shp_domains', hl:hl,
+    stem:'How many electron domains surround the central ' + s.c + ' atom in ' + s.f + '?',
+    input:'mc', opts:shOpts(d, hl ? ['3','4','5','6','7'] : ['2','3','4','5']), answer:d,
+    explain:'The central ' + s.c + ' in ' + s.f + ' has ' + shCount(s) + '.' + (s.mult ? ' A double or triple bond counts as one domain.' : '')
+  };
+}
+function genLonePairs(hl){
+  var s = shPick(hl), l = String(s.lp);
+  return {
+    type:shType('Lone pairs on the central atom', hl), topic: hl ? 'vsepr56' : 'vsepr', chapter: hl ? 'shp_expanded' : 'shp_domains', hl:hl,
+    stem:'How many lone pairs are on the central ' + s.c + ' atom in ' + s.f + '?',
+    input:'mc', opts:shOpts(l, ['0','1','2','3']), answer:l,
+    explain:'The central ' + s.c + ' in ' + s.f + ' has ' + shCount(s) + ', which gives a ' + shMG(s) + ' molecular geometry.'
+  };
+}
+function genEDG(hl){
+  var s = shPick(hl, function(x){ return x.lp > 0 || Math.random() < 0.3; }), a = shEDG(s);
+  return {
+    type:shType('Electron domain geometry', hl), topic: hl ? 'vsepr56' : 'vsepr', chapter: hl ? 'shp_expanded' : 'shp_domains', hl:hl,
+    stem:'What is the electron domain geometry around the central atom in ' + s.f + '?',
+    sub:'Include lone pairs — this is the arrangement of all the electron domains.',
+    input:'mc', opts:shOpts(a, hl ? ['trigonal planar','tetrahedral','trigonal bipyramidal','octahedral','square planar','see-saw'] : ['linear','trigonal planar','tetrahedral','trigonal pyramidal','bent']), answer:a,
+    explain:shWhy(s)
+  };
+}
+function genMG(hl){
+  var s = shPick(hl), a = shMG(s);
+  var pool = hl ? HL_SHAPES.concat(['tetrahedral','trigonal pyramidal']) : SL_SHAPES;
+  return {
+    type:shType('Name the shape', hl), topic: hl ? 'vsepr56' : 'vshape', chapter: hl ? 'shp_expanded' : 'shp_vsepr', hl:hl,
+    stem:'What is the molecular geometry (shape) of ' + s.f + '?',
+    input:'mc', opts:shOpts(a, pool.concat(s.lp ? [shEDG(s)] : [])), answer:a,
+    explain:shWhy(s)
+  };
+}
+function genPair(hl){
+  var s = shPick(hl, function(x){ return x.lp > 0 || Math.random() < 0.25; });
+  var fmt = function(x){ return shEDG(x) + ' / ' + shMG(x); };
+  var a = fmt(s), seen = {}, wrongs = [];
+  seen[a] = 1;
+  // the classic slip: naming the electron domain geometry as the shape (and vice versa)
+  if(s.lp){ var sw = shMG(s) + ' / ' + shEDG(s); if(!seen[sw]){ seen[sw] = 1; wrongs.push(sw); } var same = shEDG(s) + ' / ' + shEDG(s); if(!seen[same]){ seen[same] = 1; wrongs.push(same); } }
+  shuffle(shPool(hl).slice()).forEach(function(x){ var v = fmt(x); if(!seen[v]){ seen[v] = 1; wrongs.push(v); } });
+  return {
+    type:shType('Electron domain vs molecular geometry', hl), topic: hl ? 'vsepr56' : 'vshape', chapter: hl ? 'shp_expanded' : 'shp_domains', hl:hl,
+    stem:'Which pair correctly gives the electron domain geometry / molecular geometry of ' + s.f + '?',
+    input:'mc', opts:mcOpts(a, wrongs.slice(0, 3)), answer:a,
+    explain:shWhy(s)
+  };
+}
+function genAngle(hl){
+  var s = shPick(hl, function(x){ return !x.noAng; }), a = shAng(s);
+  return {
+    type:shType('Bond angle', hl), topic: hl ? 'vsepr56' : 'vangle', chapter: hl ? 'shp_expanded' : 'shp_angles', hl:hl,
+    stem:'What bond angle(s) does VSEPR predict around the central atom in ' + s.f + '?',
+    input:'mc', opts:shOpts(a, hl ? HL_ANGLES : SL_ANGLES), answer:a,
+    explain:shWhy(s) + ' Predicted angle: ' + a + '.' + (s.lp && shDom(s) <= 4 ? ' Lone pairs repel more strongly than bonding pairs, so the angle is smaller than the ' + {3:'120°', 4:'109.5°'}[shDom(s)] + ' of the parent shape.' : '')
+  };
+}
+function genFromCounts(hl){
+  var d = hl ? pick([5, 6]) : pick([2, 3, 3, 4, 4, 4]);
+  var lps = Object.keys(GEO[d]).map(Number), lp = pick(lps), b = d - lp, g = GEO[d][lp];
+  var pool = hl ? HL_SHAPES.concat(['tetrahedral']) : SL_SHAPES;
+  return {
+    type:shType('Domains → shape', hl), topic: hl ? 'vsepr56' : 'vshape', chapter: hl ? 'shp_expanded' : 'shp_vsepr', hl:hl,
+    stem:'A central atom has ' + b + ' bonding domain' + (b === 1 ? '' : 's') + ' and ' + lp + ' lone pair' + (lp === 1 ? '' : 's') + '. What is its molecular geometry?',
+    input:'mc', opts:shOpts(g.mg, pool.concat(lp ? [EDG[d]] : [])), answer:g.mg,
+    explain:d + ' electron domains → ' + EDG[d] + ' electron domain geometry. With ' + lp + ' lone pair' + (lp === 1 ? '' : 's') + ' the atoms form a ' + g.mg + ' shape (' + g.ang + ').'
+  };
+}
+function genWhich(hl){
+  var pool = shPool(hl), s = pick(pool), target = shMG(s), seen = {}, wrongs = [];
+  seen[target] = 1;
+  shuffle(pool.slice()).forEach(function(x){ var m = shMG(x); if(!seen[m] && wrongs.length < 3){ seen[m] = 1; wrongs.push({name:x.f, why:x.f + ' is ' + m}); } });
+  return {
+    type:shType('Which species has this shape?', hl), topic: hl ? 'vsepr56' : 'vshape', chapter: hl ? 'shp_expanded' : 'shp_vsepr', hl:hl,
+    stem:'Which species has a ' + target + ' molecular geometry?',
+    input:'mc', opts:mcOpts(s.f, wrongs), answer:s.f,
+    explain:shWhy(s)
+  };
+}
+// typed shape names: accept the common synonyms
+var SHAPE_SYN = {
+  'linear':['linear'],
+  'trigonal planar':['trigonalplanar','triangularplanar','planartriangular','planartrigonal','trigonalplane'],
+  'bent':['bent','angular','vshaped','vshape','nonlinear'],
+  'tetrahedral':['tetrahedral','tetrahedron'],
+  'trigonal pyramidal':['trigonalpyramidal','pyramidal','trigonalpyramid','triangularpyramidal'],
+  'trigonal bipyramidal':['trigonalbipyramidal','trigonalbipyramid','triangularbipyramidal'],
+  'see-saw':['seesaw','sawhorse','distortedtetrahedral'],
+  'T-shaped':['tshaped','tshape'],
+  'octahedral':['octahedral','octahedron'],
+  'square pyramidal':['squarepyramidal','squarepyramid','squarebasedpyramidal','squarebasedpyramid'],
+  'square planar':['squareplanar']
+};
+function shapeKey(v){ return String(v).toLowerCase().replace(/[^a-z]/g, ''); }
+function genTyped(hl){
+  var s = shPick(hl), a = shMG(s);
+  return {
+    type:shType('Name the shape (type it)', hl), topic: hl ? 'vsepr56' : 'vshape', chapter: hl ? 'shp_expanded' : 'shp_vsepr', hl:hl,
+    stem:'Type the molecular geometry (shape) of ' + s.f + '.',
+    sub: hl ? 'e.g. trigonal bipyramidal, see-saw, T-shaped, linear, octahedral, square pyramidal, square planar' : 'e.g. linear, trigonal planar, bent, tetrahedral, trigonal pyramidal',
+    input:'text', answer:a,
+    check:function(v){ return SHAPE_SYN[a].indexOf(shapeKey(v)) >= 0; },
+    explain:shWhy(s) + (a === 'bent' ? ' Angular or V-shaped are also accepted.' : a === 'see-saw' ? ' Sawhorse is also accepted.' : '')
+  };
+}
+GENS.shp_domains   = function(){ return genDomains(false); };
+GENS.shp_lp        = function(){ return genLonePairs(false); };
+GENS.shp_edg       = function(){ return genEDG(false); };
+GENS.shp_mg        = function(){ return genMG(false); };
+GENS.shp_pair      = function(){ return genPair(false); };
+GENS.shp_angle     = function(){ return genAngle(false); };
+GENS.shp_counts    = function(){ return genFromCounts(false); };
+GENS.shp_which     = function(){ return genWhich(false); };
+GENS.shp_typed     = function(){ return genTyped(false); };
+GENS.shp5_domains  = function(){ return genDomains(true); };
+GENS.shp5_lp       = function(){ return genLonePairs(true); };
+GENS.shp5_edg      = function(){ return genEDG(true); };
+GENS.shp5_mg       = function(){ return genMG(true); };
+GENS.shp5_pair     = function(){ return genPair(true); };
+GENS.shp5_angle    = function(){ return genAngle(true); };
+GENS.shp5_counts   = function(){ return genFromCounts(true); };
+GENS.shp5_which    = function(){ return genWhich(true); };
+GENS.shp5_typed    = function(){ return genTyped(true); };
+
+// largest / smallest bond angle among species with different VSEPR angles
+GENS.shp_compare = function(){
+  var seen = {}, set = [];
+  shuffle(SHP_SL.filter(function(x){ return !x.noAng; })).forEach(function(x){ var a = shAng(x); if(!seen[a] && set.length < 4){ seen[a] = 1; set.push(x); } });
+  if(set.length < 3) return null;
+  var big = Math.random() < 0.5;
+  set.sort(function(p, q){ return ANG_RANK[shAng(q)] - ANG_RANK[shAng(p)]; });
+  var ans = big ? set[0] : set[set.length - 1];
+  return {
+    type:'Compare bond angles', topic:'vangle', chapter:'shp_angles',
+    stem:'Which species has the ' + (big ? 'largest' : 'smallest') + ' bond angle around its central atom?',
+    input:'mc', opts:mcOpts(ans.f, set.filter(function(x){ return x !== ans; }).map(function(x){ return {name:x.f, why:x.f + ' is ' + shMG(x) + ', ' + shAng(x)}; })), answer:ans.f,
+    explain:set.map(function(x){ return x.f + ': ' + shMG(x) + ', ' + shAng(x); }).join('; ') + '.'
+  };
+};
+
+// polarity
+function genPolar(hl){
+  var s = shPick(hl, function(x){ return x.pol !== undefined; });
+  var P = 'Polar — the bond dipoles do not cancel', N = 'Non-polar — the bond dipoles cancel';
+  var ans = s.pol ? P : N;
+  var why = s.pol
+    ? (s.pn ? s.f + ' is ' + shMG(s) + ', but ' + s.pn + ', so there is a net dipole.' : s.f + ' is ' + shMG(s) + ': the lone pair' + (s.lp > 1 ? 's make' : ' makes') + ' the molecule unsymmetrical, so the bond dipoles do not cancel and there is a net dipole.')
+    : s.f + ' is ' + shMG(s) + ' with identical terminal atoms' + (s.lp ? ' and symmetrically placed lone pairs' : '') + ', so the polar bonds’ dipoles cancel — no net dipole.';
+  return {
+    type:shType('Polar or non-polar?', hl), topic:'molpol', chapter: hl ? 'shp_expanded' : 'shp_polar', hl:hl,
+    stem:'Is ' + s.f + ' a polar or a non-polar molecule?',
+    input:'mc', opts:mcOpts(ans, [s.pol ? N : P, 'Non-polar — it contains no polar bonds', 'Polar — every molecule with polar bonds is polar']), answer:ans,
+    explain:why
+  };
+}
+GENS.pol_yn  = function(){ return genPolar(false); };
+GENS.pol5_yn = function(){ return genPolar(true); };
+GENS.pol_which = function(){
+  var mols = SHP_SL.filter(function(x){ return x.pol !== undefined; });
+  var wantPolar = Math.random() < 0.5;
+  var right = pick(mols.filter(function(x){ return x.pol === wantPolar; }));
+  var wrongs = shuffle(mols.filter(function(x){ return x.pol !== wantPolar; })).slice(0, 3);
+  return {
+    type:'Which molecule is ' + (wantPolar ? 'polar' : 'non-polar') + '?', topic:'molpol', chapter:'shp_polar',
+    stem:'Which of these molecules is ' + (wantPolar ? 'polar' : 'non-polar') + '?',
+    input:'mc', opts:mcOpts(right.f, wrongs.map(function(x){ return {name:x.f, why:x.f + ' is ' + shMG(x) + ' and ' + (x.pol ? 'polar' : 'non-polar')}; })), answer:right.f,
+    explain:right.f + ' is ' + shMG(right) + (right.pol ? (right.pn ? '; ' + right.pn + '.' : ' with a lone pair on the central atom, so the dipoles do not cancel.') : ' with identical terminal atoms, so the bond dipoles cancel.')
+  };
+};
+
+// concepts
+var SHP_FACTS = [
+  {t:'vsepr', q:'According to VSEPR, why do electron domains around a central atom spread out as far as possible?', a:'To minimise repulsion between the electron domains', w:['To maximise attraction between the electron domains','Because lone pairs attract bonding pairs','So that every bond angle is 90°']},
+  {t:'vsepr', q:'How many electron domains does a C=O double bond count as?', a:'One', w:['Two','Four','Half']},
+  {t:'vsepr', q:'What is the difference between electron domain geometry and molecular geometry?', a:'Electron domain geometry includes lone pairs; molecular geometry describes the positions of the atoms only', w:['Molecular geometry includes lone pairs; electron domain geometry does not','They are always the same','Electron domain geometry only counts double bonds']},
+  {t:'vsepr', q:'Which statement about NH₃ and BF₃ is correct?', a:'NH₃ has four electron domains and BF₃ has three, so they have different shapes', w:['Both have three electron domains, so both are trigonal planar','Both are trigonal pyramidal','BF₃ has a lone pair on boron']},
+  {t:'vangle', q:'Put the repulsions in order, strongest first.', a:'lone pair–lone pair > lone pair–bonding pair > bonding pair–bonding pair', w:['bonding pair–bonding pair > lone pair–bonding pair > lone pair–lone pair','lone pair–bonding pair > lone pair–lone pair > bonding pair–bonding pair','All three repulsions are equal']},
+  {t:'vangle', q:'Why is the H–O–H angle in H₂O (≈104.5°) smaller than the H–N–H angle in NH₃ (≈107°)?', a:'H₂O has two lone pairs, which repel the bonding pairs more strongly than one lone pair does', w:['O is a larger atom than N','H₂O has fewer electron domains than NH₃','O–H bonds are longer than N–H bonds']},
+  {t:'vangle', q:'Why is the bond angle in NH₃ less than 109.5°?', a:'The lone pair repels the bonding pairs more strongly than they repel each other', w:['NH₃ has only three electron domains','The N–H bonds attract each other','Nitrogen is less electronegative than carbon']},
+  {t:'vangle', q:'In methanal, H₂CO, how does the H–C–H angle compare with 120°?', a:'Slightly less than 120°, because the C=O double bond repels more strongly than the C–H bonds', w:['Exactly 120°, because multiple bonds have no effect','More than 120°, because the C=O bond repels less','109.5°, because carbon is always tetrahedral']},
+  {t:'vangle', q:'SO₂ is bent. Its O–S–O bond angle is…', a:'slightly less than 120°', w:['exactly 180°','about 104.5°','exactly 90°']},
+  {t:'molpol', q:'Molecular polarity depends on…', a:'both bond polarity and molecular geometry', w:['bond polarity only','molecular geometry only','the number of atoms only']},
+  {t:'molpol', q:'Why is CO₂ non-polar even though each C=O bond is polar?', a:'It is linear, so the two equal bond dipoles point in opposite directions and cancel', w:['C and O have the same electronegativity','Double bonds are never polar','It has lone pairs on the carbon atom']},
+  {t:'molpol', q:'Why is CHCl₃ polar but CCl₄ non-polar, when both are tetrahedral?', a:'In CHCl₃ the C–H and C–Cl dipoles are different, so they do not cancel; in CCl₄ four identical dipoles cancel', w:['CHCl₃ has a lone pair on carbon','CCl₄ has no polar bonds','CHCl₃ is trigonal pyramidal']},
+  {t:'vsepr56', hl:true, q:'Why can phosphorus form PCl₅ but nitrogen cannot form NCl₅?', a:'P is in period 3 and can expand its octet; N is in period 2 and is limited to eight valence electrons', w:['N is more electronegative than P','N atoms are too large to fit five Cl atoms','PCl₅ is ionic, NCl₅ would be covalent']},
+  {t:'vsepr56', hl:true, q:'In a trigonal bipyramidal arrangement, where do lone pairs go, and why?', a:'Equatorial positions — they have fewer neighbours at 90°, so repulsion is lower', w:['Axial positions — they are further from the centre','Any position — all five positions are equivalent','Axial positions — they are at 180° to each other']},
+  {t:'vsepr56', hl:true, q:'Why is XeF₄ square planar rather than see-saw?', a:'Its two lone pairs sit opposite each other (180° apart) in an octahedral arrangement, minimising lone pair–lone pair repulsion', w:['Xe has no lone pairs','It has only four electron domains','Its lone pairs occupy equatorial positions of a trigonal bipyramid']},
+  {t:'vsepr56', hl:true, q:'XeF₂ has three lone pairs on Xe. What is its shape?', a:'Linear — the three lone pairs occupy the equatorial plane, leaving the F atoms at 180°', w:['Bent, like H₂O','T-shaped','Trigonal planar']},
+  {t:'vsepr56', hl:true, q:'Which bond angles are present in a trigonal bipyramidal molecule such as PCl₅?', a:'90° (axial–equatorial) and 120° (equatorial–equatorial)', w:['90° only','109.5° only','120° and 180° only']},
+  {t:'hybrid', hl:true, q:'What is hybridization?', a:'The mixing of atomic orbitals to form new hybrid orbitals for bonding', w:['The sharing of electrons between two atoms','The overlap of two p orbitals to form a π bond','The transfer of electrons from a metal to a non-metal']},
+  {t:'hybrid', hl:true, q:'Which orbitals mix to form sp² hybrid orbitals?', a:'One s and two p orbitals, giving three sp² orbitals', w:['One s and three p orbitals, giving four orbitals','Two s and one p orbital','One s and one p orbital, giving two orbitals']},
+  {t:'hybrid', hl:true, q:'In ethene, what forms the π bond between the two carbon atoms?', a:'Sideways overlap of the unhybridized p orbitals on each sp² carbon', w:['End-on overlap of two sp² orbitals','Overlap of two sp³ orbitals','Overlap of the s orbitals']},
+  {t:'hybrid', hl:true, q:'NH₃ is trigonal pyramidal. What is the hybridization of N?', a:'sp³ — four electron domains including the lone pair', w:['sp² — three bonded atoms','sp — one lone pair','sp³d — five electrons']},
+  {t:'hybrid', hl:true, q:'Which hybridizations does the IB syllabus require?', a:'sp, sp² and sp³ only', w:['sp³d and sp³d² only','sp only','sp, sp², sp³, sp³d and sp³d²']}
+];
+function shFact(topics, hl){
+  var f = pick(SHP_FACTS.filter(function(x){ return topics.indexOf(x.t) >= 0 && !!x.hl === hl; }));
+  var chap = {vsepr:'shp_domains', vangle:'shp_angles', molpol:'shp_polar', vsepr56:'shp_expanded', hybrid:'shp_hybrid'}[f.t];
+  return {
+    type: hl ? (f.t === 'hybrid' ? 'Hybridization — concepts' : 'Five & six domains — concepts') : (f.t === 'molpol' ? 'Polarity — concepts' : 'VSEPR — concepts'), topic:f.t, chapter:chap, hl:hl,
+    stem:f.q, input:'mc', opts:mcOpts(f.a, f.w), answer:f.a, explain:f.a + '.'
+  };
+}
+GENS.shp_concept  = function(){ return shFact(['vsepr','vangle'], false); };
+GENS.pol_concept  = function(){ return shFact(['molpol'], false); };
+GENS.shp5_concept = function(){ return shFact(['vsepr56'], true); };
+GENS.hyb_concept  = function(){ return shFact(['hybrid'], true); };
+
+/* ---- HL: hybridization ---- */
+var HYB_ATOMS = [
+  {f:'CH₄', at:'the C atom', d:4, r:'four C–H single bonds'},
+  {f:'C₂H₆ (ethane)', at:'either C atom', d:4, r:'four single bonds (C–C and three C–H)'},
+  {f:'CH₂=CH₂ (ethene)', at:'either C atom', d:3, r:'C=C plus two C–H'},
+  {f:'HC≡CH (ethyne)', at:'either C atom', d:2, r:'C≡C plus C–H'},
+  {f:'CH₃–CH=CH₂ (propene)', at:'the CH₃ carbon', d:4, r:'four single bonds'},
+  {f:'CH₃–CH=CH₂ (propene)', at:'the middle (=CH–) carbon', d:3, r:'C–C, C=C and C–H'},
+  {f:'CH₃–C≡CH (propyne)', at:'the middle carbon', d:2, r:'C–C and C≡C'},
+  {f:'CH₃–C≡CH (propyne)', at:'the CH₃ carbon', d:4, r:'four single bonds'},
+  {f:'CH₃CHO (ethanal)', at:'the CHO carbon', d:3, r:'C–C, C–H and C=O'},
+  {f:'CH₃CHO (ethanal)', at:'the O atom', d:3, r:'the C=O bond plus two lone pairs'},
+  {f:'CH₃COOH (ethanoic acid)', at:'the COOH carbon', d:3, r:'C–C, C=O and C–O'},
+  {f:'CH₃COOH (ethanoic acid)', at:'the O of the O–H group', d:4, r:'two single bonds plus two lone pairs'},
+  {f:'CH₃OH (methanol)', at:'the O atom', d:4, r:'two single bonds plus two lone pairs'},
+  {f:'CH₃CN (ethanenitrile)', at:'the C of the C≡N group', d:2, r:'C–C and C≡N'},
+  {f:'CH₃CN (ethanenitrile)', at:'the N atom', d:2, r:'the C≡N bond plus one lone pair'},
+  {f:'CH₃NH₂ (methylamine)', at:'the N atom', d:4, r:'three single bonds plus one lone pair'},
+  {f:'C₆H₆ (benzene)', at:'any C atom', d:3, r:'three bonded atoms (two C and one H), no lone pair'},
+  {f:'CO₂', at:'the C atom', d:2, r:'two C=O double bonds'},
+  {f:'HCHO (methanal)', at:'the C atom', d:3, r:'two C–H and one C=O'}
+];
+GENS.hyb_central = function(){
+  var s = pick(SHP_SL), d = shDom(s), a = HYB[d];
+  return {
+    type:'Hybridization of the central atom', topic:'hybrid', chapter:'shp_hybrid', hl:true,
+    stem:'What is the hybridization of the central ' + s.c + ' atom in ' + s.f + '?',
+    input:'mc', opts:mcOpts(a, ['sp','sp²','sp³'].filter(function(x){ return x !== a; })), answer:a,
+    explain:'The central ' + s.c + ' has ' + shCount(s) + ' → ' + a + ' (' + EDG[d] + ' electron domain geometry). Lone pairs count as domains.'
+  };
+};
+GENS.hyb_atom = function(){
+  var x = pick(HYB_ATOMS), a = HYB[x.d];
+  return {
+    type:'Hybridization in a molecule', topic:'hybrid', chapter:'shp_hybrid', hl:true,
+    stem:'What is the hybridization of ' + x.at + ' in ' + x.f + '?',
+    input:'mc', opts:mcOpts(a, ['sp','sp²','sp³'].filter(function(y){ return y !== a; })), answer:a,
+    explain:x.at.charAt(0).toUpperCase() + x.at.slice(1) + ' has ' + x.d + ' electron domains (' + x.r + ') → ' + a + ', ' + EDG[x.d] + ' arrangement.'
+  };
+};
+GENS.hyb_geom = function(){
+  var d = pick([2, 3, 4]), h = HYB[d], fwd = Math.random() < 0.5;
+  var fmt = function(k){ return EDG[k] + ', ' + GEO[k][0].ang; };
+  if(fwd){
+    return {
+      type:'Hybridization → geometry', topic:'hybrid', chapter:'shp_hybrid', hl:true,
+      stem:'An atom is ' + h + ' hybridized. What are its electron domain geometry and the angle between its hybrid orbitals?',
+      input:'mc', opts:mcOpts(fmt(d), [2, 3, 4].filter(function(k){ return k !== d; }).map(fmt).concat(['trigonal pyramidal, 107°'])), answer:fmt(d),
+      explain:h + ' → ' + d + ' hybrid orbitals → ' + EDG[d] + ' arrangement, ' + GEO[d][0].ang + ' apart.'
+    };
+  }
+  return {
+    type:'Geometry → hybridization', topic:'hybrid', chapter:'shp_hybrid', hl:true,
+    stem:'An atom has a ' + EDG[d] + ' electron domain geometry. What is its hybridization?',
+    input:'mc', opts:mcOpts(h, ['sp','sp²','sp³'].filter(function(y){ return y !== h; })), answer:h,
+    explain:EDG[d] + ' → ' + d + ' electron domains → ' + d + ' hybrid orbitals → ' + h + '.'
+  };
+};
+
+QTYPES.push(
+  {k:'shp_domains',  w:2, topics:['vsepr'],  unit:'shp'},
+  {k:'shp_lp',       w:2, topics:['vsepr'],  unit:'shp'},
+  {k:'shp_edg',      w:2, topics:['vsepr','vshape'], unit:'shp'},
+  {k:'shp_mg',       w:4, topics:['vshape'], unit:'shp'},
+  {k:'shp_pair',     w:3, topics:['vshape','vsepr'], unit:'shp'},
+  {k:'shp_counts',   w:2, topics:['vshape'], unit:'shp'},
+  {k:'shp_which',    w:2, topics:['vshape'], unit:'shp'},
+  {k:'shp_typed',    w:2, topics:['vshape'], unit:'shp'},
+  {k:'shp_angle',    w:4, topics:['vangle'], unit:'shp'},
+  {k:'shp_compare',  w:2, topics:['vangle'], unit:'shp'},
+  {k:'shp_concept',  w:2, topics:['vsepr','vangle'], unit:'shp'},
+  {k:'pol_yn',       w:3, topics:['molpol'], unit:'shp'},
+  {k:'pol_which',    w:2, topics:['molpol'], unit:'shp'},
+  {k:'pol_concept',  w:2, topics:['molpol'], unit:'shp'},
+  {k:'shp5_domains', w:2, topics:['vsepr56','vsepr'],  unit:'shp', hl:true},
+  {k:'shp5_lp',      w:2, topics:['vsepr56','vsepr'],  unit:'shp', hl:true},
+  {k:'shp5_edg',     w:2, topics:['vsepr56','vsepr'],  unit:'shp', hl:true},
+  {k:'shp5_mg',      w:4, topics:['vsepr56','vshape'], unit:'shp', hl:true},
+  {k:'shp5_pair',    w:3, topics:['vsepr56','vshape'], unit:'shp', hl:true},
+  {k:'shp5_counts',  w:2, topics:['vsepr56','vshape'], unit:'shp', hl:true},
+  {k:'shp5_which',   w:2, topics:['vsepr56','vshape'], unit:'shp', hl:true},
+  {k:'shp5_typed',   w:2, topics:['vsepr56','vshape'], unit:'shp', hl:true},
+  {k:'shp5_angle',   w:3, topics:['vsepr56','vangle'], unit:'shp', hl:true},
+  {k:'pol5_yn',      w:2, topics:['vsepr56','molpol'], unit:'shp', hl:true},
+  {k:'shp5_concept', w:2, topics:['vsepr56'], unit:'shp', hl:true},
+  {k:'hyb_central',  w:3, topics:['hybrid'],  unit:'shp', hl:true},
+  {k:'hyb_atom',     w:3, topics:['hybrid'],  unit:'shp', hl:true},
+  {k:'hyb_geom',     w:2, topics:['hybrid'],  unit:'shp', hl:true},
+  {k:'hyb_concept',  w:2, topics:['hybrid'],  unit:'shp', hl:true}
+);
+MODES.push(
+  {k:'shpq',   unit:'shp', t:'Geometry quick test', d:'Ten mixed questions: domains, shapes, bond angles and polarity — plus five and six domains and hybridization at HL.', n:10, level:2, units:['shp'], meta:'10 questions'},
+  {k:'shpnm',  unit:'shp', t:'Naming shapes', d:'Electron domain geometry vs molecular geometry, from formulas and from domain counts. Pick or type the name.', n:15, level:2,
+   only:['shp_edg','shp_mg','shp_pair','shp_counts','shp_which','shp_typed','shp5_edg','shp5_mg','shp5_pair','shp5_counts','shp5_which','shp5_typed'], meta:'15 questions · SL + HL'},
+  {k:'shpang', unit:'shp', t:'Bond angles', d:'Predict bond angles, compare them, and explain the effect of lone pairs and multiple bonds.', n:12, level:2,
+   only:['shp_angle','shp_compare','shp_concept','shp5_angle'], meta:'12 questions · SL + HL'},
+  {k:'shpdom', unit:'shp', t:'Counting domains', d:'Electron domains and lone pairs on the central atom — the first step of every shape question.', n:12, level:2,
+   only:['shp_domains','shp_lp','shp_edg','shp_concept','shp5_domains','shp5_lp'], meta:'12 questions · SL + HL'},
+  {k:'shppol', unit:'shp', t:'Molecular polarity', d:'Polar or non-polar? Decide from bond polarity and shape.', n:12, level:2,
+   only:['pol_yn','pol_which','pol_concept','pol5_yn'], meta:'12 questions · SL + HL'},
+  {k:'shp56',  unit:'shp', hl:true, t:'Five & six domains', d:'Trigonal bipyramidal, see-saw, T-shaped, linear, octahedral, square pyramidal and square planar.', n:12, level:2,
+   only:['shp5_domains','shp5_lp','shp5_edg','shp5_mg','shp5_pair','shp5_counts','shp5_which','shp5_typed','shp5_angle','pol5_yn','shp5_concept'], meta:'12 questions'},
+  {k:'shphyb', unit:'shp', hl:true, t:'Hybridization', d:'sp, sp² and sp³ from electron domains, in organic and inorganic species — and geometry from hybridization.', n:12, level:2,
+   only:['hyb_central','hyb_atom','hyb_geom','hyb_concept'], meta:'12 questions'}
+);
+
 /* ---------- course level (SL / HL) ---------- */
 function setLevel(l){
   LEVEL = l === 'SL' ? 'SL' : 'HL';
